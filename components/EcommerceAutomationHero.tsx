@@ -22,93 +22,164 @@ const EcommerceAutomationHero: React.FC = () => {
         url: 'https://calendly.com/sharksretailofficial/30min'
       });
     } else {
-      // Fallback: open in new window if Calendly script not loaded
       window.open('https://calendly.com/sharksretailofficial/30min', '_blank');
     }
   };
+
+  // Animation variants for floating icons
+  const floatAnimation = (delay: number) => ({
+    y: [0, -15, 0],
+    rotate: [0, 2, -2, 0],
+    transition: {
+      y: {
+        duration: 4,
+        delay: delay,
+        repeat: Infinity,
+        ease: "easeInOut" as const,
+        repeatType: "loop" as const
+      },
+      rotate: {
+        duration: 4,
+        delay: delay,
+        repeat: Infinity,
+        ease: "easeInOut" as const,
+        repeatType: "loop" as const
+      }
+    }
+  });
+
   return (
-    <section className="relative bg-black py-8 sm:py-12 lg:py-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <PlexusBackground />
+    <section className="relative w-full min-h-screen bg-black overflow-hidden flex items-center">
+      {/* Background Gradient - Black with Greenish theme */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a1a0f] to-[#001a0a] z-0"></div>
       
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-r from-teal-400/10 to-transparent"></div>
+      {/* Greenish accent overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-teal-900/20 via-transparent to-teal-800/10 z-0"></div>
       
-      {/* Right Side Teal Accent */}
-      <div className="absolute top-0 right-0 w-1/2 sm:w-1/3 h-full bg-gradient-to-l from-teal-400/20 to-transparent"></div>
-      
-      {/* Floating Side Button (hide on small) */}
-      <button onClick={openCalendly} className="hidden md:flex fixed top-1/2 right-0 -translate-y-1/2 bg-teal-400 text-black font-bold py-4 px-3 rounded-l-xl z-50 [writing-mode:vertical-rl] rotate-180 uppercase tracking-wider text-sm hover:bg-white transition-colors">
-        Let&apos;s Talk Business
-      </button>
+      {/* Overlay Texture/Plexus */}
+      <div className="absolute inset-0 opacity-30 z-0 pointer-events-none">
+         <PlexusBackground /> 
+      </div>
 
-      {/* Main Hero Content */}
-      <div className="relative z-10 flex h-full items-center justify-center">
-        <div className="text-center text-white p-4 sm:p-6 lg:p-8 w-full">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 py-12 lg:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          
+          {/* LEFT COLUMN: Text Content */}
           <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6 sm:space-y-8"
+            className="text-left space-y-6 order-1"
           >
+            {/* ECOM SHARKS Label */}
+            <div className="text-teal-400 font-bold tracking-widest uppercase text-sm mb-2">
+              SHARKS RETAIL
+            </div>
+
             {/* Main Headline */}
-            <motion.h1 
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight max-w-5xl mx-auto"
-              style={{ fontFamily: 'Poppins', fontWeight: '700' }}
+            <h1 
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
             >
-              The Only E-commerce Investment with a{' '}
-              <span className="text-teal-400">Guaranteed Return</span>
-            </motion.h1>
+              The Only E-commerce Investment
+              with a <span style={{ color: 'oklch(77.7% 0.152 181.912)' }}>Guaranteed Return</span>
+            </h1>
 
-            {/* Sub-headline */}
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-sm sm:text-base md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto font-black"
-            >
-              The Done-For-You System That Gets You to{' '}
-              <span className="text-teal-400 font-semibold">$4,000 in 30 Days</span>
-              —or We Work for Free.
-            </motion.p>
+            {/* Body Text */}
+            <p className="text-base sm:text-lg text-gray-200 leading-relaxed max-w-2xl font-medium">
+              The Done-For-You System That Gets You to $4,000 in 30 Days—or We Work for Free.
+            </p>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
-            >
+            {/* Sub-text / CTA Prompt */}
+            <p className="text-sm sm:text-base text-teal-400 font-semibold">
               Curious now? Book a meeting with one of our senior consultants today.
-            </motion.p>
+            </p>
 
-            {/* CTA Button */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="flex justify-center mt-8"
-            >
-              <button
+            {/* Button */}
+            <div className="pt-4">
+               <button
                 onClick={openCalendly}
-                className="inline-flex items-center justify-center bg-teal-400 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-black rounded-full cursor-pointer"
+                className="inline-flex items-center justify-center bg-teal-400 text-[#0a2e38] px-8 py-4 text-base sm:text-lg font-extrabold uppercase tracking-wider rounded-full transition-all hover:bg-white hover:scale-105 shadow-lg hover:shadow-teal-400/50"
               >
                 Book Now
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-6 h-6 ml-2" />
               </button>
-            </motion.div>
-
-            {/* Decorative Elements */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="mt-12 flex justify-center"
-            >
-              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent"></div>
-            </motion.div>
+            </div>
           </motion.div>
+
+          {/* RIGHT COLUMN: Floating 3D Images */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] order-2 flex items-center justify-center perspective-1000"
+          >
+             {/* Container for images to keep them grouped in square shape */}
+             <div className="relative w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] h-full flex items-center justify-center">
+                
+                {/* Amazon Logo (Top Left) */}
+                <motion.div 
+                  animate={floatAnimation(0)}
+                  className="absolute top-[15%] sm:top-[10%] left-[15%] sm:left-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-20 drop-shadow-2xl"
+                >
+                  <img 
+                    src="/images/hero-amazon-logo.png" 
+                    alt="Amazon" 
+                    className="w-full h-auto object-contain"
+                    loading="lazy"
+                    width="256"
+                    height="256"
+                  />
+                </motion.div>
+
+                {/* Walmart Logo (Top Right) */}
+                <motion.div 
+                  animate={floatAnimation(1.5)}
+                  className="absolute top-[15%] sm:top-[10%] right-[15%] sm:right-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-10 drop-shadow-2xl"
+                >
+                  <img 
+                    src="/images/hero-walmart-logo.png" 
+                    alt="Walmart" 
+                    className="w-full h-auto object-contain"
+                    loading="lazy"
+                    width="256"
+                    height="256"
+                  />
+                </motion.div>
+
+                 {/* Shopify Logo (Bottom Left) */}
+                 <motion.div 
+                  animate={floatAnimation(0.5)}
+                  className="absolute bottom-[15%] sm:bottom-[10%] left-[15%] sm:left-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-30 drop-shadow-2xl"
+                >
+                  <img 
+                    src="/images/hero-shopify-logo.png" 
+                    alt="Shopify" 
+                    className="w-full h-auto object-contain"
+                    loading="lazy"
+                    width="256"
+                    height="256"
+                  />
+                </motion.div>
+
+                {/* TikTok Logo (Bottom Right) */}
+                <motion.div 
+                  animate={floatAnimation(2)}
+                  className="absolute bottom-[15%] sm:bottom-[10%] right-[15%] sm:right-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-20 drop-shadow-2xl"
+                >
+                  <img 
+                    src="/images/hero-tiktok-logo.png" 
+                    alt="TikTok" 
+                    className="w-full h-auto object-contain"
+                    loading="lazy"
+                    width="256"
+                    height="256"
+                  />
+                </motion.div>
+
+             </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

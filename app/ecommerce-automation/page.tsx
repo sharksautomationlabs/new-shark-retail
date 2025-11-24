@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import EcommerceAutomationHero from '@/components/EcommerceAutomationHero';
 import OurJourney from '@/components/OurJourney';
 import EcommerceAutomationStrategyCall from '@/components/EcommerceAutomationStrategyCall';
+import EcommerceAutomationStats from '@/components/EcommerceAutomationStats';
 import PPCManagementTestimonials from '@/components/PPCManagementTestimonials';
 import EcommerceAutomationVideoSection from '@/components/EcommerceAutomationVideoSection';
 import EcommerceAutomationFinalCTA from '@/components/EcommerceAutomationFinalCTA';
@@ -15,9 +16,9 @@ const EcommerceAutomationPage: React.FC = () => {
       
       <main>
         <EcommerceAutomationHero />
-        <EcommerceAutomationVideoSection />
         <OurJourney />
         <EcommerceAutomationStrategyCall />
+        <EcommerceAutomationStats />
         <PPCManagementTestimonials />
         <EcommerceAutomationVideoSection />
         <EcommerceAutomationFinalCTA />
