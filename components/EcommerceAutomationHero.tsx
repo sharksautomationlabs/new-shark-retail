@@ -69,16 +69,16 @@ const EcommerceAutomationHero: React.FC = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-left space-y-6 order-1"
+            className="text-center md:text-left space-y-6 order-1"
           >
-            {/* ECOM SHARKS Label */}
-            <div className="text-teal-400 font-bold tracking-widest uppercase text-sm mb-2">
-              SHARKS RETAIL
+            {/* ECOM SHARK Label */}
+            <div className="text-teal-400 font-bold tracking-widest uppercase text-xs sm:text-sm mb-2">
+              SHARK RETAIL
             </div>
 
             {/* Main Headline */}
             <h1 
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight"
+              className="text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
               The Only E-commerce Investment
@@ -86,23 +86,23 @@ const EcommerceAutomationHero: React.FC = () => {
             </h1>
 
             {/* Body Text */}
-            <p className="text-base sm:text-lg text-gray-200 leading-relaxed max-w-2xl font-medium">
+            <p className="text-xs sm:text-sm md:text-lg text-gray-200 leading-relaxed max-w-2xl mx-auto md:mx-0 font-medium">
               The Done-For-You System That Gets You to $4,000 in 30 Days—or We Work for Free.
             </p>
 
             {/* Sub-text / CTA Prompt */}
-            <p className="text-sm sm:text-base text-teal-400 font-semibold">
+            <p className="text-[10px] sm:text-xs md:text-base text-teal-400 font-semibold">
               Curious now? Book a meeting with one of our senior consultants today.
             </p>
 
             {/* Button */}
-            <div className="pt-4">
+            <div className="pt-4 flex justify-center md:justify-start">
                <button
                 onClick={openCalendly}
-                className="inline-flex items-center justify-center bg-teal-400 text-[#0a2e38] px-8 py-4 text-base sm:text-lg font-extrabold uppercase tracking-wider rounded-full transition-all hover:bg-white hover:scale-105 shadow-lg hover:shadow-teal-400/50"
+                className="inline-flex items-center justify-center bg-teal-400 text-[#0a2e38] px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider rounded-full transition-all hover:bg-white hover:scale-105 shadow-lg hover:shadow-teal-400/50"
               >
                 Book Now
-                <ArrowRight className="w-6 h-6 ml-2" />
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2" />
               </button>
             </div>
           </motion.div>

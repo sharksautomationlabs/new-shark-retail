@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, X } from 'lucide-react';
 import PlexusBackground from '@/components/PlexusBackground';
 
 const ThankYouPage: React.FC = () => {
+  const [showPopup, setShowPopup] = useState(false);
   
   useEffect(() => {
     // Load Calendly widget script if not already loaded
@@ -17,14 +18,8 @@ const ThankYouPage: React.FC = () => {
     }
   }, []);
 
-  const openCalendly = () => {
-    if ((window as any).Calendly) {
-      (window as any).Calendly.initPopupWidget({
-        url: 'https://calendly.com/sharksretailofficial/30min'
-      });
-    } else {
-      window.open('https://calendly.com/sharksretailofficial/30min', '_blank');
-    }
+  const handleThankYouClick = () => {
+    setShowPopup(true);
   };
 
   // Floating animation for the background icons
@@ -199,17 +194,77 @@ const ThankYouPage: React.FC = () => {
               viewport={{ once: true }}
             >
               <button
-                onClick={openCalendly}
+                onClick={handleThankYouClick}
                 className="inline-flex items-center justify-center bg-teal-400 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-black transition-colors hover:bg-white hover:text-black rounded-full cursor-pointer"
                 style={{ fontFamily: 'Poppins, sans-serif' }}
               >
-                Book Your Free Strategy Call
+                Thank You
                 <ArrowRight className="w-5 h-5 ml-2" />
               </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
+
+      {/* Thank You Popup Modal */}
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+            onClick={() => setShowPopup(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="relative bg-black border border-teal-400/30 rounded-2xl p-8 sm:p-12 max-w-md w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200 w-8 h-8 flex items-center justify-center"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              {/* Popup Content */}
+              <div className="text-center space-y-6">
+                <motion.h3
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-2xl sm:text-3xl font-bold text-white"
+                  style={{ fontFamily: 'Poppins, sans-serif' }}
+                >
+                  Thanks for Booking!
+                </motion.h3>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="w-24 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent mx-auto"
+                ></motion.div>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-base sm:text-lg text-gray-300 leading-relaxed"
+                  style={{ fontFamily: 'Poppins, sans-serif' }}
+                >
+                  Thank you for booking your meeting with us! We&apos;re excited to connect with you and help you build your hands-off e-commerce business. Our team will reach out to you shortly to confirm the details and prepare for our conversation.
+                </motion.p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   );

@@ -1,10 +1,29 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 
 const OurJourney: React.FC = () => {
+  useEffect(() => {
+    // Load Calendly widget script if not already loaded
+    if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  const openCalendly = () => {
+    if ((window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({
+        url: 'https://calendly.com/sharksretailofficial/30min'
+      });
+    } else {
+      window.open('https://calendly.com/sharksretailofficial/30min', '_blank');
+    }
+  };
   return (
     <section className="relative bg-white py-16 px-4 sm:px-8 lg:px-12 overflow-hidden">
       {/* Background Pattern */}
@@ -58,12 +77,15 @@ const OurJourney: React.FC = () => {
 
             {/* Button (Moved from Floating side to Bottom to match Layout) */}
             <div className="pt-2">
-              <a href="/contact" className="group inline-flex items-center gap-3 bg-teal-400 hover:bg-teal-500 text-black pl-6 pr-2 py-2 rounded-full transition-all duration-300 shadow-lg hover:shadow-teal-200 cursor-pointer">
+              <button
+                onClick={openCalendly}
+                className="group inline-flex items-center gap-3 bg-teal-400 hover:bg-teal-500 text-black pl-6 pr-2 py-2 rounded-full transition-all duration-300 shadow-lg hover:shadow-teal-200 cursor-pointer"
+              >
                 <span className="font-bold text-lg uppercase tracking-wider">Let&apos;s Talk</span>
                 <div className="bg-white rounded-full p-2 group-hover:translate-x-1 transition-transform">
                     <ArrowRight className="w-5 h-5 text-teal-600" />
                 </div>
-              </a>
+              </button>
             </div>
           </motion.div>
 
