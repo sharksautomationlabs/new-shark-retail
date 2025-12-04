@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 
 const EcommerceAutomationStrategyCall: React.FC = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
@@ -48,22 +48,22 @@ const EcommerceAutomationStrategyCall: React.FC = () => {
     return () => { if (sectionRef.current) observer.unobserve(sectionRef.current); };
   }, []);
 
-  // Card Content Data
-  const stepsData = [
+  // Updated Data with Prices as requested
+  const deliverables = [
     {
-      number: "1",
-      title: "Personalized Strategy",
-      description: "A tailored plan to achieve your e-commerce goals and maximize your passive income potential."
+      title: "Comprehensive Audit",
+      description: "Full analysis of your current store performance and gaps.",
+      value: "$4,000" // Updated to 4000
     },
     {
-      number: "2",
-      title: "Market Insights",
-      description: "Access to exclusive market data and trends to identify profitable product niches."
+      title: "Custom Roadmap",
+      description: "Step-by-step automation strategy tailored to your niche.",
+      value: "$1,500"
     },
     {
-      number: "3",
-      title: "Risk Assessment",
-      description: "Understand potential risks and how our system mitigates them for a secure investment."
+      title: "Competitor Analysis",
+      description: "Deep dive into what your top competitors are doing right.",
+      value: "$1,000"
     }
   ];
 
@@ -93,13 +93,13 @@ const EcommerceAutomationStrategyCall: React.FC = () => {
           </h2>
           
           <p className="max-w-3xl mx-auto text-gray-300 text-lg leading-relaxed">
-          Unlock Your E-Commerce Potential
+            No fluff, just actionable insights worth thousands of dollars, completely free for a limited time.
           </p>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {stepsData.map((step, index) => (
+          {deliverables.map((item, index) => (
             <div 
               key={index}
               className={`
@@ -108,29 +108,36 @@ const EcommerceAutomationStrategyCall: React.FC = () => {
                 ${visibleCards.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
               `}
             >
-              {/* Number Circle */}
-              <div className="w-12 h-12 bg-teal-400 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-teal-400/30">
-                <span className="text-xl font-bold text-black">{step.number}</span>
+              {/* Icon */}
+              <div className="mb-6">
+                <CheckCircle className="w-10 h-10 text-teal-400" />
               </div>
               
               {/* Content */}
               <div className="flex-grow">
-                <h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
-                <p className="text-gray-300 leading-relaxed mb-8">
-                  {step.description}
+                <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  {item.description}
                 </p>
               </div>
 
-              {/* Bottom Button */}
-              <button 
-                onClick={openCalendly}
-                className="w-full bg-teal-400 hover:bg-teal-300 text-black font-bold py-3 px-6 rounded-full flex items-center justify-between group transition-colors duration-300"
-              >
-                <span>Book Now</span>
-                <div className="bg-white rounded-full p-1 group-hover:translate-x-1 transition-transform">
-                   <ArrowRight className="w-4 h-4 text-black" />
+              {/* Price and CTA */}
+              <div className="pt-6 border-t border-teal-400/20 space-y-4">
+                <div>
+                  <p className="text-sm text-gray-400 uppercase tracking-wider mb-1">Value</p>
+                  <p className="text-2xl font-bold text-teal-400">{item.value}</p>
                 </div>
-              </button>
+
+                <button 
+                  onClick={openCalendly}
+                  className="w-full bg-teal-400 hover:bg-teal-300 text-black font-bold py-3 px-6 rounded-full flex items-center justify-between group transition-colors duration-300"
+                >
+                  <span>Book Now</span>
+                  <div className="bg-white rounded-full p-1 group-hover:translate-x-1 transition-transform">
+                    <ArrowRight className="w-4 h-4 text-black" />
+                  </div>
+                </button>
+              </div>
             </div>
           ))}
         </div>

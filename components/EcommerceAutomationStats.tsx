@@ -51,7 +51,7 @@ const EcommerceAutomationStats: React.FC = () => {
   // Stats Data
   const statsData = [
     {
-      value: "$52,260.9",
+      value: "$4,000",
       label: "Total Profit (Last 30 Days)"
     },
     {

@@ -4,7 +4,15 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 
-const OurJourney: React.FC = () => {
+interface OurJourneyProps {
+  showVideo?: boolean;
+  hideRoiText?: boolean; // New prop to control text visibility
+}
+
+const OurJourney: React.FC<OurJourneyProps> = ({ 
+  showVideo = false, 
+  hideRoiText = false 
+}) => {
   useEffect(() => {
     // Load Calendly widget script if not already loaded
     if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
@@ -32,7 +40,7 @@ const OurJourney: React.FC = () => {
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
-          {/* Left Side: Story Content (Layout changed to Left Align) */}
+          {/* Left Side: Story Content */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -40,7 +48,7 @@ const OurJourney: React.FC = () => {
             viewport={{ once: true }}
             className="space-y-8 order-2 lg:order-1"
           >
-            {/* Badge (Added to match layout) */}
+            {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-teal-100 px-4 py-2 rounded-full">
               <MessageCircle className="w-4 h-4 text-teal-700" />
               <span className="text-sm font-semibold text-teal-800 tracking-wide">
@@ -48,13 +56,13 @@ const OurJourney: React.FC = () => {
               </span>
             </div>
 
-            {/* Heading (Left Aligned now) */}
+            {/* Heading */}
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
               From Managing Millions to{' '}
               <span className="text-teal-600 block mt-2">Democratizing E-Commerce</span>
             </h2>
 
-            {/* Text Content (Same as provided) */}
+            {/* Text Content */}
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
                   Most ideas start small, but we started with a <span className="font-semibold text-teal-600">monumental proof of concept</span>. 
@@ -62,12 +70,15 @@ const OurJourney: React.FC = () => {
                   guiding Fortune 500 clients to invest in the burgeoning e-commerce ecosystem.
                 </p>
                 
-                <div className="bg-teal-50 border-l-4 border-teal-400 p-4 rounded-r-lg">
-                  <p className="font-semibold text-teal-800">
-                    The result? They spearheaded investments that generated a staggering{' '}
-                    <span className="text-xl font-bold">$1 million in ROI</span>.
-                  </p>
-                </div>
+                {/* Conditionally render this block based on hideRoiText prop */}
+                {!hideRoiText && (
+                  <div className="bg-teal-50 border-l-4 border-teal-400 p-4 rounded-r-lg">
+                    <p className="font-semibold text-teal-800">
+                      The result? They spearheaded investments that generated a staggering{' '}
+                      <span className="text-xl font-bold">$1 million in ROI</span>.
+                    </p>
+                  </div>
+                )}
                 
                 <p>
                   That was the birth of <span className="font-bold text-teal-600">Shark Automation Labs</span>. We decided to harness our expertise 
@@ -75,7 +86,7 @@ const OurJourney: React.FC = () => {
                 </p>
             </div>
 
-            {/* Button (Moved from Floating side to Bottom to match Layout) */}
+            {/* Button */}
             <div className="pt-2">
               <button
                 onClick={openCalendly}
@@ -89,92 +100,117 @@ const OurJourney: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right Side: Visual Elements (Chart kept same, but styled as a Card) */}
+          {/* Right Side: Visual Elements */}
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="order-1 lg:order-2"
+            className={`order-1 lg:order-2 ${showVideo ? 'h-full min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] flex items-center justify-center' : ''}`}
           >
-            {/* Investment Growth Visualization Container */}
-            <div className="relative bg-gradient-to-br from-teal-50 to-white p-8 rounded-[40px] shadow-2xl border border-teal-100 h-full flex flex-col justify-center">
-              
-              {/* Chart-like visualization */}
-              <div className="space-y-8">
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Investment Growth</h3>
-                  <p className="text-gray-600">Fortune 500 E-Commerce Investments</p>
-                </div>
-                
-                {/* Animated bars */}
-                <div className="space-y-5">
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-sm font-medium text-gray-600 w-12">Year 1</span>
-                    <div className="flex-1 h-3 bg-teal-100/50 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "25%" }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="h-full bg-teal-400 rounded-full"
-                      ></motion.div>
-                    </div>
-                    <span className="text-sm font-bold text-gray-700 w-16 text-right">$250K</span>
+            {showVideo ? (
+              /* Video Container for ecommerce-automation page */
+              <div 
+                className="relative w-full h-auto overflow-hidden bg-white"
+                style={{
+                  borderRadius: '20px',
+                  boxShadow: '0px 0px 25px #ccc' // Light shadow as requested
+                }}
+              >
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover rounded-[20px]"
+                >
+                  <source src="/videos/hero-vid-2.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            ) : (
+              /* Investment Growth Visualization Container (Default) */
+              <div className="relative bg-gradient-to-br from-teal-50 to-white p-8 rounded-[40px] shadow-2xl border border-teal-100 h-full flex flex-col justify-center">
+                {/* Chart-like visualization logic remains here... */}
+                <div className="space-y-8">
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Investment Growth</h3>
+                    <p className="text-gray-600">Fortune 500 E-Commerce Investments</p>
                   </div>
                   
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-sm font-medium text-gray-600 w-12">Year 2</span>
-                    <div className="flex-1 h-3 bg-teal-100/50 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "50%" }}
-                        transition={{ duration: 1, delay: 0.7 }}
-                        className="h-full bg-teal-400 rounded-full"
-                      ></motion.div>
+                  {/* Animated bars */}
+                  <div className="space-y-5">
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-sm font-medium text-gray-600 w-12">Year 1</span>
+                      <div className="flex-1 h-3 bg-teal-100/50 rounded-full overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "25%" }}
+                          transition={{ duration: 1, delay: 0.5 }}
+                          className="h-full bg-teal-400 rounded-full"
+                        ></motion.div>
+                      </div>
+                      <span className="text-sm font-bold text-gray-700 w-16 text-right">$250K</span>
                     </div>
-                    <span className="text-sm font-bold text-gray-700 w-16 text-right">$500K</span>
+                    {/* ... other bars ... */}
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-sm font-medium text-gray-600 w-12">Year 2</span>
+                      <div className="flex-1 h-3 bg-teal-100/50 rounded-full overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "50%" }}
+                          transition={{ duration: 1, delay: 0.7 }}
+                          className="h-full bg-teal-400 rounded-full"
+                        ></motion.div>
+                      </div>
+                      <span className="text-sm font-bold text-gray-700 w-16 text-right">$500K</span>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-sm font-medium text-gray-600 w-12">Year 3</span>
+                      <div className="flex-1 h-3 bg-teal-100/50 rounded-full overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "75%" }}
+                          transition={{ duration: 1, delay: 0.9 }}
+                          className="h-full bg-teal-400 rounded-full"
+                        ></motion.div>
+                      </div>
+                      <span className="text-sm font-bold text-gray-700 w-16 text-right">$750K</span>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-sm font-bold text-teal-800 w-12">Now</span>
+                      <div className="flex-1 h-4 bg-teal-100/50 rounded-full overflow-hidden shadow-inner">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "100%" }}
+                          transition={{ duration: 1, delay: 1.1 }}
+                          className="h-full bg-gradient-to-r from-teal-400 to-teal-600 rounded-full"
+                        ></motion.div>
+                      </div>
+                      <span className="text-sm font-extrabold text-teal-600 w-16 text-right">$1M+</span>
+                    </div>
                   </div>
                   
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-sm font-medium text-gray-600 w-12">Year 3</span>
-                    <div className="flex-1 h-3 bg-teal-100/50 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "75%" }}
-                        transition={{ duration: 1, delay: 0.9 }}
-                        className="h-full bg-teal-400 rounded-full"
-                      ></motion.div>
-                    </div>
-                    <span className="text-sm font-bold text-gray-700 w-16 text-right">$750K</span>
+                  {/* ROI Highlight Box */}
+                  <div className="text-center mt-6 p-6 bg-teal-50 rounded-2xl border border-teal-100">
+                    <p className="text-sm text-teal-800 font-semibold uppercase tracking-wider">
+                      Total ROI Generated
+                    </p>
+                    <p className="text-4xl font-extrabold text-teal-600 mt-2">$1 Million</p>
                   </div>
-                  
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-sm font-bold text-teal-800 w-12">Now</span>
-                    <div className="flex-1 h-4 bg-teal-100/50 rounded-full overflow-hidden shadow-inner">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "100%" }}
-                        transition={{ duration: 1, delay: 1.1 }}
-                        className="h-full bg-gradient-to-r from-teal-400 to-teal-600 rounded-full"
-                      ></motion.div>
-                    </div>
-                    <span className="text-sm font-extrabold text-teal-600 w-16 text-right">$1M+</span>
-                  </div>
-                </div>
-                
-                {/* ROI Highlight Box */}
-                <div className="text-center mt-6 p-6 bg-teal-50 rounded-2xl border border-teal-100">
-                  <p className="text-sm text-teal-800 font-semibold uppercase tracking-wider">
-                    Total ROI Generated
-                  </p>
-                  <p className="text-4xl font-extrabold text-teal-600 mt-2">$1 Million</p>
                 </div>
               </div>
-            </div>
+            )}
             
-            {/* Floating Decorative Circles (Kept from original) */}
-            <div className="absolute -top-6 -right-6 w-12 h-12 bg-teal-400/20 rounded-full animate-pulse blur-xl"></div>
-            <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-teal-300/20 rounded-full animate-pulse blur-xl" style={{animationDelay: '1s'}}></div>
+            {/* Floating Decorative Circles (only when video is not shown) */}
+            {!showVideo && (
+              <>
+                <div className="absolute -top-6 -right-6 w-12 h-12 bg-teal-400/20 rounded-full animate-pulse blur-xl"></div>
+                <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-teal-300/20 rounded-full animate-pulse blur-xl" style={{animationDelay: '1s'}}></div>
+              </>
+            )}
           </motion.div>
 
         </div>

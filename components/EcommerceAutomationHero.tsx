@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import PlexusBackground from './PlexusBackground';
 
 const EcommerceAutomationHero: React.FC = () => {
   useEffect(() => {
@@ -50,17 +49,25 @@ const EcommerceAutomationHero: React.FC = () => {
 
   return (
     <section className="relative w-full min-h-screen bg-black overflow-hidden flex items-center">
-      {/* Background Gradient - Black with Greenish theme */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a1a0f] to-[#001a0a] z-0"></div>
+      {/* Background Video Layer */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-60" // Opacity set to blend with overlays
+        >
+          <source src="/videos/bg-pattern.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      {/* Dark Overlay to ensure text readability over video */}
+      <div className="absolute inset-0 bg-black/60 z-0"></div>
       
       {/* Greenish accent overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-teal-900/20 via-transparent to-teal-800/10 z-0"></div>
       
-      {/* Overlay Texture/Plexus */}
-      <div className="absolute inset-0 opacity-30 z-0 pointer-events-none">
-         <PlexusBackground /> 
-      </div>
-
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 py-12 lg:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           
