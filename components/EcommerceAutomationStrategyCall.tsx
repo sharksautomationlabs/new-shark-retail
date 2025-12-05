@@ -53,17 +53,14 @@ const EcommerceAutomationStrategyCall: React.FC = () => {
     {
       title: "Comprehensive Audit",
       description: "Full analysis of your current store performance and gaps.",
-      value: "$4,000" // Updated to 4000
     },
     {
       title: "Custom Roadmap",
       description: "Step-by-step automation strategy tailored to your niche.",
-      value: "$1,500"
     },
     {
       title: "Competitor Analysis",
       description: "Deep dive into what your top competitors are doing right.",
-      value: "$1,000"
     }
   ];
 
@@ -123,11 +120,6 @@ const EcommerceAutomationStrategyCall: React.FC = () => {
 
               {/* Price and CTA */}
               <div className="pt-6 border-t border-teal-400/20 space-y-4">
-                <div>
-                  <p className="text-sm text-gray-400 uppercase tracking-wider mb-1">Value</p>
-                  <p className="text-2xl font-bold text-teal-400">{item.value}</p>
-                </div>
-
                 <button 
                   onClick={openCalendly}
                   className="w-full bg-teal-400 hover:bg-teal-300 text-black font-bold py-3 px-6 rounded-full flex items-center justify-between group transition-colors duration-300"

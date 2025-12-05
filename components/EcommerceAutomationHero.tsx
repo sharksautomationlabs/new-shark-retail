@@ -58,21 +58,21 @@ const EcommerceAutomationHero: React.FC = () => {
           playsInline
           className="w-full h-full object-cover opacity-60" // Opacity set to blend with overlays
         >
-          <source src="/videos/bg-pattern.mp4" type="video/mp4" />
+          <source src="/videos/banner-ecommerce.mp4" type="video/mp4" />
         </video>
       </div>
 
       {/* Dark Overlay to ensure text readability over video */}
       <div className="absolute inset-0 bg-black/60 z-0"></div>
-      
+
       {/* Greenish accent overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-teal-900/20 via-transparent to-teal-800/10 z-0"></div>
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 py-12 lg:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          
+
           {/* LEFT COLUMN: Text Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -84,8 +84,8 @@ const EcommerceAutomationHero: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <h1 
-              className="text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight"
+            <h1
+              className="text-2xl sm:text-3xl md:text-5xl lg:text-[46px] xl:text-6xl font-extrabold text-white leading-[1.1] tracking-tight"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
               The Only E-commerce Investment
@@ -104,7 +104,7 @@ const EcommerceAutomationHero: React.FC = () => {
 
             {/* Button */}
             <div className="pt-4 flex justify-center md:justify-start">
-               <button
+              <button
                 onClick={openCalendly}
                 className="inline-flex items-center justify-center bg-teal-400 text-[#0a2e38] px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider rounded-full transition-all hover:bg-white hover:scale-105 shadow-lg hover:shadow-teal-400/50"
               >
@@ -115,76 +115,76 @@ const EcommerceAutomationHero: React.FC = () => {
           </motion.div>
 
           {/* RIGHT COLUMN: Floating 3D Images */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
             className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] order-2 flex items-center justify-center perspective-1000"
           >
-             {/* Container for images to keep them grouped in square shape */}
-             <div className="relative w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] h-full flex items-center justify-center">
-                
-                {/* Amazon Logo (Top Left) */}
-                <motion.div 
-                  animate={floatAnimation(0)}
-                  className="absolute top-[15%] sm:top-[10%] left-[15%] sm:left-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-20 drop-shadow-2xl"
-                >
-                  <img 
-                    src="/images/hero-amazon-logo.png" 
-                    alt="Amazon" 
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                    width="256"
-                    height="256"
-                  />
-                </motion.div>
+            {/* Container for images to keep them grouped in square shape */}
+            <div className="relative w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] h-full flex items-center justify-center">
 
-                {/* Walmart Logo (Top Right) */}
-                <motion.div 
-                  animate={floatAnimation(1.5)}
-                  className="absolute top-[15%] sm:top-[10%] right-[15%] sm:right-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-10 drop-shadow-2xl"
-                >
-                  <img 
-                    src="/images/hero-walmart-logo.png" 
-                    alt="Walmart" 
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                    width="256"
-                    height="256"
-                  />
-                </motion.div>
+              {/* Amazon Logo (Top Left) */}
+              <motion.div
+                animate={floatAnimation(0)}
+                className="absolute top-[15%] sm:top-[10%] left-[15%] sm:left-[10%] lg:left-[-20px] xl:left-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-20 drop-shadow-2xl"
+              >
+                <img
+                  src="/images/hero-amazon-logo.png"
+                  alt="Amazon"
+                  className="w-full h-auto object-contain"
+                  loading="lazy"
+                  width="256"
+                  height="256"
+                />
+              </motion.div>
 
-                 {/* Shopify Logo (Bottom Left) */}
-                 <motion.div 
-                  animate={floatAnimation(0.5)}
-                  className="absolute bottom-[15%] sm:bottom-[10%] left-[15%] sm:left-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-30 drop-shadow-2xl"
-                >
-                  <img 
-                    src="/images/hero-shopify-logo.png" 
-                    alt="Shopify" 
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                    width="256"
-                    height="256"
-                  />
-                </motion.div>
+              {/* Walmart Logo (Top Right) */}
+              <motion.div
+                animate={floatAnimation(1.5)}
+                className="absolute top-[15%] sm:top-[10%] right-[15%] sm:right-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-10 drop-shadow-2xl"
+              >
+                <img
+                  src="/images/hero-walmart-logo.png"
+                  alt="Walmart"
+                  className="w-full h-auto object-contain"
+                  loading="lazy"
+                  width="256"
+                  height="256"
+                />
+              </motion.div>
 
-                {/* TikTok Logo (Bottom Right) */}
-                <motion.div 
-                  animate={floatAnimation(2)}
-                  className="absolute bottom-[15%] sm:bottom-[10%] right-[15%] sm:right-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-20 drop-shadow-2xl"
-                >
-                  <img 
-                    src="/images/hero-tiktok-logo.png" 
-                    alt="TikTok" 
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                    width="256"
-                    height="256"
-                  />
-                </motion.div>
+              {/* Shopify Logo (Bottom Left) */}
+              <motion.div
+                animate={floatAnimation(0.5)}
+                className="absolute bottom-[15%] sm:bottom-[10%] left-[15%] sm:left-[10%] lg:left-[-18px] xl:left-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-30 drop-shadow-2xl"
+              >
+                <img
+                  src="/images/hero-shopify-logo.png"
+                  alt="Shopify"
+                  className="w-full h-auto object-contain"
+                  loading="lazy"
+                  width="256"
+                  height="256"
+                />
+              </motion.div>
 
-             </div>
+              {/* TikTok Logo (Bottom Right) */}
+              <motion.div
+                animate={floatAnimation(2)}
+                className="absolute bottom-[15%] sm:bottom-[10%] right-[15%] sm:right-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-20 drop-shadow-2xl"
+              >
+                <img
+                  src="/images/hero-tiktok-logo.png"
+                  alt="TikTok"
+                  className="w-full h-auto object-contain"
+                  loading="lazy"
+                  width="256"
+                  height="256"
+                />
+              </motion.div>
+
+            </div>
           </motion.div>
 
         </div>
