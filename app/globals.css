@@ -65,6 +65,128 @@ body {
   to { transform: rotate(360deg); }
 }
 
+/* Hero description portal glow behind text (static) */
+.hero-desc-portal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 115%;
+  height: 140%;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(20,184,166,0.5), transparent 55%),
+    radial-gradient(circle at 90% 100%, rgba(56,189,248,0.45), transparent 55%),
+    radial-gradient(circle at 50% 40%, rgba(15,23,42,0.9), rgba(2,6,23,0.98));
+  filter: blur(14px);
+  opacity: 0.9;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Hero: continuous subtle fade (breathing) */
+@keyframes hero-fade-continuous {
+  0%, 100% { opacity: 0.96; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+}
+
+.hero-fade-continuous {
+  animation: hero-fade-continuous 5s ease-in-out infinite;
+}
+
+/* Hero CTA buttons – class-level, reusable */
+.btn-hero-contact,
+.btn-hero-readmore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 9999px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.btn-hero-contact:hover,
+.btn-hero-readmore:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.btn-hero-contact {
+  background: #14b8a6;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-hero-contact:hover {
+  background: #0d9488;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(20, 184, 166, 0.4);
+}
+
+.btn-hero-readmore {
+  background: transparent;
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.btn-hero-readmore:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* View full report CTA – gentle blink so user knows to click */
+@keyframes report-cta-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.report-cta-blink {
+  animation: report-cta-blink 1.8s ease-in-out infinite;
+}
+
+/* Hero portfolio card – subtle float + top glow */
+@keyframes hero-portfolio-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.hero-portfolio-card {
+  animation: hero-portfolio-float 4s ease-in-out infinite;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 -1px 0 0 rgba(20, 184, 166, 0.2),
+    0 20px 40px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Top engagement bar – theme teal, eye-catching */
+.topbar-engagement {
+  background: linear-gradient(
+    90deg,
+    rgba(5, 8, 12, 0.98) 0%,
+    rgba(15, 35, 38, 0.95) 25%,
+    rgba(20, 184, 166, 0.12) 50%,
+    rgba(15, 35, 38, 0.95) 75%,
+    rgba(5, 8, 12, 0.98) 100%
+  );
+  border-bottom: 1px solid rgba(20, 184, 166, 0.35);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.06),
+    inset 0 1px 0 0 rgba(20, 184, 166, 0.08);
+}
+
+.topbar-engagement .topbar-text {
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 0 20px rgba(20, 184, 166, 0.25);
+}
+
+.topbar-engagement .topbar-dot {
+  color: #14b8a6;
+  opacity: 0.9;
+}
 
 /* Infinite marquee animations for logo/brand sliders */
 @keyframes marquee-left {
@@ -93,6 +215,32 @@ body {
   animation: marquee-right 40s linear infinite;
 }
 
+/* Elite topbar ticker – single track, seamless scroll */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ticker-scroll 35s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* LIVE pill pulse for topbar */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4); }
+  50% { opacity: 0.95; box-shadow: 0 0 0 4px rgba(20, 184, 166, 0); }
+}
+
+.ticker-live-pill {
+  animation: live-pulse 2s ease-in-out infinite;
+}
 
 /* Add these animations for the InvestmentLifecycle component */
 @keyframes draw-line {
@@ -135,6 +283,52 @@ body {
 
 .animate-spin-slow {
   animation: spin-slow 8s linear infinite;
+}
+
+/* PainPoints – elite card hover: shine sweep + border glow */
+@keyframes pain-card-shine {
+  0% { left: -100%; opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { left: 100%; opacity: 0; }
+}
+
+@keyframes pain-card-border-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.pain-point-card {
+  transform: translateZ(0);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, border-color 0.4s ease;
+}
+
+.pain-point-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 0 0 1px rgba(20, 184, 166, 0.25),
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 60px -15px rgba(20, 184, 166, 0.25);
+}
+
+.pain-point-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent,
+    rgba(255, 255, 255, 0.04),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pain-point-card:hover::before {
+  animation: pain-card-shine 0.8s ease-out forwards;
 }
 
 /* GPU-accelerated smoothing helper for big animated sections */

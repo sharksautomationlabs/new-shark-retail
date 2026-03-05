@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import Ticker from './Ticker';
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -89,13 +90,19 @@ const Header = () => {
     <>
       {/* --- DESKTOP & MOBILE HEADER BAR --- */}
       <header 
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b pt-0 ${
           scrolled 
-            ? 'bg-[#020205]/80 backdrop-blur-xl border-white/[0.05] py-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)]' 
-            : 'bg-transparent border-transparent py-6'
+            ? 'bg-[#020205]/80 backdrop-blur-xl border-white/[0.05] pb-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)]' 
+            : 'bg-transparent border-transparent pb-6'
         }`}
       >
-        <div className="flex items-center justify-between max-w-[1400px] mx-auto px-6 lg:px-12">
+        {/* Elite topbar ticker – stats, LIVE pill, theme teal */}
+        <div className="hidden sm:block">
+          <Ticker />
+        </div>
+
+        {/* Gap between topbar and main nav */}
+        <div className="flex items-center justify-between max-w-[1400px] mx-auto px-6 lg:px-12 mt-4 sm:mt-3">
           
           {/* Left: Logo - Homepage link */}
           <Link href="/" className="flex items-center gap-3 cursor-pointer z-[60]">
@@ -165,9 +172,11 @@ const Header = () => {
             {/* Elite Desktop Button */}
             <a 
               href="/contact" 
-              className="hidden lg:flex items-center justify-center relative px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase text-white rounded-full overflow-hidden group bg-white/5 border border-white/10 hover:border-teal-400/50 transition-colors duration-500"
+              className="hidden lg:flex items-center justify-center relative px-6 py-2.5 text-[11px] font-bold tracking-[0.18em] uppercase text-white rounded-full overflow-hidden group bg-white/5 border border-white/10 hover:border-teal-400/50 transition-colors duration-500"
             >
-              <span className="relative z-10 group-hover:text-teal-300 transition-colors duration-300">Get Started</span>
+              <span className="relative z-10 group-hover:text-teal-300 transition-colors duration-300">
+                Book a consultant
+              </span>
               <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </a>
             

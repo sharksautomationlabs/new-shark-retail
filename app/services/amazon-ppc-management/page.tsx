@@ -7,6 +7,8 @@ import AmazonPPCMainContent from "@/components/AmazonPPCMainContent";
 import AmazonPPCServices from "@/components/AmazonPPCServices";
 import AmazonPPCEdge from "@/components/AmazonPPCEdge";
 import AmazonPPCTestimonials from "@/components/AmazonPPCTestimonials";
+import Safety from "@/components/Safety";
+import Experts from "@/components/Experts";
 import AmazonPPCCTA from "@/components/AmazonPPCCTA";
 
 export const metadata = {
@@ -37,6 +39,8 @@ const AmazonPPCManagementPage: React.FC = () => {
         <AmazonPPCServices />
         <AmazonPPCEdge />
         <AmazonPPCTestimonials />
+        <Safety />
+        <Experts />
         <AmazonPPCCTA />
       </main>
 

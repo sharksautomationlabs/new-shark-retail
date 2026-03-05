@@ -8,6 +8,8 @@ import ProductHuntingMainContent from '@/components/ProductHuntingMainContent';
 import ProductHuntingServices from '@/components/ProductHuntingServices';
 import ProductHuntingProof from '@/components/ProductHuntingProof';
 import ProductHuntingTestimonials from '@/components/ProductHuntingTestimonials';
+import Safety from '@/components/Safety';
+import Experts from '@/components/Experts';
 import ProductHuntingCTA from '@/components/ProductHuntingCTA';
 
 const ProductHuntingPage: React.FC = () => {
@@ -23,6 +25,8 @@ const ProductHuntingPage: React.FC = () => {
         <ProductHuntingServices />
         <ProductHuntingProof />
         <ProductHuntingTestimonials />
+        <Safety />
+        <Experts />
         <ProductHuntingCTA />
       </main>
       

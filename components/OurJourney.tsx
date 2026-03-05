@@ -2,7 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { ArrowRight, TrendingUp, Sparkles, Play, ShieldCheck, ChevronRight, X } from 'lucide-react';
+import { ArrowRight, TrendingUp, Sparkles, Play, ShieldCheck, ChevronRight } from 'lucide-react';
+import InvestmentReportPopup from './InvestmentReportPopup';
 
 interface OurJourneyProps {
   showVideo?: boolean;
@@ -208,18 +209,21 @@ const OurJourney: React.FC<OurJourneyProps> = ({
               /* Vercel/Stripe Style Animated SVG Dashboard */
               <div className="relative w-full rounded-[2.5rem] bg-zinc-900/50 border border-zinc-800 backdrop-blur-xl p-8 sm:p-10 shadow-2xl overflow-hidden group hover:border-zinc-700 transition-colors duration-500">
                 
-                {/* Dashboard Header */}
-                <div className="flex justify-between items-start mb-12 relative z-10">
+                {/* Dashboard Header – engaging detail */}
+                <div className="flex justify-between items-start mb-10 relative z-10">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       <ShieldCheck className="w-5 h-5 text-teal-400" />
                       <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">Verified Trajectory</span>
+                      <span className="px-2 py-0.5 rounded-full bg-teal-500/20 text-[10px] font-semibold text-teal-300 uppercase tracking-wider border border-teal-400/30">Live</span>
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-bold text-white">Investment Growth</h3>
+                    <p className="text-xs text-zinc-500 mt-1 max-w-[220px]">Real portfolio performance across Amazon, Shopify & Walmart.</p>
                   </div>
                   <div className="text-right">
                     <span className="text-xs font-semibold text-teal-400 uppercase tracking-widest">Total ROI</span>
                     <div className="text-xl sm:text-2xl font-black text-white mt-1">$1,000,000+</div>
+                    <div className="text-[10px] text-zinc-500 mt-1 font-medium">Cumulative · YTD</div>
                   </div>
                 </div>
 
@@ -309,7 +313,7 @@ const OurJourney: React.FC<OurJourneyProps> = ({
                   <button
                     type="button"
                     onClick={() => setReportOpen(true)}
-                    className="text-sm font-medium text-teal-400 hover:text-teal-300 cursor-pointer transition-colors"
+                    className="report-cta-blink text-sm font-medium text-teal-400 hover:text-teal-300 cursor-pointer transition-colors"
                   >
                     View full report &rarr;
                   </button>
@@ -319,168 +323,7 @@ const OurJourney: React.FC<OurJourneyProps> = ({
             )}
           </motion.div>
 
-          {/* Full Report Popup - small, clean, opens from center */}
-          <AnimatePresence>
-            {reportOpen && (
-              <>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
-                  onClick={() => setReportOpen(false)}
-                />
-                <motion.div
-                  initial={{ scale: 0.92, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0.95, opacity: 0 }}
-                  transition={{ type: "spring", damping: 26, stiffness: 280 }}
-                  className="fixed inset-0 z-[101] flex items-center justify-center p-4 pointer-events-none"
-                >
-                  <div
-                    className="w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl bg-zinc-900 border border-zinc-700 shadow-xl pointer-events-auto"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {/* Popup Header - compact with close */}
-                    <div className="sticky top-0 z-10 flex items-center justify-between px-4 py-3 border-b border-zinc-800 bg-zinc-900/98 backdrop-blur-sm">
-                      <div className="flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4 text-teal-400" />
-                        <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">Full Report</span>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => setReportOpen(false)}
-                        className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition-colors"
-                        aria-label="Close"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-
-                    {/* Report Content - compact */}
-                    <div className="p-4 sm:p-5 space-y-5">
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="flex flex-wrap justify-between items-end gap-3"
-                      >
-                        <h3 className="text-lg sm:text-xl font-bold text-white">Investment Growth Report</h3>
-                        <div className="text-right">
-                          <span className="text-[10px] font-semibold text-teal-400 uppercase tracking-widest">Total ROI</span>
-                          <div className="text-lg font-black text-white">$1M+</div>
-                        </div>
-                      </motion.div>
-
-                      {/* Chart - smaller */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="relative w-full h-[200px] sm:h-[240px] rounded-xl bg-zinc-800/50 border border-zinc-700 p-4"
-                      >
-                        <div className="absolute inset-0 flex flex-col justify-between opacity-10 pointer-events-none p-4">
-                          <div className="w-full h-px bg-white" />
-                          <div className="w-full h-px bg-white" />
-                          <div className="w-full h-px bg-white" />
-                        </div>
-                        <svg className="absolute inset-0 w-full h-full overflow-visible p-4" viewBox="0 0 400 200" preserveAspectRatio="none">
-                          <defs>
-                            <linearGradient id="reportLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                              <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.2" />
-                              <stop offset="50%" stopColor="#2dd4bf" stopOpacity="0.8" />
-                              <stop offset="100%" stopColor="#fff" stopOpacity="1" />
-                            </linearGradient>
-                            <linearGradient id="reportFillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                              <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.2" />
-                              <stop offset="100%" stopColor="#2dd4bf" stopOpacity="0" />
-                            </linearGradient>
-                          </defs>
-                          <motion.path
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            d="M 0 200 C 100 200, 150 120, 200 100 C 250 80, 300 40, 400 20 L 400 200 Z"
-                            fill="url(#reportFillGrad)"
-                          />
-                          <motion.path
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
-                            d="M 0 200 C 100 200, 150 120, 200 100 C 250 80, 300 40, 400 20"
-                            fill="none"
-                            stroke="url(#reportLineGrad)"
-                            strokeWidth="4"
-                            strokeLinecap="round"
-                            className="drop-shadow-[0_0_12px_rgba(45,212,191,0.5)]"
-                          />
-                        </svg>
-                        {[
-                          { bottom: "50%", left: "50%", val: "$500K", label: "Phase 2" },
-                          { bottom: "88%", left: "98%", val: "$1M+", label: "Current" },
-                        ].map((node, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.35, delay: 0.6 + i * 0.1, type: "spring" as const, stiffness: 200 }}
-                            className="absolute flex flex-col items-center -translate-x-1/2 translate-y-1/2"
-                            style={{ bottom: node.bottom, left: node.left }}
-                          >
-                            <div className="mb-1 px-2 py-1 bg-zinc-800 border border-zinc-600 rounded text-[10px] font-bold text-white whitespace-nowrap">
-                              {node.val}
-                            </div>
-                            <div className="relative w-3 h-3 bg-white rounded-full shadow-[0_0_10px_#2dd4bf]">
-                              <div className="absolute inset-0 rounded-full bg-teal-500" />
-                            </div>
-                            <div className="mt-1 text-[9px] font-semibold text-zinc-500 uppercase tracking-wider">{node.label}</div>
-                          </motion.div>
-                        ))}
-                      </motion.div>
-
-                      {/* Report Stats Row - compact */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.35 }}
-                        className="grid grid-cols-4 gap-2"
-                      >
-                        {[
-                          { label: "Avg. ROI", value: "247%", sub: "YTD" },
-                          { label: "Value", value: "$1M+", sub: "Now" },
-                          { label: "Phases", value: "3", sub: "Done" },
-                          { label: "Status", value: "Active", sub: "" },
-                        ].map((stat, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.4 + i * 0.04, type: "spring" as const, stiffness: 200 }}
-                            className="p-3 rounded-lg bg-zinc-800/50 border border-zinc-700"
-                          >
-                            <div className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider">{stat.label}</div>
-                            <div className="text-sm font-bold text-white mt-0.5">{stat.value}</div>
-                            {stat.sub ? <div className="text-[9px] text-teal-400 font-medium">{stat.sub}</div> : null}
-                          </motion.div>
-                        ))}
-                      </motion.div>
-
-                      {/* Summary - compact */}
-                      <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                        className="text-xs text-zinc-500 leading-relaxed border-t border-zinc-800 pt-4"
-                      >
-                        Verified trajectory metrics. For a detailed breakdown and strategy call, schedule a session with our team.
-                      </motion.p>
-                    </div>
-                  </div>
-                </motion.div>
-              </>
-            )}
-          </AnimatePresence>
+          <InvestmentReportPopup open={reportOpen} onClose={() => setReportOpen(false)} />
 
         </div>
       </div>

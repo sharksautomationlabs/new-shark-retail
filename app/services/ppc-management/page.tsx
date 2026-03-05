@@ -8,6 +8,8 @@ import PPCManagementMainContent from '@/components/PPCManagementMainContent';
 import PPCManagementServices from '@/components/PPCManagementServices';
 import PPCManagementProof from '@/components/PPCManagementProof';
 import PPCManagementTestimonials from '@/components/PPCManagementTestimonials';
+import Safety from '@/components/Safety';
+import Experts from '@/components/Experts';
 import PPCManagementCTA from '@/components/PPCManagementCTA';
 
 const PPCManagementPage: React.FC = () => {
@@ -23,6 +25,8 @@ const PPCManagementPage: React.FC = () => {
         <PPCManagementServices />
         <PPCManagementProof />
         <PPCManagementTestimonials />
+        <Safety />
+        <Experts />
         <PPCManagementCTA />
       </main>
       

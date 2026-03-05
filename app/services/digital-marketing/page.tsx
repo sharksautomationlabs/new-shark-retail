@@ -7,6 +7,8 @@ import DigitalMarketingMainContent from "@/components/DigitalMarketingMainConten
 import DigitalMarketingServices from "@/components/DigitalMarketingServices";
 import DigitalMarketingEdge from "@/components/DigitalMarketingEdge";
 import DigitalMarketingTestimonials from "@/components/DigitalMarketingTestimonials";
+import Safety from "@/components/Safety";
+import Experts from "@/components/Experts";
 import DigitalMarketingCTA from "@/components/DigitalMarketingCTA";
 
 export const metadata = {
@@ -36,6 +38,8 @@ const DigitalMarketingPage: React.FC = () => {
         <DigitalMarketingServices />
         <DigitalMarketingEdge />
         <DigitalMarketingTestimonials />
+        <Safety />
+        <Experts />
         <DigitalMarketingCTA />
       </main>
 

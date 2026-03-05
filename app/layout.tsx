@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MetaPixel from "@/components/MetaPixel";
 import LenisProvider from "@/components/LenisProvider";
-import FloatingCtaButton from "@/components/FloatingCtaButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://thesharkretail.com'),
   title: "The Shark Retail - E-commerce Automation Solutions",
-  description: "Transform your capital into systematically managed, cash-flow generative e-commerce enterprises. We deploy sophisticated automation technologies for Amazon, Shopify, TikTok Shop, and Walmart to scale your operations while you focus on strategic growth.",
+  description: "We build and run Amazon, Shopify, TikTok Shop and Walmart stores for investors and operators who want a calm, transparent partner. Our team handles the daily work so you can focus on decisions and see real progress in the first 30 days.",
   keywords: ["e-commerce automation", "Amazon automation", "Shopify automation", "TikTok Shop automation", "Walmart automation", "Amazon PPC management", "virtual assistant", "account reinstatement", "content creation", "keyword research", "product hunting", "The Shark Retail"],
   authors: [{ name: "The Shark Retail" }],
   creator: "The Shark Retail",
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
     url: 'https://thesharkretail.com',
     siteName: 'The Shark Retail',
     title: 'The Shark Retail - E-commerce Automation Solutions',
-    description: 'Transform your capital into systematically managed, cash-flow generative e-commerce enterprises. We deploy sophisticated automation technologies for Amazon, Shopify, TikTok Shop, and Walmart to scale your operations while you focus on strategic growth.',
+    description: 'We build and run Amazon, Shopify, TikTok Shop and Walmart stores for investors and operators who want a calm, transparent partner. Our team handles the daily work so you can focus on decisions and see real progress in the first 30 days.',
     images: [
       {
         url: '/images/sharks-retail-logo.png',
@@ -57,7 +56,7 @@ export const metadata: Metadata = {
     site: '@sharkretail',
     creator: '@sharkretail',
     title: 'The Shark Retail - E-commerce Automation Solutions',
-    description: 'Transform your capital into systematically managed, cash-flow generative e-commerce enterprises. We deploy sophisticated automation technologies for Amazon, Shopify, TikTok Shop, and Walmart.',
+    description: 'We build and run Amazon, Shopify, TikTok Shop and Walmart stores for investors and operators who want a calm, transparent partner.',
     images: ['/images/sharks-retail-logo.png'],
   },
   icons: {
@@ -94,10 +93,23 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Organization schema for richer search results */}
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "The Shark Retail",
+              url: "https://thesharkretail.com",
+              logo: "https://thesharkretail.com/images/sharks-retail-logo.png",
+            }),
+          }}
+        />
         <MetaPixel />
         <LenisProvider>
           {children}
-          <FloatingCtaButton />
         </LenisProvider>
       </body>
     </html>

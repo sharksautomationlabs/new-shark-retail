@@ -7,6 +7,8 @@ import ContentCreationMainContent from '@/components/ContentCreationMainContent'
 import ContentCreationServices from '@/components/ContentCreationServices';
 import ContentCreationProof from '@/components/ContentCreationProof';
 import ContentCreationTestimonials from '@/components/ContentCreationTestimonials';
+import Safety from '@/components/Safety';
+import Experts from '@/components/Experts';
 import ContentCreationCTA from '@/components/ContentCreationCTA';
 
 const ContentCreationPage: React.FC = () => {
@@ -21,6 +23,8 @@ const ContentCreationPage: React.FC = () => {
         <ContentCreationServices />
         <ContentCreationProof />
         <ContentCreationTestimonials />
+        <Safety />
+        <Experts />
         <ContentCreationCTA />
       </main>
 

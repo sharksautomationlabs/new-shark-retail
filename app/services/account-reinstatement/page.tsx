@@ -7,6 +7,8 @@ import AccountReinstatementMainContent from '@/components/AccountReinstatementMa
 import AccountReinstatementServices from '@/components/AccountReinstatementServices';
 import AccountReinstatementProof from '@/components/AccountReinstatementProof';
 import AccountReinstatementTestimonials from '@/components/AccountReinstatementTestimonials';
+import Safety from '@/components/Safety';
+import Experts from '@/components/Experts';
 import AccountReinstatementCTA from '@/components/AccountReinstatementCTA';
 
 const AccountReinstatementPage: React.FC = () => {
@@ -21,6 +23,8 @@ const AccountReinstatementPage: React.FC = () => {
         <AccountReinstatementServices />
         <AccountReinstatementProof />
         <AccountReinstatementTestimonials />
+        <Safety />
+        <Experts />
         <AccountReinstatementCTA />
       </main>
 

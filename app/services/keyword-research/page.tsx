@@ -8,6 +8,8 @@ import KeywordResearchMainContent from '@/components/KeywordResearchMainContent'
 import KeywordResearchServices from '@/components/KeywordResearchServices';
 import KeywordResearchProof from '@/components/KeywordResearchProof';
 import KeywordResearchTestimonials from '@/components/KeywordResearchTestimonials';
+import Safety from '@/components/Safety';
+import Experts from '@/components/Experts';
 import KeywordResearchCTA from '@/components/KeywordResearchCTA';
 
 const KeywordResearchPage: React.FC = () => {
@@ -23,6 +25,8 @@ const KeywordResearchPage: React.FC = () => {
         <KeywordResearchServices />
         <KeywordResearchProof />
         <KeywordResearchTestimonials />
+        <Safety />
+        <Experts />
         <KeywordResearchCTA />
       </main>
       

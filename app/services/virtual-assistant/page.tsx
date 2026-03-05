@@ -7,6 +7,8 @@ import VirtualAssistantMainContent from '@/components/VirtualAssistantMainConten
 import VirtualAssistantServices from '@/components/VirtualAssistantServices';
 import VirtualAssistantProof from '@/components/VirtualAssistantProof';
 import VirtualAssistantTestimonials from '@/components/VirtualAssistantTestimonials';
+import Safety from '@/components/Safety';
+import Experts from '@/components/Experts';
 import VirtualAssistantCTA from '@/components/VirtualAssistantCTA';
 
 const VirtualAssistantPage: React.FC = () => {
@@ -21,6 +23,8 @@ const VirtualAssistantPage: React.FC = () => {
         <VirtualAssistantServices />
         <VirtualAssistantProof />
         <VirtualAssistantTestimonials />
+        <Safety />
+        <Experts />
         <VirtualAssistantCTA />
       </main>
 

@@ -3,10 +3,14 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import EcommerceAutomationHero from '@/components/EcommerceAutomationHero';
 import OurJourney from '@/components/OurJourney';
+import WhileYouSleep from '@/components/WhileYouSleep';
 import EcommerceAutomationStrategyCall from '@/components/EcommerceAutomationStrategyCall';
 import EcommerceAutomationStats from '@/components/EcommerceAutomationStats';
-import EcommerceAutomationTestimonials from '@/components/EcommerceAutomationTestimonials'; 
+import PainPoints from '@/components/PainPoints';
+import EcommerceAutomationTestimonials from '@/components/EcommerceAutomationTestimonials';
 import EcommerceAutomationVideoSection from '@/components/EcommerceAutomationVideoSection';
+import Safety from '@/components/Safety';
+import Experts from '@/components/Experts';
 import EcommerceAutomationFinalCTA from '@/components/EcommerceAutomationFinalCTA';
 import EcommerceFooter from '@/components/EcommerceFooter';
 
@@ -30,13 +34,20 @@ const EcommerceAutomationPage: React.FC = () => {
             hideBadge={true} 
             customTitle="About Us" 
         />
-        
+
+        <WhileYouSleep />
+
         <EcommerceAutomationStrategyCall />
         <EcommerceAutomationStats />
-        
+
+        <PainPoints />
+
         <EcommerceAutomationTestimonials />
-        
         <EcommerceAutomationVideoSection />
+
+        <Safety />
+        <Experts />
+
         <EcommerceAutomationFinalCTA />
       </main>
       
