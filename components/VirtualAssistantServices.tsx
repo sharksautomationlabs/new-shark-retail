@@ -1,300 +1,76 @@
 "use client";
 
-import React, { useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import PlexusBackgroundWhite from '@/components/PlexusBackgroundWhite';
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { ArrowRight, Headphones, FileText, Database, Zap } from "lucide-react";
 
-// --- Virtual Assistant Services Component ---
+const fadeUp = {
+  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { type: "spring" as const, stiffness: 80, damping: 20 } },
+};
+const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } } };
+
+const services = [
+  { title: "Administrative Support", desc: "Calendar management, email correspondence, document preparation, data entry, meeting coordination, and travel arrangements designed for real results.", icon: FileText },
+  { title: "Customer Service Excellence", desc: "Multi-channel support, live chat, phone support, inquiry management, complaint resolution, and ticket automation that builds brand loyalty.", icon: Headphones },
+  { title: "Data Management Solutions", desc: "Real-time sync, automated reports, secure storage, data analysis, database optimization, and backup systems that transform raw data into actionable insights.", icon: Database },
+  { title: "Operational Automation", desc: "Workflow automation, process optimization, task scheduling, system integration, and performance monitoring that eliminates manual processes.", icon: Zap },
+];
+
 const VirtualAssistantServices: React.FC = () => {
-  const [selectedService, setSelectedService] = useState<number | null>(null);
-  const timelineRef = useRef(null);
-  const isInView = useInView(timelineRef, { once: true, margin: "-100px" });
-
-  const servicesData = [
-    {
-      id: 1,
-      title: "Administrative Support That Works",
-      description: "The Shark Retail delivers complete administrative support designed for real results. With strong industry insight and a focus on your growth, we help businesses succeed in today's fast-moving digital marketplace.",
-      details: {
-        features: [
-          "Advanced calendar and schedule management",
-          "Email correspondence and communication",
-          "Document preparation and organization",
-          "Data entry and database management",
-          "Meeting coordination and logistics",
-          "Travel planning and arrangements"
-        ],
-        benefits: [
-          "300% increase in productivity",
-          "50% reduction in administrative costs",
-          "24/7 automated operations",
-          "Scalable growth framework"
-        ]
-      }
-    },
-    {
-      id: 2,
-      title: "Customer Service Excellence",
-      description: "Professional customer service management that builds brand loyalty and drives repeat business. Our systematic approach ensures every customer interaction adds value to your business.",
-      details: {
-        features: [
-          "Multi-channel customer support",
-          "Live chat and phone support",
-          "Customer inquiry management",
-          "Complaint resolution systems",
-          "Customer feedback analysis",
-          "Support ticket automation"
-        ],
-        benefits: [
-          "95% customer satisfaction rate",
-          "60% faster response times",
-          "24/7 customer availability",
-          "Reduced customer churn"
-        ]
-      }
-    },
-    {
-      id: 3,
-      title: "Data Management Solutions",
-      description: "Advanced data processing and analysis capabilities that transform raw information into actionable business intelligence. Our systems ensure data accuracy and accessibility.",
-      details: {
-        features: [
-          "Real-time data synchronization",
-          "Automated report generation",
-          "Secure data storage systems",
-          "Data analysis and insights",
-          "Database optimization",
-          "Backup and recovery systems"
-        ],
-        benefits: [
-          "Real-time data access",
-          "Automated reporting",
-          "Enhanced data security",
-          "Improved decision making"
-        ]
-      }
-    },
-    {
-      id: 4,
-      title: "Operational Automation",
-      description: "Intelligent workflow automation that eliminates manual processes and accelerates your business operations exponentially. Our systems work around the clock.",
-      details: {
-        features: [
-          "Workflow automation design",
-          "Process optimization",
-          "Task scheduling and management",
-          "Integration with existing systems",
-          "Performance monitoring",
-          "Continuous improvement protocols"
-        ],
-        benefits: [
-          "50% efficiency improvement",
-          "Significant error reduction",
-          "Substantial cost savings",
-          "Scalable automation framework"
-        ]
-      }
-    }
-  ];
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative bg-black text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <PlexusBackgroundWhite />
-      
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-400/10 via-black to-teal-400/5"></div>
-      
-      {/* Floating Side Button (hide on small) */}
-      <a href="/contact" className="hidden md:flex fixed top-1/2 right-0 -translate-y-1/2 bg-teal-400 text-black font-bold py-4 px-3 rounded-l-xl z-50 [writing-mode:vertical-rl] rotate-180 uppercase tracking-wider text-sm hover:bg-white transition-colors">
-        Let&apos;s Talk Business
-      </a>
+    <section ref={sectionRef} className="relative bg-[#020205] py-24 sm:py-32 px-4 sm:px-6 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-white">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-10%] right-[-10%] w-[40rem] h-[40rem] bg-teal-500/10 rounded-full blur-[130px]" />
+        <div className="absolute bottom-[-15%] left-[-10%] w-[36rem] h-[36rem] bg-cyan-500/8 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
+      </div>
 
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12 sm:mb-16 lg:mb-20"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-              Virtual Assistance{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400">
-                Solutions
-              </span>
-            </h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Our comprehensive virtual assistance services are designed to streamline your operations, 
-              enhance customer satisfaction, and drive sustainable business growth.
-            </p>
-            <div className="flex justify-center mt-8">
-              <div className="w-32 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent"></div>
-            </div>
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <motion.div variants={staggerContainer} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-center mb-16">
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.05] backdrop-blur-md mb-6">
+            <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+            <span className="text-xs font-bold text-gray-300 uppercase tracking-[0.2em]">Solutions</span>
           </motion.div>
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+            Virtual Assistance <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">Solutions</span>
+          </motion.h2>
+          <motion.p variants={fadeUp} className="text-gray-400 text-lg max-w-3xl mx-auto font-medium">
+            Streamline your operations, enhance customer satisfaction, and drive sustainable growth with our comprehensive virtual assistance services.
+          </motion.p>
+        </motion.div>
 
-          {/* Timeline Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16">
-            {/* Left Side: Timeline */}
-            <div className="relative" ref={timelineRef}>
-              {/* Animated Timeline Line */}
+        <motion.div variants={staggerContainer} initial="hidden" animate={isInView ? "visible" : "hidden"} className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {services.map((service) => {
+            const Icon = service.icon;
+            return (
               <motion.div
-                className="absolute left-8 top-0 w-0.5 bg-teal-400/30"
-                initial={{ height: 0 }}
-                animate={{ height: isInView ? "100%" : 0 }}
-                transition={{ duration: 2, ease: "easeInOut" }}
-              ></motion.div>
-
-              {/* Timeline Cards */}
-              <div className="space-y-8">
-                {servicesData.map((service, index) => (
-                  <motion.div
-                    key={service.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.2 }}
-                    className="relative"
-                  >
-                    {/* Timeline Node */}
-                    <motion.div
-                      className={`absolute left-6 w-4 h-4 rounded-full border-2 z-10 transition-all duration-300 ${
-                        selectedService === service.id
-                          ? 'bg-teal-400 border-teal-400 scale-125'
-                          : 'bg-black border-teal-400 hover:bg-teal-400'
-                      }`}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: isInView ? 1 : 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.2 + 0.5 }}
-                    ></motion.div>
-
-                    {/* Service Card */}
-                    <div
-                      className={`ml-16 bg-white/5 border backdrop-blur-md text-white p-6 rounded-2xl shadow-2xl h-full flex flex-col relative group hover:border-white/20 hover:-translate-y-2 transition-all duration-300 cursor-pointer ${
-                        selectedService === service.id
-                          ? 'border-teal-400/50 shadow-lg shadow-teal-400/20'
-                          : 'border-white/10'
-                      }`}
-                      onClick={() => setSelectedService(selectedService === service.id ? null : service.id)}
-                    >
-                      {/* Service Number */}
-                      <div className="absolute top-4 left-4 w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center text-black font-bold text-sm">
-                        {service.id}
-                      </div>
-
-                      <div className="mt-8">
-                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-teal-300 transition-colors duration-300">
-                          {service.title}
-                        </h3>
-                        <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
-                          {service.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Side: Detailed View */}
-            <div className="lg:sticky lg:top-24">
-              {selectedService ? (
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-white/5 border border-white/10 backdrop-blur-md text-white p-8 rounded-2xl shadow-2xl shadow-teal-400/25"
-                >
-                  {(() => {
-                    const service = servicesData.find(s => s.id === selectedService);
-                    if (!service) return null;
-
-                    return (
-                      <>
-                        <div className="flex items-center mb-6">
-                          <div className="w-12 h-12 bg-teal-400 rounded-full flex items-center justify-center mr-4">
-                            <span className="text-white font-bold text-lg">{service.id}</span>
-                          </div>
-                          <div>
-                            <h3 className="text-2xl font-bold text-white">{service.title}</h3>
-                          </div>
-                        </div>
-
-                        <div className="space-y-6">
-                          {/* Features */}
-                          <div>
-                            <h4 className="text-lg font-bold text-white mb-3">Key Features</h4>
-                            <ul className="space-y-2">
-                              {service.details.features.map((feature, index) => (
-                                <li key={index} className="flex items-center text-gray-300">
-                                  <div className="w-2 h-2 bg-teal-400 rounded-full mr-3"></div>
-                                  {feature}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                          {/* Benefits */}
-                          <div>
-                            <h4 className="text-lg font-bold text-white mb-3">Expected Benefits</h4>
-                            <ul className="space-y-2">
-                              {service.details.benefits.map((benefit, index) => (
-                                <li key={index} className="flex items-center text-gray-300">
-                                  <div className="w-2 h-2 bg-teal-400 rounded-full mr-3"></div>
-                                  {benefit}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                          {/* CTA */}
-                          <div className="pt-6 border-t border-white/10">
-                            <a
-                              href="/contact"
-                              className="w-full bg-teal-400 px-6 py-3 text-base font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-black rounded-full text-center block cursor-pointer"
-                            >
-                              Get Started
-                            </a>
-                          </div>
-                        </div>
-                      </>
-                    );
-                  })()}
-                </motion.div>
-              ) : (
-                <div className="bg-white/5 border border-white/10 backdrop-blur-md text-white p-8 rounded-2xl shadow-2xl shadow-teal-400/25 text-center">
-                  <h3 className="text-xl font-bold text-white mb-4">Select a Service</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    Click on any service card to view detailed features, benefits, and implementation details.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-center mt-12 sm:mt-16"
-          >
-            <div className="bg-gradient-to-r from-teal-400/10 to-teal-500/10 rounded-3xl p-6 sm:p-8 border border-teal-400/30 backdrop-blur-md">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
-                Ready to Optimize Your Operations?
-              </h3>
-              <p className="text-sm sm:text-lg text-gray-300 mb-5 sm:mb-6 max-w-2xl mx-auto">
-                Transform your business with our comprehensive virtual assistance solutions. 
-                Experience the difference that professional support makes.
-              </p>
-              <a
-                href="/contact"
-                className="inline-flex w-full sm:w-auto items-center justify-center bg-teal-400 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-black rounded-full cursor-pointer"
+                key={service.title}
+                variants={fadeUp}
+                className="rounded-2xl border border-white/[0.06] bg-[#0a0a0c]/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-black/40 hover:border-teal-500/20 hover:shadow-[0_0_60px_rgba(20,184,166,0.08)] transition-all duration-500 group"
               >
-                Get Started Today
-              </a>
-            </div>
-          </motion.div>
-        </div>
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-teal-500/15 text-teal-400 border border-teal-500/20 group-hover:border-teal-400/40 transition-colors">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{service.title}</h3>
+                    <p className="text-slate-400 text-sm sm:text-base leading-relaxed">{service.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mt-12">
+          <a href="/contact" className="inline-flex items-center gap-3 rounded-full bg-teal-400 text-black font-extrabold px-8 py-4 text-sm uppercase tracking-wider hover:bg-teal-300 transition-colors duration-300 shadow-[0_0_40px_rgba(20,184,166,0.25)]">
+            Get Started <ArrowRight className="w-5 h-5" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

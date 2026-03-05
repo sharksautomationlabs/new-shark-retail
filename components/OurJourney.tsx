@@ -1,16 +1,34 @@
 "use client";
 
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, MessageCircle } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { ArrowRight, TrendingUp, Sparkles, Play, ShieldCheck, ChevronRight, X } from 'lucide-react';
 
 interface OurJourneyProps {
   showVideo?: boolean;
   hideRoiText?: boolean;
-  // New props for customization
   hideBadge?: boolean; 
   customTitle?: string;
 }
+
+// --- Elite Smooth Animations ---
+const fadeUp = {
+  hidden: { opacity: 0, y: 40, filter: "blur(8px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { type: "spring" as const, stiffness: 80, damping: 20, duration: 0.8 },
+  },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+  }
+};
 
 const OurJourney: React.FC<OurJourneyProps> = ({ 
   showVideo = false, 
@@ -18,6 +36,10 @@ const OurJourney: React.FC<OurJourneyProps> = ({
   hideBadge = false,
   customTitle = ""
 }) => {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const [reportOpen, setReportOpen] = useState(false);
+
   useEffect(() => {
     if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
       const script = document.createElement('script');
@@ -38,174 +60,437 @@ const OurJourney: React.FC<OurJourneyProps> = ({
   };
 
   return (
-    <section className="relative bg-white py-12 md:py-16 lg:py-20 px-4 sm:px-8 lg:px-12 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-l from-teal-50/30 to-transparent"></div>
+    <section ref={containerRef} className="relative bg-[#09090b] text-zinc-100 py-24 md:py-32 px-4 sm:px-8 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-teal-200">
       
+      {/* --- Premium Subtle Background --- */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Soft Radial Core */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] bg-teal-900/10 rounded-full blur-[120px] pointer-events-none" />
+        
+        {/* Animated Accent Orbs */}
+        <motion.div 
+          animate={{ x: [0, 100, 0], y: [0, -50, 0] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-teal-500/10 rounded-full blur-[100px]"
+        />
+        <motion.div 
+          animate={{ x: [0, -100, 0], y: [0, 50, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-emerald-500/5 rounded-full blur-[120px]"
+        />
+
+        {/* High-End Micro Grid */}
+        <div className="absolute inset-0 opacity-[0.02]" 
+             style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}>
+        </div>
+      </div>
+
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
           
-          {/* Left Side: Content */}
+          {/* --- LEFT CONTENT: The Narrative --- */}
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-6 md:space-y-8 order-2 lg:order-1"
+            variants={staggerContainer}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="lg:col-span-6 space-y-8"
           >
-            {/* Conditional Badge Rendering */}
+            {/* Elegant Pill Badge */}
             {!hideBadge && (
-              <div className="inline-flex items-center gap-2 bg-teal-100 px-4 py-2 rounded-full">
-                <MessageCircle className="w-4 h-4 text-teal-700" />
-                <span className="text-sm font-semibold text-teal-800 tracking-wide">
-                  Our Story
+              <motion.div variants={fadeUp} className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-zinc-900/50 border border-zinc-800 backdrop-blur-md shadow-lg">
+                <Sparkles className="w-4 h-4 text-teal-400" />
+                <span className="text-xs sm:text-sm font-semibold text-zinc-300 uppercase tracking-widest">
+                  Our Journey
                 </span>
-              </div>
+              </motion.div>
             )}
 
-            {/* Conditional Title Rendering */}
-            {customTitle ? (
-               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                 {customTitle}
-               </h2>
-            ) : (
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                From Managing Millions to{' '}
-                <span className="text-teal-600 block mt-2">Democratizing E-Commerce</span>
-              </h2>
-            )}
+            {/* Apple-Style Bold Heading */}
+            <motion.div variants={fadeUp}>
+              {customTitle ? (
+                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.1]">
+                   {customTitle}
+                 </h2>
+              ) : (
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.1]">
+                  From Institutional Edge to <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
+                    Amazon, Shopify, TikTok & Walmart
+                  </span>
+                </h2>
+              )}
+            </motion.div>
 
-            {/* Text Content */}
-            <div className="space-y-5 md:space-y-6 text-base md:text-lg text-gray-700 leading-relaxed">
-                <p>
-                  Most ideas start small, but we started with a <span className="font-semibold text-teal-600">monumental proof of concept</span>. 
-                  Our co-founders, hailing from the world of investment and asset management, were tasked with a unique challenge: 
-                  guiding Fortune 500 clients to invest in the burgeoning e-commerce ecosystem.
-                </p>
-                
-                {!hideRoiText && (
-                  <div className="bg-teal-50 border-l-4 border-teal-400 p-4 rounded-r-lg">
-                    <p className="font-semibold text-teal-800">
-                      The result? They spearheaded investments that generated a staggering{' '}
-                      <span className="text-xl font-bold">$1 million in ROI</span>.
-                    </p>
-                  </div>
-                )}
-                
-                <p>
-                  That was the birth of <span className="font-bold text-teal-600">Shark Automation Labs</span>. We decided to harness our expertise 
-                  to make the trillion-dollar e-commerce industry accessible to everyone.
-                </p>
-            </div>
-
-            {/* Button */}
-            <div className="pt-2">
-              <button
-                onClick={openCalendly}
-                className="group inline-flex items-center gap-3 bg-teal-400 hover:bg-teal-500 text-black pl-6 pr-2 py-2 rounded-full transition-all duration-300 shadow-lg hover:shadow-teal-200 cursor-pointer"
-              >
-                <span className="font-bold text-lg uppercase tracking-wider">Let&apos;s Talk</span>
-                <div className="bg-white rounded-full p-2 group-hover:translate-x-1 transition-transform">
-                    <ArrowRight className="w-5 h-5 text-teal-600" />
-                </div>
-              </button>
-            </div>
-          </motion.div>
-
-          {/* Right Side: Visual Elements */}
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            // Optimized height for 320px mobile up to 1440px desktop
-            className={`order-1 lg:order-2 ${showVideo ? 'h-full min-h-[250px] sm:min-h-[400px] lg:min-h-[600px] flex items-center justify-center' : ''}`}
-          >
-            {showVideo ? (
-              /* Video Container */
-              <div 
-                className="relative w-full h-auto overflow-hidden bg-white"
-                style={{
-                  borderRadius: '20px',
-                  boxShadow: '0px 0px 25px #ccc'
-                }}
-              >
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover rounded-[20px]"
+            {/* Premium Typography Body */}
+            <div className="space-y-6 text-base md:text-lg text-zinc-400 leading-relaxed font-medium">
+              <motion.p variants={fadeUp}>
+                We started with a <span className="text-zinc-100 font-semibold">proof of concept</span> at scale—guiding enterprise clients into the e-commerce ecosystem across Amazon, Shopify, TikTok Shop, and Walmart. That experience became the foundation of Shark Retail.
+              </motion.p>
+              
+              {/* Glassmorphic Glowing ROI Card */}
+              {!hideRoiText && (
+                <motion.div 
+                  variants={fadeUp}
+                  whileHover={{ scale: 1.02 }}
+                  className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-white/5 to-white/[0.01] border border-white/10 backdrop-blur-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] overflow-hidden group cursor-default"
                 >
-                  <source src="/videos/hero-vid-2.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            ) : (
-              /* Investment Growth Visualization (Default) */
-              <div className="relative bg-gradient-to-br from-teal-50 to-white p-6 md:p-8 rounded-[30px] md:rounded-[40px] shadow-2xl border border-teal-100 h-full flex flex-col justify-center">
-                <div className="space-y-6 md:space-y-8">
-                  <div className="text-center">
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Investment Growth</h3>
-                    <p className="text-sm md:text-base text-gray-600">Fortune 500 E-Commerce Investments</p>
-                  </div>
+                  {/* Hover Light Sweep */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] skew-x-12" />
                   
-                  {/* Chart Bars */}
-                  <div className="space-y-5">
-                    {/* Reusable Bar Logic for cleanliness */}
-                    {[
-                      { year: 'Year 1', width: '25%', amount: '$250K', delay: 0.5 },
-                      { year: 'Year 2', width: '50%', amount: '$500K', delay: 0.7 },
-                      { year: 'Year 3', width: '75%', amount: '$750K', delay: 0.9 },
-                    ].map((item, index) => (
-                      <div key={index} className="flex items-center justify-between gap-3 md:gap-4">
-                        <span className="text-xs md:text-sm font-medium text-gray-600 w-10 md:w-12">{item.year}</span>
-                        <div className="flex-1 h-3 bg-teal-100/50 rounded-full overflow-hidden">
-                          <motion.div 
-                            initial={{ width: 0 }}
-                            whileInView={{ width: item.width }}
-                            transition={{ duration: 1, delay: item.delay }}
-                            className="h-full bg-teal-400 rounded-full"
-                          ></motion.div>
-                        </div>
-                        <span className="text-xs md:text-sm font-bold text-gray-700 w-14 md:w-16 text-right">{item.amount}</span>
+                  <div className="relative z-10 flex gap-5 items-start">
+                    <div className="p-3 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-400 shrink-0">
+                      <TrendingUp className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-zinc-300 font-medium">
+                        The result? They spearheaded investments that generated a staggering
+                      </p>
+                      <div className="mt-2 text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400 drop-shadow-lg">
+                        $1 Million in ROI.
                       </div>
-                    ))}
-
-                    <div className="flex items-center justify-between gap-3 md:gap-4">
-                      <span className="text-xs md:text-sm font-bold text-teal-800 w-10 md:w-12">Now</span>
-                      <div className="flex-1 h-4 bg-teal-100/50 rounded-full overflow-hidden shadow-inner">
-                        <motion.div 
-                          initial={{ width: 0 }}
-                          whileInView={{ width: "100%" }}
-                          transition={{ duration: 1, delay: 1.1 }}
-                          className="h-full bg-gradient-to-r from-teal-400 to-teal-600 rounded-full"
-                        ></motion.div>
-                      </div>
-                      <span className="text-xs md:text-sm font-extrabold text-teal-600 w-14 md:w-16 text-right">$1M+</span>
                     </div>
                   </div>
+                </motion.div>
+              )}
+              
+              <motion.p variants={fadeUp}>
+                That was the birth of <span className="text-zinc-100 font-semibold">Shark Retail</span>. We harness that expertise to deliver tailored solutions—setup, operations, and growth—so entrepreneurs can scale on Amazon, Walmart, Shopify, and TikTok without the guesswork.
+              </motion.p>
+            </div>
+
+            {/* Sleek Minimalist Button */}
+            <motion.div variants={fadeUp} className="pt-4">
+              <button
+                onClick={openCalendly}
+                className="group relative flex items-center gap-4 bg-zinc-100 text-zinc-950 px-8 py-4 rounded-full font-bold text-sm sm:text-base uppercase tracking-wider overflow-hidden transition-transform hover:scale-105"
+              >
+                <span className="relative z-10">Start Your Journey</span>
+                <div className="relative z-10 bg-zinc-950/10 rounded-full p-1 group-hover:bg-teal-500 group-hover:text-white transition-colors duration-300">
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
+                </div>
+              </button>
+            </motion.div>
+          </motion.div>
+
+          {/* --- RIGHT CONTENT: Masterpiece UI Panel --- */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.3, type: "spring", stiffness: 80 }}
+            className={`lg:col-span-6 relative ${showVideo ? 'h-full flex items-center' : ''}`}
+          >
+            {showVideo ? (
+              
+              /* Ultra-Premium Glass Video Player */
+              <div className="relative w-full aspect-[4/3] rounded-[2.5rem] p-3 bg-white/5 border border-white/10 backdrop-blur-2xl shadow-2xl group">
+                {/* Floating ambient shadow */}
+                <div className="absolute -inset-10 bg-teal-500/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                
+                <div className="relative w-full h-full bg-zinc-950 rounded-[2rem] overflow-hidden">
+                  <video
+                    autoPlay loop muted playsInline
+                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
+                  >
+                    <source src="/videos/hero-vid-2.mp4" type="video/mp4" />
+                  </video>
                   
-                  <div className="text-center mt-6 p-4 md:p-6 bg-teal-50 rounded-2xl border border-teal-100">
-                    <p className="text-xs md:text-sm text-teal-800 font-semibold uppercase tracking-wider">
-                      Total ROI Generated
-                    </p>
-                    <p className="text-2xl md:text-4xl font-extrabold text-teal-600 mt-2">$1 Million</p>
+                  {/* Play Center Indicator */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="w-20 h-20 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center scale-90 group-hover:scale-100 transition-all duration-500">
+                      <Play className="w-8 h-8 text-white ml-2" />
+                    </div>
                   </div>
                 </div>
               </div>
-            )}
-            
-            {!showVideo && (
-              <>
-                <div className="absolute -top-6 -right-6 w-12 h-12 bg-teal-400/20 rounded-full animate-pulse blur-xl"></div>
-                <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-teal-300/20 rounded-full animate-pulse blur-xl" style={{animationDelay: '1s'}}></div>
-              </>
+
+            ) : (
+              
+              /* Vercel/Stripe Style Animated SVG Dashboard */
+              <div className="relative w-full rounded-[2.5rem] bg-zinc-900/50 border border-zinc-800 backdrop-blur-xl p-8 sm:p-10 shadow-2xl overflow-hidden group hover:border-zinc-700 transition-colors duration-500">
+                
+                {/* Dashboard Header */}
+                <div className="flex justify-between items-start mb-12 relative z-10">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <ShieldCheck className="w-5 h-5 text-teal-400" />
+                      <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">Verified Trajectory</span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white">Investment Growth</h3>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs font-semibold text-teal-400 uppercase tracking-widest">Total ROI</span>
+                    <div className="text-xl sm:text-2xl font-black text-white mt-1">$1,000,000+</div>
+                  </div>
+                </div>
+
+                {/* --- The SVG Animated Growth Chart --- */}
+                <div className="relative w-full h-[250px] sm:h-[300px] mt-8">
+                  
+                  {/* Grid Lines in Background */}
+                  <div className="absolute inset-0 flex flex-col justify-between opacity-10 pointer-events-none">
+                    <div className="w-full h-px bg-white"></div>
+                    <div className="w-full h-px bg-white"></div>
+                    <div className="w-full h-px bg-white"></div>
+                    <div className="w-full h-px bg-white"></div>
+                  </div>
+
+                  {/* Animated SVG Curve */}
+                  <svg className="absolute inset-0 w-full h-full overflow-visible" viewBox="0 0 400 200" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.2" />
+                        <stop offset="50%" stopColor="#2dd4bf" stopOpacity="0.8" />
+                        <stop offset="100%" stopColor="#fff" stopOpacity="1" />
+                      </linearGradient>
+                      <linearGradient id="fillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.15" />
+                        <stop offset="100%" stopColor="#2dd4bf" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Gradient Fill under the line */}
+                    <motion.path 
+                      initial={{ opacity: 0 }}
+                      animate={isInView ? { opacity: 1 } : {}}
+                      transition={{ duration: 1, delay: 1 }}
+                      d="M 0 200 C 100 200, 150 120, 200 100 C 250 80, 300 40, 400 20 L 400 200 Z"
+                      fill="url(#fillGrad)"
+                    />
+
+                    {/* The Main Glowing Line */}
+                    <motion.path 
+                      initial={{ pathLength: 0 }}
+                      animate={isInView ? { pathLength: 1 } : {}}
+                      transition={{ duration: 2, ease: "easeInOut", delay: 0.5 }}
+                      d="M 0 200 C 100 200, 150 120, 200 100 C 250 80, 300 40, 400 20"
+                      fill="none"
+                      stroke="url(#lineGrad)"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      className="drop-shadow-[0_0_8px_rgba(45,212,191,0.5)]"
+                    />
+                  </svg>
+
+                  {/* Data Point Nodes (Positioned absolutely over the SVG) */}
+                  {[
+                    { bottom: '50%', left: '50%', val: '$500K', label: 'Phase 2', delay: 1.5 },
+                    { bottom: '88%', left: '98%', val: '$1M+', label: 'Current', delay: 2 },
+                  ].map((node, i) => (
+                    <motion.div 
+                      key={i}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ duration: 0.5, delay: node.delay, type: "spring" }}
+                      className="absolute flex flex-col items-center -translate-x-1/2 translate-y-1/2"
+                      style={{ bottom: node.bottom, left: node.left }}
+                    >
+                      <div className="mb-2 px-3 py-1 bg-zinc-800 border border-zinc-700 rounded-lg text-xs font-bold text-white shadow-xl whitespace-nowrap">
+                        {node.val}
+                      </div>
+                      {/* The Glowing Dot */}
+                      <div className="relative w-4 h-4 bg-white rounded-full shadow-[0_0_15px_#2dd4bf]">
+                        <div className="absolute inset-0 rounded-full bg-teal-400 animate-ping opacity-50"></div>
+                        <div className="absolute inset-1 rounded-full bg-teal-500"></div>
+                      </div>
+                      <div className="mt-2 text-[10px] font-semibold text-zinc-500 uppercase tracking-wider">{node.label}</div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Bottom Footer inside Dashboard */}
+                <div className="mt-8 pt-6 border-t border-zinc-800 flex justify-between items-center">
+                  <div className="flex -space-x-3">
+                    {[1,2,3].map((i) => (
+                      <div key={i} className="w-8 h-8 rounded-full border-2 border-zinc-900 bg-zinc-800 flex items-center justify-center">
+                        <ChevronRight className="w-3 h-3 text-zinc-500" />
+                      </div>
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setReportOpen(true)}
+                    className="text-sm font-medium text-teal-400 hover:text-teal-300 cursor-pointer transition-colors"
+                  >
+                    View full report &rarr;
+                  </button>
+                </div>
+
+              </div>
             )}
           </motion.div>
+
+          {/* Full Report Popup - small, clean, opens from center */}
+          <AnimatePresence>
+            {reportOpen && (
+              <>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+                  onClick={() => setReportOpen(false)}
+                />
+                <motion.div
+                  initial={{ scale: 0.92, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.95, opacity: 0 }}
+                  transition={{ type: "spring", damping: 26, stiffness: 280 }}
+                  className="fixed inset-0 z-[101] flex items-center justify-center p-4 pointer-events-none"
+                >
+                  <div
+                    className="w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl bg-zinc-900 border border-zinc-700 shadow-xl pointer-events-auto"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* Popup Header - compact with close */}
+                    <div className="sticky top-0 z-10 flex items-center justify-between px-4 py-3 border-b border-zinc-800 bg-zinc-900/98 backdrop-blur-sm">
+                      <div className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-teal-400" />
+                        <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">Full Report</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setReportOpen(false)}
+                        className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition-colors"
+                        aria-label="Close"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    {/* Report Content - compact */}
+                    <div className="p-4 sm:p-5 space-y-5">
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="flex flex-wrap justify-between items-end gap-3"
+                      >
+                        <h3 className="text-lg sm:text-xl font-bold text-white">Investment Growth Report</h3>
+                        <div className="text-right">
+                          <span className="text-[10px] font-semibold text-teal-400 uppercase tracking-widest">Total ROI</span>
+                          <div className="text-lg font-black text-white">$1M+</div>
+                        </div>
+                      </motion.div>
+
+                      {/* Chart - smaller */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="relative w-full h-[200px] sm:h-[240px] rounded-xl bg-zinc-800/50 border border-zinc-700 p-4"
+                      >
+                        <div className="absolute inset-0 flex flex-col justify-between opacity-10 pointer-events-none p-4">
+                          <div className="w-full h-px bg-white" />
+                          <div className="w-full h-px bg-white" />
+                          <div className="w-full h-px bg-white" />
+                        </div>
+                        <svg className="absolute inset-0 w-full h-full overflow-visible p-4" viewBox="0 0 400 200" preserveAspectRatio="none">
+                          <defs>
+                            <linearGradient id="reportLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                              <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.2" />
+                              <stop offset="50%" stopColor="#2dd4bf" stopOpacity="0.8" />
+                              <stop offset="100%" stopColor="#fff" stopOpacity="1" />
+                            </linearGradient>
+                            <linearGradient id="reportFillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                              <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.2" />
+                              <stop offset="100%" stopColor="#2dd4bf" stopOpacity="0" />
+                            </linearGradient>
+                          </defs>
+                          <motion.path
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            d="M 0 200 C 100 200, 150 120, 200 100 C 250 80, 300 40, 400 20 L 400 200 Z"
+                            fill="url(#reportFillGrad)"
+                          />
+                          <motion.path
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
+                            d="M 0 200 C 100 200, 150 120, 200 100 C 250 80, 300 40, 400 20"
+                            fill="none"
+                            stroke="url(#reportLineGrad)"
+                            strokeWidth="4"
+                            strokeLinecap="round"
+                            className="drop-shadow-[0_0_12px_rgba(45,212,191,0.5)]"
+                          />
+                        </svg>
+                        {[
+                          { bottom: "50%", left: "50%", val: "$500K", label: "Phase 2" },
+                          { bottom: "88%", left: "98%", val: "$1M+", label: "Current" },
+                        ].map((node, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.35, delay: 0.6 + i * 0.1, type: "spring" as const, stiffness: 200 }}
+                            className="absolute flex flex-col items-center -translate-x-1/2 translate-y-1/2"
+                            style={{ bottom: node.bottom, left: node.left }}
+                          >
+                            <div className="mb-1 px-2 py-1 bg-zinc-800 border border-zinc-600 rounded text-[10px] font-bold text-white whitespace-nowrap">
+                              {node.val}
+                            </div>
+                            <div className="relative w-3 h-3 bg-white rounded-full shadow-[0_0_10px_#2dd4bf]">
+                              <div className="absolute inset-0 rounded-full bg-teal-500" />
+                            </div>
+                            <div className="mt-1 text-[9px] font-semibold text-zinc-500 uppercase tracking-wider">{node.label}</div>
+                          </motion.div>
+                        ))}
+                      </motion.div>
+
+                      {/* Report Stats Row - compact */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.35 }}
+                        className="grid grid-cols-4 gap-2"
+                      >
+                        {[
+                          { label: "Avg. ROI", value: "247%", sub: "YTD" },
+                          { label: "Value", value: "$1M+", sub: "Now" },
+                          { label: "Phases", value: "3", sub: "Done" },
+                          { label: "Status", value: "Active", sub: "" },
+                        ].map((stat, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.4 + i * 0.04, type: "spring" as const, stiffness: 200 }}
+                            className="p-3 rounded-lg bg-zinc-800/50 border border-zinc-700"
+                          >
+                            <div className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider">{stat.label}</div>
+                            <div className="text-sm font-bold text-white mt-0.5">{stat.value}</div>
+                            {stat.sub ? <div className="text-[9px] text-teal-400 font-medium">{stat.sub}</div> : null}
+                          </motion.div>
+                        ))}
+                      </motion.div>
+
+                      {/* Summary - compact */}
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                        className="text-xs text-zinc-500 leading-relaxed border-t border-zinc-800 pt-4"
+                      >
+                        Verified trajectory metrics. For a detailed breakdown and strategy call, schedule a session with our team.
+                      </motion.p>
+                    </div>
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>
 
         </div>
       </div>
+      
+      {/* Glare Animation for Hover Effects */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes shimmer {
+          100% { transform: translateX(200%) skewX(12deg); }
+        }
+      `}} />
     </section>
   );
 };

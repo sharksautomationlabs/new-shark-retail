@@ -1,186 +1,183 @@
 "use client";
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// --- Interactive Plexus Background Component ---
-// This component draws the animated, interactive constellation effect on a canvas.
-const PlexusBackground: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+gsap.registerPlugin(ScrollTrigger);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    const particles: Particle[] = [];
-    const isSmallScreen = window.innerWidth < 640; // Tailwind 'sm'
-    const particleCount = isSmallScreen ? 28 : 50;
-    const maxConnectDistance = isSmallScreen ? 100 : 120;
-    const mouse = { x: -200, y: -200, radius: isSmallScreen ? 70 : 100 };
-
-    canvas.width = window.innerWidth;
-    canvas.height = canvas.parentElement?.offsetHeight || 500;
-    
-    class Particle {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      radius: number = 2;
-      canvasWidth: number;
-      canvasHeight: number;
-
-      constructor(canvasWidth: number, canvasHeight: number) {
-        this.canvasWidth = canvasWidth;
-        this.canvasHeight = canvasHeight;
-        this.x = Math.random() * canvasWidth;
-        this.y = Math.random() * canvasHeight;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > this.canvasWidth) this.vx *= -1;
-        if (this.y < 0 || this.y > this.canvasHeight) this.vy *= -1;
-      }
-
-      draw() {
-        ctx!.beginPath();
-        ctx!.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx!.fillStyle = 'rgba(0, 0, 0, 0.3)';
-        ctx!.fill();
-      }
-    }
-
-    const init = () => {
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle(canvas.width, canvas.height));
-      }
-    };
-
-    const connect = () => {
-      for (let i = 0; i < particles.length; i++) {
-        // Connect particles to each other
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < maxConnectDistance) {
-            ctx!.beginPath();
-            ctx!.moveTo(particles[i].x, particles[i].y);
-            ctx!.lineTo(particles[j].x, particles[j].y);
-            ctx!.strokeStyle = `rgba(0, 0, 0, ${1 - distance / maxConnectDistance})`;
-            ctx!.lineWidth = 0.5;
-            ctx!.stroke();
-          }
-        }
-        // Connect particles to the mouse
-        const dxMouse = particles[i].x - mouse.x;
-        const dyMouse = particles[i].y - mouse.y;
-        const distanceMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
-        if (distanceMouse < mouse.radius) {
-            ctx!.beginPath();
-            ctx!.moveTo(particles[i].x, particles[i].y);
-            ctx!.lineTo(mouse.x, mouse.y);
-            ctx!.strokeStyle = `rgba(0, 0, 0, ${1 - distanceMouse / mouse.radius})`;
-            ctx!.lineWidth = 0.5;
-            ctx!.stroke();
-        }
-      }
-    };
-    
-    const animate = () => {
-      ctx!.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      connect();
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    const handleMouseMove = (event: MouseEvent) => {
-        mouse.x = event.clientX;
-        mouse.y = event.clientY;
-    }
-    
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = canvas.parentElement?.offsetHeight || 500;
-    };
-
-    init();
-    animate();
-
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full z-0" />;
-};
-
-
-// --- Data for the Logos ---
 const logos = [
-  { src: '/images/forbes.png', alt: 'Forbes', className: 'col-span-1 md:col-span-4 md:col-start-2 md:row-start-2 h-8 sm:h-10 md:h-12' },
-  { src: '/images/yahoo.png', alt: 'Yahoo Finance', className: 'col-span-1 md:col-span-4 md:col-start-2 md:row-start-3 h-8 sm:h-10 md:h-12' },
-  { src: '/images/khaleej-times.png', alt: 'Khaleej Times', className: 'col-span-1 md:col-span-4 md:col-start-6 md:row-start-2 h-8 sm:h-10 md:h-12' },
-  { src: '/images/mashable.png', alt: 'Mashable', className: 'col-span-1 md:col-span-3 md:col-start-6 md:row-start-3 h-6 sm:h-8 md:h-8' },
-  { src: '/images/benzinga.png', alt: 'Benzinga', className: 'col-span-1 md:col-span-3 md:col-start-10 md:row-start-2 h-10 sm:h-14 md:h-20' },
-  { src: '/images/new-york-weekly.png', alt: 'New York Weekly', className: 'col-span-1 md:col-span-3 md:col-start-10 md:row-start-3 h-8 sm:h-10 md:h-12' },
+  { src: '/logos/amazon-logo.png', alt: 'Amazon' },
+  { src: '/logos/shopify-logo.png', alt: 'Shopify' },
+  { src: '/logos/tik tok-logo.png', alt: 'TikTok Shop' },
+  { src: '/logos/Walmart-logo.png', alt: 'Walmart' },
+  { src: '/logos/facebook-logo.svg', alt: 'Facebook' },
+  { src: '/logos/instagram-logo.png', alt: 'Instagram' },
 ];
 
-const LogoItem: React.FC<{ src: string; alt: string; className: string }> = ({ src, alt, className }) => (
-  <div className={`relative flex items-center justify-center ${className}`}>
-    <Image
-      src={src}
-      alt={alt}
-      width={200}
-      height={80}
-      className="object-contain w-auto h-full filter grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-    />
-  </div>
-);
+// Double the array to make the infinite loop seamless
+const extendedLogos = [...logos, ...logos, ...logos];
 
-// --- Main "Featured In" Section Component ---
-const FeaturedInSection: React.FC = () => {
+// --- Magnetic 3D Glass Card Component ---
+const MagneticLogo = ({ src, alt }: { src: string; alt: string }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // High-End Physics UI: 3D Tilt on Mouse Move
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left; // x position within the element
+    const y = e.clientY - rect.top;  // y position within the element
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -15; // Max 15 deg tilt
+    const rotateY = ((x - centerX) / centerX) * 15;
+
+    gsap.to(cardRef.current, {
+      rotateX: rotateX,
+      rotateY: rotateY,
+      transformPerspective: 1000,
+      ease: "power2.out",
+      duration: 0.4
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    if (!cardRef.current) return;
+    gsap.to(cardRef.current, {
+      rotateX: 0,
+      rotateY: 0,
+      ease: "elastic.out(1, 0.3)", // Bouncy snap back
+      duration: 1
+    });
+  };
+
   return (
-    <section className="relative bg-white py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <PlexusBackground />
+    <div 
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      className="relative flex-shrink-0 w-[200px] sm:w-[250px] h-[100px] sm:h-[120px] mx-4 rounded-2xl flex items-center justify-center cursor-pointer group"
+      style={{ transformStyle: 'preserve-3d' }}
+    >
+      {/* Premium Dark Glassmorphism Background */}
+      <div className="absolute inset-0 bg-white/[0.02] border border-white/[0.05] rounded-2xl backdrop-blur-md transition-colors duration-500 group-hover:bg-teal-500/[0.05] group-hover:border-teal-500/30" />
       
-      {/* Floating Side Button (hide on small) */}
-      <a href="/contact" className="hidden md:flex fixed top-1/2 right-0 -translate-y-1/2 bg-teal-400 text-black font-bold py-4 px-3 rounded-l-xl z-50 [writing-mode:vertical-rl] rotate-180 uppercase tracking-wider text-sm">
-        Let&apos;s Talk Business
-      </a>
+      {/* 3D Floating Glow behind the logo on hover */}
+      <div 
+        className={`absolute inset-0 bg-teal-400/20 blur-[30px] rounded-full transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+        style={{ transform: 'translateZ(-20px)' }} // Push glow backwards
+      />
 
-      <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-12 md:grid-rows-3 gap-y-6 md:gap-y-8 gap-x-4 md:gap-x-6 items-center">
-          {/* Section Title */}
-          <div className="col-span-2 md:col-span-4 md:col-start-2 md:row-start-1 mb-2 md:mb-0 text-center md:text-left">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black">Industry Coverage</h2>
-          </div>
-
-          {/* Logos */}
-          {logos.map((logo) => (
-            <LogoItem key={logo.alt} {...logo} />
-          ))}
-        </div>
+      {/* The Logo */}
+      <div 
+        className="relative w-3/4 h-1/2"
+        style={{ transform: 'translateZ(30px)' }} // Pull logo forwards for 3D depth
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className={`object-contain transition-all duration-500 ${
+            isHovered
+              ? 'invert opacity-100 scale-110 drop-shadow-[0_0_15px_rgba(45,212,191,0.7)]'
+              : 'invert opacity-50'
+          }`}
+        />
       </div>
-    </section>
+    </div>
   );
 };
 
-export default FeaturedInSection;
+
+// --- Main Section ---
+export default function FeaturedIn() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  // Scroll Reveal Animation
+  useEffect(() => {
+    if (!sectionRef.current || !headerRef.current) return;
+
+    gsap.fromTo(headerRef.current, 
+      { opacity: 0, y: 50 }, 
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 1, 
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        }
+      }
+    );
+  }, []);
+
+  return (
+    <section 
+      ref={sectionRef} 
+      className="relative w-full py-24 sm:py-32 bg-[#020205] overflow-hidden border-y border-white/5 gpu-smooth"
+    >
+      {/* Background Tech Aesthetic */}
+      <div className="absolute inset-0 pointer-events-none opacity-30">
+        {/* Subtle grid pattern for tech feel */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black,transparent)]" />
+        {/* Glowing Orbs */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-teal-600/20 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-600/10 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="relative z-10 container mx-auto px-4 mb-16 text-center">
+        <div ref={headerRef} className="flex flex-col items-center">
+          
+          <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-500/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-teal-400 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_8px_teal]" />
+            Platforms We Run On
+          </div>
+          
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter mb-4">
+            Amazon • Shopify • <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-white">TikTok Shop • Walmart & More</span>
+          </h2>
+          
+          <p className="text-slate-400 max-w-2xl mx-auto font-light text-sm md:text-base tracking-wide">
+            We build, launch, and scale stores on the world’s biggest marketplaces—so you get one team across every platform that matters.
+          </p>
+        </div>
+      </div>
+
+      {/* 
+        INFINITE MARQUEE SCROLLERS 
+        We use two rows going in opposite directions for that premium dynamic feel.
+      */}
+      <div className="relative z-10 flex flex-col gap-6 transform -rotate-2"> {/* Slight diagonal tilt for edgy look */}
+        
+        {/* ROW 1: Moves Left */}
+        <div className="relative w-full overflow-hidden flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div className="flex w-max animate-marquee-left hover:[animation-play-state:paused]">
+            {extendedLogos.map((logo, index) => (
+              <MagneticLogo key={`row1-${index}`} src={logo.src} alt={logo.alt} />
+            ))}
+          </div>
+        </div>
+
+        {/* ROW 2: Moves Right */}
+        <div className="relative w-full overflow-hidden flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div className="flex w-max animate-marquee-right hover:[animation-play-state:paused]">
+            {extendedLogos.map((logo, index) => (
+              <MagneticLogo key={`row2-${index}`} src={logo.src} alt={logo.alt} />
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}

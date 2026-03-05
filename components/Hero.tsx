@@ -1,228 +1,120 @@
 "use client";
-import React, { useRef, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
 
-const Hero: React.FC = () => {
-  const videoRef1 = useRef<HTMLVideoElement>(null);
-  const videoRef2 = useRef<HTMLVideoElement>(null);
+import React, { useState, useEffect, useRef, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { gsap } from 'gsap';
+import dynamic from 'next/dynamic';
 
+// SSR error se bachne ke liye 3D component ko dynamically load kar rahe hain
+const PuppetCanvas = dynamic(() => import('./Hero3D/Puppet'), { ssr: false });
+
+const BANNERS = [
+  {
+    subtitle: "One-stop.ecom.solutions",
+    lines: [
+      "One team to build &",
+      "run your e-commerce",
+      "operations across",
+      "Amazon • Shopify •",
+      "TikTok Shop • Walmart."
+    ]
+  },
+  {
+    subtitle: "Walmart.launch.offer",
+    lines: [
+      "Launch your Walmart",
+      "store with our",
+      "proven playbook—",
+      "target your first $4k",
+      "fast with expert support."
+    ]
+  },
+  {
+    subtitle: "Consultation.ready",
+    lines: [
+      "Book a call with a",
+      "senior consultant to",
+      "get a roadmap, costs,",
+      "and timelines—then we",
+      "execute end-to-end."
+    ]
+  }
+];
+
+export default function Hero() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  // EXACT TEXT REVEAL ANIMATION (Line by Line)
   useEffect(() => {
-    const video1 = videoRef1.current;
-    const video2 = videoRef2.current;
-    
-    if (video1) {
-      video1.play().catch((error) => {
-        console.log('Autoplay was prevented by the browser:', error);
-      });
-    }
-    if (video2) {
-      video2.play().catch((error) => {
-        console.log('Autoplay was prevented by the browser:', error);
-      });
-    }
-  }, []);
+    const lines = document.querySelectorAll('.animate-line');
+    const subtitle = document.querySelector('.animate-subtitle');
 
-  const slides = [
-    {
-      video: "/videos/hero-vid-1.mp4",
-      title: "In a landscape of",
-      highlight: "volatile",
-      titleEnd: "speculation,",
-      description: "We offer a tangible, high-yield alternative. We build, scale, and manage proprietary e-commerce portfolios for discerning investors seeking superior, risk-adjusted returns.",
-      buttonText: "Schedule Your Capital Intro Call"
-    },
-    {
-      video: "/videos/hero-vid-2.mp4",
-      title: "Strategic Capital Deployment in",
-      highlight: "Global Commerce",
-      titleEnd: "",
-      description: "While traditional markets fluctuate on sentiment, global e-commerce grows on fundamental demand. We identify and capitalize on this permanent shift. Our firm provides a seamless, institutional-grade gateway into this $6 trillion ecosystem. We handle all operations—from asset creation to global logistics—transforming your capital into a actively managed, cash-flow generative enterprise.",
-      buttonText: "Explore Our Solutions"
-    }
-  ];
+    // Naya Text aane ki animation
+    gsap.fromTo(subtitle, { opacity: 0 }, { opacity: 1, duration: 1 });
+    gsap.fromTo(lines, 
+      { y: '100%', rotate: 2 }, 
+      { y: '0%', rotate: 0, duration: 0.8, stagger: 0.1, ease: "power4.out" }
+    );
+
+    // 6 second baad Text change hone ki animation
+    const interval = setInterval(() => {
+      gsap.to(lines, {
+        y: '-100%', 
+        duration: 0.6, 
+        stagger: 0.05, 
+        ease: "power3.in",
+        onComplete: () => {
+          setActiveSlide((prev) => (prev + 1) % BANNERS.length);
+        }
+      });
+      gsap.to(subtitle, { opacity: 0, duration: 0.5 });
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [activeSlide]);
 
   return (
-    <section className="relative h-[60vh] sm:h-screen w-full overflow-hidden bg-black">
-      <Swiper
-        modules={[Pagination, Autoplay]}
-        spaceBetween={0}
-        slidesPerView={1}
-        pagination={{ 
-          clickable: true,
-          bulletClass: 'swiper-pagination-bullet',
-          bulletActiveClass: 'swiper-pagination-bullet-active'
-        }}
-        autoplay={{
-          delay: 8000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        className="h-full w-full"
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div className="relative h-[60vh] sm:h-screen w-full overflow-hidden bg-black">
-              {/* Video Background */}
-              <video
-                ref={index === 0 ? videoRef1 : videoRef2}
-                className={`absolute inset-0 h-full object-cover z-10 ${
-                  index === 1 
-                    ? 'w-full opacity-30' 
-                    : 'w-full'
-                }`}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                controls={false}
-                poster="/images/hero-poster.jpg"
-                onCanPlay={() => {
-                  console.log(`Video ${index + 1} is ready to play.`);
-                }}
-                onError={(e) => {
-                  console.error(`Video ${index + 1} Error:`, e);
-                }}
+    <div className="w-screen h-dvh relative overflow-hidden bg-[#020205] gpu-smooth">
+      {/* 1. Background now handled purely by 3D particle shark/puppet */}
+
+      {/* 2. THREE.JS CANVAS (Massive Swinging Image) */}
+      {/* Absolute center, overflowing, exact structure as Loris site */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] w-full h-full z-2 cursor-grab active:cursor-grabbing">
+        <Canvas camera={{ position: [0, 0, 5], fov: 50 }} dpr={[1, 2]}>
+          <Suspense fallback={null}>
+            <PuppetCanvas />
+          </Suspense>
+        </Canvas>
+      </div>
+
+      {/* 3. BOTTOM GRADIENT (To make text readable) */}
+      <div className="absolute w-full h-[50vh] bottom-0 left-0 bg-linear-to-b from-transparent to-[#020205] z-3" />
+
+      {/* 4. EXACT UI TEXT OVERLAY (Bottom Left) */}
+      <div className="z-5! absolute bottom-6 md:bottom-12 lg:bottom-20 left-[20px] md:left-[50px] flex flex-col gap-[16px] w-[calc(100%-40px)] lg:w-[520px] pointer-events-none">
+        
+        <p className="animate-subtitle text-xs sm:text-sm text-teal-400 font-mono uppercase tracking-[0.3em] font-semibold opacity-0">
+          {BANNERS[activeSlide].subtitle}
+        </p>
+
+        <div
+          className="text-[20px] md:text-[32px] lg:text-[40px] text-gray-100 font-bold leading-[1.1] tracking-tight uppercase"
+          style={{ fontFamily: "'Trebuchet MS','Arial Black',system-ui,sans-serif" }}
+        >
+          {BANNERS[activeSlide].lines.map((line, index) => (
+            <div key={index} className="overflow-hidden" style={{ paddingBottom: '4px' }}>
+              <div 
+                className="animate-line origin-left block text-left" 
+                style={{ transform: 'translateY(100%)' }} // Hidden initially for GSAP
               >
-                <source src={slide.video} type="video/mp4" />
-              </video>
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-              
-              {/* Content */}
-              <div className="relative z-15 flex h-full items-center justify-start">
-                <div className="text-left text-white p-4 sm:p-6 md:p-8">
-                  <h1 className={`mb-6 tracking-tight text-3xl sm:text-5xl md:text-6xl lg:text-[70px] ${index === 1 ? 'max-w-3xl' : ''}`} style={{ fontFamily: 'Poppins', fontWeight: '400', lineHeight: '1.2' }}>
-                    {index === 1 ? (
-                      <>
-                        Strategic Capital Deployment in<br />
-                        <span className="text-teal-400">Global</span> <span className="text-white">Commerce</span>
-                      </>
-                      ) : (
-                        <>
-                          {slide.title}<br />
-                          <span className="text-teal-400">{slide.highlight}</span> {slide.titleEnd}
-                        </>
-                      )
-                    }
-                  </h1>
-                  <p className="mb-6 sm:mb-8 text-sm sm:text-base md:text-xl lg:text-2xl font-normal max-w-3xl">
-                    {slide.description}
-                  </p>
-                  <div className="flex justify-start">
-                    {slide.buttonText === "Schedule Your Capital Intro Call" ? (
-                      <a 
-                        href="/contact"
-                        className="inline-flex items-center justify-center bg-teal-400 px-4 py-2.5 text-xs sm:px-6 sm:py-3.5 sm:text-sm md:px-8 md:py-4 md:text-base font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-black rounded-full"
-                      >
-                        {slide.buttonText}
-                      </a>
-                    ) : (
-                      <button 
-                        onClick={() => {
-                          // Dispatch custom event to open Automation Solutions dropdown
-                          window.dispatchEvent(new CustomEvent('openAutomationSolutions'));
-                          // The Header component will handle the scrolling and opening
-                        }}
-                        className="bg-teal-400 px-4 py-2.5 text-xs sm:px-6 sm:py-3.5 sm:text-sm md:px-8 md:py-4 md:text-base font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-black rounded-full"
-                      >
-                        {slide.buttonText}
-                      </button>
-                    )}
-                  </div>
-                </div>
+                {line}
               </div>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      
-      {/* Custom Pagination Styles */}
-      <style jsx global>{`
-        .swiper-pagination {
-          bottom: 40px !important;
-          left: 50% !important;
-          transform: translateX(-50%) !important;
-          width: auto !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-          gap: 12px !important;
-        }
-        
-        .swiper-pagination-bullet {
-          width: 16px !important;
-          height: 16px !important;
-          background: rgba(255, 255, 255, 0.3) !important;
-          opacity: 1 !important;
-          margin: 0 !important;
-          border-radius: 50% !important;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-          position: relative !important;
-          cursor: pointer !important;
-          border: 2px solid rgba(255, 255, 255, 0.2) !important;
-          backdrop-filter: blur(10px) !important;
-        }
-        
-        .swiper-pagination-bullet::before {
-          content: '' !important;
-          position: absolute !important;
-          top: 50% !important;
-          left: 50% !important;
-          transform: translate(-50%, -50%) !important;
-          width: 8px !important;
-          height: 8px !important;
-          background: rgba(255, 255, 255, 0.6) !important;
-          border-radius: 50% !important;
-          transition: all 0.3s ease !important;
-        }
-        
-        .swiper-pagination-bullet-active {
-          background: linear-gradient(135deg, #14b8a6, #0d9488) !important;
-          transform: scale(1.3) !important;
-          border: 2px solid rgba(20, 184, 166, 0.8) !important;
-          box-shadow: 0 0 20px rgba(20, 184, 166, 0.6), 0 0 40px rgba(20, 184, 166, 0.3) !important;
-        }
-        
-        .swiper-pagination-bullet-active::before {
-          background: rgba(255, 255, 255, 0.9) !important;
-          transform: translate(-50%, -50%) scale(1.2) !important;
-        }
-        
-        .swiper-pagination-bullet:hover {
-          background: rgba(255, 255, 255, 0.6) !important;
-          transform: scale(1.1) !important;
-          border: 2px solid rgba(255, 255, 255, 0.4) !important;
-          box-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
-        }
-        
-        .swiper-pagination-bullet:hover::before {
-          background: rgba(255, 255, 255, 0.8) !important;
-        }
-        
-        /* Add a subtle pulse animation for the active bullet */
-        @keyframes pulse {
-          0% {
-            box-shadow: 0 0 20px rgba(20, 184, 166, 0.6), 0 0 40px rgba(20, 184, 166, 0.3);
-          }
-          50% {
-            box-shadow: 0 0 25px rgba(20, 184, 166, 0.8), 0 0 50px rgba(20, 184, 166, 0.4);
-          }
-          100% {
-            box-shadow: 0 0 20px rgba(20, 184, 166, 0.6), 0 0 40px rgba(20, 184, 166, 0.3);
-          }
-        }
-        
-        .swiper-pagination-bullet-active {
-          animation: pulse 2s ease-in-out infinite !important;
-        }
-      `}</style>
-    </section>
-  );
-};
+          ))}
+        </div>
 
-export default Hero;
+      </div>
+
+    </div>
+  );
+}

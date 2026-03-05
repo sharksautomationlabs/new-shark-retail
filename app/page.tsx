@@ -7,22 +7,22 @@ import ContactSection from '../components/ContactSection';
 import FeaturedInSection from '../components/FeaturedInSection';
 import CompaniesTrustUs from '../components/CompaniesTrustUs';
 import Footer from '../components/Footer';
+import PageWithLoader from '../components/PageWithLoader';
 
 export default function Home() {
   return (
-    <div>
-      <Header />
-      <Hero />
-      <FeaturedInSection />
-      <InvestmentLifecycle />
-      <WhySharkRetail />
-      <CallToAction />
-      <CompaniesTrustUs />
-      <ContactSection />
-      <Footer />
-      <main>
-        {/* Your main content goes here */}
-      </main>
-    </div>
+    <PageWithLoader>
+      <div>
+        <Header />
+        <Hero />
+        <FeaturedInSection />
+        <InvestmentLifecycle />
+        <WhySharkRetail />
+        <CallToAction />
+        <CompaniesTrustUs />
+        <ContactSection />
+        <Footer />
+      </div>
+    </PageWithLoader>
   );
 }

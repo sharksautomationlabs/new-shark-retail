@@ -1,172 +1,87 @@
 "use client";
 
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import PlexusBackgroundWhite from '@/components/PlexusBackgroundWhite';
+import React, { useRef } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Shield, FileCheck, Zap, CheckCircle } from "lucide-react";
 
-// --- Account Reinstatement MainContent Component ---
+const fadeUp = { hidden: { opacity: 0, y: 40, filter: "blur(10px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { type: "spring" as const, stiffness: 80, damping: 20 } } };
+const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } } };
+
+const cards = [
+  { label: "AR—01", title: "Account Recovery Excellence", desc: "Systematic account reinstatement with precision-driven recovery strategies that restore your suspended assets to full operational capacity.", icon: Shield },
+  { label: "AR—02", title: "Compliance Management", desc: "Professional compliance oversight that ensures adherence to platform policies and prevents future account suspensions through proactive monitoring.", icon: FileCheck },
+  { label: "AR—03", title: "Documentation Systems", desc: "Advanced documentation and evidence collection that strengthens your reinstatement case with compelling, platform-specific documentation.", icon: Zap },
+  { label: "AR—04", title: "Appeal Process Automation", desc: "Intelligent appeal submission and tracking systems that accelerate your reinstatement timeline and maximize success probability.", icon: CheckCircle },
+];
+
 const AccountReinstatementMainContent: React.FC = () => {
-  const cardsRef = useRef(null);
-  const isInView = useInView(cardsRef, { once: true, margin: "-100px" });
-
-  const servicesData = [
-    {
-      id: 1,
-      title: "Account Recovery Excellence",
-      description: "Systematic account reinstatement with precision-driven recovery strategies that restore your suspended assets to full operational capacity.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
-        </svg>
-      ),
-      metrics: ["95% Success Rate", "24/7 Support", "Multi-Platform"]
-    },
-    {
-      id: 2,
-      title: "Compliance Management",
-      description: "Professional compliance oversight that ensures adherence to platform policies and prevents future account suspensions through proactive monitoring.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
-      metrics: ["Policy Compliance", "Risk Mitigation", "Ongoing Monitoring"]
-    },
-    {
-      id: 3,
-      title: "Documentation Systems",
-      description: "Advanced documentation and evidence collection capabilities that strengthen your reinstatement case with compelling, platform-specific documentation.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
-      metrics: ["Evidence Collection", "Documentation", "Case Building"]
-    },
-    {
-      id: 4,
-      title: "Appeal Process Automation",
-      description: "Intelligent appeal submission and tracking systems that accelerate your reinstatement timeline and maximize success probability.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-      metrics: ["Faster Processing", "Higher Success", "Automated Tracking"]
-    }
-  ];
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start 0.9", "end 0.1"] });
+  const card0Y = useTransform(scrollYProgress, [0, 0.5], [0, 24]);
+  const card1Y = useTransform(scrollYProgress, [0, 0.5], [0, 16]);
+  const card2Y = useTransform(scrollYProgress, [0.3, 0.8], [-16, 0]);
+  const card3Y = useTransform(scrollYProgress, [0.3, 0.8], [-24, 0]);
 
   return (
-    <section className="relative bg-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <PlexusBackgroundWhite />
-      
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-50/30 via-white to-teal-50/20"></div>
-      
-      {/* Floating Side Button (hide on small) */}
-      <a href="/contact" className="hidden md:flex fixed top-1/2 right-0 -translate-y-1/2 bg-teal-400 text-black font-bold py-4 px-3 rounded-l-xl z-50 [writing-mode:vertical-rl] rotate-180 uppercase tracking-wider text-sm hover:bg-white transition-colors">
-        Let&apos;s Talk Business
-      </a>
-
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12 sm:mb-16 lg:mb-20"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-              Proprietary Systems for{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400">
-                Account Recovery
-              </span>
-            </h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Our institutional-grade account reinstatement platform delivers unmatched recovery rates 
-              and compliance management. Built for success, designed for results.
-            </p>
-            <div className="flex justify-center mt-8">
-              <div className="w-32 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent"></div>
-            </div>
-          </motion.div>
-
-          {/* Services Grid */}
-          <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
-            {servicesData.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ 
-                  opacity: isInView ? 1 : 0, 
-                  y: isInView ? 0 : 50 
-                }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.2,
-                  ease: "easeOut"
-                }}
-                className="group"
-              >
-                <div className="bg-black rounded-3xl p-8 shadow-2xl h-full relative overflow-hidden border border-teal-400/20 hover:border-teal-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-3xl hover:shadow-teal-400/20">
-                  {/* Teal Glow Effect */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-teal-400/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* Content */}
-                  <div className="relative z-10">
-                    {/* Icon */}
-                    <div className="text-4xl mb-4">
-                      {service.icon}
-                    </div>
-                    
-                    {/* Title */}
-                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-teal-300 transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    
-                    {/* Description */}
-                    <p className="text-gray-300 leading-relaxed mb-6 group-hover:text-gray-200 transition-colors duration-300">
-                      {service.description}
-                    </p>
-                    
-                    {/* Metrics */}
-                    <div className="space-y-2">
-                      {service.metrics.map((metric, metricIndex) => (
-                        <div key={metricIndex} className="flex items-center text-sm text-teal-400 group-hover:text-teal-300 transition-colors duration-300">
-                          <div className="w-2 h-2 bg-teal-400 rounded-full mr-3 group-hover:bg-teal-300 transition-colors duration-300"></div>
-                          {metric}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-center"
-          >
-            <div className="bg-gradient-to-r from-teal-400/10 to-teal-500/10 rounded-3xl p-6 sm:p-8 border border-teal-400/30 backdrop-blur-md">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
-                Ready to Recover Your Accounts?
-              </h3>
-              <p className="text-sm sm:text-lg text-gray-600 mb-5 sm:mb-6 max-w-2xl mx-auto">
-                Experience the power of institutional-grade account reinstatement. 
-                Let our experts show you how to restore your suspended assets.
-              </p>
-              <a
-                href="/contact"
-                className="inline-flex w-full sm:w-auto items-center justify-center bg-teal-400 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-white transition-colors hover:bg-black hover:text-white rounded-full cursor-pointer"
-              >
-                Explore Our Solutions
+    <section ref={sectionRef} className="relative bg-[#020205] py-24 sm:py-32 px-4 sm:px-6 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-white">
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-teal-900/10 rounded-full blur-[150px] mix-blend-screen" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-900/10 rounded-full blur-[120px] mix-blend-screen" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
+      </div>
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
+          <motion.div variants={staggerContainer} initial="hidden" animate={isInView ? "visible" : "hidden"} className="lg:col-span-5 space-y-8">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-500/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-teal-400 backdrop-blur-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_8px_teal]" /> Account Reinstatement
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-[2.15rem] md:text-[2.6rem] lg:text-[3rem] font-bold text-white tracking-tight leading-[1.15]">
+              Sky-Rocket Your Account Recovery with <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">Elite Reinstatement</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-slate-400 text-lg md:text-xl leading-relaxed font-light">
+              Shark Retail delivers account recovery, compliance management, documentation systems, and appeal automation. We help e-commerce sellers get back to selling with 95% success rates.
+            </motion.p>
+            <motion.p variants={fadeUp} className="text-slate-400 text-base md:text-lg leading-relaxed font-light">
+              From Amazon and eBay to Shopify and Walmart—we recover suspended accounts and prevent future issues. Built for results, designed for scale.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <a href="/contact" className="inline-flex items-center gap-3 rounded-full bg-teal-400 text-black font-extrabold px-8 py-4 text-sm uppercase tracking-wider hover:bg-teal-300 transition-colors duration-300 shadow-[0_0_40px_rgba(20,184,166,0.25)]">
+                Connect Now <ArrowRight className="w-5 h-5" />
               </a>
-            </div>
+            </motion.div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, x: 40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.8, delay: 0.2 }} className="lg:col-span-7 grid grid-cols-2 gap-4 sm:gap-6">
+            {[cards[0], cards[1]].map((card, i) => {
+              const Icon = card.icon;
+              return (
+                <motion.div key={card.label} style={{ y: i === 0 ? card0Y : card1Y }} className="rounded-2xl border border-white/[0.06] bg-[#0a0a0c]/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-black/40 hover:border-teal-500/20 hover:shadow-[0_0_60px_rgba(20,184,166,0.08)] transition-all duration-500">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-teal-500/15 text-teal-400 border border-teal-500/20">
+                      <Icon className="w-7 h-7" />
+                    </div>
+                    <span className="text-xs font-bold text-teal-400/90 uppercase tracking-widest">{card.label}</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{card.title}</h3>
+                  <p className="text-slate-400 text-sm sm:text-base leading-relaxed">{card.desc}</p>
+                </motion.div>
+              );
+            })}
+            {[cards[2], cards[3]].map((card, i) => {
+              const Icon = card.icon;
+              return (
+                <motion.div key={card.label} style={{ y: i === 0 ? card2Y : card3Y }} className="rounded-2xl border border-white/[0.06] bg-[#0a0a0c]/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-black/40 hover:border-teal-500/20 hover:shadow-[0_0_60px_rgba(20,184,166,0.08)] transition-all duration-500">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-teal-500/15 text-teal-400 border border-teal-500/20">
+                      <Icon className="w-7 h-7" />
+                    </div>
+                    <span className="text-xs font-bold text-teal-400/90 uppercase tracking-widest">{card.label}</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{card.title}</h3>
+                  <p className="text-slate-400 text-sm sm:text-base leading-relaxed">{card.desc}</p>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </div>

@@ -1,60 +1,52 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
-// --- Account Reinstatement Hero Component ---
+const fadeUpVariant = {
+  hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.2, 0.65, 0.3, 0.9] as const } },
+};
+const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } } };
+
 const AccountReinstatementHero: React.FC = () => {
   return (
-    <section className="relative bg-black py-8 sm:py-12 lg:py-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-transparent"></div>
-      
-      {/* Right Side Teal Accent */}
-      <div className="absolute top-0 right-0 w-1/2 sm:w-1/3 h-full bg-gradient-to-l from-teal-400/40 to-transparent"></div>
-      
-      {/* Floating Side Button (hide on small) */}
-      <a href="/contact" className="hidden md:flex fixed top-1/2 right-0 -translate-y-1/2 bg-teal-400 text-black font-bold py-4 px-3 rounded-l-xl z-50 [writing-mode:vertical-rl] rotate-180 uppercase tracking-wider text-sm hover:bg-white transition-colors">
-        Let&apos;s Talk Business
-      </a>
+    <section className="relative bg-[#030303] min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-teal-100">
+      <div className="absolute inset-0 z-0 opacity-[0.12] pointer-events-none" style={{ backgroundImage: "linear-gradient(to right, #14b8a6 1px, transparent 1px), linear-gradient(to bottom, #14b8a6 1px, transparent 1px)", backgroundSize: "4rem 4rem", maskImage: "radial-gradient(circle at 50% 50%, black 0%, transparent 75%)", WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 0%, transparent 75%)" }} />
+      <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.18, 0.08], rotate: [0, 90, 0] }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }} className="absolute top-[-15%] left-[-10%] w-[40rem] h-[40rem] bg-teal-500/20 rounded-full blur-[120px] pointer-events-none z-0" />
+      <motion.div animate={{ scale: [1, 1.4, 1], opacity: [0.05, 0.12, 0.05], x: [0, -40, 0] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[-15%] right-[-5%] w-[35rem] h-[35rem] bg-teal-300/15 rounded-full blur-[100px] pointer-events-none z-0" />
+      <div className="absolute inset-0 z-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
 
-      <div className="relative z-10 flex h-full items-center justify-center">
-        <div className="text-center text-white p-4 sm:p-6 lg:p-8">
-          {/* Main Headline */}
-          <motion.h1 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight max-w-4xl mx-auto"
-            style={{ fontFamily: 'Poppins', fontWeight: '400' }}
-          >
-            Strategic Capital Deployment in{' '}
-            <span className="text-teal-400">Account</span>{' '}
-            <span className="text-white">Reinstatement</span>
-          </motion.h1>
-
-          {/* Sub-headline */}
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-sm sm:text-base md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto font-normal"
-          >
-            While traditional markets fluctuate on sentiment, global e-commerce grows on fundamental demand. We identify and capitalize on this permanent shift. Our firm provides a{' '}
-            <span className="text-teal-400 font-semibold">seamless, institutional-grade gateway</span> into this{' '}
-            <span className="text-teal-400 font-semibold">$6 trillion ecosystem</span>.
-          </motion.p>
-
-          {/* Decorative Elements */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="mt-12 flex justify-center"
-          >
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent"></div>
+      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center">
+        <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col items-center max-w-3xl">
+          <motion.div variants={fadeUpVariant} className="mb-6 sm:mb-8">
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-md shadow-2xl">
+              <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500" /></span>
+              <span className="text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-[0.2em]">Account Reinstatement</span>
+            </div>
           </motion.div>
-        </div>
+          <motion.h1 variants={fadeUpVariant} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
+            We Always Give The Best <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-teal-200 drop-shadow-[0_0_30px_rgba(20,184,166,0.3)]">Account Reinstatement</span> To You
+          </motion.h1>
+          <motion.p variants={fadeUpVariant} className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed font-medium mb-10">
+            Recover your suspended e-commerce accounts with Shark Retail. Our institutional-grade reinstatement services deliver 95% success rates across Amazon, eBay, Shopify, and more—so you can get back to selling fast.
+          </motion.p>
+          <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <a href="/contact" className="relative group overflow-hidden rounded-full shadow-[0_0_40px_rgba(20,184,166,0.2)] hover:shadow-[0_0_60px_rgba(20,184,166,0.4)] transition-shadow duration-500">
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-400 via-emerald-400 to-teal-400 opacity-100 group-hover:scale-110 transition-transform duration-500" />
+              <div className="relative px-8 py-4 flex items-center justify-center gap-3">
+                <span className="font-extrabold text-black uppercase tracking-wider text-sm md:text-base">Connect Now</span>
+                <ArrowRight className="w-5 h-5 text-black" />
+              </div>
+            </a>
+            <a href="tel:+14694807938" className="relative group w-full sm:w-auto p-px rounded-full overflow-hidden bg-gradient-to-b from-teal-500/50 to-white/10">
+              <div className="relative bg-[#0a0a0c] hover:bg-white/5 transition-colors duration-300 rounded-full px-8 py-4 flex items-center justify-center gap-3 border border-white/10">
+                <span className="font-bold text-white uppercase tracking-wider text-sm md:text-base">(469) 480-7938</span>
+              </div>
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -346,48 +346,47 @@ const TestimonialCarousel: React.FC<{
 const WalmartTestimonials: React.FC = () => {
   const testimonials = [
     {
-      name: "Robert Johnson",
-      role: "Marketplace Portfolio Manager",
-      company: "Retail Innovation Capital",
-      date: "Jan 20, 2025",
-      content: "Shark Retail's systematic approach to Walmart automation delivered exceptional results. Within 90 days, our portfolio generated $55K in monthly recurring revenue. Their proprietary marketplace optimization algorithms and strategic capital deployment transformed our Walmart operations into a cash-flow generative asset.",
+      name: "Thomas Brown",
+      role: "Walmart Marketplace Seller",
+      company: "E-commerce Business",
+      date: "Jan 7, 2025",
+      content: "ECOM SHARKS Walmart automation services are exceptional! They helped us get approved for Walmart Marketplace and set up WFS (Walmart Fulfillment Services). Our sales went from $0 to $100K in 8 months. Their expertise in Walmart's requirements is unmatched!",
       metrics: [
-        { label: "Monthly Revenue", value: "$55K" },
-        { label: "Time to Profit", value: "90 Days" }
+        { label: "Sales Growth", value: "$100K" },
+        { label: "Timeframe", value: "8 Months" }
       ]
     },
     {
-      name: "Lisa Chen",
-      role: "Retail Investment Director",
-      company: "Marketplace Growth Fund",
-      date: "Dec 18, 2024",
-      content: "The institutional-grade automation frameworks deployed by Shark Retail exceeded all expectations. Our Walmart portfolio achieved 280% growth through their systematic approach to marketplace analysis and strategic positioning. Their proprietary systems consistently outperform market benchmarks.",
+      name: "Amanda Foster",
+      role: "E-commerce Business Owner",
+      company: "Top Seller",
+      date: "Dec 14, 2024",
+      content: "The Walmart automation from ECOM SHARKS transformed our business completely. They handled our product listings, inventory management, and customer service automation. We're now one of the top sellers in our category with 95% positive feedback!",
       metrics: [
-        { label: "Portfolio Growth", value: "280%" },
-        { label: "Market Outperformance", value: "180%" }
+        { label: "Feedback", value: "95%" },
+        { label: "Position", value: "Top Seller" }
       ]
     },
     {
-      name: "Michael Rodriguez",
-      role: "Capital Allocation Director",
-      company: "Retail Growth Partners",
-      date: "Nov 30, 2024",
-      content: "Working with Shark Retail transformed our Walmart operations into a systematic wealth-building platform. Their predictive analytics and automated supply chain systems delivered 100% ROI growth within six months. The institutional-grade reporting and strategic insights are unparalleled.",
+      name: "Kevin Lee",
+      role: "Online Retailer",
+      company: "E-commerce",
+      date: "Nov 25, 2024",
+      content: "Working with ECOM SHARKS for Walmart automation has been incredible. They automated our pricing strategies, order processing, and returns management. Our profit margins improved by 200% and we're scaling to new product categories successfully!",
       metrics: [
-        { label: "ROI Growth", value: "100%" },
-        { label: "Timeframe", value: "6 Months" }
+        { label: "Profit Margins", value: "+200%" },
+        { label: "Scaling", value: "New Categories" }
       ]
     }
   ];
 
   return (
-    <section className="relative bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-900/20 via-black to-teal-900/10"></div>
-      
-      {/* Animated gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+    <section className="relative bg-[#020205] py-24 sm:py-32 px-4 sm:px-6 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-white">
+      {/* Elite Background Effects */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-teal-500/15 rounded-full blur-[130px]" />
+        <div className="absolute bottom-[-15%] right-[-10%] w-[36rem] h-[36rem] bg-cyan-500/10 rounded-full blur-[120px]" />
+      </div>
       
       {/* Floating Side Button (hide on small) */}
       <a href="/contact" className="hidden md:flex fixed top-1/2 right-0 -translate-y-1/2 bg-teal-400 text-black font-bold py-4 px-3 rounded-l-xl z-50 [writing-mode:vertical-rl] rotate-180 uppercase tracking-wider text-sm hover:bg-white transition-colors">

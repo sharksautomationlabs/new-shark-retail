@@ -1,201 +1,85 @@
 "use client";
 
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import PlexusBackgroundWhite from './PlexusBackgroundWhite';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
-// --- Walmart Main Content Component ---
+const fadeUp = { hidden: { opacity: 0, y: 40, filter: 'blur(10px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { type: 'spring' as const, stiffness: 80, damping: 20 } } };
+const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } } };
+
+const cards = [
+  { label: 'WMT—01', title: 'Account Setup & WFS', desc: 'Get approved for Walmart Marketplace and set up Walmart Fulfillment Services (WFS) for seamless operations.', icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg> },
+  { label: 'WMT—02', title: 'Product Listings & Inventory', desc: 'Product listings, inventory management, and customer service automation—all handled flawlessly.', icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg> },
+  { label: 'WMT—03', title: 'Pricing & Order Processing', desc: 'Automated pricing strategies, order processing, and returns management for maximum efficiency.', icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" /></svg> },
+  { label: 'WMT—04', title: 'Scale & Dominate', desc: 'Scale to new product categories and become a top seller with 95%+ positive feedback.', icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg> },
+];
+
 const WalmartMainContent: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 0.9", "end 0.1"]
-  });
-
-  // Transform values for scroll animations
-  const firstCardY = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const secondCardY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const thirdCardY = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const fourthCardY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' });
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start 0.9', 'end 0.1'] });
+  const card0Y = useTransform(scrollYProgress, [0, 0.5], [0, 24]);
+  const card1Y = useTransform(scrollYProgress, [0, 0.5], [0, 16]);
+  const card2Y = useTransform(scrollYProgress, [0.3, 0.8], [-16, 0]);
+  const card3Y = useTransform(scrollYProgress, [0.3, 0.8], [-24, 0]);
 
   return (
-    <section ref={sectionRef} className="relative bg-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <PlexusBackgroundWhite />
-      
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-r from-teal-50/30 to-transparent"></div>
-      
-      {/* Floating Side Button (hide on small) */}
-      <a href="/contact" className="hidden md:flex fixed top-1/2 right-0 -translate-y-1/2 bg-teal-400 text-black font-bold py-4 px-3 rounded-l-xl z-50 [writing-mode:vertical-rl] rotate-180 uppercase tracking-wider text-sm hover:bg-white transition-colors">
-        Let&apos;s Talk Business
-      </a>
+    <section ref={sectionRef} className="relative bg-[#020205] py-24 sm:py-32 px-4 sm:px-6 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-white">
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-teal-900/10 rounded-full blur-[150px] mix-blend-screen" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-900/10 rounded-full blur-[120px] mix-blend-screen" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
+      </div>
 
-      <div className="relative z-10 px-4">
-        <div className="max-w-full mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left Side: Content */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-6 sm:space-y-8 text-center lg:text-left"
-            >
-              <div className="space-y-6">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight max-w-3xl">
-                  Strategic Capital Deployment in the{' '}
-                  <span className="text-teal-400">Walmart Ecosystem</span>
-                </h2>
-                
-                <p className="text-sm sm:text-base md:text-xl text-gray-600 leading-relaxed max-w-3xl">
-                  While traditional retail struggles with inventory management, Walmart's marketplace thrives on systematic operations. 
-                  We identify and capitalize on this fundamental advantage, deploying capital with surgical precision into high-margin verticals 
-                  within the world&apos;s largest retail platform.
-                </p>
-                
-                <p className="text-sm sm:text-base md:text-xl text-gray-600 leading-relaxed max-w-3xl">
-                  Our firm provides a seamless, institutional-grade gateway into Walmart&apos;s $600+ billion ecosystem. 
-                  We handle all operations—from listing optimization to fulfillment—transforming your capital into an 
-                  actively managed, cash-flow generative enterprise that scales systematically and compounds returns.
-                </p>
-                
-                <div className="flex justify-center lg:justify-start">
-                  <a
-                    href="/contact"
-                    className="inline-flex w-full sm:w-auto items-center justify-center bg-teal-400 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-white transition-colors hover:bg-black hover:text-white rounded-full cursor-pointer"
-                  >
-                    Explore Our Solutions
-                  </a>
-                </div>
-              </div>
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
+          <motion.div variants={staggerContainer} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="lg:col-span-5 space-y-8">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-500/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-teal-400 backdrop-blur-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_8px_teal]" />
+              Walmart Automation
             </motion.div>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-[2.15rem] md:text-[2.6rem] lg:text-[3rem] font-bold text-white tracking-tight leading-[1.15]">
+              Sky-Rocket Your Walmart Venture with{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
+                Our Premium Walmart Automation Services
+              </span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-slate-400 text-lg md:text-xl leading-relaxed font-light">
+              Our Walmart automation services are designed to elevate your brand&apos;s presence and drive sales on the world&apos;s largest retail platform. We offer account setup and WFS integration, product listings, inventory management, and customer service automation—all tailored to meet your specific business goals.
+            </motion.p>
+            <motion.p variants={fadeUp} className="text-slate-400 text-base md:text-lg leading-relaxed font-light">
+              We handle automated pricing strategies, order processing, and returns management. Our expertise in Walmart&apos;s requirements is unmatched—helping you become a top seller with 95%+ positive feedback and scale to new product categories successfully.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <a href="/contact" className="inline-flex items-center gap-3 rounded-full bg-teal-400 text-black font-extrabold px-8 py-4 text-sm uppercase tracking-wider hover:bg-teal-300 transition-colors duration-300 shadow-[0_0_40px_rgba(20,184,166,0.25)]">
+                Connect Now
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </motion.div>
+          </motion.div>
 
-            {/* Right Side: Visual Elements */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="grid grid-cols-2 gap-4 sm:gap-6">
-                <div className="space-y-6">
-                  {/* First Card - moves down on scroll */}
-                  <motion.div 
-                    style={{ y: firstCardY }}
-                    className="bg-black border border-teal-400/30 p-6 rounded-2xl relative overflow-hidden group hover:border-teal-400/60 transition-all duration-500"
-                  >
-                    {/* Teal Overlay - Right Side */}
-                    <div className="absolute inset-0 bg-gradient-to-l from-teal-400/30 to-transparent"></div>
-                    
-                    {/* Teal Glow Effect - Right Side */}
-                    <div className="absolute top-0 right-0 w-3/4 h-full bg-teal-400/25 rounded-2xl blur-3xl"></div>
-                    <div className="absolute top-0 right-0 w-1/2 h-full bg-teal-400/40 rounded-2xl blur-2xl"></div>
-                    <div className="absolute -top-4 -right-4 w-32 h-32 bg-teal-400/50 rounded-full blur-3xl"></div>
-                    
-                    {/* Hover Glow Effect */}
-                    <div className="absolute inset-0 bg-teal-400/0 group-hover:bg-teal-400/10 rounded-2xl transition-all duration-500"></div>
-                    <div className="absolute -inset-2 bg-teal-400/0 group-hover:bg-teal-400/20 rounded-2xl blur-xl transition-all duration-500"></div>
-                    
-                    <div className="relative z-10">
-                      <div className="w-12 h-12 bg-teal-400 rounded-lg flex items-center justify-center mb-4 shadow-lg shadow-teal-400/50 group-hover:shadow-teal-400/80 transition-all duration-500">
-                        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                        </svg>
-                      </div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-teal-100 transition-colors duration-500">Marketplace Optimization</h3>
-                      <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors duration-500">Advanced listing and SEO optimization for maximum visibility</p>
-                    </div>
-                  </motion.div>
-                  
-                  {/* Second Card - moves down on scroll */}
-                  <motion.div 
-                    style={{ y: secondCardY }}
-                    className="bg-black border border-teal-400/30 p-6 rounded-2xl relative overflow-hidden group hover:border-teal-400/60 transition-all duration-500"
-                  >
-                    {/* Teal Overlay - Right Side */}
-                    <div className="absolute inset-0 bg-gradient-to-l from-teal-400/30 to-transparent"></div>
-                    
-                    {/* Teal Glow Effect - Right Side */}
-                    <div className="absolute top-0 right-0 w-3/4 h-full bg-teal-400/25 rounded-2xl blur-3xl"></div>
-                    <div className="absolute top-0 right-0 w-1/2 h-full bg-teal-400/40 rounded-2xl blur-2xl"></div>
-                    <div className="absolute -top-4 -right-4 w-32 h-32 bg-teal-400/50 rounded-full blur-3xl"></div>
-                    
-                    {/* Hover Glow Effect */}
-                    <div className="absolute inset-0 bg-teal-400/0 group-hover:bg-teal-400/10 rounded-2xl transition-all duration-500"></div>
-                    <div className="absolute -inset-2 bg-teal-400/0 group-hover:bg-teal-400/20 rounded-2xl blur-xl transition-all duration-500"></div>
-                    
-                    <div className="relative z-10">
-                      <div className="w-12 h-12 bg-teal-400 rounded-lg flex items-center justify-center mb-4 shadow-lg shadow-teal-400/50 group-hover:shadow-teal-400/80 transition-all duration-500">
-                        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                      </div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-teal-100 transition-colors duration-500">Inventory Intelligence</h3>
-                      <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors duration-500">AI-powered demand forecasting and stock management</p>
-                    </div>
-                  </motion.div>
+          <motion.div initial={{ opacity: 0, x: 40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.8, delay: 0.2 }} className="lg:col-span-7 grid grid-cols-2 gap-4 sm:gap-6">
+            {[cards[0], cards[1]].map((card, i) => (
+              <motion.div key={card.label} style={{ y: i === 0 ? card0Y : card1Y }} className="rounded-2xl border border-white/[0.06] bg-[#0a0a0c]/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-black/40 hover:border-teal-500/20 hover:shadow-[0_0_60px_rgba(20,184,166,0.08)] transition-all duration-500">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-teal-500/15 text-teal-400 border border-teal-500/20">{card.icon}</div>
+                  <span className="text-xs font-bold text-teal-400/90 uppercase tracking-widest">{card.label}</span>
                 </div>
-                
-                <div className="space-y-6 mt-8 sm:mt-12">
-                  {/* Third Card - moves up on scroll */}
-                  <motion.div 
-                    style={{ y: thirdCardY }}
-                    className="bg-black border border-teal-400/30 p-6 rounded-2xl relative overflow-hidden group hover:border-teal-400/60 transition-all duration-500"
-                  >
-                    {/* Teal Overlay - Right Side */}
-                    <div className="absolute inset-0 bg-gradient-to-l from-teal-400/30 to-transparent"></div>
-                    
-                    {/* Teal Glow Effect - Right Side */}
-                    <div className="absolute top-0 right-0 w-3/4 h-full bg-teal-400/25 rounded-2xl blur-3xl"></div>
-                    <div className="absolute top-0 right-0 w-1/2 h-full bg-teal-400/40 rounded-2xl blur-2xl"></div>
-                    <div className="absolute -top-4 -right-4 w-32 h-32 bg-teal-400/50 rounded-full blur-3xl"></div>
-                    
-                    {/* Hover Glow Effect */}
-                    <div className="absolute inset-0 bg-teal-400/0 group-hover:bg-teal-400/10 rounded-2xl transition-all duration-500"></div>
-                    <div className="absolute -inset-2 bg-teal-400/0 group-hover:bg-teal-400/20 rounded-2xl blur-xl transition-all duration-500"></div>
-                    
-                    <div className="relative z-10">
-                      <div className="w-12 h-12 bg-teal-400 rounded-lg flex items-center justify-center mb-4 shadow-lg shadow-teal-400/50 group-hover:shadow-teal-400/80 transition-all duration-500">
-                        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                        </svg>
-                      </div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-teal-100 transition-colors duration-500">Pricing Strategy</h3>
-                      <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors duration-500">Dynamic pricing algorithms for competitive advantage</p>
-                    </div>
-                  </motion.div>
-                  
-                  {/* Fourth Card - moves up on scroll */}
-                  <motion.div 
-                    style={{ y: fourthCardY }}
-                    className="bg-black border border-teal-400/30 p-6 rounded-2xl relative overflow-hidden group hover:border-teal-400/60 transition-all duration-500"
-                  >
-                    {/* Teal Overlay - Right Side */}
-                    <div className="absolute inset-0 bg-gradient-to-l from-teal-400/30 to-transparent"></div>
-                    
-                    {/* Teal Glow Effect - Right Side */}
-                    <div className="absolute top-0 right-0 w-3/4 h-full bg-teal-400/25 rounded-2xl blur-3xl"></div>
-                    <div className="absolute top-0 right-0 w-1/2 h-full bg-teal-400/40 rounded-2xl blur-2xl"></div>
-                    <div className="absolute -top-4 -right-4 w-32 h-32 bg-teal-400/50 rounded-full blur-3xl"></div>
-                    
-                    {/* Hover Glow Effect */}
-                    <div className="absolute inset-0 bg-teal-400/0 group-hover:bg-teal-400/10 rounded-2xl transition-all duration-500"></div>
-                    <div className="absolute -inset-2 bg-teal-400/0 group-hover:bg-teal-400/20 rounded-2xl blur-xl transition-all duration-500"></div>
-                    
-                    <div className="relative z-10">
-                      <div className="w-12 h-12 bg-teal-400 rounded-lg flex items-center justify-center mb-4 shadow-lg shadow-teal-400/50 group-hover:shadow-teal-400/80 transition-all duration-500">
-                        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-teal-100 transition-colors duration-500">Global Fulfillment</h3>
-                      <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors duration-500">Worldwide logistics and distribution networks</p>
-                    </div>
-                  </motion.div>
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{card.title}</h3>
+                <p className="text-slate-400 text-sm sm:text-base leading-relaxed">{card.desc}</p>
+              </motion.div>
+            ))}
+            {[cards[2], cards[3]].map((card, i) => (
+              <motion.div key={card.label} style={{ y: i === 0 ? card2Y : card3Y }} className="rounded-2xl border border-white/[0.06] bg-[#0a0a0c]/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-black/40 hover:border-teal-500/20 hover:shadow-[0_0_60px_rgba(20,184,166,0.08)] transition-all duration-500">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-teal-500/15 text-teal-400 border border-teal-500/20">{card.icon}</div>
+                  <span className="text-xs font-bold text-teal-400/90 uppercase tracking-widest">{card.label}</span>
                 </div>
-              </div>
-            </motion.div>
-          </div>
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{card.title}</h3>
+                <p className="text-slate-400 text-sm sm:text-base leading-relaxed">{card.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

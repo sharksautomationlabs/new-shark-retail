@@ -10,7 +10,7 @@ import WalmartCTA from '@/components/WalmartCTA';
 
 const WalmartPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#020205]">
       <Header />
       <main>
         <WalmartHero />

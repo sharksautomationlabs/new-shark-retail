@@ -3,79 +3,137 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import PlexusBackground from './PlexusBackground';
+import { ArrowRight } from 'lucide-react';
 
-// --- Shopify Hero Component ---
+const fadeUpVariant = {
+  hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 1, ease: [0.2, 0.65, 0.3, 0.9] as const },
+  },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+  },
+};
+
 const ShopifyHero: React.FC = () => {
   return (
-    <section className="relative bg-black py-8 sm:py-12 lg:py-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <PlexusBackground />
-      
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-r from-teal-400/10 to-transparent"></div>
-      
-      {/* Right Side Teal Accent */}
-      <div className="absolute top-0 right-0 w-1/2 sm:w-1/3 h-full bg-gradient-to-l from-teal-400/20 to-transparent"></div>
-      
-      {/* Floating Side Button (hide on small) */}
-      <a href="/contact" className="hidden md:flex fixed top-1/2 right-0 -translate-y-1/2 bg-teal-400 text-black font-bold py-4 px-3 rounded-l-xl z-50 [writing-mode:vertical-rl] rotate-180 uppercase tracking-wider text-sm hover:bg-white transition-colors">
-        Let&apos;s Talk Business
-      </a>
+    <section className="relative bg-[#030303] min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-teal-100">
+      <div
+        className="absolute inset-0 z-0 opacity-[0.12] pointer-events-none"
+        style={{
+          backgroundImage: `linear-gradient(to right, #14b8a6 1px, transparent 1px), linear-gradient(to bottom, #14b8a6 1px, transparent 1px)`,
+          backgroundSize: '4rem 4rem',
+          maskImage: 'radial-gradient(circle at 50% 50%, black 0%, transparent 75%)',
+          WebkitMaskImage: 'radial-gradient(circle at 50% 50%, black 0%, transparent 75%)',
+        }}
+      />
+      <motion.div
+        animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.18, 0.08], rotate: [0, 90, 0] }}
+        transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+        className="absolute top-[-15%] left-[-10%] w-[40rem] h-[40rem] bg-teal-500/20 rounded-full blur-[120px] pointer-events-none z-0"
+      />
+      <motion.div
+        animate={{ scale: [1, 1.4, 1], opacity: [0.05, 0.12, 0.05], x: [0, -40, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-[-15%] right-[-5%] w-[35rem] h-[35rem] bg-teal-300/15 rounded-full blur-[100px] pointer-events-none z-0"
+      />
+      <div className="absolute inset-0 z-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
 
-      <div className="relative z-10 flex h-full items-center justify-between flex-col-reverse gap-10 lg:flex-row lg:gap-6">
-        {/* Left Side: Content */}
-        <div className="text-center lg:text-left text-white p-4 sm:p-6 lg:p-8 w-full lg:w-auto">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6 sm:space-y-8"
-          >
-            <div className="space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight max-w-3xl" style={{ fontFamily: 'Poppins', fontWeight: '400' }}>
-                Dominate{' '}
-                <span className="text-white">Shopify</span>{' '}
-                with{' '}
-                <span className="text-teal-400">Institutional Automation</span>
-              </h1>
-              
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl font-normal text-justify lg:text-left hyphens-auto lg:hyphens-none">
-                Transform your capital into a systematically managed, cash-flow generative Shopify enterprise. 
-                We deploy sophisticated automation technologies to scale your e-commerce operations while you focus on strategic growth.
-              </p>
-              
-              <div className="flex justify-center lg:justify-start">
-                <a
-                  href="/contact"
-                  className="inline-flex w-full sm:w-auto items-center justify-center bg-teal-400 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-black rounded-full"
-                >
-                  Schedule Your Capital Intro Call
-                </a>
-              </div>
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-3xl"
+        >
+          <motion.div variants={fadeUpVariant} className="mb-6 sm:mb-8">
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-md shadow-2xl">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500" />
+              </span>
+              <span className="text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-[0.2em]">Shopify</span>
             </div>
           </motion.div>
-        </div>
-
-        {/* Right Side: Shopify Logo */}
-        <motion.div 
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex items-center justify-center lg:justify-start w-full lg:w-auto -ml-0 lg:-ml-24 lg:pr-24 py-2 sm:py-8"
-        >
-          <div className="relative">
-            <Image
-              src="/images/companies/shopify.png"
-              alt="Shopify Logo"
-              width={400}
-              height={400}
-              className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-[28rem] lg:h-[28rem] object-contain opacity-100 hover:opacity-90 transition-opacity duration-300"
+          <motion.h1
+            variants={fadeUpVariant}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight"
+          >
+            We Always Give The Best{' '}
+            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-teal-200 drop-shadow-[0_0_30px_rgba(20,184,166,0.3)]">
+              Shopify Store Service
+            </span>{' '}
+            To You
+          </motion.h1>
+          <motion.p
+            variants={fadeUpVariant}
+            className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed font-medium mb-10"
+          >
+            Boost your digital presence on Shopify with Shark Retail. We empower entrepreneurs and mid-sized businesses with cutting-edge Shopify automation—profitable products, boosted sales, and custom branding so your store operates flawlessly.
+          </motion.p>
+          <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <a
+              href="/contact"
+              className="relative group overflow-hidden rounded-full shadow-[0_0_40px_rgba(20,184,166,0.2)] hover:shadow-[0_0_60px_rgba(20,184,166,0.4)] transition-shadow duration-500"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-400 via-emerald-400 to-teal-400 opacity-100 group-hover:scale-110 transition-transform duration-500" />
+              <div className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_2s_infinite] skew-x-12" />
+              <div className="relative px-8 py-4 flex items-center justify-center gap-3">
+                <span className="font-extrabold text-black uppercase tracking-wider text-sm md:text-base">Connect Now</span>
+                <div className="bg-black/10 rounded-full p-1 group-hover:bg-black group-hover:text-teal-400 transition-colors duration-300">
+                  <ArrowRight className="w-5 h-5 text-black group-hover:text-teal-400 transition-colors" />
+                </div>
+              </div>
+            </a>
+            <a
+              href="tel:+14694807938"
+              className="relative group w-full sm:w-auto p-px rounded-full overflow-hidden bg-gradient-to-b from-teal-500/50 to-white/10"
+            >
+              <div className="relative bg-[#0a0a0c] hover:bg-white/5 transition-colors duration-300 rounded-full px-8 py-4 flex items-center justify-center gap-3 border border-white/10">
+                <span className="font-bold text-white uppercase tracking-wider text-sm md:text-base">(469) 480-7938</span>
+              </div>
+            </a>
+          </motion.div>
+          <motion.div variants={fadeUpVariant} className="mt-14 w-full flex justify-center lg:justify-start relative">
+            <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <motion.div
+              animate={{ left: ['0%', '50%', '100%', '50%', '0%'], opacity: [0, 1, 0, 1, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
+              className="absolute top-0 w-24 sm:w-48 h-[2px] bg-gradient-to-r from-transparent via-teal-400 to-transparent shadow-[0_0_15px_#2dd4bf] -translate-y-px"
             />
-            {/* Subtle glow effect around logo */}
-            <div className="absolute inset-0 bg-teal-400/10 rounded-full blur-2xl scale-110"></div>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.4, ease: [0.2, 0.65, 0.3, 0.9] }}
+          className="relative shrink-0"
+        >
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+            <div className="absolute inset-0 bg-teal-400/20 rounded-full blur-3xl scale-110" />
+            <div className="relative w-full h-full flex items-center justify-center">
+              <Image
+                src="/images/companies/shopify.png"
+                alt="Shopify"
+                width={384}
+                height={384}
+                className="w-full h-full object-contain opacity-95"
+              />
+            </div>
           </div>
         </motion.div>
       </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `@keyframes shimmer { 100% { transform: translateX(100%) skewX(12deg); } }` }} />
     </section>
   );
 };

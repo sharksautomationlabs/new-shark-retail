@@ -85,8 +85,8 @@ const TestimonialCard: React.FC<{
         isActive ? 'opacity-100 blur-0 scale-100' : 'opacity-60 blur-sm scale-95'
       }`}
     >
-      <div className={`bg-white/5 backdrop-blur-md border rounded-2xl p-8 hover:border-white/20 hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-teal-400/25 relative overflow-hidden ${
-        isActive ? 'border-teal-400/50 shadow-lg shadow-teal-400/20' : 'border-white/10'
+      <div className={`bg-[#0a0a0c]/90 backdrop-blur-xl border rounded-[2rem] p-8 hover:border-teal-500/30 hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-teal-400/20 relative overflow-hidden ${
+        isActive ? 'border-teal-500/30 shadow-lg shadow-teal-400/10' : 'border-white/5'
       }`}>
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-teal-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -323,77 +323,73 @@ const AmazonTestimonials: React.FC = () => {
   const testimonials = [
     {
       name: "David Martinez",
-      role: "Institutional Investor",
-      company: "Capital Partners LLC",
+      role: "Amazon FBA Seller",
+      company: "Private Label Brand Owner",
       date: "Jan 12, 2025",
-      content: "Shark Retail's systematic approach to Amazon automation delivered exceptional results. Within 90 days, our portfolio generated $50K in monthly recurring revenue. Their proprietary inventory optimization algorithms and strategic capital deployment transformed our Amazon operations into a cash-flow generative asset.",
+      content:
+        "Shark Retail helped us launch our first Amazon FBA product and we hit $50K in sales within just 3 months. Their automation around inventory management and PPC optimization took us from struggling to profitable in record time.",
       metrics: [
-        { label: "Monthly Revenue", value: "$50K" },
-        { label: "Time to Profit", value: "90 Days" }
+        { label: "Sales in 3 Months", value: "$50K" },
+        { label: "Time to Scale", value: "90 Days" }
       ]
     },
     {
       name: "Jennifer Walsh",
-      role: "Portfolio Manager",
-      company: "Strategic Ventures",
+      role: "E-commerce Business Owner",
+      company: "Multi-Channel Brand",
       date: "Dec 8, 2024",
-      content: "The institutional-grade automation frameworks deployed by Shark Retail exceeded all expectations. Our Amazon portfolio achieved 400% growth through their systematic approach to market analysis and strategic positioning. Their proprietary systems consistently outperform market benchmarks.",
+      content:
+        "The Amazon FBA automation services from Shark Retail are phenomenal. They handled everything from product research to listing optimization. Our sales increased by 400%, and we're now ranking on page 1 for our main keywords. Highly recommended.",
       metrics: [
-        { label: "Portfolio Growth", value: "400%" },
-        { label: "Market Outperformance", value: "250%" }
+        { label: "Sales Increase", value: "400%" },
+        { label: "Keyword Ranking", value: "Page 1" }
       ]
     },
     {
       name: "Robert Kim",
-      role: "Capital Allocation Director",
-      company: "Global Investment Group",
+      role: "Amazon Seller",
+      company: "FBA Brand Operator",
       date: "Nov 20, 2024",
-      content: "Working with Shark Retail transformed our Amazon operations into a systematic wealth-building platform. Their predictive analytics and automated fulfillment systems delivered 100% ROI growth within six months. The institutional-grade reporting and strategic insights are unparalleled.",
+      content:
+        "Working with Shark Retail for our Amazon FBA business has been transformative. Their automation tools for inventory forecasting and repricing saved us from stockouts and helped us maintain competitive pricing. Revenue grew 250% in just 6 months.",
       metrics: [
-        { label: "ROI Growth", value: "100%" },
+        { label: "Revenue Growth", value: "250%" },
         { label: "Timeframe", value: "6 Months" }
       ]
     }
   ];
 
   return (
-    <section className="relative bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-900/20 via-black to-teal-900/10"></div>
-      
-      {/* Animated gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-      
-      {/* Floating Side Button (hide on small) */}
-      <a href="/contact" className="hidden md:flex fixed top-1/2 right-0 -translate-y-1/2 bg-teal-400 text-black font-bold py-4 px-3 rounded-l-xl z-50 [writing-mode:vertical-rl] rotate-180 uppercase tracking-wider text-sm hover:bg-white transition-colors">
-        Let&apos;s Talk Business
-      </a>
-
-      {/* Floating Elements */}
-      <FloatingElements />
+    <section className="relative bg-[#020205] py-24 sm:py-32 px-4 sm:px-6 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-white">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-teal-900/10 rounded-full blur-[150px] mix-blend-screen" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-900/10 rounded-full blur-[120px] mix-blend-screen" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      </div>
 
       <div className="container mx-auto relative z-10">
-        {/* Enhanced Section Title */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          className="text-center mb-16 lg:mb-20"
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
-            Success Stories from{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400">
-              Industry Leaders
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.05] backdrop-blur-md mb-6 shadow-2xl">
+            <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+            <span className="text-xs font-bold text-gray-300 uppercase tracking-[0.2em]">Client Stories</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 tracking-tight leading-[1.1]">
+            Amazon FBA Success Stories from{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
+              Real Sellers
             </span>
           </h2>
-          <p className="text-sm sm:text-base md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Our partners have achieved extraordinary returns through systematic Amazon automation. 
-            These institutional-grade results demonstrate the power of our proprietary frameworks and strategic capital deployment.
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto font-medium leading-relaxed">
+            Our clients have transformed their Amazon FBA stores with our automation—from first product launches to multi‑six‑figure revenue. Expert inventory, PPC, and fulfillment, all in one place.
           </p>
-          <div className="flex justify-center mt-8">
-            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent"></div>
+          <div className="mt-8 flex justify-center">
+            <div className="w-32 h-px bg-gradient-to-r from-transparent via-teal-500/50 to-transparent" />
           </div>
         </motion.div>
 

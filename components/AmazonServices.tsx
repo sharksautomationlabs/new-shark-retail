@@ -1,171 +1,135 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Link2 } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
-// --- Custom SVG Icon Components for Amazon services ---
+const fadeUp = {
+  hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { type: 'spring' as const, stiffness: 80, damping: 20 },
+  },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+  },
+};
+
 const InventoryIcon = () => (
-  <svg className="w-8 h-8 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
   </svg>
 );
 
 const FulfillmentIcon = () => (
-  <svg className="w-8 h-8 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
 );
 
-const MarketingIcon = () => (
-  <svg className="w-8 h-8 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-  </svg>
-);
-
-const AnalyticsIcon = () => (
-  <svg className="w-8 h-8 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18M7 12l3-3 3 3 5-5" />
-  </svg>
-);
-
-// --- Chain Link Connector Component ---
-const ChainLinkConnector = ({ isLast = false, isVisible = false }: { isLast?: boolean; isVisible?: boolean }) => (
-  <div className={`hidden lg:block absolute top-1/2 -translate-y-1/2 transition-all duration-1500 ease-in-out ${
-    isLast ? 'opacity-0' : isVisible ? 'opacity-100' : 'opacity-30'
-  }`} style={{ left: 'calc(100% + 1rem)', zIndex: 5 }}>
-    <Link2 className="w-8 h-8 text-teal-400 transition-all duration-500 ease-in-out group-hover:text-teal-300 group-hover:drop-shadow-lg" strokeWidth={3} />
-  </div>
-);
-
-// --- Data for the Amazon services steps ---
 const servicesData = [
   {
-    number: "01",
-    stage: "Inventory",
-    title: "Systematic Inventory Optimization",
-    description: "Our proprietary algorithms ensure optimal stock levels and prevent stockouts while maximizing capital efficiency. We deploy predictive analytics to maintain perfect inventory velocity across all product lines.",
+    number: '01',
+    stage: 'Inventory',
+    title: 'Expertise in Inventory Management',
+    description:
+      'Our inventory management services ensure your products are always in stock and ready to meet customer demand. We protect you from costly stockouts while keeping your Amazon FBA operation lean and efficient.',
     icon: <InventoryIcon />,
   },
   {
-    number: "02",
-    stage: "Fulfillment",
-    title: "Institutional-Grade Fulfillment Operations",
-    description: "We guarantee seamless order processing and fulfillment through our network of strategic partnerships. Our systematic approach ensures consistent delivery performance and customer satisfaction at scale.",
+    number: '02',
+    stage: 'Fulfillment',
+    title: 'Superior Order Fulfillment Solutions',
+    description:
+      'We guarantee fast, reliable delivery so your customers receive their orders promptly and in perfect condition. Our optimized fulfillment workflows keep your Amazon metrics healthy and your buyers coming back.',
     icon: <FulfillmentIcon />,
   },
 ];
 
-// --- Amazon Services Component ---
 const AmazonServices: React.FC = () => {
-  const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Reset and start animation
-            setVisibleCards([]);
-            
-            // Reveal cards one by one with delay
-            for (let i = 0; i < 2; i++) {
-              setTimeout(() => {
-                setVisibleCards(prev => [...prev, i]);
-              }, i * 800); // 800ms delay between each card for smoother flow
-            }
-          } else {
-            // Reset when leaving the section
-            setVisibleCards([]);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' });
 
   return (
-    <section ref={sectionRef} className="relative bg-black text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background Radial Gradient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, rgba(0,0,0,0) 70%) z-0"></div>
-      
-      {/* Teal Glow from Right Bottom */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl z-0"></div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-teal-400/30 rounded-full blur-2xl z-0"></div>
-      <div className="absolute bottom-0 right-0 w-32 h-32 bg-teal-400/60 rounded-full blur-xl z-0"></div>
-      
-      {/* Teal Glow from Top Left */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl z-0"></div>
-      <div className="absolute top-0 left-0 w-64 h-64 bg-teal-400/30 rounded-full blur-2xl z-0"></div>
-      <div className="absolute top-0 left-0 w-32 h-32 bg-teal-400/60 rounded-full blur-xl z-0"></div>
+    <section
+      ref={sectionRef}
+      className="relative bg-[#020202] py-24 sm:py-32 px-4 sm:px-6 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-white"
+    >
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] bg-teal-900/10 rounded-full blur-[150px]" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+      </div>
 
-      <div className="container mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="text-center mb-20"
+        >
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.05] backdrop-blur-md mb-6 shadow-2xl">
+            <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+            <span className="text-xs font-bold text-gray-300 uppercase tracking-[0.2em]">What We Deliver</span>
+          </motion.div>
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4 leading-[1.1]">
             Proprietary Systems for{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-500">Market Domination</span>
-          </h2>
-          <p className="text-sm sm:text-base md:text-xl text-gray-400">
-            From Automation to Excellence
-          </p>
-        </div>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-teal-300 to-emerald-400">
+              Amazon FBA Domination
+            </span>
+          </motion.h2>
+          <motion.p variants={fadeUp} className="text-gray-400 text-lg max-w-2xl mx-auto font-medium">
+            From automation to excellence—inventory and fulfillment, done right.
+          </motion.p>
+        </motion.div>
 
-        {/* Timeline Container */}
-        <div className="relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-16 lg:gap-x-8">
-            {servicesData.map((service, index) => (
-            <div key={index} className={`relative group transition-all duration-1500 ease-in-out ${
-              visibleCards.includes(index) 
-                ? 'opacity-100 blur-0' 
-                : 'opacity-60 blur-lg'
-            }`}>
-              {/* Timeline Node (hidden on small) */}
-              <div className="hidden lg:block lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2">
-                <div className="absolute top-0 left-8 lg:left-auto lg:top-auto w-0.5 h-full lg:w-auto lg:h-0.5"></div>
-                <div className="absolute top-0 -left-1.5 lg:left-auto lg:top-auto transform-none lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-black border-2 border-teal-400/50 group-hover:border-teal-400 transition-colors duration-300">
-                      <div className="w-3 h-3 rounded-full bg-teal-400 shadow-[0_0_10px_theme(colors.teal.400)]"></div>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto"
+        >
+          {servicesData.map((service, index) => (
+            <motion.div key={service.number} variants={fadeUp} className="relative group h-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-emerald-500/0 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0" />
+              <div className="relative h-full bg-[#0a0a0c]/80 backdrop-blur-2xl border border-white/5 group-hover:border-teal-500/30 rounded-[2rem] p-8 sm:p-10 transition-all duration-500 z-10 overflow-hidden flex flex-col">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-teal-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="flex items-start justify-between mb-6">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-teal-400/20 blur-md rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                    <div className="relative w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-teal-400 group-hover:bg-teal-500/10 group-hover:border-teal-500/40 group-hover:scale-110 transition-all duration-500">
+                      {service.icon}
+                    </div>
                   </div>
+                  <span className="text-[10px] font-bold text-gray-600 uppercase tracking-[0.2em] group-hover:text-teal-500/60">MOD—0{index + 1}</span>
                 </div>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-xs font-bold text-teal-400 uppercase tracking-widest">{service.stage}</span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-teal-300 transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-gray-400 text-sm sm:text-base leading-relaxed font-medium flex-grow group-hover:text-gray-300 transition-colors duration-300">
+                  {service.description}
+                </p>
+                <a
+                  href="/contact"
+                  className="mt-6 inline-flex items-center gap-2 text-teal-400 font-bold text-sm uppercase tracking-wider hover:text-teal-300 transition-colors group/link"
+                >
+                  Get a quote
+                  <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                </a>
               </div>
-
-              {/* Right Chain Link Connector */}
-              <ChainLinkConnector 
-                isLast={index === servicesData.length - 1} 
-                isVisible={visibleCards.includes(index)}
-              />
-
-              {/* Content Card */}
-              <div className="pl-0 lg:pl-0 lg:pt-20 text-center lg:text-left max-w-md mx-auto lg:max-w-none lg:mx-0">
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md group-hover:border-white/20 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-teal-400/25 transition-all duration-500 ease-in-out h-full flex flex-col">
-                      {/* Card Number Label */}
-                      <div className="absolute -top-3 -left-3 w-8 h-8 bg-teal-400 text-white font-bold rounded-full flex items-center justify-center text-sm z-10">
-                          {index + 1}
-                      </div>
-                      <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
-                          {service.icon}
-                          <span className="text-sm font-bold uppercase tracking-widest text-teal-400">{service.stage}</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed flex-grow">{service.description}</p>
-                  </div>
-              </div>
-            </div>
-            ))}
-          </div>
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

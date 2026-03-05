@@ -10,7 +10,7 @@ import TikTokCTA from '@/components/TikTokCTA';
 
 const TikTokPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#020205]">
       <Header />
       <main>
         <TikTokHero />

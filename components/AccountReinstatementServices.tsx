@@ -1,300 +1,76 @@
 "use client";
 
-import React, { useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import PlexusBackgroundWhite from '@/components/PlexusBackgroundWhite';
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { ArrowRight, Shield, Layers, FileCheck, Zap } from "lucide-react";
 
-// --- Account Reinstatement Services Component ---
+const fadeUp = {
+  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { type: "spring" as const, stiffness: 80, damping: 20 } },
+};
+const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } } };
+
+const services = [
+  { title: "Amazon Account Recovery", desc: "Advanced appeal letter preparation, policy violation analysis, documentation, and direct Amazon support communication for 95% reinstatement success.", icon: Shield },
+  { title: "Multi-Platform Recovery", desc: "Platform-specific recovery strategies across Amazon, eBay, Shopify, and Walmart. Cross-platform compliance management and unified documentation.", icon: Layers },
+  { title: "Compliance Management", desc: "Real-time policy monitoring, automated compliance checking, risk assessment, and preventive action to avoid future suspensions.", icon: FileCheck },
+  { title: "Emergency Recovery", desc: "24-hour emergency response, priority case handling, expedited documentation, and crisis management when your business depends on account access.", icon: Zap },
+];
+
 const AccountReinstatementServices: React.FC = () => {
-  const [selectedService, setSelectedService] = useState<number | null>(null);
-  const timelineRef = useRef(null);
-  const isInView = useInView(timelineRef, { once: true, margin: "-100px" });
-
-  const servicesData = [
-    {
-      id: 1,
-      title: "Amazon Account Recovery That Works",
-      description: "The Shark Retail delivers complete Amazon account reinstatement designed for real results. With strong industry insight and a focus on your recovery, we help sellers succeed in today's complex marketplace environment.",
-      details: {
-        features: [
-          "Advanced appeal letter preparation",
-          "Policy violation analysis and correction",
-          "Documentation and evidence collection",
-          "Direct communication with Amazon support",
-          "Compliance strategy implementation",
-          "Ongoing account monitoring"
-        ],
-        benefits: [
-          "95% reinstatement success rate",
-          "Average 14-day recovery timeline",
-          "24/7 case monitoring",
-          "Prevention of future suspensions"
-        ]
-      }
-    },
-    {
-      id: 2,
-      title: "Multi-Platform Account Recovery",
-      description: "Professional account reinstatement across all major e-commerce platforms. Our systematic approach ensures consistent recovery results regardless of platform complexity.",
-      details: {
-        features: [
-          "Platform-specific recovery strategies",
-          "Cross-platform compliance management",
-          "Unified documentation systems",
-          "Multi-channel communication",
-          "Risk assessment and mitigation",
-          "Scalable recovery processes"
-        ],
-        benefits: [
-          "90% success across all platforms",
-          "Reduced recovery time by 60%",
-          "Comprehensive compliance coverage",
-          "Unified account management"
-        ]
-      }
-    },
-    {
-      id: 3,
-      title: "Compliance Management Solutions",
-      description: "Advanced compliance monitoring and management that prevents account suspensions through proactive policy adherence and risk mitigation strategies.",
-      details: {
-        features: [
-          "Real-time policy monitoring",
-          "Automated compliance checking",
-          "Risk assessment algorithms",
-          "Preventive action recommendations",
-          "Compliance training programs",
-          "Audit preparation support"
-        ],
-        benefits: [
-          "99% compliance rate",
-          "Zero preventable suspensions",
-          "Automated risk detection",
-          "Continuous improvement protocols"
-        ]
-      }
-    },
-    {
-      id: 4,
-      title: "Emergency Recovery Services",
-      description: "Rapid response account recovery services for critical business situations. Our emergency protocols ensure immediate action when your business depends on account access.",
-      details: {
-        features: [
-          "24-hour emergency response",
-          "Priority case handling",
-          "Expedited documentation",
-          "Direct platform escalation",
-          "Crisis management protocols",
-          "Business continuity planning"
-        ],
-        benefits: [
-          "Same-day response guarantee",
-          "Priority platform access",
-          "Crisis resolution expertise",
-          "Business continuity assurance"
-        ]
-      }
-    }
-  ];
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative bg-black text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <PlexusBackgroundWhite />
-      
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-400/10 via-black to-teal-400/5"></div>
-      
-      {/* Floating Side Button (hide on small) */}
-      <a href="/contact" className="hidden md:flex fixed top-1/2 right-0 -translate-y-1/2 bg-teal-400 text-black font-bold py-4 px-3 rounded-l-xl z-50 [writing-mode:vertical-rl] rotate-180 uppercase tracking-wider text-sm hover:bg-white transition-colors">
-        Let&apos;s Talk Business
-      </a>
+    <section ref={sectionRef} className="relative bg-[#020205] py-24 sm:py-32 px-4 sm:px-6 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-white">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-10%] right-[-10%] w-[40rem] h-[40rem] bg-teal-500/10 rounded-full blur-[130px]" />
+        <div className="absolute bottom-[-15%] left-[-10%] w-[36rem] h-[36rem] bg-cyan-500/8 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
+      </div>
 
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12 sm:mb-16 lg:mb-20"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-              Account Reinstatement{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400">
-                Solutions
-              </span>
-            </h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Our comprehensive account reinstatement services are designed to recover your suspended assets, 
-              ensure compliance, and prevent future account issues.
-            </p>
-            <div className="flex justify-center mt-8">
-              <div className="w-32 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent"></div>
-            </div>
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <motion.div variants={staggerContainer} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-center mb-16">
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.05] backdrop-blur-md mb-6">
+            <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+            <span className="text-xs font-bold text-gray-300 uppercase tracking-[0.2em]">Solutions</span>
           </motion.div>
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+            Account Reinstatement <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">Solutions</span>
+          </motion.h2>
+          <motion.p variants={fadeUp} className="text-gray-400 text-lg max-w-3xl mx-auto font-medium">
+            Our comprehensive account reinstatement services recover your suspended assets, ensure compliance, and prevent future account issues.
+          </motion.p>
+        </motion.div>
 
-          {/* Timeline Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16">
-            {/* Left Side: Timeline */}
-            <div className="relative" ref={timelineRef}>
-              {/* Animated Timeline Line */}
+        <motion.div variants={staggerContainer} initial="hidden" animate={isInView ? "visible" : "hidden"} className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {services.map((service) => {
+            const Icon = service.icon;
+            return (
               <motion.div
-                className="absolute left-8 top-0 w-0.5 bg-teal-400/30"
-                initial={{ height: 0 }}
-                animate={{ height: isInView ? "100%" : 0 }}
-                transition={{ duration: 2, ease: "easeInOut" }}
-              ></motion.div>
-
-              {/* Timeline Cards */}
-              <div className="space-y-8">
-                {servicesData.map((service, index) => (
-                  <motion.div
-                    key={service.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.2 }}
-                    className="relative"
-                  >
-                    {/* Timeline Node */}
-                    <motion.div
-                      className={`absolute left-6 w-4 h-4 rounded-full border-2 z-10 transition-all duration-300 ${
-                        selectedService === service.id
-                          ? 'bg-teal-400 border-teal-400 scale-125'
-                          : 'bg-black border-teal-400 hover:bg-teal-400'
-                      }`}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: isInView ? 1 : 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.2 + 0.5 }}
-                    ></motion.div>
-
-                    {/* Service Card */}
-                    <div
-                      className={`ml-16 bg-white/5 border backdrop-blur-md text-white p-6 rounded-2xl shadow-2xl h-full flex flex-col relative group hover:border-white/20 hover:-translate-y-2 transition-all duration-300 cursor-pointer ${
-                        selectedService === service.id
-                          ? 'border-teal-400/50 shadow-lg shadow-teal-400/20'
-                          : 'border-white/10'
-                      }`}
-                      onClick={() => setSelectedService(selectedService === service.id ? null : service.id)}
-                    >
-                      {/* Service Number */}
-                      <div className="absolute top-4 left-4 w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center text-black font-bold text-sm">
-                        {service.id}
-                      </div>
-
-                      <div className="mt-8">
-                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-teal-300 transition-colors duration-300">
-                          {service.title}
-                        </h3>
-                        <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
-                          {service.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Side: Detailed View */}
-            <div className="lg:sticky lg:top-24">
-              {selectedService ? (
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-white/5 border border-white/10 backdrop-blur-md text-white p-8 rounded-2xl shadow-2xl shadow-teal-400/25"
-                >
-                  {(() => {
-                    const service = servicesData.find(s => s.id === selectedService);
-                    if (!service) return null;
-
-                    return (
-                      <>
-                        <div className="flex items-center mb-6">
-                          <div className="w-12 h-12 bg-teal-400 rounded-full flex items-center justify-center mr-4">
-                            <span className="text-white font-bold text-lg">{service.id}</span>
-                          </div>
-                          <div>
-                            <h3 className="text-2xl font-bold text-white">{service.title}</h3>
-                          </div>
-                        </div>
-
-                        <div className="space-y-6">
-                          {/* Features */}
-                          <div>
-                            <h4 className="text-lg font-bold text-white mb-3">Key Features</h4>
-                            <ul className="space-y-2">
-                              {service.details.features.map((feature, index) => (
-                                <li key={index} className="flex items-center text-gray-300">
-                                  <div className="w-2 h-2 bg-teal-400 rounded-full mr-3"></div>
-                                  {feature}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                          {/* Benefits */}
-                          <div>
-                            <h4 className="text-lg font-bold text-white mb-3">Expected Benefits</h4>
-                            <ul className="space-y-2">
-                              {service.details.benefits.map((benefit, index) => (
-                                <li key={index} className="flex items-center text-gray-300">
-                                  <div className="w-2 h-2 bg-teal-400 rounded-full mr-3"></div>
-                                  {benefit}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                          {/* CTA */}
-                          <div className="pt-6 border-t border-white/10">
-                            <a
-                              href="/contact"
-                              className="w-full bg-teal-400 px-6 py-3 text-base font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-black rounded-full text-center block cursor-pointer"
-                            >
-                              Get Started
-                            </a>
-                          </div>
-                        </div>
-                      </>
-                    );
-                  })()}
-                </motion.div>
-              ) : (
-                <div className="bg-white/5 border border-white/10 backdrop-blur-md text-white p-8 rounded-2xl shadow-2xl shadow-teal-400/25 text-center">
-                  <h3 className="text-xl font-bold text-white mb-4">Select a Service</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    Click on any service card to view detailed features, benefits, and implementation details.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-center mt-12 sm:mt-16"
-          >
-            <div className="bg-gradient-to-r from-teal-400/10 to-teal-500/10 rounded-3xl p-6 sm:p-8 border border-teal-400/30 backdrop-blur-md">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
-                Ready to Recover Your Accounts?
-              </h3>
-              <p className="text-sm sm:text-lg text-gray-300 mb-5 sm:mb-6 max-w-2xl mx-auto">
-                Transform your suspended assets with our comprehensive account reinstatement solutions. 
-                Experience the difference that professional recovery makes.
-              </p>
-              <a
-                href="/contact"
-                className="inline-flex w-full sm:w-auto items-center justify-center bg-teal-400 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-black rounded-full cursor-pointer"
+                key={service.title}
+                variants={fadeUp}
+                className="rounded-2xl border border-white/[0.06] bg-[#0a0a0c]/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-black/40 hover:border-teal-500/20 hover:shadow-[0_0_60px_rgba(20,184,166,0.08)] transition-all duration-500 group"
               >
-                Get Started Today
-              </a>
-            </div>
-          </motion.div>
-        </div>
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-teal-500/15 text-teal-400 border border-teal-500/20 group-hover:border-teal-400/40 transition-colors">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{service.title}</h3>
+                    <p className="text-slate-400 text-sm sm:text-base leading-relaxed">{service.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mt-12">
+          <a href="/contact" className="inline-flex items-center gap-3 rounded-full bg-teal-400 text-black font-extrabold px-8 py-4 text-sm uppercase tracking-wider hover:bg-teal-300 transition-colors duration-300 shadow-[0_0_40px_rgba(20,184,166,0.25)]">
+            Get Started <ArrowRight className="w-5 h-5" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

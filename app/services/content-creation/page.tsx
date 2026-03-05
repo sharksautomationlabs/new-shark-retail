@@ -11,7 +11,7 @@ import ContentCreationCTA from '@/components/ContentCreationCTA';
 
 const ContentCreationPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#020205] text-white">
       <Header />
 
       <main>

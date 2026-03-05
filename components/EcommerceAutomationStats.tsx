@@ -117,7 +117,7 @@ const EcommerceAutomationStats: React.FC = () => {
               `}
             >
               {/* Decorative background texture */}
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
+              <div className="absolute inset-0 opacity-10 mix-blend-overlay" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}></div>
               
               <h4 className="text-4xl lg:text-5xl font-extrabold text-white mb-3 drop-shadow-md tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
                 {stat.value}

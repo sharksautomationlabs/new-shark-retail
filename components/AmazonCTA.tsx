@@ -2,9 +2,26 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ArrowRight, Phone, Clock, TrendingUp, Mail } from 'lucide-react';
 
-// --- Reusable Form Field Components ---
+const fadeUp = {
+  hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { type: 'spring' as const, stiffness: 80, damping: 20 },
+  },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+  },
+};
+
 interface FormFieldProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   label: string;
   as?: 'textarea';
@@ -13,13 +30,13 @@ interface FormFieldProps extends React.InputHTMLAttributes<HTMLInputElement | HT
 
 const FormField: React.FC<FormFieldProps> = ({ label, as, required = true, ...props }) => (
   <div>
-    <label className="block text-sm font-semibold text-gray-700 mb-1">
-      {label} {required && <span className="text-red-500">*</span>}
+    <label className="block text-sm font-semibold text-gray-300 mb-1">
+      {label} {required && <span className="text-red-400">*</span>}
     </label>
     {as === 'textarea' ? (
-      <textarea {...props as React.TextareaHTMLAttributes<HTMLTextAreaElement>} rows={4} className="w-full bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-900 placeholder-gray-500 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors" />
+      <textarea {...props as React.TextareaHTMLAttributes<HTMLTextAreaElement>} rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white placeholder-gray-500 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors" />
     ) : (
-      <input {...props as React.InputHTMLAttributes<HTMLInputElement>} className="w-full bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-900 placeholder-gray-500 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors" />
+      <input {...props as React.InputHTMLAttributes<HTMLInputElement>} className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white placeholder-gray-500 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors" />
     )}
   </div>
 );
@@ -33,14 +50,14 @@ interface CheckboxProps {
 
 const Checkbox: React.FC<CheckboxProps> = ({ label, id, checked, onChange }) => (
   <div className="flex items-center">
-    <input 
-      type="checkbox" 
-      id={id} 
+    <input
+      type="checkbox"
+      id={id}
       checked={checked}
       onChange={(e) => onChange(e.target.checked)}
-      className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
+      className="w-4 h-4 text-teal-500 border-white/20 rounded focus:ring-teal-500 bg-white/5"
     />
-    <label htmlFor={id} className="ml-2 text-sm text-gray-700">{label}</label>
+    <label htmlFor={id} className="ml-2 text-sm text-gray-400">{label}</label>
   </div>
 );
 
@@ -345,26 +362,40 @@ const AmazonCTA: React.FC = () => {
   };
 
   return (
-    <section className="relative bg-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-r from-teal-50/30 to-transparent"></div>
-      
-      {/* Top Right Teal Glow */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-gradient-to-bl from-teal-400/20 to-transparent"></div>
-      
-      {/* Floating Side Button (hide on small) */}
-      <a href="/contact" className="hidden md:flex fixed top-1/2 right-0 -translate-y-1/2 bg-teal-400 text-black font-bold py-4 px-3 rounded-l-xl z-50 [writing-mode:vertical-rl] rotate-180 uppercase tracking-wider text-sm hover:bg-white transition-colors">
-        Let&apos;s Talk Business
-      </a>
+    <section className="relative bg-[#020202] py-24 sm:py-32 px-4 sm:px-8 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-white">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-teal-500/10 rounded-full blur-[120px]" />
+        <motion.div animate={{ scale: [1, 2, 2.5], opacity: [0.5, 0, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeOut' }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30vw] h-[30vw] rounded-full border border-teal-500/20" />
+        <motion.div animate={{ scale: [1, 2, 2.5], opacity: [0.5, 0, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeOut', delay: 2 }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30vw] h-[30vw] rounded-full border border-teal-500/20" />
+        <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+      </div>
 
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-start relative z-10">
-        
-        {/* Left Column: Form */}
-        <div className="bg-gray-50 border border-gray-200 backdrop-blur-md text-gray-900 p-6 sm:p-8 rounded-2xl shadow-2xl shadow-teal-400/25">
-          <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-teal-600">Ready To Get Started</h2>
-          <p className="text-sm sm:text-base text-gray-600 mt-2 mb-6 sm:mb-8">
-            Connect with us to explore how we can deliver exceptional Amazon automation solutions for your business.
-          </p>
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} className="flex flex-col items-center text-center mb-16">
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-teal-500/30 bg-teal-500/10 backdrop-blur-md shadow-[0_0_20px_rgba(20,184,166,0.15)] mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500" />
+            </span>
+            <span className="text-[10px] font-bold text-teal-400 uppercase tracking-[0.3em]">Amazon FBA</span>
+          </motion.div>
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4 leading-[1.1]">
+            Ready to Scale Your <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">Amazon FBA</span> Business?
+          </motion.h2>
+          <motion.p variants={fadeUp} className="text-lg text-gray-400 max-w-2xl mx-auto font-medium mb-12">
+            Connect with us to explore premium Amazon FBA automation solutions tailored for your brand.
+          </motion.p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-start">
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
+            <div className="absolute -inset-px bg-gradient-to-br from-teal-500/30 to-transparent rounded-[2rem] opacity-60" />
+            <div className="relative bg-[#0a0a0c]/90 backdrop-blur-2xl border border-white/10 p-6 sm:p-8 rounded-[2rem]">
+              <h3 className="text-2xl font-bold text-white mb-2">Get Your Amazon FBA Plan</h3>
+              <p className="text-sm text-gray-400 mb-6 sm:mb-8">
+                Tell us about your brand and we&apos;ll design a custom automation roadmap.
+              </p>
           
           <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -394,29 +425,29 @@ const AmazonCTA: React.FC = () => {
               required
             />
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Phone number <span className="text-red-500">*</span></label>
+              <label className="block text-sm font-semibold text-gray-300 mb-1">Phone number <span className="text-red-400">*</span></label>
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
-                <select 
+                <select
                   value={`${selectedCountry.code}|${selectedCountry.name}`}
                   onChange={handleCountryChange}
-                  className="bg-gray-50 border border-gray-300 rounded-md sm:rounded-l-md sm:rounded-r-none p-3 text-gray-900 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors"
+                  className="bg-white/5 border border-white/10 rounded-xl sm:rounded-l-xl sm:rounded-r-none p-3 text-white focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors"
                 >
                   {countryCodes.map((country, index) => (
-                    <option key={`${country.code}-${country.name}-${index}`} value={`${country.code}|${country.name}`} className="bg-white text-gray-900">
+                    <option key={`${country.code}-${country.name}-${index}`} value={`${country.code}|${country.name}`} className="bg-zinc-900 text-white">
                       {country.name} ({country.code})
                     </option>
                   ))}
                 </select>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={phoneNumber}
                   onChange={handlePhoneChange}
-                  className="w-full bg-gray-50 border border-gray-300 sm:border-t sm:border-b sm:border-r p-3 text-gray-900 placeholder-gray-500 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors rounded-md sm:rounded-r-md sm:rounded-l-none" 
+                  className="w-full bg-white/5 border border-white/10 sm:border-l-0 p-3 text-white placeholder-gray-500 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors rounded-xl sm:rounded-r-xl"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Budget <span className="text-red-500">*</span></label>
+              <label className="block text-sm font-semibold text-gray-300 mb-1">Budget <span className="text-red-400">*</span></label>
               <input
                 type="text"
                 value={budget}
@@ -424,7 +455,7 @@ const AmazonCTA: React.FC = () => {
                 onBlur={handleBudgetBlur}
                 onFocus={handleBudgetFocus}
                 placeholder="Enter your budget (minimum $2,000)"
-                className="w-full bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-900 placeholder-gray-500 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors"
+                className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white placeholder-gray-500 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors"
               />
             </div>
             <FormField 
@@ -444,7 +475,7 @@ const AmazonCTA: React.FC = () => {
               required={false}
             />
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Services you&apos;re looking for <span className="text-red-500">*</span></label>
+              <label className="block text-sm font-semibold text-gray-300 mb-2">Services you&apos;re looking for <span className="text-red-400">*</span></label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {servicesOptions.map((service) => (
                   <Checkbox 
@@ -466,98 +497,84 @@ const AmazonCTA: React.FC = () => {
               required
             />
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">I am looking for a job at Shark Retail</label>
+              <label className="block text-sm font-semibold text-gray-300 mb-1">I am looking for a job at Shark Retail</label>
               <div className="relative">
-                <select 
+                <select
                   value={formData.jobInquiry}
                   onChange={handleJobInquiryChange}
-                  className="w-full appearance-none bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-900 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors"
+                  className="w-full appearance-none bg-white/5 border border-white/10 rounded-xl p-3 text-white focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors"
                 >
-                  <option className="bg-white text-gray-900">Please Select</option>
-                  <option className="bg-white text-gray-900">Yes</option>
-                  <option className="bg-white text-gray-900">No</option>
+                  <option value="Please Select" className="bg-zinc-900 text-white">Please Select</option>
+                  <option value="Yes" className="bg-zinc-900 text-white">Yes</option>
+                  <option value="No" className="bg-zinc-900 text-white">No</option>
                 </select>
                 <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
               </div>
             </div>
-            
-            {/* Success/Error Messages */}
+
             {submitStatus === 'success' && (
-              <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-md">
+              <div className="bg-teal-500/20 border border-teal-500/40 text-teal-200 px-4 py-3 rounded-xl">
                 Form submitted successfully! We&apos;ll get back to you soon.
               </div>
             )}
             {submitStatus === 'error' && errorMessage && (
-              <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-md">
+              <div className="bg-red-500/20 border border-red-500/40 text-red-200 px-4 py-3 rounded-xl">
                 {errorMessage}
               </div>
             )}
 
-            {/* reCAPTCHA Placeholder */}
-            <div className="bg-gray-100 border border-gray-300 rounded p-3 flex flex-wrap gap-3 items-center justify-between">
-                <div className="flex items-center">
-                    <div className="w-7 h-7 bg-teal-500 rounded flex items-center justify-center">
-                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </div>
-                    <span className="ml-3 text-xs text-gray-600">protected by reCAPTCHA</span>
+            <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex flex-wrap gap-3 items-center justify-between">
+              <div className="flex items-center">
+                <div className="w-7 h-7 bg-teal-500 rounded flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
-                 <div className="text-xs text-gray-500">Privacy - Terms</div>
+                <span className="ml-3 text-xs text-gray-500">protected by reCAPTCHA</span>
+              </div>
+              <div className="text-xs text-gray-500">Privacy - Terms</div>
             </div>
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={isSubmitting}
-              className="w-full bg-teal-400 text-black font-bold py-3 sm:py-4 rounded-md hover:bg-black hover:text-white transition-all duration-300 hover:shadow-2xl hover:shadow-teal-400/25 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              className="relative group w-full overflow-hidden rounded-full shadow-[0_0_40px_rgba(20,184,166,0.2)] hover:shadow-[0_0_60px_rgba(20,184,166,0.4)] transition-shadow duration-500"
             >
-              {isSubmitting ? 'Submitting...' : 'Submit'}
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-400 via-emerald-400 to-teal-400 opacity-100 group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_2s_infinite] skew-x-12" />
+              <span className="relative block w-full py-3 sm:py-4 font-extrabold text-black uppercase tracking-wider text-sm">
+                {isSubmitting ? 'Submitting...' : 'Submit'}
+              </span>
             </button>
           </form>
-        </div>
+            </div>
+          </motion.div>
 
-        {/* Right Column: Info */}
-        <div className="relative pt-8 sm:pt-12 lg:pt-16">
-          <div className="space-y-10 sm:space-y-12 lg:space-y-16">
-            <div className="flex items-start gap-6 group">
-              <div className="text-teal-600 mt-1 transform group-hover:scale-110 transition-all duration-300 group-hover:drop-shadow-2xl group-hover:drop-shadow-teal-400/50">
-                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-6">
+            {[
+              { icon: Clock, title: 'Zero Obligation', desc: 'Expert FBA advice tailored to your scaling goals.' },
+              { icon: TrendingUp, title: 'Proven Results', desc: 'Real sellers, real revenue—see testimonials above.' },
+              { icon: Mail, title: 'Direct Line', desc: 'info@thesharkretail.com' },
+            ].map((item, i) => (
+              <div key={i} className="relative group p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-teal-500/30 hover:bg-white/[0.04] transition-all duration-500">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="relative flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-black border border-white/10 flex items-center justify-center text-teal-400 group-hover:border-teal-400/50 transition-all duration-500">
+                    <item.icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-white mb-1">{item.title}</h4>
+                    <p className="text-gray-400 text-sm">{item.desc}</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-teal-600 text-transparent bg-clip-text group-hover:from-teal-600 group-hover:to-gray-900 transition-all duration-300">
-                  Global Presence
-                </h3>
-                <p className="text-gray-600 mt-2 max-w-sm group-hover:text-gray-700 transition-colors duration-300">We're across 5 continents, explore our office nearest to you.</p>
-                <a 
-                  href="/about"
-                  className="inline-flex items-center justify-center bg-teal-400 text-black font-bold py-3 px-8 rounded-full mt-6 hover:bg-black hover:text-white transition-all duration-300 hover:shadow-2xl hover:shadow-teal-400/25 hover:-translate-y-1 cursor-pointer"
-                >
-                  Learn more
-                </a>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-6 group">
-              <div className="text-teal-600 mt-1 transform group-hover:scale-110 transition-all duration-300 group-hover:drop-shadow-2xl group-hover:drop-shadow-teal-400/50">
-                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-teal-600 text-transparent bg-clip-text group-hover:from-teal-600 group-hover:to-gray-900 transition-all duration-300">
-                  Global Leaders
-                </h3>
-                <p className="text-gray-600 mt-2 max-w-sm group-hover:text-gray-700 transition-colors duration-300">Our capability and competencies are backed by diverse Global leadership.</p>
-                <a 
-                  href="/about"
-                  className="inline-flex items-center justify-center bg-teal-400 text-black font-bold py-3 px-8 rounded-full mt-6 hover:bg-black hover:text-white transition-all duration-300 hover:shadow-2xl hover:shadow-teal-400/25 hover:-translate-y-1 cursor-pointer"
-                >
-                  Learn more
-                </a>
-              </div>
-            </div>
-          </div>
+            ))}
+            <a href="tel:+14694807938" className="flex items-center justify-center gap-3 w-full py-4 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 font-bold hover:bg-teal-500/20 transition-colors">
+              <Phone className="w-5 h-5" />
+              (469) 480-7938
+            </a>
+          </motion.div>
         </div>
       </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `@keyframes shimmer { 100% { transform: translateX(200%) skewX(12deg); } }` }} />
     </section>
   );
 };

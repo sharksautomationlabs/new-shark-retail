@@ -1,199 +1,246 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import PlexusBackgroundWhite from './PlexusBackgroundWhite';
+import React, { useRef, useState } from "react";
+import { motion, useInView, LayoutGroup } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
-// --- Proof Image Card Component ---
-const ProofCard: React.FC<{
-  image: string;
-  alt: string;
-  delay?: number;
-}> = ({ image, alt, delay = 0 }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay }}
-      viewport={{ once: true }}
-      className="group relative"
-    >
-      <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-teal-400/25 relative overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        {/* Image Container */}
-        <div className="relative overflow-hidden rounded-xl">
-          <img 
-            src={image} 
-            alt={alt}
-            className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-          />
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-      </div>
-    </motion.div>
-  );
+const fadeUp = {
+  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { type: "spring" as const, stiffness: 80, damping: 20 },
+  },
 };
 
-// --- Floating Elements Component ---
-const FloatingElements: React.FC = () => {
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {/* Floating geometric shapes */}
-      <motion.div
-        animate={{ 
-          y: [0, -20, 0],
-          rotate: [0, 180, 360]
-        }}
-        transition={{ 
-          duration: 8, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
-        }}
-        className="absolute top-20 left-10 w-4 h-4 border border-teal-400/30 rotate-45"
-      />
-      <motion.div
-        animate={{ 
-          y: [0, 15, 0],
-          x: [0, 10, 0]
-        }}
-        transition={{ 
-          duration: 6, 
-          repeat: Infinity, 
-          ease: "easeInOut",
-          delay: 1
-        }}
-        className="absolute top-40 right-20 w-3 h-3 bg-teal-400/20 rounded-full"
-      />
-      <motion.div
-        animate={{ 
-          y: [0, -25, 0],
-          rotate: [0, -180, -360]
-        }}
-        transition={{ 
-          duration: 10, 
-          repeat: Infinity, 
-          ease: "easeInOut",
-          delay: 2
-        }}
-        className="absolute bottom-32 left-1/4 w-5 h-5 border border-teal-400/20 rounded-full"
-      />
-    </div>
-  );
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
 };
 
-// --- Etsy Proof Component ---
+const proofData = [
+  {
+    image:
+      "https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    alt: "Etsy Performance Dashboard 1",
+  },
+  {
+    image:
+      "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    alt: "Etsy Performance Dashboard 2",
+  },
+  {
+    image:
+      "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    alt: "Etsy Performance Dashboard 3",
+  },
+];
+
 const EtsyProof: React.FC = () => {
-  const proofData = [
-    {
-      image: "/images/etsy-proof/etsy-sale1.jpg",
-      alt: "Etsy Sales Dashboard 1"
-    },
-    {
-      image: "/images/etsy-proof/etsy-sale2.png", 
-      alt: "Etsy Sales Dashboard 2"
-    },
-    {
-      image: "/images/etsy-proof/etsy-sale3.png",
-      alt: "Etsy Sales Dashboard 3"
-    }
-  ];
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="relative bg-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-50 to-white z-0"></div>
-      
-      {/* Plexus Background */}
-      <PlexusBackgroundWhite />
-      
-      {/* Animated gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-pulse z-1"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse z-1" style={{animationDelay: '2s'}}></div>
-      
-      {/* Floating Elements */}
-      <FloatingElements />
+    <section
+      ref={sectionRef}
+      className="relative bg-[#020205] py-24 sm:py-32 px-4 sm:px-6 lg:px-12 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-white"
+    >
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-teal-500/15 rounded-full blur-[130px]" />
+        <div className="absolute bottom-[-15%] right-[-10%] w-[36rem] h-[36rem] bg-cyan-500/10 rounded-full blur-[120px]" />
+        <div
+          className="absolute bottom-[-40%] left-1/2 -translate-x-1/2 w-[140%] h-[80%] opacity-60"
+          style={{
+            backgroundImage:
+              "linear-gradient(#14b8a610 1px, transparent 1px), linear-gradient(90deg,#14b8a610 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+            transform: "perspective(900px) rotateX(70deg)",
+            transformOrigin: "top center",
+          }}
+        />
+      </div>
 
-      <div className="container mx-auto relative z-10">
-        {/* Section Title */}
-        <motion.div 
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="text-center mb-16"
+        >
+          <motion.div
+            variants={fadeUp}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.05] backdrop-blur-md mb-6 shadow-2xl"
+          >
+            <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+            <span className="text-xs font-bold text-gray-300 uppercase tracking-[0.2em]">
+              Proof
+            </span>
+          </motion.div>
+          <motion.h2
+            variants={fadeUp}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4 leading-[1.1]"
+          >
+            Etsy Shop{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
+              Results & Performance
+            </span>
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="text-gray-400 text-lg max-w-3xl mx-auto font-medium"
+          >
+            Comprehensive analytics showcasing how our Etsy automation drives
+            consistent orders, repeat customers, and scalable revenue for your
+            handmade and vintage brand.
+          </motion.p>
+          <motion.div variants={fadeUp} className="mt-8 flex justify-center">
+            <div className="w-32 h-px bg-gradient-to-r from-transparent via-teal-500/50 to-transparent" />
+          </motion.div>
+        </motion.div>
+
+        <LayoutGroup>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -16, rotateX: 8 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="relative mb-16"
+          >
+            <motion.div
+              className="relative mx-auto max-w-5xl rounded-[2.5rem] border border-teal-500/30 bg-gradient-to-b from-white/[0.04] to-white/[0.01] backdrop-blur-3xl shadow-[0_40px_120px_rgba(15,23,42,0.9)] overflow-hidden"
+              style={{
+                transform: "perspective(1200px) rotateX(16deg)",
+                transformOrigin: "top center",
+              }}
+              layout
+            >
+              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-70" />
+              <div className="relative px-6 pt-8 pb-6 sm:px-10 sm:pt-10 sm:pb-8">
+                <div className="mb-6 flex items-center justify-between text-xs font-mono text-teal-200/80 uppercase tracking-[0.25em]">
+                  <span>Etsy • Live Console</span>
+                  <span className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#22c55e]" />
+                    Realtime
+                  </span>
+                </div>
+                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-black/60 border border-white/10">
+                  <motion.img
+                    key={proofData[activeIndex].image}
+                    src={proofData[activeIndex].image}
+                    alt={proofData[activeIndex].alt}
+                    layoutId={`etsy-proof-${activeIndex}`}
+                    className="w-full h-full object-cover md:object-contain opacity-95"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-teal-500/20 via-transparent to-cyan-500/10 mix-blend-screen" />
+                </div>
+                <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left text-xs sm:text-sm font-medium text-teal-100/90">
+                  <div className="rounded-xl bg-white/5 border border-white/10 px-4 py-3">
+                    <div className="text-[0.65rem] uppercase tracking-[0.25em] text-slate-400 mb-1">
+                      Monthly Orders
+                    </div>
+                    <div className="text-xl font-bold text-teal-300">
+                      500+
+                    </div>
+                    <div className="text-[0.75rem] text-slate-400">
+                      Across key niches
+                    </div>
+                  </div>
+                  <div className="rounded-xl bg-white/5 border border-white/10 px-4 py-3">
+                    <div className="text-[0.65rem] uppercase tracking-[0.25em] text-slate-400 mb-1">
+                      Star Rating
+                    </div>
+                    <div className="text-xl font-bold text-teal-300">
+                      4.9★
+                    </div>
+                    <div className="text-[0.75rem] text-slate-400">
+                      Average feedback
+                    </div>
+                  </div>
+                  <div className="rounded-xl bg-white/5 border border-white/10 px-4 py-3">
+                    <div className="text-[0.65rem] uppercase tracking-[0.25em] text-slate-400 mb-1">
+                      Revenue Lift
+                    </div>
+                    <div className="text-xl font-bold text-teal-300">
+                      +220%
+                    </div>
+                    <div className="text-[0.75rem] text-slate-400">
+                      After automation
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-3 mb-6"
+          >
+            {proofData.map((proof, index) => (
+              <motion.div
+                key={proof.alt}
+                variants={fadeUp}
+                onClick={() => setActiveIndex(index)}
+                className={`min-w-[180px] sm:min-w-[220px] rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${
+                  activeIndex === index
+                    ? "bg-[#050609]/95 border border-teal-400/70 shadow-[0_22px_70px_rgba(20,184,166,0.55)] scale-[1.03]"
+                    : "bg-[#050609]/90 border border-white/10 hover:border-teal-400/60"
+                }`}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <motion.img
+                    src={proof.image}
+                    alt={proof.alt}
+                    layoutId={`etsy-proof-${index}`}
+                    className="w-full h-full object-cover opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                </div>
+                <div className="px-4 py-3 text-xs text-slate-300 truncate">
+                  {proof.alt}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </LayoutGroup>
+
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          className="relative rounded-[2.5rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 backdrop-blur-2xl p-[1px] overflow-hidden shadow-2xl max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 sm:mb-6">
-            Etsy{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400">
-              Performance Metrics
-            </span>
-          </h2>
-          <p className="text-sm sm:text-base md:text-xl text-gray-600 max-w-5xl mx-auto">
-            Comprehensive analytics showcasing systematic capital deployment and measurable returns from our proprietary Etsy automation frameworks. 
-            These performance indicators demonstrate our institutional approach to systematic wealth generation.
-          </p>
-          <div className="flex justify-center mt-8">
-            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent"></div>
-          </div>
-        </motion.div>
-
-        {/* Proof Images Grid */}
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {proofData.map((proof, index) => (
-              <ProofCard
-                key={index}
-                image={proof.image}
-                alt={proof.alt}
-                delay={index * 0.1}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mt-12 sm:mt-16"
-        >
-          <div className="relative bg-black rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto overflow-hidden">
-            {/* Background Video */}
-            <video
-              className="absolute inset-0 w-full h-full object-cover z-0 opacity-20"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              controls={false}
-            >
-              <source src="/videos/bg-pattern.mp4" type="video/mp4" />
-            </video>
-            
-            {/* Teal Overlay */}
-            <div className="absolute inset-0 bg-teal-400/10 z-5"></div>
-            
-            {/* Content */}
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Ready to See These Results for Your Etsy Business?
+          <div className="relative bg-[#0a0a0c] rounded-[2.4rem] p-8 sm:p-12 flex flex-col sm:flex-row items-center justify-between gap-8">
+            <div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">
+                Ready to See These Results for Your Etsy Shop?
               </h3>
-              <p className="text-teal-100 mb-6">
-                Join our systematic approach to Etsy automation and start generating consistent, measurable returns.
+              <p className="text-gray-400 font-medium">
+                Join our approach to Etsy automation and start generating
+                consistent, measurable returns from your creative brand.
               </p>
-              <a 
-                href="/contact"
-                className="inline-flex w-full sm:w-auto items-center justify-center bg-teal-400 px-4 sm:px-8 py-2.5 sm:py-4 text-xs sm:text-base font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-black rounded-full"
-              >
-                Schedule Your Capital Intro Call
-              </a>
             </div>
+            <a
+              href="/contact"
+              className="relative group flex-shrink-0 overflow-hidden rounded-full shadow-[0_0_40px_rgba(20,184,166,0.2)] hover:shadow-[0_0_60px_rgba(20,184,166,0.4)] transition-shadow duration-500"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-400 via-emerald-400 to-teal-400 opacity-100 group-hover:scale-110 transition-transform duration-500" />
+              <div className="relative px-8 py-4 flex items-center justify-center gap-3">
+                <span className="font-extrabold text-black uppercase tracking-wider text-sm">
+                  Get Started
+                </span>
+                <ArrowRight className="w-5 h-5 text-black" />
+              </div>
+            </a>
           </div>
         </motion.div>
       </div>

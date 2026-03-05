@@ -1,395 +1,252 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { gsap } from 'gsap';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
-// --- Reusable Icon Components ---
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Our Story', href: '/about' },
+  {
+    label: 'Automation',
+    href: '/ecommerce-automation',
+    children: [
+      { label: 'Amazon Automation', href: '/automation/amazon' },
+      { label: 'Shopify Automation', href: '/automation/shopify' },
+      { label: 'TikTok Shop Automation', href: '/automation/tiktok' },
+      { label: 'Walmart Automation', href: '/automation/walmart' },
+      { label: 'Etsy Automation', href: '/automation/etsy' },
+    ],
+  },
+  {
+    label: 'Services',
+    href: '/ecommerce-automation',
+    children: [
+      { label: 'Amazon PPC Management', href: '/services/amazon-ppc-management' },
+      { label: 'Digital Marketing', href: '/services/digital-marketing' },
+      { label: 'Virtual Assistant', href: '/services/virtual-assistant' },
+      { label: 'Account Reinstatement', href: '/services/account-reinstatement' },
+      { label: 'Content Creation', href: '/services/content-creation' },
+      { label: 'Deep Keyword Research', href: '/services/keyword-research' },
+      { label: 'Product Hunting', href: '/services/product-hunting' },
+    ],
+  },
+];
 
-// Official Shark Retail logo
-const SharkRetailLogo = () => (
-  <img
-    src="/images/sharks-retail-logo.png"
-    alt="Shark Retail Logo"
-    className="h-12 w-auto lg:h-16"
-  />
-);
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  
+  const menuRef = useRef<HTMLDivElement>(null);
+  const linksRef = useRef<(HTMLDivElement | null)[]>([]);
 
-// Simple theme toggle switch
-const ThemeToggle = () => (
-  <button className="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-white transition-colors duration-200 ease-in-out focus:outline-none" role="switch" aria-checked="false">
-    <span className="pointer-events-none inline-block h-5 w-5 translate-x-0 transform rounded-full bg-black shadow ring-0 transition duration-200 ease-in-out" />
-  </button>
-);
-
-// Chevron down icon for dropdowns
-const ChevronDownIcon = () => (
-  <svg
-    className="h-4 w-4 text-white"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-  </svg>
-);
-
-// --- Main Header Component ---
-
-const Header: React.FC = () => {
-  const [isAutomationOpen, setIsAutomationOpen] = useState(false);
-  const [isAdditionalServicesOpen, setIsAdditionalServicesOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const automationTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
-  const additionalServicesTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
-
-  // Cleanup timeouts on unmount
-  React.useEffect(() => {
-    return () => {
-      if (automationTimeoutRef.current) {
-        clearTimeout(automationTimeoutRef.current);
-      }
-      if (additionalServicesTimeoutRef.current) {
-        clearTimeout(additionalServicesTimeoutRef.current);
-      }
+  // --- Scroll Logic for Glass Header ---
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
     };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Listen for custom event to open Automation Solutions dropdown
-  React.useEffect(() => {
-    const handleOpenAutomationSolutions = () => {
-      // Check if we're on mobile (menu not visible on desktop)
-      const isMobile = window.innerWidth < 1024; // lg breakpoint
+  // --- Cinematic GSAP Menu Animation ---
+  useEffect(() => {
+    if (!menuRef.current) return;
+
+    if (isMenuOpen) {
+      // Body scroll lock
+      document.body.style.overflow = 'hidden';
       
-      if (isMobile) {
-        // On mobile: first open mobile menu, then open automation dropdown
-        setIsMobileMenuOpen(true);
-        
-        // Small delay to ensure menu is rendered before opening dropdown and scrolling
-        setTimeout(() => {
-          setIsAutomationOpen(true);
-          
-          // Scroll to header first
-          setTimeout(() => {
-            const header = document.querySelector('header');
-            if (header) {
-              header.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              
-              // After scrolling to header, scroll to automation solutions section
-              setTimeout(() => {
-                const mobileAutomationElement = document.getElementById('mobile-automation-solutions');
-                if (mobileAutomationElement) {
-                  mobileAutomationElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-              }, 400);
-            }
-          }, 200);
-        }, 100);
-      } else {
-        // On desktop: just open automation dropdown
-        setIsAutomationOpen(true);
-        // Scroll to the automation solutions menu item
-        setTimeout(() => {
-          const automationElement = document.getElementById('automation-solutions');
-          if (automationElement) {
-            automationElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        }, 100);
-      }
-    };
-
-    window.addEventListener('openAutomationSolutions', handleOpenAutomationSolutions);
-    return () => {
-      window.removeEventListener('openAutomationSolutions', handleOpenAutomationSolutions);
-    };
-  }, []);
-
-  const navLinks = [
-    'Home Page',
-    'Our Story',
-    'Automation Solutions',
-    'Additional Services',
-    'Contact Information',
-  ];
-
-  const automationSolutions = [
-    { name: 'Amazon Automation', href: '/automation/amazon' },
-    { name: 'Shopify Automation', href: '/automation/shopify' },
-    { name: 'TikTok Shop Automation', href: '/automation/tiktok' },
-    { name: 'Walmart Automation', href: '/automation/walmart' },
-    { name: 'Etsy Automation', href: '/automation/etsy' },
-  ];
-
-  const additionalServices = [
-    { name: 'PPC Management', href: '/services/ppc-management' },
-    { name: 'Virtual Assistant', href: '/services/virtual-assistant' },
-    { name: 'Account Reinstatement', href: '/services/account-reinstatement' },
-    { name: 'Content Creation', href: '/services/content-creation' },
-    { name: 'Deep Keyword Research', href: '/services/keyword-research' },
-    { name: 'Product Hunting', href: '/services/product-hunting' },
-  ];
+      const tl = gsap.timeline();
+      
+      // 1. Reveal Background using clipPath (Cinematic wipe down)
+      tl.to(menuRef.current, { 
+        clipPath: 'inset(0% 0% 0% 0%)', 
+        duration: 0.8, 
+        ease: 'expo.inOut' 
+      })
+      // 2. Stagger in the links
+      .fromTo(linksRef.current,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' },
+        "-=0.4" // Overlap animation
+      );
+    } else {
+      // Body scroll unlock
+      document.body.style.overflow = '';
+      
+      // Wipe up to hide
+      gsap.to(menuRef.current, { 
+        clipPath: 'inset(0% 0% 100% 0%)', 
+        duration: 0.6, 
+        ease: 'expo.inOut' 
+      });
+    }
+  }, [isMenuOpen]);
 
   return (
-    <header className="bg-black text-white font-avant-garde sticky top-0 z-50">
-      {/* 
-        CUSTOM FONT INSTRUCTIONS:
-        1. Add your font file (e.g., itcavantgardestd-bk.woff2) to `/public/fonts`.
-        2. In `globals.css`, define the font-face:
-           @font-face {
-             font-family: 'Itcavantgardestd Bk';
-             src: url('/fonts/itcavantgardestd-bk.woff2') format('woff2');
-             font-weight: normal;
-             font-style: normal;
-           }
-        3. In `tailwind.config.ts`, extend the theme:
-           theme: {
-             extend: {
-               fontFamily: {
-                 'avant-garde': ['Itcavantgardestd Bk', 'sans-serif'],
-               },
-             },
-           },
-      */}
-      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 lg:py-4">
-        {/* Left Section */}
-        <div className="flex items-center">
-          <div className="group relative">
-            <div className="flex items-center gap-2">
-              <div className="transition-transform duration-700 ease-in-out group-hover:-translate-x-2">
-                <SharkRetailLogo />
+    <>
+      {/* --- DESKTOP & MOBILE HEADER BAR --- */}
+      <header 
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b ${
+          scrolled 
+            ? 'bg-[#020205]/80 backdrop-blur-xl border-white/[0.05] py-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)]' 
+            : 'bg-transparent border-transparent py-6'
+        }`}
+      >
+        <div className="flex items-center justify-between max-w-[1400px] mx-auto px-6 lg:px-12">
+          
+          {/* Left: Logo - Homepage link */}
+          <Link href="/" className="flex items-center gap-3 cursor-pointer z-[60]">
+            <img
+              src="/images/sharks-retail-logo.png"
+              alt="Shark Retail Logo"
+              className="h-8 w-8 object-contain"
+            />
+            <span className="text-xl font-bold tracking-widest uppercase font-mono text-white">
+              Shark<span className="text-teal-400">Retail</span>
+            </span>
+          </Link>
+
+          {/* Center: Desktop Navigation (Hidden on Mobile) */}
+          <nav className="hidden lg:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+            {navItems.map((item) => (
+              <div key={item.label} className="relative group py-2">
+                <a
+                  href={item.href}
+                  className="flex items-center gap-1 text-[11px] font-bold tracking-[0.2em] uppercase text-white/70 hover:text-white transition-colors duration-300"
+                >
+                  {item.label}
+                  {item.children && <ChevronDown className="w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:rotate-180 transition-all duration-300" />}
+                </a>
+
+                {/* Premium Desktop Dropdown (Mega Menu Style) */}
+                {item.children && (
+                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-4 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-400 ease-out">
+                    <div className="relative w-max min-w-[280px] rounded-2xl border border-white/[0.08] bg-[#050508]/95 backdrop-blur-2xl p-2 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+                      {/* Subtle Inner Glow */}
+                      <div className="absolute inset-0 rounded-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] pointer-events-none" />
+                      
+                      <div className="px-3 pt-3 pb-2">
+                        <p className="text-[9px] font-bold tracking-[0.3em] text-teal-400/80 uppercase mb-2">
+                          {item.label} Division
+                        </p>
+                      </div>
+                      
+                      <div className="flex flex-col">
+                        {item.children.map((child) => (
+                          <a
+                            key={child.label}
+                            href={child.href}
+                            className="relative group/link flex items-center px-3 py-2.5 rounded-xl hover:bg-white/[0.04] transition-colors duration-300"
+                          >
+                            <span className="text-[12px] font-medium text-slate-300 group-hover/link:text-white transition-colors z-10">
+                              {child.label}
+                            </span>
+                            <span className="absolute left-3 w-0 h-px bg-teal-400 bottom-2 group-hover/link:w-4 transition-all duration-300 z-10 opacity-0 group-hover/link:opacity-100" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-              <div className="hidden sm:block opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out transform translate-x-2 group-hover:translate-x-0">
-                <span className="font-bold text-base lg:text-lg">
-                  <span className="text-teal-400">Shark</span> <span className="text-white">Retail</span>
-                </span>
-              </div>
+            ))}
+            {/* Added Contact to Nav */}
+            <a href="/contact" className="text-[11px] font-bold tracking-[0.2em] uppercase text-white/70 hover:text-white transition-colors duration-300">
+              Contact
+            </a>
+          </nav>
+
+          {/* Right: Desktop CTA & Mobile Hamburger */}
+          <div className="flex items-center gap-5 z-[60]">
+            
+            {/* Elite Desktop Button */}
+            <a 
+              href="/contact" 
+              className="hidden lg:flex items-center justify-center relative px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase text-white rounded-full overflow-hidden group bg-white/5 border border-white/10 hover:border-teal-400/50 transition-colors duration-500"
+            >
+              <span className="relative z-10 group-hover:text-teal-300 transition-colors duration-300">Get Started</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </a>
+            
+            {/* Modern Hamburger Button */}
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden relative w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors text-white"
+            >
+              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+
+          </div>
+        </div>
+      </header>
+
+      {/* --- FULL SCREEN MOBILE MENU (Cinematic) --- */}
+      <div 
+        ref={menuRef} 
+        className="fixed inset-0 bg-[#020205]/95 backdrop-blur-3xl z-40 flex flex-col justify-center overflow-y-auto"
+        style={{ clipPath: 'inset(0% 0% 100% 0%)' }} // Initial hidden state
+      >
+        {/* Ambient background glows for mobile menu */}
+        <div className="absolute top-[-10%] right-[-10%] w-[300px] h-[300px] bg-teal-600/20 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="w-full max-w-md mx-auto px-6 py-24 flex flex-col gap-10 min-h-screen justify-center">
+          
+          {navItems.map((item, i) => (
+            <div 
+              key={item.label} 
+              ref={(el) => { linksRef.current[i] = el; }} // Assigning ref to wrapper for GSAP
+              className="flex flex-col"
+            >
+              <a
+                href={item.href}
+                className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tighter mb-4 hover:text-teal-400 transition-colors"
+                onClick={() => !item.children && setIsMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+              
+              {/* Mobile Sub-links (Clean Accordion/List Style) */}
+              {item.children && (
+                <div className="flex flex-col gap-3 pl-4 border-l-2 border-white/10">
+                  {item.children.map((child) => (
+                    <a
+                      key={child.label}
+                      href={child.href}
+                      className="text-sm font-medium text-slate-400 hover:text-teal-300 tracking-wide transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
-        </div>
+          ))}
 
-        {/* Center Navigation */}
-        <nav className="hidden lg:flex flex-1 justify-center">
-          <ul className="flex items-center gap-8 text-sm font-light tracking-wider">
-            {navLinks.map((link) => (
-              <li key={link} className="relative">
-                {link === "Automation Solutions" ? (
-                  <div 
-                    className="relative" 
-                    id="automation-solutions"
-                    onMouseEnter={() => {
-                      // Clear any pending timeout
-                      if (automationTimeoutRef.current) {
-                        clearTimeout(automationTimeoutRef.current);
-                        automationTimeoutRef.current = null;
-                      }
-                      setIsAutomationOpen(true);
-                    }}
-                    onMouseLeave={() => {
-                      // Delay closing to allow user to move mouse to dropdown
-                      automationTimeoutRef.current = setTimeout(() => {
-                        setIsAutomationOpen(false);
-                        automationTimeoutRef.current = null;
-                      }, 200);
-                    }}
-                  >
-                    <button
-                      className="flex items-center gap-2 hover:text-teal-400 transition-colors"
-                      style={isAutomationOpen ? { color: '#14b8a6' } : {}}
-                    >
-                      {link}
-                      <ChevronDownIcon />
-                    </button>
-                    
-                    {/* Dropdown Menu */}
-                    {isAutomationOpen && (
-                      <div 
-                        className="absolute top-full left-0 w-64 bg-black rounded-lg shadow-xl border border-gray-700 z-50 bg-gradient-to-tl from-teal-400/20 via-black to-black"
-                      >
-                        <div className="pt-2 pb-3">
-                          {automationSolutions.map((solution) => (
-                            <a
-                              key={solution.name}
-                              href={solution.href}
-                              className="block px-6 py-4 text-white hover:bg-teal-400/20 hover:text-teal-400 transition-colors"
-                            >
-                              <div className="font-semibold">{solution.name}</div>
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ) : link === "Additional Services" ? (
-                  <div 
-                    className="relative"
-                    onMouseEnter={() => {
-                      // Clear any pending timeout
-                      if (additionalServicesTimeoutRef.current) {
-                        clearTimeout(additionalServicesTimeoutRef.current);
-                        additionalServicesTimeoutRef.current = null;
-                      }
-                      setIsAdditionalServicesOpen(true);
-                    }}
-                    onMouseLeave={() => {
-                      // Delay closing to allow user to move mouse to dropdown
-                      additionalServicesTimeoutRef.current = setTimeout(() => {
-                        setIsAdditionalServicesOpen(false);
-                        additionalServicesTimeoutRef.current = null;
-                      }, 200);
-                    }}
-                  >
-                    <button
-                      className="flex items-center gap-2 hover:text-teal-400 transition-colors"
-                    >
-                      {link}
-                      <ChevronDownIcon />
-                    </button>
-                    
-                    {/* Dropdown Menu */}
-                    {isAdditionalServicesOpen && (
-                      <div 
-                        className="absolute top-full left-0 w-64 bg-black rounded-lg shadow-xl border border-gray-700 z-50 bg-gradient-to-tl from-teal-400/20 via-black to-black"
-                      >
-                        <div className="pt-2 pb-3">
-                          {additionalServices.map((service) => (
-                            <a
-                              key={service.name}
-                              href={service.href}
-                              className="block px-6 py-4 text-white hover:bg-teal-400/20 hover:text-teal-400 transition-colors"
-                            >
-                              <div className="font-semibold">{service.name}</div>
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <a 
-                    href={
-                      link === "Home Page" ? "/" : 
-                      link === "Our Story" ? "/about" :
-                      link === "Contact Information" ? "/contact" : 
-                      "#"
-                    } 
-                    className="hover:text-teal-400 transition-colors"
-                  >
-                    {link}
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Right Section */}
-        <div className="flex items-center gap-3 lg:gap-4">
-          <div className="hidden md:flex items-center gap-3 lg:gap-4">
-            <a href="/contact" className="border border-teal-400 bg-teal-400 text-white font-light py-2.5 lg:py-3 px-4 lg:px-6 rounded-full text-xs lg:text-sm hover:bg-white hover:text-black transition-colors">
-              Explore Careers
-            </a>
-            <a href="/contact" className="border border-teal-400 text-teal-400 font-light py-2.5 lg:py-3 px-4 lg:px-6 rounded-full text-xs lg:text-sm hover:bg-teal-400 hover:text-black transition-colors">
-              Let's Talk Business
-            </a>
-          </div>
-          {/* Mobile Menu Toggle */}
-          <button
-            aria-label="Open menu"
-            className="inline-flex items-center justify-center rounded-md p-2 text-white hover:text-teal-400 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-teal-400 lg:hidden"
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          {/* Mobile Extra Links / Contact */}
+          <div 
+            ref={(el) => { linksRef.current[navItems.length] = el; }}
+            className="mt-8 pt-8 border-t border-white/10 flex flex-col gap-4"
           >
-            <svg className={`h-6 w-6 ${isMobileMenuOpen ? 'hidden' : 'block'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg className={`h-6 w-6 ${isMobileMenuOpen ? 'block' : 'hidden'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu Panel */}
-      <div className={`lg:hidden border-t border-white/10 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/80 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
-        <div className="container mx-auto px-4 sm:px-6 py-4">
-          <ul className="space-y-2 text-sm">
-            {navLinks.map((link) => (
-              <li key={`m-${link}`} className="">
-                {link === 'Automation Solutions' ? (
-                  <div className="" id="mobile-automation-solutions">
-                    <button
-                      onClick={() => setIsAutomationOpen((o) => !o)}
-                      className="w-full flex items-center justify-between py-3 text-left hover:text-teal-400"
-                      style={isAutomationOpen ? { color: '#14b8a6' } : {}}
-                    >
-                      <span>Automation Solutions</span>
-                      <ChevronDownIcon />
-                    </button>
-                    {isAutomationOpen && (
-                      <div className="mt-2 rounded-lg border border-gray-700 bg-gradient-to-tl from-teal-400/20 via-black to-black p-2">
-                        {automationSolutions.map((solution) => (
-                          <a
-                            key={`m-${solution.name}`}
-                            href={solution.href}
-                            className="block py-2 text-white/90 hover:text-teal-400"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {solution.name}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : link === 'Additional Services' ? (
-                  <div className="">
-                    <button
-                      onClick={() => setIsAdditionalServicesOpen((o) => !o)}
-                      className="w-full flex items-center justify-between py-3 text-left hover:text-teal-400"
-                    >
-                      <span>Additional Services</span>
-                      <ChevronDownIcon />
-                    </button>
-                    {isAdditionalServicesOpen && (
-                      <div className="mt-2 rounded-lg border border-gray-700 bg-gradient-to-tl from-teal-400/20 via-black to-black p-2">
-                        {additionalServices.map((service) => (
-                          <a
-                            key={`m-${service.name}`}
-                            href={service.href}
-                            className="block py-2 text-white/90 hover:text-teal-400"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {service.name}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <a
-                    href={
-                      link === 'Home Page' ? '/' :
-                      link === 'Our Story' ? '/about' :
-                      link === 'Contact Information' ? '/contact' : '#'
-                    }
-                    className="block py-3 hover:text-teal-400"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link}
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-4 flex flex-col items-center gap-2 md:hidden">
-            <a href="/contact" className="inline-flex w-full items-center justify-center border border-teal-400 bg-teal-400 text-white font-light py-2.5 px-4 rounded-full text-xs hover:bg-white hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-              Explore Careers
-            </a>
-            <a href="/contact" className="inline-flex w-full items-center justify-center border border-teal-400 text-teal-400 font-light py-2.5 px-4 rounded-full text-xs hover:bg-teal-400 hover:text-black transition-colors">
-              Let's Talk Business
-            </a>
+             <a
+                href="/contact"
+                className="text-3xl sm:text-4xl font-black text-teal-400 uppercase tracking-tighter"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact Us
+              </a>
+              <p className="text-slate-500 text-sm font-mono uppercase tracking-widest">
+                Systematic E-Commerce Wealth.
+              </p>
           </div>
+
         </div>
       </div>
-    </header>
+    </>
   );
 };
 

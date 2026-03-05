@@ -33,7 +33,8 @@ const automationSolutions = [
 ];
 
 const additionalServices = [
-  { name: 'PPC Management', href: '/services/ppc-management' },
+  { name: 'Amazon PPC Management', href: '/services/amazon-ppc-management' },
+  { name: 'Digital Marketing', href: '/services/digital-marketing' },
   { name: 'Virtual Assistant', href: '/services/virtual-assistant' },
   { name: 'Account Reinstatement', href: '/services/account-reinstatement' },
   { name: 'Content Creation', href: '/services/content-creation' },

@@ -90,9 +90,9 @@ const EcommerceAutomationAbout: React.FC = () => {
 
   const servicesOptions = [
     "Amazon Automation", "Shopify Automation", "TikTok Shop Automation",
-    "Walmart Automation", "PPC Management", "Virtual Assistant Services",
+    "Walmart Automation", "Amazon PPC Management", "Digital Marketing", "Virtual Assistant Services",
     "Account Reinstatement", "Content Creation", "Deep Keyword Research",
-    "Product Hunting", "E-commerce Portfolio Management", "Strategic Capital Deployment"
+    "Product Hunting"
   ];
 
   const formatPhoneNumber = (value: string, countryCode: string) => {
