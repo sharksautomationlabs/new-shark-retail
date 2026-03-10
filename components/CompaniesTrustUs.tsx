@@ -21,7 +21,7 @@ const companies = [
 // --- High-End Company Logo Card ---
 const CompanyLogo: React.FC<{ name: string; logo: string }> = ({ name, logo }) => {
   return (
-    <div className="mx-4 sm:mx-6 py-8">
+    <div className="mx-2 sm:mx-4 py-6 sm:py-8">
       <div className="group relative flex items-center justify-center w-36 h-24 sm:w-48 sm:h-32 bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(20,184,166,0.15)] hover:-translate-y-2 hover:bg-white/80 cursor-pointer">
         {/* Subtle glow effect on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-teal-400/0 to-teal-400/0 group-hover:from-teal-400/10 group-hover:to-transparent transition-all duration-500 opacity-0 group-hover:opacity-100" />
@@ -89,13 +89,13 @@ const AnimatedNumber: React.FC<{
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.8, delay, type: "spring", bounce: 0.4 }}
-      className="relative p-6 sm:p-8 rounded-3xl bg-white/60 backdrop-blur-xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden group hover:bg-white transition-colors duration-500"
+      className="relative p-4 sm:p-6 md:p-8 rounded-3xl bg-white/60 backdrop-blur-xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden group hover:bg-white transition-colors duration-500"
     >
       {/* Decorative gradient blur inside card */}
       <div className="absolute -top-10 -right-10 w-32 h-32 bg-teal-400/20 rounded-full blur-3xl group-hover:bg-teal-400/30 transition-all duration-500" />
       
       <div className="relative z-10 flex flex-col items-center justify-center h-full">
-        <h3 className="text-4xl sm:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-br from-teal-600 to-teal-400 mb-3 tracking-tight">
+        <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-br from-teal-600 to-teal-400 mb-3 tracking-tight">
           {displayValue}
         </h3>
         <p className="text-sm sm:text-base font-medium text-gray-500 uppercase tracking-widest text-center">
@@ -148,7 +148,7 @@ const CompaniesTrustUs: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 mb-6 leading-tight"
           >
             Built for <br className="hidden sm:block" />
             <span className="text-teal-600">E-commerce Owners</span>

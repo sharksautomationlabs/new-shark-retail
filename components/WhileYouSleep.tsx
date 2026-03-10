@@ -157,7 +157,7 @@ export default function WhileYouSleep() {
               <div
                 key={i}
                 ref={(el) => { timelineItemRefs.current[i] = el; }}
-                className="flex gap-5 pb-8 last:pb-0 ml-2 pl-6 relative"
+                className="flex gap-3 sm:gap-5 pb-6 sm:pb-8 last:pb-0 ml-2 pl-4 sm:pl-6 relative"
                 style={{
                   borderLeft: `2px solid ${item.active ? "rgba(20, 184, 166, 0.6)" : "rgba(255,255,255,0.08)"}`,
                 }}
@@ -189,7 +189,7 @@ export default function WhileYouSleep() {
             <div
               key={i}
               ref={(el) => { statRefs.current[i] = el; }}
-              className="while-sleep-stat group flex items-center gap-5 p-6 sm:p-7 rounded-2xl bg-zinc-900/80 border border-white/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal-400/40 hover:shadow-[0_0_40px_-8px_rgba(20,184,166,0.15)]"
+              className="while-sleep-stat group flex items-center gap-4 sm:gap-5 p-4 sm:p-6 rounded-2xl bg-zinc-900/80 border border-white/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal-400/40 hover:shadow-[0_0_40px_-8px_rgba(20,184,166,0.15)]"
             >
               <span className="text-3xl sm:text-4xl flex-shrink-0" aria-hidden>{s.icon}</span>
               <div className="min-w-0">

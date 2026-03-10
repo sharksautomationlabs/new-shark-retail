@@ -59,7 +59,7 @@ export default function WhySharkRetail() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative bg-[#020205] text-white py-24 px-4 sm:px-6 lg:px-12 font-sans selection:bg-teal-500/30">
+    <section ref={containerRef} className="relative bg-[#020205] text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 font-sans selection:bg-teal-500/30 overflow-hidden">
       
       {/* Subtle Premium Background */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -83,7 +83,7 @@ export default function WhySharkRetail() {
             </span>
           </h2>
           
-          <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed max-w-md">
+          <p className="text-slate-400 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-md">
             If you want a team that executes end-to-end—strategy, build, launch, and scale—this is where it starts.
           </p>
 
@@ -95,7 +95,7 @@ export default function WhySharkRetail() {
         </div>
 
         {/* RIGHT SIDE: Stacking Cards Container */}
-        <div className="w-full lg:w-7/12 relative pb-32">
+        <div className="w-full lg:w-7/12 relative pb-16 sm:pb-24 lg:pb-32">
           {pointsData.map((point, index) => {
             
             // Calculate dynamic sticky top position. 
@@ -118,21 +118,21 @@ export default function WhySharkRetail() {
                   {/* Elite Top Bevel Highlight */}
                   <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.15] to-transparent" />
 
-                  <div className="relative p-8 md:p-12 lg:p-14 z-10 flex flex-col md:flex-row gap-8 items-start">
+                  <div className="relative p-5 sm:p-6 md:p-10 lg:p-14 z-10 flex flex-col md:flex-row gap-5 sm:gap-6 md:gap-8 items-start">
                     
                     {/* Left: Icon & Number */}
                     <div className="flex-shrink-0 flex flex-col gap-6">
                       <div className="w-16 h-16 rounded-2xl bg-teal-500/[0.05] border border-teal-500/10 flex items-center justify-center shadow-[inset_0_1px_0_0_rgba(20,184,166,0.2)]">
                         {point.icon}
                       </div>
-                      <div className="text-4xl font-light text-slate-700 font-mono tracking-tighter">
+                      <div className="text-3xl sm:text-4xl font-light text-slate-700 font-mono tracking-tighter">
                         {point.num}
                       </div>
                     </div>
 
                     {/* Right: Content */}
                     <div className="flex-1 mt-2">
-                      <h3 className="text-2xl md:text-3xl font-medium text-white mb-4 tracking-tight">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-medium text-white mb-3 sm:mb-4 tracking-tight">
                         {point.title}
                       </h3>
                       <p className="text-slate-400 text-base md:text-lg leading-relaxed font-light">

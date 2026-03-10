@@ -78,13 +78,13 @@ export default function Safety() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 bg-[#020205] py-24 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-12 overflow-hidden border-t border-white/[0.06] border-b border-white/[0.06]"
+      className="relative z-10 bg-[#020205] py-24 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-12 overflow-hidden border-y border-white/[0.06]"
     >
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[400px] bg-teal-900/8 rounded-full blur-[100px]" />
       </div>
 
-      <div className="max-w-[1400px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 xl:gap-24 items-start">
+      <div className="max-w-[1400px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 xl:gap-24 items-start">
         {/* Left — pillars (scrolls) */}
         <div ref={leftRef}>
           <div
@@ -107,11 +107,11 @@ export default function Safety() {
               <div
                 key={i}
                 ref={(el) => { pillarRefs.current[i] = el; }}
-                className="safety-pillar flex gap-5 p-6 rounded-2xl bg-zinc-900/80 border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-teal-400/30 hover:shadow-[0_0_30px_-8px_rgba(20,184,166,0.12)]"
+                className="safety-pillar flex gap-3 sm:gap-4 p-4 sm:p-5 lg:p-6 rounded-2xl bg-zinc-900/80 border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-teal-400/30 hover:shadow-[0_0_30px_-8px_rgba(20,184,166,0.12)]"
               >
                 <span className="text-2xl shrink-0 mt-0.5" aria-hidden>{p.icon}</span>
                 <div className="min-w-0">
-                  <h4 className="text-lg sm:text-[20px] font-bold tracking-tight text-white mb-1.5">{p.title}</h4>
+                  <h4 className="text-base sm:text-lg font-bold tracking-tight text-white mb-1.5">{p.title}</h4>
                   <p className="text-[13px] sm:text-[14px] text-zinc-400 leading-relaxed">{p.desc}</p>
                 </div>
               </div>
@@ -123,11 +123,11 @@ export default function Safety() {
         <div ref={rightRef} className="lg:sticky lg:top-24 self-start">
           <div
             ref={promiseRef}
-            className="relative overflow-hidden rounded-2xl p-8 sm:p-10 bg-teal-500/5 border border-teal-400/20"
+            className="relative overflow-hidden rounded-2xl p-5 sm:p-6 md:p-8 bg-teal-500/5 border border-teal-400/20"
           >
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal-400/40 to-transparent" />
-            <div className="text-4xl sm:text-5xl mb-5" aria-hidden>🛡️</div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-teal-400 tracking-tight mb-4">
+            <div className="text-3xl sm:text-4xl mb-4" aria-hidden>🛡️</div>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-teal-400 tracking-tight mb-3 sm:mb-4">
               Our Promise to You
             </h3>
             <p className="text-[14px] sm:text-[15px] text-zinc-400 leading-relaxed mb-6">

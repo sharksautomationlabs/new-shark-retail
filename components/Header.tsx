@@ -102,7 +102,7 @@ const Header = () => {
         </div>
 
         {/* Gap between topbar and main nav */}
-        <div className="flex items-center justify-between max-w-[1400px] mx-auto px-6 lg:px-12 mt-4 sm:mt-3">
+        <div className="flex items-center justify-between max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 mt-4 sm:mt-3">
           
           {/* Left: Logo - Homepage link */}
           <Link href="/" className="flex items-center gap-3 cursor-pointer z-[60]">
@@ -195,37 +195,43 @@ const Header = () => {
       {/* --- FULL SCREEN MOBILE MENU (Cinematic) --- */}
       <div 
         ref={menuRef} 
-        className="fixed inset-0 bg-[#020205]/95 backdrop-blur-3xl z-40 flex flex-col justify-center overflow-y-auto"
-        style={{ clipPath: 'inset(0% 0% 100% 0%)' }} // Initial hidden state
+        className="fixed inset-0 bg-[#020205]/95 backdrop-blur-3xl z-40 overflow-hidden"
+        style={{ clipPath: 'inset(0% 0% 100% 0%)' }}
       >
         {/* Ambient background glows for mobile menu */}
         <div className="absolute top-[-10%] right-[-10%] w-[300px] h-[300px] bg-teal-600/20 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="w-full max-w-md mx-auto px-6 py-24 flex flex-col gap-10 min-h-screen justify-center">
+        {/* Scrollable inner wrapper – data-lenis-prevent stops Lenis from hijacking scroll here */}
+        <div
+          data-lenis-prevent
+          className="h-full w-full overflow-y-auto overflow-x-hidden overscroll-contain"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
+        <div className="w-full max-w-md mx-auto px-5 sm:px-6 pt-24 pb-12 flex flex-col gap-6 relative z-10">
           
           {navItems.map((item, i) => (
             <div 
               key={item.label} 
-              ref={(el) => { linksRef.current[i] = el; }} // Assigning ref to wrapper for GSAP
+              ref={(el) => { linksRef.current[i] = el; }}
               className="flex flex-col"
             >
               <a
                 href={item.href}
-                className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tighter mb-4 hover:text-teal-400 transition-colors"
+                className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tighter mb-2 hover:text-teal-400 transition-colors"
                 onClick={() => !item.children && setIsMenuOpen(false)}
               >
                 {item.label}
               </a>
               
-              {/* Mobile Sub-links (Clean Accordion/List Style) */}
+              {/* Mobile Sub-links */}
               {item.children && (
-                <div className="flex flex-col gap-3 pl-4 border-l-2 border-white/10">
+                <div className="flex flex-col gap-2 pl-4 border-l-2 border-white/10">
                   {item.children.map((child) => (
                     <a
                       key={child.label}
                       href={child.href}
-                      className="text-sm font-medium text-slate-400 hover:text-teal-300 tracking-wide transition-colors"
+                      className="text-[13px] font-medium text-slate-400 hover:text-teal-300 tracking-wide transition-colors py-0.5"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {child.label}
@@ -239,20 +245,21 @@ const Header = () => {
           {/* Mobile Extra Links / Contact */}
           <div 
             ref={(el) => { linksRef.current[navItems.length] = el; }}
-            className="mt-8 pt-8 border-t border-white/10 flex flex-col gap-4"
+            className="mt-4 pt-6 border-t border-white/10 flex flex-col gap-3"
           >
-             <a
-                href="/contact"
-                className="text-3xl sm:text-4xl font-black text-teal-400 uppercase tracking-tighter"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact Us
-              </a>
-              <p className="text-slate-500 text-sm font-mono uppercase tracking-widest">
-                Systematic E-Commerce Wealth.
-              </p>
+            <a
+              href="/contact"
+              className="text-2xl sm:text-3xl font-black text-teal-400 uppercase tracking-tighter"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact Us
+            </a>
+            <p className="text-slate-500 text-sm font-mono uppercase tracking-widest">
+              Systematic E-Commerce Wealth.
+            </p>
           </div>
 
+        </div>
         </div>
       </div>
     </>

@@ -129,7 +129,7 @@ export default function PainPoints() {
 
       <div className="max-w-[1400px] mx-auto relative z-10">
         {/* Header – elite: animated lines + gradient highlight */}
-        <div className="text-center mb-16 sm:mb-20">
+        <div className="text-center mb-10 sm:mb-16">
           <div
             ref={labelRef}
             className="inline-flex items-center gap-3 font-mono text-[10px] sm:text-[11px] tracking-[0.28em] text-teal-400 uppercase mb-6"
@@ -158,7 +158,7 @@ export default function PainPoints() {
             <div
               key={i}
               ref={(el) => { cardRefs.current[i] = el; }}
-              className="pain-point-card group relative rounded-[20px] overflow-hidden bg-zinc-900/70 border border-white/[0.06] backdrop-blur-xl p-6 sm:p-7 lg:p-8"
+              className="pain-point-card group relative rounded-[20px] overflow-hidden bg-zinc-900/70 border border-white/[0.06] backdrop-blur-xl p-4 sm:p-6 lg:p-8"
             >
               {/* Top bevel */}
               <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-10 pointer-events-none" />
@@ -175,7 +175,7 @@ export default function PainPoints() {
                 <span className="w-1 h-1 rounded-full bg-teal-400 animate-pulse" />
                 {p.who}
               </div>
-              <h3 className="text-xl sm:text-[22px] font-bold tracking-tight text-white mb-3 pr-8">
+              <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white mb-3 pr-6 sm:pr-8">
                 {p.title}
               </h3>
               <p className="text-[13px] sm:text-[14px] text-zinc-400 leading-relaxed mb-6">

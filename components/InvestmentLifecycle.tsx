@@ -75,7 +75,7 @@ const SpotlightCard = ({ step, index }: { step: any, index: number }) => {
       <div 
         ref={cardRef}
         onMouseMove={handleMouseMove}
-        className="relative w-full rounded-[24px] bg-[#0a0a0c] border border-white/5 p-8 overflow-hidden group hover:border-teal-500/30 transition-colors duration-500"
+        className="relative w-full rounded-[24px] bg-[#0a0a0c] border border-white/5 p-5 sm:p-6 lg:p-8 overflow-hidden group hover:border-teal-500/30 transition-colors duration-500"
       >
         {/* CSS Spotlight Hover Effect (Premium Glassmorphism) */}
         <div 
@@ -88,7 +88,7 @@ const SpotlightCard = ({ step, index }: { step: any, index: number }) => {
 
         {/* Content */}
         <div className="relative z-10">
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-4 sm:mb-6 lg:mb-8">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-2xl bg-teal-500/10 border border-teal-500/20 shadow-[0_0_20px_rgba(20,184,166,0.1)]">
                 {step.icon}
@@ -97,13 +97,13 @@ const SpotlightCard = ({ step, index }: { step: any, index: number }) => {
                 {step.stage}
               </span>
             </div>
-            <span className="text-5xl font-black text-white/5 tracking-tighter select-none">
+            <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-white/5 tracking-tighter select-none">
               {step.number}
             </span>
           </div>
 
-          <h3 className="text-2xl font-bold text-white mb-4 leading-tight">{step.title}</h3>
-          <p className="text-slate-400 text-base leading-relaxed font-light">{step.description}</p>
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 leading-tight">{step.title}</h3>
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-light">{step.description}</p>
         </div>
       </div>
 
@@ -169,7 +169,7 @@ export default function InvestmentLifecycle() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen bg-[#020205] text-white py-32 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans gpu-smooth">
+    <section ref={containerRef} className="relative min-h-screen bg-[#020205] text-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans gpu-smooth">
       
       {/* Background Ambient Orbs (Classical Elite Vibe) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden mix-blend-screen opacity-50">
@@ -177,21 +177,21 @@ export default function InvestmentLifecycle() {
         <div className="absolute top-[40%] right-[-10%] w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-[-10%] left-[20%] w-[700px] h-[700px] bg-emerald-600/10 rounded-full blur-[150px]" />
         {/* Subtle noise texture overlay for premium matte finish */}
-        <div className="absolute inset-0 opacity-20 brightness-100 contrast-150 mix-blend-overlay" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+        <div className="absolute inset-0 opacity-20 brightness-100 contrast-150 mix-blend-overlay noise-texture" />
       </div>
 
       <div className="container mx-auto relative z-10 max-w-7xl">
         
         {/* Elite Header */}
-        <div className="text-center mb-24 max-w-3xl mx-auto flex flex-col items-center">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-24 max-w-3xl mx-auto flex flex-col items-center">
           <div className="inline-flex items-center gap-3 rounded-full border border-teal-500/20 bg-teal-500/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-teal-300 backdrop-blur-md">
             <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse shadow-[0_0_10px_teal]" />
             How We Work
           </div>
-          <h2 className="mt-8 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-tight">
+          <h2 className="mt-6 sm:mt-8 text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-tight">
             Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-cyan-400 to-emerald-300">Launch</span><br/> Roadmap
           </h2>
-          <p className="mt-6 text-lg md:text-xl text-slate-400 font-light leading-relaxed max-w-2xl">
+          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-slate-400 font-light leading-relaxed max-w-2xl">
             A simple 4-step process that takes you from consultation to a live store—and then to scalable, system-driven growth.
           </p>
         </div>

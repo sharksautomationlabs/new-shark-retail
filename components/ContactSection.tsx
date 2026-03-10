@@ -110,7 +110,7 @@ const InfoBlock: React.FC<{ icon: React.ReactNode; title: string; description: s
     <div className="relative z-10 flex items-start gap-6">
       <div className="mt-1">{icon}</div>
       <div>
-        <h3 className="text-2xl sm:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 group-hover:to-teal-300 transition-all duration-500 tracking-tight">
+        <h3 className="text-xl sm:text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 group-hover:to-teal-300 transition-all duration-500 tracking-tight">
           {title}
         </h3>
         <p className="text-gray-400 mt-2 max-w-sm text-sm sm:text-base leading-relaxed group-hover:text-gray-300">
@@ -191,7 +191,7 @@ const ContactSection: React.FC = () => {
     <section className="relative bg-[#050505] text-white pt-28 pb-24 lg:pt-36 lg:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-teal-200 gpu-smooth min-h-screen">
       
       {/* Elite Background Effects */}
-      <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}></div>
+      <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none noise-texture"></div>
       <div className="absolute top-1/4 left-0 w-[50rem] h-[50rem] bg-teal-600/10 rounded-full blur-[120px] -translate-x-1/2 pointer-events-none"></div>
       <HolographicEarth />
 
@@ -204,7 +204,7 @@ const ContactSection: React.FC = () => {
           className="lg:col-span-7 relative"
         >
           {/* Form Glass Container */}
-          <div className="relative bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] p-8 sm:p-10 rounded-[2rem] shadow-2xl overflow-hidden group">
+          <div className="relative bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-[2rem] shadow-2xl overflow-hidden group">
             
             {/* Ambient inner glow */}
             <div className="absolute -top-24 -right-24 w-48 h-48 bg-teal-500/20 rounded-full blur-3xl pointer-events-none transition-all duration-700 group-hover:bg-teal-400/30"></div>
@@ -214,7 +214,7 @@ const ContactSection: React.FC = () => {
                 <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span>
                 Initialize Sequence
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-teal-400 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-teal-400 tracking-tight">
                 Let’s Talk About Your Business.
               </h2>
               <p className="text-gray-400 mt-3 text-sm sm:text-base max-w-lg">

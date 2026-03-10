@@ -63,7 +63,7 @@ const MagneticLogo = ({ src, alt }: { src: string; alt: string }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className="relative flex-shrink-0 w-[200px] sm:w-[250px] h-[100px] sm:h-[120px] mx-4 rounded-2xl flex items-center justify-center cursor-pointer group"
+      className="relative flex-shrink-0 w-[140px] sm:w-[250px] h-[80px] sm:h-[120px] mx-2 sm:mx-4 rounded-2xl flex items-center justify-center cursor-pointer group"
       style={{ transformStyle: 'preserve-3d' }}
     >
       {/* Premium Dark Glassmorphism Background */}
@@ -123,7 +123,7 @@ export default function FeaturedIn() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative w-full py-24 sm:py-32 bg-[#020205] overflow-hidden border-y border-white/5 gpu-smooth"
+      className="relative w-full py-16 sm:py-24 lg:py-32 bg-[#020205] overflow-hidden border-y border-white/5 gpu-smooth"
     >
       {/* Background Tech Aesthetic */}
       <div className="absolute inset-0 pointer-events-none opacity-30">
@@ -157,7 +157,7 @@ export default function FeaturedIn() {
         INFINITE MARQUEE SCROLLERS 
         We use two rows going in opposite directions for that premium dynamic feel.
       */}
-      <div className="relative z-10 flex flex-col gap-6 transform -rotate-2"> {/* Slight diagonal tilt for edgy look */}
+      <div className="relative z-10 flex flex-col gap-6 sm:-rotate-2">
         
         {/* ROW 1: Moves Left */}
         <div className="relative w-full overflow-hidden flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">

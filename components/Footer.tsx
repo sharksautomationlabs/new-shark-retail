@@ -108,7 +108,7 @@ export default function Footer() {
         <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')" }} />
       </div>
 
-      <div className="container mx-auto max-w-[1400px] px-6 lg:px-12 relative z-10">
+      <div className="container mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* --- TOP PRE-FOOTER CTA --- */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/[0.05] pb-16 mb-16 gap-8">
@@ -117,7 +117,7 @@ export default function Footer() {
               <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
               Initiate Deployment
             </div>
-            <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-semibold tracking-tighter text-white leading-tight">
               Ready to scale your <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-200">digital assets?</span>
             </h2>
@@ -134,7 +134,7 @@ export default function Footer() {
         </div>
 
         {/* --- MAIN SITEMAP MATRIX --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-8 mb-16 sm:mb-24">
           
           {/* Col 1: Brand & Contact */}
           <div ref={el => { columnsRef.current[0] = el; }} className="flex flex-col">

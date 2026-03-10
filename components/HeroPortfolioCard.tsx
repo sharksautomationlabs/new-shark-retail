@@ -43,8 +43,16 @@ export default function HeroPortfolioCard() {
 
   return (
     <>
-      <div className="absolute right-[16px] sm:right-[24px] md:right-[40px] lg:right-[56px] xl:right-[72px] bottom-[8%] md:bottom-[10%] lg:bottom-[12%] z-10 w-[260px] sm:w-[300px] md:w-[320px] lg:w-[340px]">
-        <div className="hero-portfolio-card relative overflow-hidden rounded-2xl bg-zinc-900/90 border border-white/10 backdrop-blur-xl p-5 sm:p-6">
+      <div
+        className="
+          w-full mx-auto
+          md:max-w-none md:w-[280px] lg:w-[320px] xl:w-[340px]
+          md:absolute md:right-[32px] lg:right-[56px] xl:right-[72px]
+          md:bottom-[10%] lg:bottom-[12%]
+          z-10
+        "
+      >
+        <div className="hero-portfolio-card relative overflow-hidden rounded-2xl bg-zinc-900/90 border border-white/10 backdrop-blur-xl p-4 sm:p-6">
           {/* Label */}
           <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.2em] text-zinc-500 uppercase mb-1">
             <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
@@ -52,7 +60,7 @@ export default function HeroPortfolioCard() {
           </div>
 
           {/* Big animated value */}
-          <div className="font-mono text-[36px] sm:text-[42px] md:text-[48px] lg:text-[52px] leading-none tracking-tight text-white tabular-nums">
+          <div className="font-mono text-[28px] sm:text-[36px] md:text-[48px] lg:text-[52px] leading-none tracking-tight text-white tabular-nums">
             ${income.toLocaleString()}
           </div>
 

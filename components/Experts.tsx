@@ -78,7 +78,7 @@ export default function Experts() {
         <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-teal-900/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-[1400px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 xl:gap-24 items-center">
+      <div className="max-w-[1400px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 xl:gap-24 items-center">
         {/* Left */}
         <div ref={leftRef}>
           <div
@@ -110,13 +110,13 @@ export default function Experts() {
             <div
               key={i}
               ref={(el) => { expertRefs.current[i] = el; }}
-              className="flex items-start gap-4 p-6 rounded-2xl bg-zinc-900/80 border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-teal-400/40 hover:shadow-[0_0_30px_-8px_rgba(20,184,166,0.12)]"
+              className="flex items-start gap-3 sm:gap-4 p-4 sm:p-6 rounded-2xl bg-zinc-900/80 border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-teal-400/40 hover:shadow-[0_0_30px_-8px_rgba(20,184,166,0.12)]"
             >
               <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl shrink-0 bg-teal-500/10 border border-teal-400/20">
                 {e.avatar}
               </div>
               <div className="min-w-0">
-                <div className="text-lg font-bold tracking-tight text-white mb-0.5">{e.name}</div>
+                <div className="text-base sm:text-lg font-bold tracking-tight text-white mb-0.5">{e.name}</div>
                 <div className="font-mono text-[10px] tracking-[0.15em] text-teal-400 uppercase mb-1.5">{e.role}</div>
                 <div className="text-[12px] sm:text-[13px] text-zinc-400">{e.stat}</div>
               </div>

@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import InvestmentLifecycle from '../components/InvestmentLifecycle';
-import WhySharkRetail from '../components/WhySharkRetail';
-import PainPoints from '../components/PainPoints';
-import WhileYouSleep from '../components/WhileYouSleep';
-import CallToAction from '../components/CallToAction';
-import Safety from '../components/Safety';
-import ContactSection from '../components/ContactSection';
 import FeaturedInSection from '../components/FeaturedInSection';
-import CompaniesTrustUs from '../components/CompaniesTrustUs';
-import Experts from '../components/Experts';
-import Footer from '../components/Footer';
 import PageWithLoader from '../components/PageWithLoader';
+
+const WhileYouSleep = dynamic(() => import('../components/WhileYouSleep'), { ssr: true });
+const InvestmentLifecycle = dynamic(() => import('../components/InvestmentLifecycle'), { ssr: true });
+const WhySharkRetail = dynamic(() => import('../components/WhySharkRetail'), { ssr: true });
+const PainPoints = dynamic(() => import('../components/PainPoints'), { ssr: true });
+const CallToAction = dynamic(() => import('../components/CallToAction'), { ssr: true });
+const Safety = dynamic(() => import('../components/Safety'), { ssr: true });
+const CompaniesTrustUs = dynamic(() => import('../components/CompaniesTrustUs'), { ssr: true });
+const Experts = dynamic(() => import('../components/Experts'), { ssr: true });
+const ContactSection = dynamic(() => import('../components/ContactSection'), { ssr: true });
+const Footer = dynamic(() => import('../components/Footer'), { ssr: true });
 
 export const metadata: Metadata = {
   title: "Earn $4,000 in 30 days | The Shark Retail",

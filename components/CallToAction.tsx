@@ -119,7 +119,7 @@ export default function CallToAction() {
           <div className="w-full lg:w-7/12 flex flex-col items-center lg:items-start text-center lg:text-left">
             
             {/* Blinking Tech Badge */}
-            <div className="inline-flex items-center gap-3 rounded-none border border-teal-500/40 bg-[#030712]/80 backdrop-blur-md px-4 py-2 text-xs font-mono uppercase tracking-[0.3em] text-teal-400 mb-8 shadow-[0_0_20px_rgba(20,184,166,0.2)]">
+            <div className="inline-flex items-center gap-2 sm:gap-3 rounded-none border border-teal-500/40 bg-[#030712]/80 backdrop-blur-md px-3 sm:px-4 py-2 text-[10px] sm:text-xs font-mono uppercase tracking-[0.15em] sm:tracking-[0.3em] text-teal-400 mb-6 sm:mb-8 shadow-[0_0_20px_rgba(20,184,166,0.2)]">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
@@ -127,14 +127,14 @@ export default function CallToAction() {
               System Protocol: Active
             </div>
 
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-wide leading-tight text-white mb-6" style={{ fontFamily: "Impact, sans-serif" }}>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-black uppercase tracking-wide leading-tight text-white mb-6" style={{ fontFamily: "Impact, sans-serif" }}>
               Ready to Launch a{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-300 to-white">
                 Profitable E-commerce Store?
               </span>
             </h2>
 
-            <p className="text-slate-300 text-lg md:text-xl font-light leading-relaxed max-w-2xl mb-8 border-l-2 border-teal-500/50 pl-6 bg-gradient-to-r from-teal-500/10 to-transparent py-2">
+            <p className="text-slate-300 text-sm sm:text-base md:text-lg font-light leading-relaxed max-w-2xl mb-8 border-l-2 border-teal-500/50 pl-4 sm:pl-6 bg-gradient-to-r from-teal-500/10 to-transparent py-2">
               Book a free strategy call with a senior consultant. We’ll map the right marketplace (Amazon, Shopify, TikTok Shop, Walmart), outline a launch plan, and show you how we execute end-to-end.
             </p>
 
@@ -153,7 +153,7 @@ export default function CallToAction() {
               {/* Animated Glowing Border using conic-gradient */}
               <div className="absolute inset-0 bg-[conic-gradient(from_90deg_at_50%_50%,#030712_0%,#14b8a6_50%,#030712_100%)] animate-[spin_3s_linear_infinite]" />
               
-              <div className="relative bg-[#050b14] h-full w-full p-8 md:p-10 flex flex-col items-center text-center shadow-[inset_0_0_40px_rgba(20,184,166,0.1)]">
+              <div className="relative bg-[#050b14] h-full w-full p-5 sm:p-6 md:p-8 flex flex-col items-center text-center shadow-[inset_0_0_40px_rgba(20,184,166,0.1)]">
                 
                 {/* Tech corner accents */}
                 <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-teal-400" />
