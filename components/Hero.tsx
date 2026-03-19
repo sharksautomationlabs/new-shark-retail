@@ -11,7 +11,10 @@ const HeroPortfolioCard = dynamic(() => import("./HeroPortfolioCard"), { ssr: fa
 const HeroRoiCard = HeroPortfolioCard;
 
 const HERO_DESCRIPTION =
-  "If your Amazon, Shopify, TikTok Shop, or Walmart store isn't generating consistent sales, you're leaving serious revenue on the table. Our ecommerce growth specialists manage everything from store optimization and product scaling to performance tracking and revenue strategy, building a reliable system designed to help you reach $4,000+ in revenue within the first 30 days or our team continues working with you until you get there.";
+  "Keep scrolling-your path to financial freedom is just ahead. By the time you've explored 25% of this page, you'll discover the hidden gem that could change your life.";
+
+const HERO_SUBTEXT =
+  "Curious how? Book a meeting with one of our senior consultants today.";
 
 export default function Hero() {
   return (
@@ -65,11 +68,11 @@ export default function Hero() {
             <div className="relative hero-fade-continuous">
               <h1 className="text-left text-white/95 leading-[1.05] tracking-tight drop-shadow-[0_12px_40px_rgba(0,0,0,0.85)]">
                 <span className="block text-[26px] md:text-[36px] lg:text-[42px] xl:text-[46px] font-extrabold tracking-[0.01em]">
-                  From Zero to{" "}
-                  <span className="text-emerald-200">$4,000+</span> in 30 days
+                  Earn <span className="text-emerald-200">$4,000</span> in{" "}
+                  <span className="text-emerald-200">30 Days</span>
                 </span>
-                <span className="mt-2 block text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] font-semibold tracking-[0.12em] text-emerald-200">
-                  Assured Ecommerce Growth
+                <span className="mt-2 block text-[26px] md:text-[36px] lg:text-[42px] xl:text-[46px] font-extrabold tracking-[0.01em] text-white/95">
+                  Or We&apos;ll Work for Free
                 </span>
               </h1>
 
@@ -79,6 +82,9 @@ export default function Hero() {
                   {HERO_DESCRIPTION}
                 </p>
               </div>
+              <p className="mt-5 text-[15px] md:text-[18px] font-semibold text-white/90 leading-relaxed drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)]">
+                {HERO_SUBTEXT}
+              </p>
 
               <div className="mt-7 md:mt-8 flex flex-wrap gap-3 sm:gap-4">
                 <Link href="/contact" className="btn-hero-contact">
@@ -123,11 +129,11 @@ export default function Hero() {
           <div className="relative hero-fade-continuous">
             <h1 className="text-left text-white/95 leading-tight tracking-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
               <span className="block text-[20px] sm:text-[24px] font-extrabold tracking-[0.01em]">
-                From Zero to{" "}
-                <span className="text-emerald-200">$4,000+</span> in 30 days
+                Earn <span className="text-emerald-200">$4,000</span> in{" "}
+                <span className="text-emerald-200">30 Days</span>
               </span>
-              <span className="mt-1.5 block text-[11px] sm:text-[14px] font-semibold tracking-[0.16em] text-emerald-200 uppercase">
-                Assured Ecommerce Growth
+              <span className="mt-1.5 block text-[20px] sm:text-[24px] font-extrabold tracking-[0.01em] text-white/95">
+                Or We&apos;ll Work for Free
               </span>
             </h1>
 
@@ -137,6 +143,9 @@ export default function Hero() {
                 {HERO_DESCRIPTION}
               </p>
             </div>
+            <p className="mt-3 text-[12px] sm:text-[14px] font-semibold text-white/90 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+              {HERO_SUBTEXT}
+            </p>
 
             <div className="mt-5 flex flex-col gap-2.5 sm:gap-3">
               <Link href="/contact" className="btn-hero-contact w-full justify-center text-[13px] sm:text-[15px]">

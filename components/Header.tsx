@@ -175,7 +175,7 @@ const Header = () => {
               className="hidden lg:flex items-center justify-center relative px-6 py-2.5 text-[11px] font-bold tracking-[0.18em] uppercase text-white rounded-full overflow-hidden group bg-white/5 border border-white/10 hover:border-teal-400/50 transition-colors duration-500"
             >
               <span className="relative z-10 group-hover:text-teal-300 transition-colors duration-300">
-                Book a consultant
+                Book a Call
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </a>
@@ -249,6 +249,13 @@ const Header = () => {
             ref={(el) => { linksRef.current[navItems.length] = el; }}
             className="mt-4 pt-6 border-t border-white/10 flex flex-col gap-3"
           >
+            <a
+              href="/contact"
+              className="inline-flex w-fit items-center justify-center px-5 py-2 text-[11px] font-bold tracking-[0.18em] uppercase text-white rounded-full bg-white/5 border border-white/10 hover:border-teal-400/50 hover:text-teal-300 transition-colors duration-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Book a Call
+            </a>
             <a
               href="/contact"
               className="text-2xl sm:text-3xl font-black text-teal-400 uppercase tracking-tighter"
