@@ -15,7 +15,7 @@ export default function PageWithLoader({ children }: { children: React.ReactNode
     <>
       <SiteLoader />
       <div
-        className="min-h-screen"
+        className="min-h-dvh"
         style={{
           opacity: showContent ? 1 : 0,
           transition: 'opacity 0.4s ease-out',

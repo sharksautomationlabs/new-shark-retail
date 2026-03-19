@@ -96,7 +96,7 @@ export default function Hero() {
       </div>
 
       {/* MOBILE HERO – lightweight, fully responsive, no 3D Canvas */}
-      <div className="hero-mobile-wrapper block md:hidden relative w-full max-w-full overflow-hidden pt-20 pb-12 px-4 sm:px-5">
+      <div className="hero-mobile-wrapper block md:hidden relative w-full max-w-full overflow-hidden h-dvh pt-20 pb-10 px-4 sm:px-5">
         {/* Simple dark gradient background */}
         <div className="absolute inset-0 bg-linear-to-b from-[#020205] via-[#020617] to-[#020205] pointer-events-none" />
 

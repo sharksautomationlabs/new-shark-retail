@@ -188,7 +188,7 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className="relative bg-[#050505] text-white pt-28 pb-24 lg:pt-36 lg:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-teal-200 gpu-smooth min-h-screen">
+    <section className="relative bg-[#050505] text-white pt-28 pb-24 lg:pt-36 lg:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans selection:bg-teal-500/30 selection:text-teal-200 gpu-smooth min-h-dvh">
       
       {/* Elite Background Effects */}
       <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none noise-texture"></div>

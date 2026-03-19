@@ -92,7 +92,7 @@ const Header = () => {
       <header 
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b pt-0 ${
           scrolled 
-            ? 'bg-[#020205]/80 backdrop-blur-xl border-white/[0.05] pb-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)]' 
+            ? 'bg-[#020205]/80 backdrop-blur-xl border-white/5 pb-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)]' 
             : 'bg-transparent border-transparent pb-6'
         }`}
       >
@@ -105,7 +105,7 @@ const Header = () => {
         <div className="flex items-center justify-between max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 mt-4 sm:mt-3">
           
           {/* Left: Logo - Homepage link */}
-          <Link href="/" className="flex items-center gap-3 cursor-pointer z-[60]">
+          <Link href="/" className="flex items-center gap-3 cursor-pointer z-60">
             <img
               src="/images/sharks-retail-logo.png"
               alt="Shark Retail Logo"
@@ -131,7 +131,7 @@ const Header = () => {
                 {/* Premium Desktop Dropdown (Mega Menu Style) */}
                 {item.children && (
                   <div className="absolute left-1/2 top-full -translate-x-1/2 pt-4 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-400 ease-out">
-                    <div className="relative w-max min-w-[280px] rounded-2xl border border-white/[0.08] bg-[#050508]/95 backdrop-blur-2xl p-2 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+                    <div className="relative w-max min-w-[280px] rounded-2xl border border-white/8 bg-[#050508]/95 backdrop-blur-2xl p-2 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
                       {/* Subtle Inner Glow */}
                       <div className="absolute inset-0 rounded-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] pointer-events-none" />
                       
@@ -146,7 +146,7 @@ const Header = () => {
                           <a
                             key={child.label}
                             href={child.href}
-                            className="relative group/link flex items-center px-3 py-2.5 rounded-xl hover:bg-white/[0.04] transition-colors duration-300"
+                            className="relative group/link flex items-center px-3 py-2.5 rounded-xl hover:bg-white/4 transition-colors duration-300"
                           >
                             <span className="text-[12px] font-medium text-slate-300 group-hover/link:text-white transition-colors z-10">
                               {child.label}
@@ -167,7 +167,7 @@ const Header = () => {
           </nav>
 
           {/* Right: Desktop CTA & Mobile Hamburger */}
-          <div className="flex items-center gap-5 z-[60]">
+          <div className="flex items-center gap-5 z-60">
             
             {/* Elite Desktop Button */}
             <a 
@@ -205,7 +205,9 @@ const Header = () => {
         {/* Scrollable inner wrapper – data-lenis-prevent stops Lenis from hijacking scroll here */}
         <div
           data-lenis-prevent
-          className="h-full w-full overflow-y-auto overflow-x-hidden overscroll-contain"
+          className={`h-full w-full overflow-x-hidden overscroll-contain ${
+            isMenuOpen ? "overflow-y-auto pointer-events-auto" : "overflow-y-hidden pointer-events-none"
+          }`}
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
         <div className="w-full max-w-md mx-auto px-5 sm:px-6 pt-24 pb-12 flex flex-col gap-6 relative z-10">

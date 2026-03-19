@@ -16,12 +16,21 @@ export default function LenisProvider({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    const isMobile = isCoarsePointer || window.innerWidth < 768;
+
     const lenis = new Lenis({
-      lerp: 0.08,
-      duration: 1.2,
-      smoothWheel: true,
+      // Higher lerp = less perceived "lag" behind finger/mouse.
+      lerp: prefersReducedMotion ? 1 : isMobile ? 0.2 : 0.14,
+      duration: prefersReducedMotion ? 0 : isMobile ? 0.75 : 0.85,
+      smoothWheel: !prefersReducedMotion,
+      smoothTouch: !prefersReducedMotion,
       syncTouch: true,
+      wheelMultiplier: isMobile ? 0.9 : 1,
+      touchMultiplier: isMobile ? 1.5 : 2,
       autoRaf: false,
+      gestureOrientation: "vertical",
     });
 
     lenisRef.current = lenis;
@@ -45,13 +54,19 @@ export default function LenisProvider({
 
     lenis.on("scroll", ScrollTrigger.update);
 
+    let isActive = true;
+    let rafId: number | null = null;
+
     const raf = (time: number) => {
+      if (!isActive) return;
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = window.requestAnimationFrame(raf);
     };
-    requestAnimationFrame(raf);
+    rafId = window.requestAnimationFrame(raf);
 
     return () => {
+      isActive = false;
+      if (rafId != null) window.cancelAnimationFrame(rafId);
       ScrollTrigger.scrollerProxy(document.body, {});
       document.documentElement.classList.remove("lenis");
       lenis.destroy();

@@ -37,10 +37,8 @@ html,
 body {
   overflow-x: hidden;
   max-width: 100%;
+  scroll-behavior: auto;
 }
-/* Lenis controls smooth scroll; disable native smooth to avoid conflict */
-html.lenis { scroll-behavior: auto; }
-html:not(.lenis) { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -242,35 +240,6 @@ body {
 
 .ticker-live-pill {
   animation: live-pulse 2s ease-in-out infinite;
-}
-
-/* Add these animations for the InvestmentLifecycle component */
-@keyframes draw-line {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-draw {
-  stroke-dasharray: 1000; /* A large value to cover the path length */
-  stroke-dashoffset: 1000;
-  animation: draw-line 2s ease-out forwards;
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
-  opacity: 0; /* Start hidden */
 }
 
 /* Slow spin animation for ContactSection */

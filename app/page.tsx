@@ -6,8 +6,6 @@ import FeaturedInSection from '../components/FeaturedInSection';
 import PageWithLoader from '../components/PageWithLoader';
 
 const WhileYouSleep = dynamic(() => import('../components/WhileYouSleep'), { ssr: true });
-const InvestmentLifecycle = dynamic(() => import('../components/InvestmentLifecycle'), { ssr: true });
-const WhySharkRetail = dynamic(() => import('../components/WhySharkRetail'), { ssr: true });
 const PainPoints = dynamic(() => import('../components/PainPoints'), { ssr: true });
 const CallToAction = dynamic(() => import('../components/CallToAction'), { ssr: true });
 const Safety = dynamic(() => import('../components/Safety'), { ssr: true });
@@ -33,8 +31,6 @@ export default function Home() {
         <Hero />
         <FeaturedInSection />
         <WhileYouSleep />
-        <InvestmentLifecycle />
-        <WhySharkRetail />
         <PainPoints />
         <CallToAction />
         <Safety />
