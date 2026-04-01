@@ -34,11 +34,6 @@ const footerLinks = {
   ]
 };
 
-const locationsData = [
-  { id: 'hq', country: "United States", type: "Headquarters", address: "22023 Rustic Canyon Ln\nRichmond, TX 77469\nUSA" },
-  { id: 'gdc', country: "Pakistan", type: "Global Delivery", address: "DHA Commercial\nBukhari, Karachi\nPakistan" },
-];
-
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const watermarkRef = useRef<HTMLDivElement>(null);
@@ -134,7 +129,7 @@ export default function Footer() {
         </div>
 
         {/* --- MAIN SITEMAP MATRIX --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-8 mb-16 sm:mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-8 mb-16 sm:mb-24">
           
           {/* Col 1: Brand & Contact */}
           <div ref={el => { columnsRef.current[0] = el; }} className="flex flex-col">
@@ -178,24 +173,6 @@ export default function Footer() {
                   <PremiumLink key={link.name} href={link.href}>{link.name}</PremiumLink>
                 ))}
               </div>
-            </div>
-          </div>
-
-          {/* Col 4: Locations */}
-          <div ref={el => { columnsRef.current[3] = el; }} className="flex flex-col">
-            <h4 className="text-white text-xs font-bold tracking-[0.2em] uppercase mb-6">Global Presence</h4>
-            <div className="flex flex-col gap-8">
-              {locationsData.map(loc => (
-                <div key={loc.id} className="relative pl-4 border-l border-white/10 hover:border-teal-400/50 transition-colors duration-300">
-                  <div className="absolute top-1.5 -left-[3px] w-1 h-1 rounded-full bg-teal-400/50" />
-                  <div className="text-white font-medium mb-1 flex items-center gap-2">
-                    {loc.country} <span className="text-[10px] text-teal-400/70 font-mono tracking-widest uppercase">[{loc.type}]</span>
-                  </div>
-                  <div className="text-sm text-slate-500 whitespace-pre-line leading-relaxed">
-                    {loc.address}
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
 

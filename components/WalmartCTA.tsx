@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, ArrowRight, Phone, TrendingUp, Mail, MapPin } from "lucide-react";
+import { ChevronDown, ArrowRight, Phone, TrendingUp, Mail } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
@@ -715,11 +715,6 @@ const WalmartCTA: React.FC = () => {
                 icon: Mail,
                 title: "Email",
                 desc: "info@ecomsharkss.com",
-              },
-              {
-                icon: MapPin,
-                title: "Address",
-                desc: "22023 Rustic Canyon Ln, Richmond, TX 77469, USA",
               },
             ].map((item, i) => (
               <div

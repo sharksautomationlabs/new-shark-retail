@@ -42,15 +42,6 @@ const additionalServices = [
   { name: 'Product Hunting', href: '/services/product-hunting' },
 ];
 
-const locationsData = [
-  { 
-    country: "United States", 
-    officeType: "Headquarters", 
-    flagEmoji: "🇺🇸", 
-    address: ["22023 Rustic Canyon Ln", "Richmond, TX 77469", "USA"] 
-  }
-];
-
 const socialLinks = [
   { href: "https://www.facebook.com/profile.php?id=61582189354952", icon: <Facebook size={20} /> },
   { href: "https://www.instagram.com/sharks_retail?igsh=MWlxZHFldGsyZW1uMA==", icon: <Instagram size={20} /> }
@@ -193,33 +184,6 @@ const FooterLink: React.FC<{
   );
 };
 
-interface LocationCardProps {
-  country: string;
-  officeType: string;
-  flagEmoji: string;
-  address: string[];
-}
-
-const LocationCard: React.FC<LocationCardProps> = ({ country, officeType, flagEmoji, address }) => (
-  <div className="text-left">
-    <h3 className="text-xl font-bold text-white flex items-center gap-3">
-      {country}
-      <span className="text-gray-400 text-sm font-normal flex items-center gap-1">
-        ({officeType})
-        {officeType === "Global Delivery Center" && (
-          <span className="text-teal-400">🇵🇰</span>
-        )}
-        {officeType === "Headquarters" && (
-          <span className="text-teal-400">🇺🇸</span>
-        )}
-      </span>
-    </h3>
-    <p className="mt-4 text-gray-400 leading-relaxed">
-      {address.map(line => <React.Fragment key={line}>{line}<br/></React.Fragment>)}
-    </p>
-  </div>
-);
-
 const SocialIcon: React.FC<{ href: string; icon: React.ReactNode }> = ({ href, icon }) => (
   <a href={href} className="text-white bg-white/10 p-2 rounded-full hover:bg-teal-400 hover:text-black transition-all duration-300">
     {icon}
@@ -353,9 +317,8 @@ const Footer: React.FC = () => {
           </nav>
         </div>
 
-        {/* Middle Section: Globe and Address Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16 mt-12 sm:mt-16 items-center">
-          {/* Left Side: Globe Visualization */}
+        {/* Middle Section: Globe */}
+        <div className="flex justify-center mt-12 sm:mt-16">
           <div className="relative">
           <div className="relative w-56 h-56 sm:w-64 sm:h-64 mx-auto lg:mx-0">
               <div className="relative w-full h-full animate-spin-slow">
@@ -462,13 +425,6 @@ const Footer: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Right Side: Address Grid */}
-          <div className="flex justify-end">
-            <div className="text-left">
-              {locationsData.map(location => <LocationCard key={location.country} {...location} />)}
             </div>
           </div>
         </div>

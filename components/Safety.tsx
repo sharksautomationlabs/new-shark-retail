@@ -25,7 +25,7 @@ const pillars = [
   {
     icon: "🏢",
     title: "US-Registered Company",
-    desc: "The Shark Retail is headquartered in Richmond, TX. Fully registered, verifiable, with a real team and a real physical address.",
+    desc: "The Shark Retail is a US-registered company. Fully registered and verifiable, with a real team you can work with directly.",
   },
 ];
 
@@ -35,7 +35,7 @@ const promises = [
   "Dedicated consultant per account — real human, one call away",
   "Strategy call before you invest — we map the right marketplace for you",
   "Clear exit terms — your money isn't locked forever",
-  "Registered in Texas, USA — verifiable credentials and real address",
+  "Registered in Texas, USA — verifiable credentials",
 ];
 
 export default function Safety() {

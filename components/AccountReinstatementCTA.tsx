@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Phone, Shield, Mail, MapPin } from 'lucide-react';
+import { ChevronDown, Phone, Shield, Mail } from 'lucide-react';
 
 // --- Reusable Form Field Components ---
 interface FormFieldProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
@@ -532,7 +532,6 @@ const AccountReinstatementCTA: React.FC = () => {
           {[
             { icon: Shield, title: "Recover Your Accounts", desc: "Amazon, eBay, Shopify, Walmart—we recover suspended accounts and ensure compliance across all major e-commerce platforms." },
             { icon: Mail, title: "Email", desc: "info@thesharkretail.com" },
-            { icon: MapPin, title: "Address", desc: "22023 Rustic Canyon Ln, Richmond, TX 77469, USA" },
           ].map((item, i) => (
             <div key={i} className="relative group p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-teal-500/30 hover:bg-white/[0.04] transition-all duration-500">
               <div className="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
