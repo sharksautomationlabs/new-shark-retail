@@ -10,6 +10,8 @@ const HeroPortfolioCard = dynamic(() => import("./HeroPortfolioCard"), { ssr: fa
 // Alias so cached builds don’t break if they still reference HeroRoiCard
 const HeroRoiCard = HeroPortfolioCard;
 
+const SHARK_HERO_VIDEO_SRC = "/videos/shark-hero.mov";
+
 const HERO_DESCRIPTION =
   "Keep scrolling-your path to financial freedom is just ahead. By the time you've explored 25% of this page, you'll discover the hidden gem that could change your life.";
 
@@ -18,37 +20,45 @@ const HERO_SUBTEXT =
 
 export default function Hero() {
   return (
-    <div className="hero-root relative w-full max-w-full overflow-hidden bg-[#020205] gpu-smooth">
-      {/* DESKTOP / TABLET HERO (with 3D + GIF) */}
+    <div className="hero-root relative w-full max-w-full overflow-hidden bg-[#020205]">
+      {/* DESKTOP / TABLET HERO (with 3D + shark video) */}
       <div className="hidden md:block w-full max-w-full h-dvh relative overflow-hidden">
-        {/* 1. Background particles – desktop only for performance */}
+        {/* Particles + shark share one layer so mix-blend can read WebGL backdrop; transparent GL clear = same #020205 base */}
         <div className="absolute inset-0 z-0">
-          <Canvas camera={{ position: [0, 0, 5], fov: 50 }} dpr={[1, 1.75]}>
+          <Canvas
+            className="pointer-events-none absolute inset-0 h-full w-full touch-none"
+            camera={{ position: [0, 0, 5], fov: 50 }}
+            dpr={[1, 1.75]}
+            gl={{ alpha: true }}
+            onCreated={({ gl, scene }) => {
+              scene.background = null;
+              gl.setClearColor("#020205", 0);
+            }}
+          >
             <Suspense fallback={null}>
               <HeroParticles />
             </Suspense>
           </Canvas>
-        </div>
-
-        {/* 2. Shark GIF */}
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] w-full h-full z-2 flex items-center justify-center pointer-events-none"
-          style={{ contain: "layout paint", isolation: "isolate" }}
-        >
-          <img
-            src="/gif/sharks.gif"
-            alt=""
-            role="presentation"
-            fetchPriority="high"
-            className="max-h-[110vh] w-auto max-w-full object-contain object-center select-none"
-            style={{ transform: "translateZ(0)" }}
-          />
+          <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
+            <video
+              className="hero-shark-blend max-h-[110vh] w-auto max-w-full object-contain object-center select-none"
+              style={{ transform: "translateZ(0)" }}
+              src={SHARK_HERO_VIDEO_SRC}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-hidden
+              role="presentation"
+            />
+          </div>
         </div>
 
         {/* 3. Bottom gradient for text readability */}
         <div className="absolute w-full h-[50vh] bottom-0 left-0 bg-linear-to-b from-transparent to-[#020205] z-3" />
 
-        {/* 4. Banner overlay – no blur so GIF below can animate smooth */}
+        {/* 4. Banner overlay – no blur so media below can animate smooth */}
         <div
           className="absolute inset-0 z-5 pointer-events-none bg-black/30"
           aria-hidden="true"
@@ -106,15 +116,19 @@ export default function Hero() {
         {/* Simple dark gradient background */}
         <div className="absolute inset-0 bg-linear-to-b from-[#020205] via-[#020617] to-[#020205] pointer-events-none" />
 
-        {/* Shark GIF – centered, smaller for mobile */}
+        {/* Shark video – centered, smaller for mobile */}
         <div className="relative z-0 flex items-center justify-center w-full mb-6 mt-2">
-          <img
-            src="/gif/sharks.gif"
-            alt=""
-            role="presentation"
-            fetchPriority="high"
-            className="max-h-[260px] sm:max-h-[340px] w-full object-contain object-center select-none"
+          <video
+            className="hero-shark-blend max-h-[260px] sm:max-h-[340px] w-full object-contain object-center select-none"
             style={{ transform: "translateZ(0)" }}
+            src={SHARK_HERO_VIDEO_SRC}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden
+            role="presentation"
           />
         </div>
 

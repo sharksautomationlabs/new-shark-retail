@@ -319,6 +319,11 @@ body {
   max-width: 100%;
 }
 
+/* Shark hero video: black matte knocks out over particle canvas (see Hero.tsx layer stack) */
+.hero-shark-blend {
+  mix-blend-mode: screen;
+}
+
 .hero-mobile-wrapper {
   width: 100%;
   max-width: 100%;
