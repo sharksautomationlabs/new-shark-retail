@@ -12,9 +12,9 @@ import Experts from "@/components/Experts";
 import AmazonPPCCTA from "@/components/AmazonPPCCTA";
 
 export const metadata = {
-  title: "Amazon PPC Management | Shark Retail",
+  title: "Amazon PPC Management | Retail Automation",
   description:
-    "Elite Amazon PPC management—lower ACOS, boost ROAS. Sponsored Products, Sponsored Brands, and Display optimization. Scale your Amazon advertising profitably with Shark Retail.",
+    "Elite Amazon PPC management—lower ACOS, boost ROAS. Sponsored Products, Sponsored Brands, and Display optimization. Scale your Amazon advertising profitably with Retail Automation.",
   keywords: [
     "Amazon PPC",
     "Amazon PPC Management",
@@ -23,7 +23,7 @@ export const metadata = {
     "ACOS Optimization",
     "ROAS",
     "Amazon Advertising",
-    "Shark Retail",
+    "Retail Automation",
   ],
 };
 

@@ -69,17 +69,17 @@ const AmazonHero: React.FC = () => {
             variants={fadeUpVariant}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight"
           >
-            We Always Give The Best{' '}
+            End-to-End{' '}
             <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-teal-200 drop-shadow-[0_0_30px_rgba(20,184,166,0.3)]">
-              Amazon FBA Service
+              Amazon FBA
             </span>{' '}
-            To You
+            Operations Built to Compound
           </motion.h1>
           <motion.p
             variants={fadeUpVariant}
             className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed font-medium mb-10"
           >
-            Boost your digital presence on Amazon with Shark Retail. Our seasoned FBA team optimizes your store, streamlines operations, and drives substantial revenue growth with premium automation.
+            Boost your digital presence on Amazon with Retail Automation. Our seasoned FBA team optimizes your store, streamlines operations, and drives substantial revenue growth with premium automation.
           </motion.p>
           <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <a

@@ -78,9 +78,9 @@ const EcommerceAutomationHero: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center md:text-left space-y-6 order-1"
           >
-            {/* ECOM SHARK Label */}
+            {/* Brand label */}
             <div className="text-teal-400 font-bold tracking-widest uppercase text-xs sm:text-sm mb-2">
-              SHARK RETAIL
+              Retail Automation
             </div>
 
             {/* Main Headline */}
@@ -88,8 +88,8 @@ const EcommerceAutomationHero: React.FC = () => {
               className="text-2xl sm:text-3xl md:text-5xl lg:text-[46px] xl:text-6xl font-extrabold text-white leading-[1.1] tracking-tight"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
-              The Only E-commerce Investment
-              with a <span style={{ color: 'oklch(77.7% 0.152 181.912)' }}>Guaranteed Return</span>
+              A 30-Day E-Commerce
+              <span style={{ color: 'oklch(77.7% 0.152 181.912)' }}> Momentum</span> Plan You Can Read in the Numbers
             </h1>
 
             {/* Body Text */}

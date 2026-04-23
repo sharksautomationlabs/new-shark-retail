@@ -28,9 +28,9 @@ const PPCManagementHero: React.FC = () => {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight max-w-4xl mx-auto"
             style={{ fontFamily: 'Poppins', fontWeight: '400' }}
           >
-            Strategic Capital Deployment in{' '}
+            Performance-Led{' '}
             <span className="text-teal-400">PPC</span>{' '}
-            <span className="text-white">Management</span>
+            <span className="text-white">Management for Marketplaces</span>
           </motion.h1>
 
           {/* Sub-headline */}

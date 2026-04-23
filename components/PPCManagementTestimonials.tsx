@@ -326,7 +326,7 @@ const PPCManagementTestimonials: React.FC = () => {
       role: "Digital Marketing Director",
       company: "Capital Partners LLC",
       date: "Jan 12, 2025",
-      content: "Shark Retail's systematic approach to PPC management delivered exceptional results. Within 90 days, our advertising campaigns generated $50K in monthly recurring revenue. Their proprietary optimization algorithms and strategic budget allocation transformed our PPC operations into a cash-flow generative asset.",
+      content: "Retail Automation's systematic approach to PPC management delivered exceptional results. Within 90 days, our advertising campaigns generated $50K in monthly recurring revenue. Their proprietary optimization algorithms and strategic budget allocation transformed our PPC operations into a cash-flow generative asset.",
       metrics: [
         { label: "Monthly Revenue", value: "$50K" },
         { label: "Time to Profit", value: "90 Days" }
@@ -337,7 +337,7 @@ const PPCManagementTestimonials: React.FC = () => {
       role: "Marketing Portfolio Manager",
       company: "Strategic Ventures",
       date: "Dec 8, 2024",
-      content: "The institutional-grade PPC frameworks deployed by Shark Retail exceeded all expectations. Our advertising portfolio achieved 400% growth through their systematic approach to campaign analysis and strategic positioning. Their proprietary systems consistently outperform market benchmarks.",
+      content: "The institutional-grade PPC frameworks deployed by Retail Automation exceeded all expectations. Our advertising portfolio achieved 400% growth through their systematic approach to campaign analysis and strategic positioning. Their proprietary systems consistently outperform market benchmarks.",
       metrics: [
         { label: "Portfolio Growth", value: "400%" },
         { label: "Market Outperformance", value: "250%" }
@@ -348,7 +348,7 @@ const PPCManagementTestimonials: React.FC = () => {
       role: "Advertising Allocation Director",
       company: "Global Investment Group",
       date: "Nov 20, 2024",
-      content: "Working with Shark Retail transformed our PPC operations into a systematic wealth-building platform. Their predictive analytics and automated campaign management delivered 100% ROI growth within six months. The institutional-grade reporting and strategic insights are unparalleled.",
+      content: "Working with Retail Automation transformed our PPC operations into a systematic wealth-building platform. Their predictive analytics and automated campaign management delivered 100% ROI growth within six months. The institutional-grade reporting and strategic insights are unparalleled.",
       metrics: [
         { label: "ROI Growth", value: "100%" },
         { label: "Timeframe", value: "6 Months" }

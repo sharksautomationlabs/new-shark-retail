@@ -71,7 +71,7 @@ const ShopifyTestimonials: React.FC = () => {
       name: 'Lisa Thompson',
       role: 'Shopify Store Owner',
       date: 'Jan 5, 2025',
-      content: 'ECOM SHARKS transformed our Shopify store with their automation services. They set up dropshipping automation, optimized our checkout process, and implemented advanced analytics. Our conversion rate increased by 180% and we\'re now doing $75K monthly revenue!',
+      content: 'Retail Automation transformed our Shopify store with their automation services. They set up dropshipping automation, optimized our checkout process, and implemented advanced analytics. Our conversion rate increased by 180% and we\'re now doing $75K monthly revenue!',
       metrics: [
         { label: 'Monthly Revenue', value: '$75K' },
         { label: 'Conversion Lift', value: '+180%' },
@@ -81,7 +81,7 @@ const ShopifyTestimonials: React.FC = () => {
       name: 'James Wilson',
       role: 'E-commerce Entrepreneur',
       date: 'Dec 18, 2024',
-      content: 'The Shopify automation services from ECOM SHARKS are outstanding. They automated our inventory management, customer service, and marketing campaigns. We went from manual processes to a fully automated store that runs 24/7. Sales tripled in 4 months!',
+      content: 'The Shopify automation services from Retail Automation are outstanding. They automated our inventory management, customer service, and marketing campaigns. We went from manual processes to a fully automated store that runs 24/7. Sales tripled in 4 months!',
       metrics: [
         { label: 'Sales Growth', value: '3x' },
         { label: 'Timeframe', value: '4 Months' },
@@ -91,7 +91,7 @@ const ShopifyTestimonials: React.FC = () => {
       name: 'Maria Garcia',
       role: 'Online Business Owner',
       date: 'Nov 30, 2024',
-      content: 'Working with ECOM SHARKS for our Shopify automation has been incredible. They implemented advanced product sourcing, automated order fulfillment, and set up dynamic pricing. Our profit margins improved by 150% and we\'re scaling faster than ever before!',
+      content: 'Working with Retail Automation for our Shopify automation has been incredible. They implemented advanced product sourcing, automated order fulfillment, and set up dynamic pricing. Our profit margins improved by 150% and we\'re scaling faster than ever before!',
       metrics: [
         { label: 'Profit Margins', value: '+150%' },
         { label: 'Scaling', value: 'Faster' },

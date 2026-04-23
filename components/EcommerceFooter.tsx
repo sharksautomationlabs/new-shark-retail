@@ -3,20 +3,14 @@
 import React, { useState } from 'react';
 import { Facebook, Instagram } from 'lucide-react';
 
-// --- Reusable SVG Logo Component ---
-const SharkRetailLogo = () => (
-  <div className="flex items-center gap-3">
+// --- Brand logo (image only) ---
+const BrandLogo = () => (
+  <div className="flex items-center">
     <img
-      src="/images/sharks-retail-logo.png"
-      alt="Shark Retail Logo"
-      className="hidden sm:block h-14 w-auto"
+      src="/images/retail-automation-logo.png"
+      alt="Retail Automation"
+      className="h-20 w-auto sm:h-24 max-w-[min(100%,20rem)] object-contain"
     />
-    <div className="flex flex-col">
-      <span className="text-2xl font-bold">
-        <span className="text-teal-400">Shark</span> <span className="text-white">Retail</span>
-      </span>
-      <span className="text-sm text-gray-400">Retail Automation Solutions</span>
-    </div>
   </div>
 );
 
@@ -231,7 +225,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto relative z-10">
         {/* Top Section: Logo and Nav */}
         <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center lg:items-center gap-6 sm:gap-8 text-center lg:text-left">
-          <SharkRetailLogo />
+          <BrandLogo />
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
             {footerNavLinks.map(link => (

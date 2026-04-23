@@ -12,9 +12,9 @@ import Experts from "@/components/Experts";
 import DigitalMarketingCTA from "@/components/DigitalMarketingCTA";
 
 export const metadata = {
-  title: "Digital Marketing | Shark Retail",
+  title: "Digital Marketing | Retail Automation",
   description:
-    "Elite digital marketing for e-commerce—PPC, SEO, social media, content marketing, and analytics. Scale smarter, sell faster with Shark Retail.",
+    "Elite digital marketing for e-commerce—PPC, SEO, social media, content marketing, and analytics. Scale smarter, sell faster with Retail Automation.",
   keywords: [
     "Digital Marketing",
     "E-commerce Marketing",
@@ -22,7 +22,7 @@ export const metadata = {
     "SEO",
     "Social Media Marketing",
     "Content Marketing",
-    "Shark Retail",
+    "Retail Automation",
   ],
 };
 

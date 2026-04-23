@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
               ` : ''}
             </div>
             <div class="footer">
-              <p>This email was sent from the Shark Retail contact form.</p>
+              <p>This email was sent from Retail Automation contact form.</p>
             </div>
           </div>
         </body>

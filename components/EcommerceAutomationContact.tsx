@@ -40,7 +40,7 @@ const EcommerceAutomationContact: React.FC = () => {
             viewport={{ once: true }}
           >
             <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
-              Ready to elevate your E-commerce success? The Shark Retail is here to support you every step. Whether you have questions, need guidance, or want to achieve amazing returns, we're ready to build something amazing together!
+              Ready to elevate your E-commerce success? Retail Automation is here to support you every step. Whether you have questions, need guidance, or want to achieve amazing returns, we're ready to build something amazing together!
             </p>
             
             <div className="space-y-6">
@@ -162,7 +162,7 @@ const EcommerceAutomationContact: React.FC = () => {
                     className="mt-1 h-4 w-4 text-teal-400 border-white/20 rounded focus:ring-teal-400 bg-white/10"
                   />
                   <label htmlFor="marketing" className="ml-3 text-sm text-gray-300">
-                    I agree to receive marketing communications from The Shark Retail.
+                    I agree to receive marketing communications from Retail Automation.
                   </label>
                 </div>
               </div>

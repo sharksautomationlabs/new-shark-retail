@@ -86,7 +86,7 @@ const ShopifyServices: React.FC = () => {
             </span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-gray-400 text-lg max-w-2xl mx-auto font-medium">
-            At Shark Retail we offer top-tier solutions designed to streamline your Shopify business. Our expert team ensures every aspect operates flawlessly and seamlessly.
+            At Retail Automation we offer top-tier solutions designed to streamline your Shopify business. Our expert team ensures every aspect operates flawlessly and seamlessly.
           </motion.p>
         </motion.div>
 

@@ -103,7 +103,7 @@ const PPCManagementEdge: React.FC = () => {
               The Edge That Makes Our System Better!
             </h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Growth with The Shark Retail
+              Growth with Retail Automation
             </p>
           </motion.div>
 
@@ -117,7 +117,7 @@ const PPCManagementEdge: React.FC = () => {
               className="space-y-6"
             >
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-teal-400 mb-2">With The Shark Retail</h3>
+                <h3 className="text-2xl font-bold text-teal-400 mb-2">With Retail Automation</h3>
                 <div className="w-16 h-1 bg-teal-400 mx-auto rounded-full"></div>
               </div>
               
@@ -204,7 +204,7 @@ const PPCManagementEdge: React.FC = () => {
                 Ready to Choose the Right Path?
               </h3>
               <p className="text-sm sm:text-lg text-gray-300 mb-5 sm:mb-6 max-w-2xl mx-auto">
-                Don't let inexperience and guesswork hold you back. Partner with The Shark Retail and unlock your true potential.
+                Don't let inexperience and guesswork hold you back. Partner with Retail Automation and unlock your true potential.
               </p>
               <a
                 href="/contact"

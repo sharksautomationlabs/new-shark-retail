@@ -44,7 +44,7 @@ const PPCManagementMainContent: React.FC = () => {
               <div className="space-y-6">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight max-w-3xl">
                   Why Choose{' '}
-                  <span className="text-teal-400">The Shark Retail</span>
+                  <span className="text-teal-400">Retail Automation</span>
                 </h2>
                 
                 <p className="text-sm sm:text-base md:text-xl text-gray-600 leading-relaxed max-w-3xl">

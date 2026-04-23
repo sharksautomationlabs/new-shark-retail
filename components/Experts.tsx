@@ -9,26 +9,26 @@ gsap.registerPlugin(ScrollTrigger);
 const experts = [
   {
     avatar: "🎯",
-    name: "Amazon Specialists",
-    role: "FBA · PPC · Listing Ops",
+    name: "Amazon FBA & PPC",
+    role: "FBA · PPC · Listings",
     stat: "7+ years average Amazon experience per specialist",
   },
   {
     avatar: "🛍️",
-    name: "Shopify Growth Team",
-    role: "DTC · Email · Paid Social",
+    name: "Shopify Growth & Retention",
+    role: "DTC · Email · Paid",
     stat: "3.2× ROAS average across managed Shopify stores",
   },
   {
     avatar: "🎵",
-    name: "TikTok Commerce Unit",
-    role: "Creators · Live · Affiliates",
+    name: "TikTok Shop & Content",
+    role: "Shops · Live · Affiliates",
     stat: "89% growth average in first 90 days on TikTok Shop",
   },
   {
     avatar: "🏪",
-    name: "Walmart Operations",
-    role: "WFS · Listings · Content",
+    name: "Walmart Marketplace Ops",
+    role: "WFS · Listings · Merch",
     stat: "Access to $500B+ in Walmart annual customer traffic",
   },
 ];
@@ -85,15 +85,15 @@ export default function Experts() {
             ref={labelRef}
             className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.28em] text-teal-400 uppercase mb-5"
           >
-            <span className="w-6 h-px bg-teal-400/70" /> Expert Team
+            <span className="w-6 h-px bg-teal-400/70" /> Specialist pods
           </div>
           <h2
             ref={titleRef}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold tracking-tight leading-[1.05] text-white mb-5"
           >
-            Veterans Who{" "}
+            People Who’ve{" "}
             <span ref={titleHighlightRef} className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
-              Win Markets.
+              Already Won These Markets.
             </span>
           </h2>
           <p

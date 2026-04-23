@@ -1,6 +1,6 @@
 {
-  "name": "The Shark Retail - E-commerce Automation Solutions",
-  "short_name": "The Shark Retail",
+  "name": "Retail Automation - E-commerce Automation Solutions",
+  "short_name": "Retail Automation",
   "description": "Transform your capital into systematically managed, cash-flow generative e-commerce enterprises.",
   "start_url": "/",
   "display": "standalone",
@@ -9,13 +9,13 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/images/sharks-retail-logo.png",
+      "src": "/images/retail-automation-logo.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/images/sharks-retail-logo.png",
+      "src": "/images/retail-automation-logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

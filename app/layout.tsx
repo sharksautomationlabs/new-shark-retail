@@ -16,13 +16,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://thesharkretail.com'),
-  title: "The Shark Retail - E-commerce Automation Solutions",
+  title: "Retail Automation - E-commerce Automation Solutions",
   description: "We build and run Amazon, Shopify, TikTok Shop and Walmart stores for investors and operators who want a calm, transparent partner. Our team handles the daily work so you can focus on decisions and see real progress in the first 30 days.",
-  keywords: ["e-commerce automation", "Amazon automation", "Shopify automation", "TikTok Shop automation", "Walmart automation", "Amazon PPC management", "virtual assistant", "account reinstatement", "content creation", "keyword research", "product hunting", "The Shark Retail"],
-  authors: [{ name: "The Shark Retail" }],
-  creator: "The Shark Retail",
-  publisher: "The Shark Retail",
-  applicationName: "The Shark Retail",
+  keywords: ["e-commerce automation", "Amazon automation", "Shopify automation", "TikTok Shop automation", "Walmart automation", "Amazon PPC management", "virtual assistant", "account reinstatement", "content creation", "keyword research", "product hunting", "Retail Automation"],
+  authors: [{ name: "Retail Automation" }],
+  creator: "Retail Automation",
+  publisher: "Retail Automation",
+  applicationName: "Retail Automation",
   robots: {
     index: true,
     follow: true,
@@ -38,41 +38,39 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://thesharkretail.com',
-    siteName: 'The Shark Retail',
-    title: 'The Shark Retail - E-commerce Automation Solutions',
+    siteName: 'Retail Automation',
+    title: 'Retail Automation - E-commerce Automation Solutions',
     description: 'We build and run Amazon, Shopify, TikTok Shop and Walmart stores for investors and operators who want a calm, transparent partner. Our team handles the daily work so you can focus on decisions and see real progress in the first 30 days.',
     images: [
       {
-        url: '/images/sharks-retail-logo.png',
+        url: '/images/retail-automation-logo.png',
         width: 1200,
         height: 630,
-        alt: 'The Shark Retail Logo',
+        alt: 'Retail Automation Logo',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@sharkretail',
-    creator: '@sharkretail',
-    title: 'The Shark Retail - E-commerce Automation Solutions',
+    title: 'Retail Automation - E-commerce Automation Solutions',
     description: 'We build and run Amazon, Shopify, TikTok Shop and Walmart stores for investors and operators who want a calm, transparent partner.',
-    images: ['/images/sharks-retail-logo.png'],
+    images: ['/images/retail-automation-logo.png'],
   },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/images/sharks-retail-logo.png', sizes: '32x32', type: 'image/png' },
-      { url: '/images/sharks-retail-logo.png', sizes: '16x16', type: 'image/png' },
+      { url: '/images/retail-automation-logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/retail-automation-logo.png', sizes: '16x16', type: 'image/png' },
     ],
     shortcut: '/favicon.ico',
     apple: [
-      { url: '/images/sharks-retail-logo.png', sizes: '180x180', type: 'image/png' },
+      { url: '/images/retail-automation-logo.png', sizes: '180x180', type: 'image/png' },
     ],
     other: [
       {
         rel: 'apple-touch-icon-precomposed',
-        url: '/images/sharks-retail-logo.png',
+        url: '/images/retail-automation-logo.png',
       },
     ],
   },
@@ -94,7 +92,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preload" href="/videos/shark-hero.mov" as="video" type="video/quicktime" />
-        <link rel="preload" href="/images/sharks-retail-logo.png" as="image" />
+        <link rel="preload" href="/images/sharks-retail-header-logo.png" as="image" />
       </head>
       <body
         suppressHydrationWarning
@@ -108,9 +106,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "The Shark Retail",
+              name: "Retail Automation",
               url: "https://thesharkretail.com",
-              logo: "https://thesharkretail.com/images/sharks-retail-logo.png",
+              logo: "https://thesharkretail.com/images/retail-automation-logo.png",
             }),
           }}
         />

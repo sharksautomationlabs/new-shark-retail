@@ -70,9 +70,8 @@ const ThankYouPage: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="text-left space-y-6 order-1"
             >
-              {/* SHARKS RETAIL Label */}
               <div className="text-teal-400 font-bold tracking-widest uppercase text-sm mb-2">
-                SHARKS RETAIL
+                Retail Automation
               </div>
 
               {/* Main Headline */}
@@ -80,8 +79,8 @@ const ThankYouPage: React.FC = () => {
                 className="text-4xl sm:text-6xl md:text-7xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight"
                 style={{ fontFamily: 'Poppins, sans-serif' }}
               >
-                You&apos;re In! Let&apos;s Get <br className="hidden lg:block"/>
-                Ready for Your Call
+                Call Locked In — <br className="hidden lg:block"/>
+                We&apos;re Prepping Your Dossier
               </h1>
 
               {/* Body Text */}

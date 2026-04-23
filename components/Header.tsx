@@ -102,18 +102,18 @@ const Header = () => {
         </div>
 
         {/* Gap between topbar and main nav */}
-        <div className="flex items-center justify-between max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 mt-4 sm:mt-3">
+        <div className="flex items-center justify-between max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 mt-3 sm:mt-4 py-1 sm:py-2">
           
-          {/* Left: Logo - Homepage link */}
-          <Link href="/" className="flex items-center gap-3 cursor-pointer z-60">
+          {/* Left: Logo — wider slot, same fixed heights */}
+          <Link
+            href="/"
+            className="flex h-9 w-[min(320px,84vw)] sm:h-10 sm:w-[min(340px,80vw)] md:h-11 md:w-[min(360px,70vw)] shrink-0 items-center cursor-pointer z-60"
+          >
             <img
-              src="/images/sharks-retail-logo.png"
-              alt="Shark Retail Logo"
-              className="h-8 w-8 object-contain"
+              src="/images/sharks-retail-header-logo.png"
+              alt="Retail Automation"
+              className="h-full w-auto max-w-full object-contain object-left"
             />
-            <span className="text-xl font-bold tracking-widest uppercase font-mono text-white">
-              Shark<span className="text-teal-400">Retail</span>
-            </span>
           </Link>
 
           {/* Center: Desktop Navigation (Hidden on Mobile) */}

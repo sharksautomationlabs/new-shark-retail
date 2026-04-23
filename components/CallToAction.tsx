@@ -103,7 +103,7 @@ export default function CallToAction() {
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[200vw] pointer-events-none z-0 opacity-40 select-none">
         <div ref={marqueeRef} className="flex whitespace-nowrap">
           <h1 className="text-[12vw] font-black uppercase tracking-tighter text-stroke leading-none">
-            GET STARTED • BOOK A CALL • GET STARTED • BOOK A CALL • GET STARTED •
+            TALK TO US • BOOK A STRATEGY CALL • TALK TO US • BOOK A STRATEGY CALL • TALK TO US •
           </h1>
         </div>
       </div>
@@ -124,13 +124,13 @@ export default function CallToAction() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
               </span>
-              System Protocol: Active
+              Onboarding: Open
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-black uppercase tracking-wide leading-tight text-white mb-6" style={{ fontFamily: "Impact, sans-serif" }}>
-              Ready to Launch a{" "}
+              Ready to Stand Up a{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-300 to-white">
-                Profitable E-commerce Store?
+                Store That Actually Sells?
               </span>
             </h2>
 
@@ -163,7 +163,7 @@ export default function CallToAction() {
                   <div className="w-8 h-8 bg-teal-400 rounded-full animate-pulse shadow-[0_0_20px_teal]" />
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-2 uppercase tracking-tight">Initiate Call</h3>
+                <h3 className="text-2xl font-bold text-white mb-2 uppercase tracking-tight">Book a Strategy Call</h3>
                 <p className="text-slate-400 text-sm mb-8 font-light">Speak with a senior consultant today.</p>
 
                 {/* The Ultimate Cyber Button */}

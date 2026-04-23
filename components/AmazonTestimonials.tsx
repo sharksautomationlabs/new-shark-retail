@@ -327,7 +327,7 @@ const AmazonTestimonials: React.FC = () => {
       company: "Private Label Brand Owner",
       date: "Jan 12, 2025",
       content:
-        "Shark Retail helped us launch our first Amazon FBA product and we hit $50K in sales within just 3 months. Their automation around inventory management and PPC optimization took us from struggling to profitable in record time.",
+        "Retail Automation helped us launch our first Amazon FBA product and we hit $50K in sales within just 3 months. Their automation around inventory management and PPC optimization took us from struggling to profitable in record time.",
       metrics: [
         { label: "Sales in 3 Months", value: "$50K" },
         { label: "Time to Scale", value: "90 Days" }
@@ -339,7 +339,7 @@ const AmazonTestimonials: React.FC = () => {
       company: "Multi-Channel Brand",
       date: "Dec 8, 2024",
       content:
-        "The Amazon FBA automation services from Shark Retail are phenomenal. They handled everything from product research to listing optimization. Our sales increased by 400%, and we're now ranking on page 1 for our main keywords. Highly recommended.",
+        "The Amazon FBA automation services from Retail Automation are phenomenal. They handled everything from product research to listing optimization. Our sales increased by 400%, and we're now ranking on page 1 for our main keywords. Highly recommended.",
       metrics: [
         { label: "Sales Increase", value: "400%" },
         { label: "Keyword Ranking", value: "Page 1" }
@@ -351,7 +351,7 @@ const AmazonTestimonials: React.FC = () => {
       company: "FBA Brand Operator",
       date: "Nov 20, 2024",
       content:
-        "Working with Shark Retail for our Amazon FBA business has been transformative. Their automation tools for inventory forecasting and repricing saved us from stockouts and helped us maintain competitive pricing. Revenue grew 250% in just 6 months.",
+        "Working with Retail Automation for our Amazon FBA business has been transformative. Their automation tools for inventory forecasting and repricing saved us from stockouts and helped us maintain competitive pricing. Revenue grew 250% in just 6 months.",
       metrics: [
         { label: "Revenue Growth", value: "250%" },
         { label: "Timeframe", value: "6 Months" }

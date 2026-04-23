@@ -139,12 +139,12 @@ export default function FeaturedIn() {
           
           <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-500/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-teal-400 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_8px_teal]" />
-            Platforms We Run On
+            One Team, Every Channel
           </div>
           
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter mb-4">
-            Amazon • Shopify • <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-white">TikTok Shop • Walmart & More</span>
+            One Partner Across <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-white">Amazon • Shopify • TikTok • Walmart +</span>
           </h2>
           
           <p className="text-slate-400 max-w-2xl mx-auto font-light text-sm md:text-base tracking-wide">

@@ -98,13 +98,13 @@ const ShopifyMainContent: React.FC = () => {
               Shopify Automation
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
-              Achieve Unparalleled Success with{' '}
+              Lifecycle automation for{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
-                Our Shopify Automation Services
+                DTC + Shopify growth programs
               </span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-slate-400 text-lg md:text-xl leading-relaxed font-light">
-              At Shark Retail, we specialize in empowering entrepreneurs and mid-sized businesses through cutting-edge Shopify automation. We identify profitable products, boost sales, and provide custom branding solutions—ensuring your Shopify store operates flawlessly and stands out in the competitive e-commerce world.
+              At Retail Automation, we specialize in empowering entrepreneurs and mid-sized businesses through cutting-edge Shopify automation. We identify profitable products, boost sales, and provide custom branding solutions—ensuring your Shopify store operates flawlessly and stands out in the competitive e-commerce world.
             </motion.p>
             <motion.p variants={fadeUp} className="text-slate-400 text-base md:text-lg leading-relaxed font-light">
               Expand your product range without the headaches of inventory maintenance and shipping logistics. Our solutions allow you to innovate, explore new markets, and enhance the customer experience—all while maximizing your earnings.

@@ -37,10 +37,10 @@ const VirtualAssistantMainContent: React.FC = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_8px_teal]" /> Virtual Assistant
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-[2.15rem] md:text-[2.6rem] lg:text-[3rem] font-bold text-white tracking-tight leading-[1.15]">
-              Sky-Rocket Your Operations with <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">Elite Virtual Assistance</span>
+              Offload the inbox with <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">managed VA pods</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-slate-400 text-lg md:text-xl leading-relaxed font-light">
-              Shark Retail delivers customer service management, administrative support, inventory management, and dedicated account managers. We help e-commerce brands scale smarter and sell faster.
+              Retail Automation delivers customer service management, administrative support, inventory management, and dedicated account managers. We help e-commerce brands scale smarter and sell faster.
             </motion.p>
             <motion.p variants={fadeUp} className="text-slate-400 text-base md:text-lg leading-relaxed font-light">
               From customer service and order processing to data management and weekly analytics—we tailor support for your goals. Built for scale, designed for results.

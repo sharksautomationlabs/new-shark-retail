@@ -39,9 +39,9 @@ const WalmartMainContent: React.FC = () => {
               Walmart Automation
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-[2.15rem] md:text-[2.6rem] lg:text-[3rem] font-bold text-white tracking-tight leading-[1.15]">
-              Sky-Rocket Your Walmart Venture with{' '}
+              Enterprise-ready workflows for{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
-                Our Premium Walmart Automation Services
+                Walmart Marketplace + WFS
               </span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-slate-400 text-lg md:text-xl leading-relaxed font-light">

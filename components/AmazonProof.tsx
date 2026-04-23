@@ -74,7 +74,7 @@ const AmazonProof: React.FC = () => {
             </span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-gray-400 text-lg max-w-3xl mx-auto font-medium">
-            These dashboards highlight how our Amazon FBA automation streamlines operations, prevents stockouts, and drives sustained revenue growth—from real stores where Shark Retail handles inventory and fulfillment.
+            These dashboards highlight how our Amazon FBA automation streamlines operations, prevents stockouts, and drives sustained revenue growth—from real stores where Retail Automation handles inventory and fulfillment.
           </motion.p>
           <motion.div variants={fadeUp} className="mt-8 flex justify-center">
             <div className="w-32 h-px bg-gradient-to-r from-transparent via-teal-500/50 to-transparent" />

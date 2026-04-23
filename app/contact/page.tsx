@@ -6,7 +6,7 @@ import ContactSection from '../../components/ContactSection';
 import Footer from '../../components/Footer';
 
 export const metadata: Metadata = {
-  title: "Contact The Shark Retail | Book a call",
+  title: "Contact Retail Automation | Book a call",
   description:
     "Share a bit about your Amazon, Shopify, TikTok Shop or Walmart goals and we’ll map out what working together could look like in the first 30 days.",
   alternates: {

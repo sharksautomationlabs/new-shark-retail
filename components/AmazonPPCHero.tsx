@@ -81,17 +81,17 @@ const AmazonPPCHero: React.FC = () => {
             variants={fadeUpVariant}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight"
           >
-            We Always Give The Best{" "}
+            Precision{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-teal-200 drop-shadow-[0_0_30px_rgba(20,184,166,0.3)]">
-              Amazon PPC Management
+              Amazon PPC
             </span>{" "}
-            To You
+            management for lean ACOS
           </motion.h1>
           <motion.p
             variants={fadeUpVariant}
             className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed font-medium mb-10"
           >
-            Scale your Amazon advertising with Shark Retail. We optimize
+            Scale your Amazon advertising with Retail Automation. We optimize
             Sponsored Products, Sponsored Brands, and Sponsored Display to reduce
             ACOS, boost ROAS, and drive profitable sales on the world&apos;s
             largest marketplace.

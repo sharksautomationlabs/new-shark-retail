@@ -85,9 +85,9 @@ const OurStoryHero: React.FC = () => {
             variants={fadeUpVariant}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-8 leading-[1.1] tracking-tight"
           >
-            Our Every Success <br className="hidden sm:block" />
+            Proof Over Pitch <br className="hidden sm:block" />
             <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-teal-200 drop-shadow-[0_0_30px_rgba(20,184,166,0.3)]">
-              Has History
+              Is How We Work
             </span>
           </motion.h1>
 
@@ -96,7 +96,7 @@ const OurStoryHero: React.FC = () => {
             variants={fadeUpVariant}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 leading-relaxed max-w-3xl mx-auto font-medium"
           >
-            Discover the journey, expertise, and values that drive Shark Retail to deliver exceptional{' '}
+            Discover the journey, expertise, and values that drive Retail Automation to deliver exceptional{' '}
             <span className="text-white border-b border-teal-500/30 pb-0.5 transition-colors hover:border-teal-400 hover:text-teal-300 cursor-default">
               e-commerce solutions
             </span>

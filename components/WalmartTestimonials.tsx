@@ -350,7 +350,7 @@ const WalmartTestimonials: React.FC = () => {
       role: "Walmart Marketplace Seller",
       company: "E-commerce Business",
       date: "Jan 7, 2025",
-      content: "ECOM SHARKS Walmart automation services are exceptional! They helped us get approved for Walmart Marketplace and set up WFS (Walmart Fulfillment Services). Our sales went from $0 to $100K in 8 months. Their expertise in Walmart's requirements is unmatched!",
+      content: "Retail Automation Walmart automation services are exceptional! They helped us get approved for Walmart Marketplace and set up WFS (Walmart Fulfillment Services). Our sales went from $0 to $100K in 8 months. Their expertise in Walmart's requirements is unmatched!",
       metrics: [
         { label: "Sales Growth", value: "$100K" },
         { label: "Timeframe", value: "8 Months" }
@@ -361,7 +361,7 @@ const WalmartTestimonials: React.FC = () => {
       role: "E-commerce Business Owner",
       company: "Top Seller",
       date: "Dec 14, 2024",
-      content: "The Walmart automation from ECOM SHARKS transformed our business completely. They handled our product listings, inventory management, and customer service automation. We're now one of the top sellers in our category with 95% positive feedback!",
+      content: "The Walmart automation from Retail Automation transformed our business completely. They handled our product listings, inventory management, and customer service automation. We're now one of the top sellers in our category with 95% positive feedback!",
       metrics: [
         { label: "Feedback", value: "95%" },
         { label: "Position", value: "Top Seller" }
@@ -372,7 +372,7 @@ const WalmartTestimonials: React.FC = () => {
       role: "Online Retailer",
       company: "E-commerce",
       date: "Nov 25, 2024",
-      content: "Working with ECOM SHARKS for Walmart automation has been incredible. They automated our pricing strategies, order processing, and returns management. Our profit margins improved by 200% and we're scaling to new product categories successfully!",
+      content: "Working with Retail Automation for Walmart automation has been incredible. They automated our pricing strategies, order processing, and returns management. Our profit margins improved by 200% and we're scaling to new product categories successfully!",
       metrics: [
         { label: "Profit Margins", value: "+200%" },
         { label: "Scaling", value: "New Categories" }

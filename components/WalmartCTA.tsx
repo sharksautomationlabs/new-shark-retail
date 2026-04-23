@@ -504,7 +504,7 @@ const WalmartCTA: React.FC = () => {
             <div className="absolute -inset-px bg-gradient-to-br from-teal-500/30 to-transparent rounded-[2rem] opacity-60" />
             <div className="relative bg-[#0a0a0c]/90 backdrop-blur-2xl border border-white/10 p-6 sm:p-8 rounded-[2rem]">
               <h3 className="text-2xl font-bold text-white mb-2">
-                We Always Give The Best Walmart Marketplace Service To You
+                Walmart marketplace coverage with WFS discipline
               </h3>
               <p className="text-sm text-gray-400 mb-6 sm:mb-8">
                 Tell us about your Walmart store and we&apos;ll handle everything
@@ -625,7 +625,7 @@ const WalmartCTA: React.FC = () => {
                 />
                 <div>
                   <label className="block text-sm font-semibold text-gray-300 mb-1">
-                    I am looking for a job at ECOM SHARKS
+                    I am looking for a job at Retail Automation
                   </label>
                   <div className="relative">
                     <select
@@ -708,7 +708,7 @@ const WalmartCTA: React.FC = () => {
             {[
               {
                 icon: TrendingUp,
-                title: "Sky-Rocket Your Walmart Venture",
+                title: "Scale your Walmart program",
                 desc: "Premium automation across approvals, WFS, inventory, pricing, and returns management.",
               },
               {

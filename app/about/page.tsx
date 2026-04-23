@@ -15,9 +15,9 @@ import AboutCTA from '../../components/AboutCTA';
 import Footer from '../../components/Footer';
 
 export const metadata: Metadata = {
-  title: "About The Shark Retail | Team and story",
+  title: "About Retail Automation | Team and story",
   description:
-    "Learn how The Shark Retail grew from a small operator group into a team that runs Amazon, Shopify, TikTok Shop and Walmart stores for clients around the world.",
+    "Learn how Retail Automation grew from a small operator group into a team that runs Amazon, Shopify, TikTok Shop and Walmart stores for clients around the world.",
   alternates: {
     canonical: "https://thesharkretail.com/about",
   },

@@ -13,10 +13,10 @@ const CommunicationIcon = () => <svg className="w-8 h-8 text-teal-400" fill="non
 const ScalableIcon = () => <svg className="w-8 h-8 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 1.5m1-1.5l1 1.5m0 0l.5 1.5m.5-1.5l.5 1.5m0 0l1.5-2.25m1.5 2.25l1.5-2.25m0 0l1.5 2.25m-16.5 5.25h16.5" /></svg>;
 
 const pointsData = [
-  { num: "01", title: "More Than Management", desc: "We don’t just “manage” accounts—we build the strategy, execute daily ops, and optimize for real outcomes: revenue, margins, and stability.", icon: <TrackRecordIcon /> },
-  { num: "02", title: "One-Stop Marketplace Team", desc: "Amazon, Shopify, TikTok Shop, or Walmart—our specialists cover setup, listing, creatives, ads, operations, and growth under one roof.", icon: <SolutionsIcon /> },
-  { num: "03", title: "Clear Communication & Support", desc: "Fast updates, clear next steps, and performance visibility—so you always know what’s happening and why it’s happening.", icon: <CommunicationIcon /> },
-  { num: "04", title: "Built To Scale", desc: "Repeatable systems, SOPs, and optimization loops designed to scale your store without chaos—so growth stays sustainable.", icon: <ScalableIcon /> },
+  { num: "01", title: "Outcomes, not just management", desc: "We don’t just “manage” accounts—we build the strategy, execute daily ops, and optimize for real outcomes: revenue, margins, and stability.", icon: <TrackRecordIcon /> },
+  { num: "02", title: "One team across every marketplace", desc: "Amazon, Shopify, TikTok Shop, or Walmart—our specialists cover setup, listing, creatives, ads, operations, and growth under one roof.", icon: <SolutionsIcon /> },
+  { num: "03", title: "Direct communication loop", desc: "Fast updates, clear next steps, and performance visibility—so you always know what’s happening and why it’s happening.", icon: <CommunicationIcon /> },
+  { num: "04", title: "Repeatable, scalable playbooks", desc: "Repeatable systems, SOPs, and optimization loops designed to scale your store without chaos—so growth stays sustainable.", icon: <ScalableIcon /> },
 ];
 
 export default function WhySharkRetail() {
@@ -73,13 +73,13 @@ export default function WhySharkRetail() {
         <div className="w-full lg:w-5/12 lg:sticky lg:top-32" ref={leftContentRef}>
           <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-500/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-teal-400 mb-8 backdrop-blur-md">
             <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_8px_teal]" />
-            Why Us
+            Why this model
           </div>
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tighter leading-[1.1] mb-6">
-            Results-First <br />
+            Outcomes-First <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-cyan-200 to-white">
-              E-commerce Ops.
+              commerce operations
             </span>
           </h2>
           

@@ -72,14 +72,14 @@ const ProductHuntingEdge: React.FC = () => {
             </span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-gray-400 text-lg max-w-3xl mx-auto font-medium">
-            More than research—we deliver winning products. With Shark Retail, you unlock e-commerce growth and outperform competitors.
+            More than research—we deliver winning products. With Retail Automation, you unlock e-commerce growth and outperform competitors.
           </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16">
           <motion.div variants={staggerContainer} initial="hidden" animate={isInView ? "visible" : "hidden"} className="space-y-6">
             <div className="text-center mb-8">
-              <h3 className="text-xl font-bold text-teal-400 mb-2">With The Shark Retail</h3>
+              <h3 className="text-xl font-bold text-teal-400 mb-2">With Retail Automation</h3>
               <div className="w-16 h-1 bg-teal-400 mx-auto rounded-full" />
             </div>
             {advantages.map((item) => (
@@ -126,7 +126,7 @@ const ProductHuntingEdge: React.FC = () => {
           <div className="rounded-[2rem] border border-teal-500/20 bg-gradient-to-b from-teal-500/10 to-transparent backdrop-blur-xl p-8 sm:p-12">
             <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight">Ready to Choose the Right Path?</h3>
             <p className="text-slate-400 font-medium mb-6 max-w-2xl mx-auto">
-              Don&apos;t let poor product research hold you back. Partner with Shark Retail and unlock your true e-commerce potential.
+              Don&apos;t let poor product research hold you back. Partner with Retail Automation and unlock your true e-commerce potential.
             </p>
             <a
               href="/contact"

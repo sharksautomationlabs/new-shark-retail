@@ -85,17 +85,17 @@ const EtsyHero: React.FC = () => {
             variants={fadeUpVariant}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight"
           >
-            We Always Give The Best{" "}
+            Craft-market{" "}
             <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-teal-200 drop-shadow-[0_0_30px_rgba(20,184,166,0.3)]">
-              Etsy Marketplace Service
+              Etsy
             </span>{" "}
-            To You
+            merchandising with premium positioning
           </motion.h1>
           <motion.p
             variants={fadeUpVariant}
             className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed font-medium mb-10"
           >
-            Boost your digital presence on Etsy with Shark Retail. We set up and
+            Boost your digital presence on Etsy with Retail Automation. We set up and
             optimize your shop, listings, and branding—so your products stand
             out, rank higher, and convert consistently in the world&apos;s top
             handmade and vintage marketplace.

@@ -84,7 +84,7 @@ const KeywordResearchEdge: React.FC = () => {
             variants={fadeUp}
             className="text-gray-400 text-lg max-w-3xl mx-auto font-medium"
           >
-            More than data—we deliver insights. With Shark Retail, you unlock organic growth and outrank competitors.
+            More than data—we deliver insights. With Retail Automation, you unlock organic growth and outrank competitors.
           </motion.p>
         </motion.div>
 
@@ -97,7 +97,7 @@ const KeywordResearchEdge: React.FC = () => {
           >
             <div className="text-center mb-8">
               <h3 className="text-xl font-bold text-teal-400 mb-2">
-                With The Shark Retail
+                With Retail Automation
               </h3>
               <div className="w-16 h-1 bg-teal-400 mx-auto rounded-full" />
             </div>
@@ -175,7 +175,7 @@ const KeywordResearchEdge: React.FC = () => {
               Ready to Choose the Right Path?
             </h3>
             <p className="text-slate-400 font-medium mb-6 max-w-2xl mx-auto">
-              Don&apos;t let poor keyword research hold you back. Partner with Shark Retail and unlock your true organic potential.
+              Don&apos;t let poor keyword research hold you back. Partner with Retail Automation and unlock your true organic potential.
             </p>
             <a
               href="/contact"

@@ -9,23 +9,23 @@ gsap.registerPlugin(ScrollTrigger);
 const pillars = [
   {
     icon: "🔒",
-    title: "Capital-First Strategy",
+    title: "Capital-Protected Playbook",
     desc: "We never gamble your capital. Every decision across Amazon, Shopify, TikTok Shop and Walmart starts with protecting what you put in. First 30 days we focus on real movement—or we keep working until you see it.",
   },
   {
     icon: "📊",
-    title: "Full Transparency Reports",
+    title: "Payout-Grade Reporting",
     desc: "Monthly income statements, real numbers, no hidden fees. You see exactly where every dollar went—ads, fulfillment, payouts—and what it returned.",
   },
   {
     icon: "🌐",
-    title: "Multi-Platform Diversification",
+    title: "Multi-Channel Diversification",
     desc: "Your stores run on 4 platforms. If one dips, others carry the weight. Done-for-you ops on each—no call-center sales, operators first.",
   },
   {
     icon: "🏢",
-    title: "US-Registered Company",
-    desc: "The Shark Retail is a US-registered company. Fully registered and verifiable, with a real team you can work with directly.",
+    title: "US-Registered Operator",
+    desc: "Retail Automation is a US-registered company. Fully registered and verifiable, with a real team you can work with directly.",
   },
 ];
 
@@ -91,15 +91,15 @@ export default function Safety() {
             ref={labelRef}
             className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.28em] text-teal-400 uppercase mb-5"
           >
-            <span className="w-6 h-px bg-teal-400/70" /> Capital Protection
+            <span className="w-6 h-px bg-teal-400/70" /> Capital discipline
           </div>
           <h2
             ref={titleRef}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold tracking-tight leading-[1.05] text-white mb-10"
           >
-            Your Money{" "}
+            Your Capital{" "}
             <span ref={titleHighlightRef} className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
-              Is Safe Here.
+              Treated With Priority.
             </span>
           </h2>
           <div className="flex flex-col gap-3">
@@ -128,7 +128,7 @@ export default function Safety() {
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal-400/40 to-transparent" />
             <div className="text-3xl sm:text-4xl mb-4" aria-hidden>🛡️</div>
             <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-teal-400 tracking-tight mb-3 sm:mb-4">
-              Our Promise to You
+              What We Put in Writing
             </h3>
             <p className="text-[14px] sm:text-[15px] text-zinc-400 leading-relaxed mb-6">
               We've helped 500+ investors—retirees, homemakers, busy professionals—earn consistent income. We run their Amazon, Shopify, TikTok Shop and Walmart stores so they don't have to. Capital protected, reports clear, no daily grind.

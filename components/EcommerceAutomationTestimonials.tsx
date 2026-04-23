@@ -10,7 +10,7 @@ const EcommerceAutomationTestimonials: React.FC = () => {
     {
       name: "John Smith",
       role: "Successful Investor",
-      quote: "I was skeptical at first, but Ecom Sharks delivered exactly what they promised. My store is truly hands-off and the returns are amazing. It's a game-changer!",
+      quote: "I was skeptical at first, but Retail Automation delivered exactly what they promised. My store is truly hands-off and the returns are amazing. It's a game-changer!",
       stars: 5
     },
     {
@@ -22,7 +22,7 @@ const EcommerceAutomationTestimonials: React.FC = () => {
     {
       name: "Michael Rodriguez",
       role: "Business Owner",
-      quote: "Ecom Sharks transformed my business completely. The automation system works flawlessly and I'm seeing consistent profits every month. Best investment I've ever made!",
+      quote: "Retail Automation transformed my business completely. The automation system works flawlessly and I'm seeing consistent profits every month. Best investment I've ever made!",
       stars: 5
     }
   ];

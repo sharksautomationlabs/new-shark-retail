@@ -110,11 +110,11 @@ export default function Footer() {
           <div>
             <div className="text-teal-400 font-mono text-xs tracking-[0.3em] uppercase mb-4 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
-              Initiate Deployment
+              Next move
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-semibold tracking-tighter text-white leading-tight">
-              Ready to scale your <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-200">digital assets?</span>
+              Time to put the <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-200">revenue system on rails?</span>
             </h2>
           </div>
           <a 
@@ -133,9 +133,8 @@ export default function Footer() {
           
           {/* Col 1: Brand & Contact */}
           <div ref={el => { columnsRef.current[0] = el; }} className="flex flex-col">
-            <div className="flex items-center gap-3 mb-8">
-              <img src="/images/sharks-retail-logo.png" alt="Shark Retail" className="h-10 w-auto object-contain" />
-              <span className="text-2xl font-bold tracking-widest uppercase font-mono text-white">Shark<span className="text-teal-400">Retail</span></span>
+            <div className="flex items-center mb-8">
+              <img src="/images/retail-automation-logo.png" alt="Retail Automation" className="h-16 w-auto sm:h-20 max-w-[min(100%,16rem)] object-contain" />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-[250px]">
               Quantitative e-commerce portfolio management and strategic capital deployment.
@@ -181,7 +180,7 @@ export default function Footer() {
         {/* --- BOTTOM SECTION: Legal & Socials --- */}
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/[0.05] gap-6">
           <div className="flex items-center gap-6 text-sm text-slate-500">
-            <span>© {new Date().getFullYear()} Shark Retail. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Retail Automation. All rights reserved.</span>
             <div className="hidden md:flex items-center gap-6">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
@@ -210,7 +209,7 @@ export default function Footer() {
           className="text-[14vw] font-black tracking-[0.12em] text-white/[0.14] leading-none whitespace-nowrap"
           style={{ fontFamily: "Impact, system-ui, sans-serif" }}
         >
-          {"SHARK RETAIL".split("").map((ch, i) => {
+          {"RETAIL AUTOMATION".split("").map((ch, i) => {
             if (ch === " ") return <span key={`space-${i}`} className="inline-block">{"\u00A0"}</span>;
             const variants = ["footer-bounce-1", "footer-bounce-2", "footer-bounce-3", "footer-bounce-4", "footer-bounce-5"];
             return (

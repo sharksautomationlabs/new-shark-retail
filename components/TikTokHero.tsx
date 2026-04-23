@@ -67,17 +67,17 @@ const TikTokHero: React.FC = () => {
             variants={fadeUpVariant}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight"
           >
-            We Always Give The Best{' '}
+            High-Velocity{' '}
             <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-teal-200 drop-shadow-[0_0_30px_rgba(20,184,166,0.3)]">
-              TikTok Shop Service
+              TikTok Shop
             </span>{' '}
-            To You
+            growth squads
           </motion.h1>
           <motion.p
             variants={fadeUpVariant}
             className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed font-medium mb-10"
           >
-            Boost your digital presence on TikTok with Shark Retail. We offer account setup and management, content creation, and audience targeting tailored to meet your specific business goals.
+            Boost your digital presence on TikTok with Retail Automation. We offer account setup and management, content creation, and audience targeting tailored to meet your specific business goals.
           </motion.p>
           <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <a

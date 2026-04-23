@@ -42,7 +42,7 @@ const TikTokServices: React.FC = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-teal-300 to-emerald-400">Your Product</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-gray-400 text-lg max-w-2xl mx-auto font-medium">
-            At Shark Retail we offer top-tier solutions designed to streamline your TikTok business. Our expert team ensures every aspect operates flawlessly and seamlessly.
+            At Retail Automation we offer top-tier solutions designed to streamline your TikTok business. Our expert team ensures every aspect operates flawlessly and seamlessly.
           </motion.p>
         </motion.div>
 

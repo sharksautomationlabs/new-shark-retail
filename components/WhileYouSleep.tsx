@@ -133,15 +133,15 @@ export default function WhileYouSleep() {
             ref={labelRef}
             className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.28em] text-teal-400 uppercase mb-5"
           >
-            <span className="w-6 h-px bg-teal-400/70" /> A day in your life
+            <span className="w-6 h-px bg-teal-400/70" /> 24 hours, zero logins
           </div>
           <h2
             ref={titleRef}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold tracking-tight leading-[1.05] text-white mb-6"
           >
-            Your Day.{" "}
+            You Live the Day.{" "}
             <span ref={titleHighlightRef} className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
-              Our Work.
+              We Run the Work.
             </span>
           </h2>
           <p
@@ -175,7 +175,7 @@ export default function WhileYouSleep() {
                   <strong className="text-[14px] sm:text-[15px] text-white block mb-1">You — {item.you}</strong>
                   <span className="text-[13px] text-zinc-400 block mb-3">{item.desc}</span>
                   <div className="rounded-xl px-4 py-3 text-[12px] sm:text-[13px] text-teal-300/95 bg-teal-500/10 border border-teal-400/20">
-                    🦈 The Shark Retail: {item.shark}
+                    🦈 Retail Automation: {item.shark}
                   </div>
                 </div>
               </div>

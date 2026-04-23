@@ -77,7 +77,7 @@ const AmazonPPCTestimonials: React.FC = () => {
       company: "Capital Partners LLC",
       date: "Jan 12, 2025",
       content:
-        "Shark Retail's Amazon PPC management delivered exceptional results. Within 90 days, our Sponsored Products and Sponsored Brands campaigns cut ACOS by 35% and increased ROAS by 250%. Their data-driven bid optimization transformed our advertising into a profit center.",
+        "Retail Automation's Amazon PPC management delivered exceptional results. Within 90 days, our Sponsored Products and Sponsored Brands campaigns cut ACOS by 35% and increased ROAS by 250%. Their data-driven bid optimization transformed our advertising into a profit center.",
       metrics: [
         { label: "ACOS Reduction", value: "35%" },
         { label: "Time to Profit", value: "90 Days" },
@@ -89,7 +89,7 @@ const AmazonPPCTestimonials: React.FC = () => {
       company: "Strategic Ventures",
       date: "Dec 8, 2024",
       content:
-        "The Amazon PPC frameworks deployed by Shark Retail exceeded all expectations. Our advertising portfolio achieved 400% ROAS growth through systematic campaign optimization and strategic budget allocation. Their search term mining and negative keyword strategy cut wasteful spend dramatically.",
+        "The Amazon PPC frameworks deployed by Retail Automation exceeded all expectations. Our advertising portfolio achieved 400% ROAS growth through systematic campaign optimization and strategic budget allocation. Their search term mining and negative keyword strategy cut wasteful spend dramatically.",
       metrics: [
         { label: "ROAS Growth", value: "400%" },
         { label: "Budget Efficiency", value: "+250%" },
@@ -101,7 +101,7 @@ const AmazonPPCTestimonials: React.FC = () => {
       company: "Global Investment Group",
       date: "Nov 20, 2024",
       content:
-        "Working with Shark Retail transformed our Amazon advertising into a systematic wealth-building platform. Their Sponsored Display retargeting and Sponsored Brands optimization delivered 100% ROI growth within six months. The reporting and strategic insights are unmatched.",
+        "Working with Retail Automation transformed our Amazon advertising into a systematic wealth-building platform. Their Sponsored Display retargeting and Sponsored Brands optimization delivered 100% ROI growth within six months. The reporting and strategic insights are unmatched.",
       metrics: [
         { label: "ROI Growth", value: "100%" },
         { label: "Timeframe", value: "6 Months" },

@@ -212,10 +212,10 @@ const ContactSection: React.FC = () => {
             <div className="mb-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-bold uppercase tracking-widest mb-4">
                 <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span>
-                Initialize Sequence
+                New project intake
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-teal-400 tracking-tight">
-                Let’s Talk About Your Business.
+                Tell Us What You Want the Store to Do
               </h2>
               <p className="text-gray-400 mt-3 text-sm sm:text-base max-w-lg">
                 Share a few details and we’ll come back with the best marketplace plan, clear next steps, and realistic timelines.
@@ -304,15 +304,15 @@ const ContactSection: React.FC = () => {
 
           <InfoBlock 
             icon={<Globe3DIcon />}
-            title="Global Infrastructure"
-            description="Operational nodes across 5 continents. We command global e-commerce from strategic local hubs."
+            title="Global delivery footprint"
+            description="We coordinate listings, supply partners, and reporting across the regions you sell in—one operating cadence, everywhere."
             delay={0.6}
           />
           <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
           <InfoBlock 
             icon={<Users3DIcon />}
-            title="Elite Leadership"
-            description="Engineered by industry veterans. Our strategies are forged in the fires of actual marketplace dominance."
+            title="Senior operator bench"
+            description="Your account is backed by channel leads who’ve run eight- and nine-figure marketplaces, not a rotating ticket queue."
             delay={0.8}
           />
 

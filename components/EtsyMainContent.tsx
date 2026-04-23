@@ -53,11 +53,11 @@ const EtsyMainContent: React.FC = () => {
             >
               <div className="space-y-6">
                 <h2 className="text-3xl sm:text-[2.15rem] md:text-[2.6rem] font-bold text-white leading-tight max-w-3xl tracking-tight">
-                  Sky-Rocket Your{" "}
+                  Hand-built{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
-                    Etsy Venture
+                    Etsy
                   </span>{" "}
-                  with Our Premium Etsy Automation Services
+                  automation for premium listings
                 </h2>
 
                 <p className="text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-3xl">

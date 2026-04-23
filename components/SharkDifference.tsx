@@ -157,15 +157,15 @@ const SharkDifference: React.FC = () => {
           </motion.div>
 
           <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white tracking-tight mb-4 leading-[1.1]">
-            The Shark Automation <br className="hidden sm:block" />
+            How Retail Automation <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-teal-300 to-emerald-400">
-              Difference.
+              is different
             </span>
           </motion.h2>
 
           <motion.div variants={fadeUp} className="mt-8 flex justify-center">
             <h3 className="text-xl sm:text-2xl font-medium text-gray-400 tracking-wide">
-              Your <span className="text-white font-bold">Freedom</span>, Our <span className="text-teal-400 font-bold">Mission</span>.
+              You keep <span className="text-white font-bold">time and focus</span> — we own <span className="text-teal-400 font-bold">the operating stack</span>
             </h3>
           </motion.div>
         </motion.div>
@@ -196,7 +196,7 @@ const SharkDifference: React.FC = () => {
               <div className="bg-gradient-to-br from-teal-950/40 to-[#0a0a0c] p-8 sm:p-12 h-full border-l border-white/5 relative">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/20 blur-3xl rounded-full"></div>
                 <div className="relative z-10">
-                  <h4 className="text-teal-400 font-bold text-sm uppercase tracking-widest mb-4">The Ultimate Outcome</h4>
+                  <h4 className="text-teal-400 font-bold text-sm uppercase tracking-widest mb-4">The outcome we plan for</h4>
                   <p className="text-xl sm:text-2xl font-light text-white leading-snug">
                     This secures your most precious commodities: <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-white drop-shadow-md">Time and Freedom.</span>
                   </p>
@@ -241,7 +241,7 @@ const SharkDifference: React.FC = () => {
 
           <div className="text-center mb-16 relative z-10">
             <h3 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              What This Means For <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">You</span>
+              What you feel in the <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">numbers</span>
             </h3>
           </div>
           

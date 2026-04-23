@@ -84,7 +84,7 @@ const AmazonPPCEdge: React.FC = () => {
             variants={fadeUp}
             className="text-gray-400 text-lg max-w-3xl mx-auto font-medium"
           >
-            Growth with The Shark Retail—systematic PPC management built for
+            Growth with Retail Automation—systematic PPC management built for
             long-term success.
           </motion.p>
         </motion.div>
@@ -98,7 +98,7 @@ const AmazonPPCEdge: React.FC = () => {
           >
             <div className="text-center mb-8">
               <h3 className="text-xl font-bold text-teal-400 mb-2">
-                With The Shark Retail
+                With Retail Automation
               </h3>
               <div className="w-16 h-1 bg-teal-400 mx-auto rounded-full" />
             </div>
@@ -176,8 +176,8 @@ const AmazonPPCEdge: React.FC = () => {
               Ready to Choose the Right Path?
             </h3>
             <p className="text-slate-400 font-medium mb-6 max-w-2xl mx-auto">
-              Don&apos;t let wasted ad spend hold you back. Partner with Shark
-              Retail for Amazon PPC management built for long-term success.
+              Don&apos;t let wasted ad spend hold you back. Partner with Retail Automation
+              for Amazon PPC management built for long-term success.
             </p>
             <a
               href="/contact"

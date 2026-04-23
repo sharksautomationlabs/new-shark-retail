@@ -502,7 +502,7 @@ const EtsyCTA: React.FC = () => {
                 />
                 <div>
                   <label className="block text-sm font-semibold text-gray-300 mb-1">
-                    I am looking for a job at ECOM SHARKS
+                    I am looking for a job at Retail Automation
                   </label>
                   <div className="relative">
                     <select

@@ -27,10 +27,10 @@ const VirtualAssistantHero: React.FC = () => {
             </div>
           </motion.div>
           <motion.h1 variants={fadeUpVariant} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
-            We Always Give The Best <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-teal-200 drop-shadow-[0_0_30px_rgba(20,184,166,0.3)]">Virtual Assistant</span> To You
+            Embedded <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-teal-200 drop-shadow-[0_0_30px_rgba(20,184,166,0.3)]">Virtual Assistant</span> Teams for High-Volume Stores
           </motion.h1>
           <motion.p variants={fadeUpVariant} className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed font-medium mb-10">
-            Scale your e-commerce business with Shark Retail. Our dedicated virtual assistant team handles customer service, order management, inventory support, and administrative tasks—so you can focus on growth.
+            Scale your e-commerce business with Retail Automation. Our dedicated virtual assistant team handles customer service, order management, inventory support, and administrative tasks—so you can focus on growth.
           </motion.p>
           <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <a href="/contact" className="relative group overflow-hidden rounded-full shadow-[0_0_40px_rgba(20,184,166,0.2)] hover:shadow-[0_0_60px_rgba(20,184,166,0.4)] transition-shadow duration-500">

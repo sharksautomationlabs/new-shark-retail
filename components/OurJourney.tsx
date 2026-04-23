@@ -116,7 +116,7 @@ const OurJourney: React.FC<OurJourneyProps> = ({
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.1]">
                   From Institutional Edge to <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
-                    Amazon, Shopify, TikTok & Walmart
+                    Amazon, Shopify, TikTok &amp; Walmart
                   </span>
                 </h2>
               )}
@@ -125,7 +125,7 @@ const OurJourney: React.FC<OurJourneyProps> = ({
             {/* Premium Typography Body */}
             <div className="space-y-6 text-base md:text-lg text-zinc-400 leading-relaxed font-medium">
               <motion.p variants={fadeUp}>
-                We started with a <span className="text-zinc-100 font-semibold">proof of concept</span> at scale—guiding enterprise clients into the e-commerce ecosystem across Amazon, Shopify, TikTok Shop, and Walmart. That experience became the foundation of Shark Retail.
+                We started with a <span className="text-zinc-100 font-semibold">proof of concept</span> at scale—guiding enterprise clients into the e-commerce ecosystem across Amazon, Shopify, TikTok Shop, and Walmart. That experience became the foundation of Retail Automation.
               </motion.p>
               
               {/* Glassmorphic Glowing ROI Card */}
@@ -155,7 +155,7 @@ const OurJourney: React.FC<OurJourneyProps> = ({
               )}
               
               <motion.p variants={fadeUp}>
-                That was the birth of <span className="text-zinc-100 font-semibold">Shark Retail</span>. We harness that expertise to deliver tailored solutions—setup, operations, and growth—so entrepreneurs can scale on Amazon, Walmart, Shopify, and TikTok without the guesswork.
+                That was the birth of <span className="text-zinc-100 font-semibold">Retail Automation</span>. We harness that expertise to deliver tailored solutions—setup, operations, and growth—so entrepreneurs can scale on Amazon, Walmart, Shopify, and TikTok without the guesswork.
               </motion.p>
             </div>
 

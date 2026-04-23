@@ -15,7 +15,7 @@ const PPCManagementServices: React.FC = () => {
     {
       id: 1,
       title: "Amazon Automation That Works",
-      description: "The Shark Retail delivers complete eCommerce support designed for real results. With strong industry insight and a focus on your growth, we help sellers succeed in today's fast-moving digital marketplace.",
+      description: "Retail Automation delivers complete eCommerce support designed for real results. With strong industry insight and a focus on your growth, we help sellers succeed in today's fast-moving digital marketplace.",
       details: {
         features: [
           "Advanced listing optimization and SEO",
@@ -36,7 +36,7 @@ const PPCManagementServices: React.FC = () => {
     {
       id: 2,
       title: "Shopify Dropshipping Automation",
-      description: "The Shark Retail provides comprehensive Shopify automation solutions that transform your dropshipping business. Our proven strategies and automated systems help you scale efficiently while maintaining quality and customer satisfaction.",
+      description: "Retail Automation provides comprehensive Shopify automation solutions that transform your dropshipping business. Our proven strategies and automated systems help you scale efficiently while maintaining quality and customer satisfaction.",
       details: {
         features: [
           "Automated product sourcing",
@@ -58,7 +58,7 @@ const PPCManagementServices: React.FC = () => {
     {
       id: 3,
       title: "Walmart Automation",
-      description: "The Shark Retail offers sophisticated Walmart marketplace automation that maximizes your potential on one of the world's largest retail platforms. Our expertise ensures optimal performance and sustainable growth.",
+      description: "Retail Automation offers sophisticated Walmart marketplace automation that maximizes your potential on one of the world's largest retail platforms. Our expertise ensures optimal performance and sustainable growth.",
       details: {
         features: [
           "Walmart marketplace optimization",
@@ -80,7 +80,7 @@ const PPCManagementServices: React.FC = () => {
     {
       id: 4,
       title: "eBay Automation",
-      description: "The Shark Retail delivers powerful eBay automation solutions that streamline your entire selling process. Our comprehensive approach ensures maximum profitability while reducing manual workload and operational complexity.",
+      description: "Retail Automation delivers powerful eBay automation solutions that streamline your entire selling process. Our comprehensive approach ensures maximum profitability while reducing manual workload and operational complexity.",
       details: {
         features: [
           "Automated listing creation",
@@ -102,7 +102,7 @@ const PPCManagementServices: React.FC = () => {
     {
       id: 5,
       title: "YouTube Automation",
-      description: "The Shark Retail creates innovative YouTube automation tools that transform your channel into a revenue-generating machine. Our systematic approach ensures consistent content creation and sustainable passive income streams.",
+      description: "Retail Automation creates innovative YouTube automation tools that transform your channel into a revenue-generating machine. Our systematic approach ensures consistent content creation and sustainable passive income streams.",
       details: {
         features: [
           "Automated content creation",
@@ -154,10 +154,10 @@ const PPCManagementServices: React.FC = () => {
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
               Optimize Your Online Selling with{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-500">The Shark Retail</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-500">Retail Automation</span>
             </h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
-              At The Shark Retail, we simplify your journey in eCommerce. Our skilled team creates powerful 
+              At Retail Automation, we simplify your journey in eCommerce. Our skilled team creates powerful 
               automation tools tailored for Amazon, Walmart, eBay, Etsy, and Shopify. We help brands of every 
               size work smarter, not harder, by removing the stress of managing multiple platforms.
             </p>

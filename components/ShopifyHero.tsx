@@ -67,17 +67,17 @@ const ShopifyHero: React.FC = () => {
             variants={fadeUpVariant}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight"
           >
-            We Always Give The Best{' '}
+            Retention-Ready{' '}
             <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-teal-200 drop-shadow-[0_0_30px_rgba(20,184,166,0.3)]">
-              Shopify Store Service
+              Shopify
             </span>{' '}
-            To You
+            systems built to scale
           </motion.h1>
           <motion.p
             variants={fadeUpVariant}
             className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed font-medium mb-10"
           >
-            Boost your digital presence on Shopify with Shark Retail. We empower entrepreneurs and mid-sized businesses with cutting-edge Shopify automation—profitable products, boosted sales, and custom branding so your store operates flawlessly.
+            Boost your digital presence on Shopify with Retail Automation. We empower entrepreneurs and mid-sized businesses with cutting-edge Shopify automation—profitable products, boosted sales, and custom branding so your store operates flawlessly.
           </motion.p>
           <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <a

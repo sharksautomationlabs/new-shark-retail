@@ -15,7 +15,7 @@ const ContactSection = dynamic(() => import('../components/ContactSection'), { s
 const Footer = dynamic(() => import('../components/Footer'), { ssr: true });
 
 export const metadata: Metadata = {
-  title: "Earn $4,000 in 30 days | The Shark Retail",
+  title: "Earn $4,000 in 30 days | Retail Automation",
   description:
     "Partner with one team to launch and run Amazon, Shopify, TikTok Shop and Walmart stores. We focus on clear reporting and steady growth so you can see real movement in the first 30 days.",
   alternates: {

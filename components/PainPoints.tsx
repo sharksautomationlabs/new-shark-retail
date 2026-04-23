@@ -10,44 +10,44 @@ const pains = [
   {
     icon: "😴",
     who: "For Everyone",
-    title: "I Want Passive Income",
+    title: "I Want Real Passive Income",
     desc: "You want money flowing in every month without punching a clock, learning tech, or managing operations.",
     solution: "We run 100% of your store operations. You receive monthly income reports and payouts.",
   },
   {
     icon: "🤷",
     who: "For Busy People",
-    title: "I Don't Have Time",
+    title: "I Don’t Have Time to Learn This",
     desc: "No time to learn Amazon, Shopify, or TikTok Shop? No desire to manage inventory, ads or customer service?",
     solution: "Zero hours of your time required after onboarding. Completely hands-free model.",
   },
   {
     icon: "🤖",
     who: "For Tech-Averse",
-    title: "I Need It Automated",
+    title: "I Need a Fully Handled Stack",
     desc: "You've heard of e-commerce but the technology, platforms, and tools feel overwhelming and complicated.",
     solution: "Our systems run 24/7 automation — inventory, ads, fulfillment, pricing. All handled.",
   },
   {
     icon: "🎓",
     who: "For Beginners",
-    title: "I Need Expert Guidance",
+    title: "I Want Senior Operators, Not Tutorials",
     desc: "You don't want to make mistakes that cost you money. You want seasoned professionals who've done this thousands of times.",
     solution: "Your dedicated manager has 5+ years of marketplace experience. One call away, always.",
   },
   {
     icon: "🛡️",
     who: "For Risk-Averse Investors",
-    title: "I Can't Afford to Lose",
+    title: "I Can’t Afford a Guess",
     desc: "You've worked hard for your savings. The last thing you want is to put it somewhere and watch it disappear.",
     solution: "Capital-first strategy with risk controls, diversified platforms, and monthly transparency reports.",
   },
   {
     icon: "👨‍👩‍👧",
     who: "For Retirees & Homemakers",
-    title: "I Need a Safe Business",
+    title: "I Need a Calm, Home-Based Income",
     desc: "Retired or managing a household? You need a legitimate income source that doesn't require showing up anywhere.",
-    solution: "Hundreds of retirees and homemakers earn steady monthly income through The Shark Retail — from home.",
+    solution: "Hundreds of retirees and homemakers earn steady monthly income through Retail Automation — from home.",
   },
 ];
 
@@ -135,19 +135,19 @@ export default function PainPoints() {
             className="inline-flex items-center gap-3 font-mono text-[10px] sm:text-[11px] tracking-[0.28em] text-teal-400 uppercase mb-6"
           >
             <span ref={lineLeftRef} className="inline-block w-10 h-px bg-teal-400/70 origin-center" />
-            We Hear You
+            The Concerns We Hear Most
             <span ref={lineRightRef} className="inline-block w-10 h-px bg-teal-400/70 origin-center" />
           </div>
           <h2
             ref={titleRef}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-bold tracking-tight leading-[1.05] text-white"
           >
-            Your Problems.{" "}
+            Every Objection.{" "}
             <span
               ref={titleHighlightRef}
               className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300"
             >
-              Our Solutions.
+              A Clear Plan.
             </span>
           </h2>
         </div>

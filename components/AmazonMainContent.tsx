@@ -98,9 +98,9 @@ const AmazonMainContent: React.FC = () => {
               Premium FBA
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
-              Revolutionize Your E-commerce with{' '}
+              A single operating system for{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
-                Premium Amazon FBA Automation
+                full-scale Amazon FBA
               </span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-slate-400 text-lg md:text-xl leading-relaxed font-light">

@@ -19,15 +19,12 @@ export default function SiteLoader() {
       aria-hidden="true"
     >
       <div className="loader-ring" />
-      <div className="mt-6 sm:mt-8 flex items-center gap-2 sm:gap-3 px-4">
+      <div className="mt-6 sm:mt-8 flex items-center justify-center px-4">
         <img
-          src="/images/sharks-retail-logo.png"
-          alt=""
-          className="h-8 w-auto opacity-90 sm:h-10"
+          src="/images/retail-automation-logo.png"
+          alt="Retail Automation"
+          className="h-16 w-auto sm:h-20 max-w-[min(90vw,18rem)] object-contain opacity-90"
         />
-        <span className="text-base sm:text-lg font-semibold text-white">
-          <span className="text-[#14b8a6]">Shark</span> Retail
-        </span>
       </div>
       <style jsx>{`
         .loader-ring {

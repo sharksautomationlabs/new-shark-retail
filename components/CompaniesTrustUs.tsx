@@ -140,7 +140,7 @@ const CompaniesTrustUs: React.FC = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-teal-100 shadow-sm mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
-            <span className="text-xs sm:text-sm font-bold text-teal-600 uppercase tracking-wider">Trusted by Industry Leaders</span>
+            <span className="text-xs sm:text-sm font-bold text-teal-600 uppercase tracking-wider">The Same Stack Brands Trust</span>
           </motion.div>
           
           <motion.h2 
@@ -150,8 +150,8 @@ const CompaniesTrustUs: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 mb-6 leading-tight"
           >
-            Built for <br className="hidden sm:block" />
-            <span className="text-teal-600">E-commerce Owners</span>
+            Engineered for <br className="hidden sm:block" />
+            <span className="text-teal-600">Serious Marketplace Operators</span>
           </motion.h2>
           
           <motion.p 
@@ -194,7 +194,7 @@ const CompaniesTrustUs: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto px-4">
             <AnimatedNumber 
               value="500+" 
-              label="Stores & Brands Supported" 
+              label="Stores & Portfolios Supported" 
               delay={0.1}
             />
             <AnimatedNumber 

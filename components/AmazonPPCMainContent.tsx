@@ -153,9 +153,9 @@ const AmazonPPCMainContent: React.FC = () => {
               variants={fadeUp}
               className="text-3xl sm:text-[2.15rem] md:text-[2.6rem] lg:text-[3rem] font-bold text-white tracking-tight leading-[1.15]"
             >
-              Sky-Rocket Your Amazon Sales with{" "}
+              Portfolio-level control of{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-emerald-300">
-                Elite Amazon PPC Management
+                Amazon ad spend
               </span>
             </motion.h2>
             <motion.p
@@ -172,7 +172,7 @@ const AmazonPPCMainContent: React.FC = () => {
             >
               From keyword research and bid optimization to search term mining
               and performance reporting—we deliver measurable results that
-              align with your business goals. Partner with Shark Retail for
+              align with your business goals. Partner with Retail Automation for
               Amazon PPC management built for long-term growth.
             </motion.p>
             <motion.div variants={fadeUp}>

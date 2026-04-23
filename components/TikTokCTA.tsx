@@ -443,7 +443,7 @@ const TikTokCTA: React.FC = () => {
               required
             />
             <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-1">I am looking for a job at Shark Retail</label>
+              <label className="block text-sm font-semibold text-gray-300 mb-1">I am looking for a job at Retail Automation</label>
               <div className="relative">
                 <select value={formData.jobInquiry} onChange={handleJobInquiryChange} className="w-full appearance-none bg-white/5 border border-white/10 rounded-xl p-3 text-white focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-colors">
                   <option value="Please Select" className="bg-zinc-900 text-white">Please Select</option>

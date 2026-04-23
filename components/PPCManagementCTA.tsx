@@ -466,7 +466,7 @@ const PPCManagementCTA: React.FC = () => {
               required
             />
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">I am looking for a job at Shark Retail</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">I am looking for a job at Retail Automation</label>
               <div className="relative">
                 <select 
                   value={formData.jobInquiry}

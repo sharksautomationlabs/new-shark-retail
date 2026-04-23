@@ -74,7 +74,7 @@ export default function HeroPortfolioCard() {
             <span className="text-lg mt-0.5" aria-hidden>😴</span>
             <p className="text-[11px] sm:text-[12px] text-zinc-400 leading-relaxed">
               While you were sleeping,{" "}
-              <strong className="text-teal-400">Shark Retail made ${sleepAmount.toLocaleString()}</strong> for you across 4 platforms.
+              <strong className="text-teal-400">Retail Automation made ${sleepAmount.toLocaleString()}</strong> for you across 4 platforms.
             </p>
           </div>
 
