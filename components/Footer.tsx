@@ -140,8 +140,8 @@ export default function Footer() {
               Quantitative e-commerce portfolio management and strategic capital deployment.
             </p>
             <div className="space-y-2 mt-auto">
-              <a href="mailto:info@thesharkretail.com" className="block text-lg font-medium text-white hover:text-teal-400 transition-colors">info@thesharkretail.com</a>
-              <a href="tel:+14694807938" className="block text-slate-400 hover:text-white transition-colors">(469) 480-7938</a>
+              <a href="mailto:info@theretailautomation.com" className="block text-lg font-medium text-white hover:text-teal-400 transition-colors">info@theretailautomation.com</a>
+              <a href="tel:+14694807938" className="block text-slate-400 hover:text-white transition-colors">(469) 294-9964</a>
             </div>
           </div>
 
