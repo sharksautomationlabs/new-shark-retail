@@ -320,11 +320,11 @@ const ContactSection: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
             <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
               <div className="text-xs text-teal-500 uppercase tracking-widest mb-1">Direct Line</div>
-              <div className="text-white font-medium">+1 (800) 123-4567</div>
+              <a href="tel:+14694807938" className="text-white font-medium hover:text-teal-400 transition-colors block">(469) 480-7938</a>
             </div>
             <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
               <div className="text-xs text-teal-500 uppercase tracking-widest mb-1">Encrypted Mail</div>
-              <div className="text-white font-medium">hello@sharkretail.com</div>
+              <a href="mailto:info@thesharkretail.com" className="text-white font-medium hover:text-teal-400 transition-colors block">info@thesharkretail.com</a>
             </div>
           </div>
 

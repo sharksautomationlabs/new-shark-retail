@@ -483,7 +483,7 @@ const TikTokCTA: React.FC = () => {
             {[
               { icon: Clock, title: 'Zero Obligation', desc: 'Expert TikTok advice tailored to your brand goals.' },
               { icon: TrendingUp, title: 'Proven Results', desc: 'Real creators, real growth—see testimonials above.' },
-              { icon: Mail, title: 'Direct Line', desc: 'info@ecomsharkss.com' },
+              { icon: Mail, title: 'Direct Line', desc: 'info@thesharkretail.com' },
             ].map((item, i) => (
               <div key={i} className="relative group p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-teal-500/30 hover:bg-white/[0.04] transition-all duration-500">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />

@@ -714,7 +714,7 @@ const WalmartCTA: React.FC = () => {
               {
                 icon: Mail,
                 title: "Email",
-                desc: "info@ecomsharkss.com",
+                desc: "info@thesharkretail.com",
               },
             ].map((item, i) => (
               <div
