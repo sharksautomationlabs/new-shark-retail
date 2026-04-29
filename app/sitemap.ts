@@ -6,7 +6,6 @@ const routes: string[] = [
   "/",
   "/about",
   "/contact",
-  "/ecommerce-automation",
   "/automation/amazon",
   "/automation/shopify",
   "/automation/tiktok",
@@ -20,7 +19,6 @@ const routes: string[] = [
   "/services/amazon-ppc-management",
   "/services/ppc-management",
   "/services/keyword-research",
-  "/thank-you",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

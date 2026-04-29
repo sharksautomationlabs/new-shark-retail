@@ -11,7 +11,7 @@ const navItems = [
   { label: 'Our Story', href: '/about' },
   {
     label: 'Automation',
-    href: '/ecommerce-automation',
+    href: '/automation/amazon',
     children: [
       { label: 'Amazon Automation', href: '/automation/amazon' },
       { label: 'Shopify Automation', href: '/automation/shopify' },
@@ -22,7 +22,7 @@ const navItems = [
   },
   {
     label: 'Services',
-    href: '/ecommerce-automation',
+    href: '/services/amazon-ppc-management',
     children: [
       { label: 'Amazon PPC Management', href: '/services/amazon-ppc-management' },
       { label: 'Digital Marketing', href: '/services/digital-marketing' },

@@ -1,272 +1,304 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, X } from 'lucide-react';
-import PlexusBackground from '@/components/PlexusBackground';
+import { motion, useAnimation, Variants } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import Image from 'next/image';
+import Link from 'next/link';
+import { CheckCircle, Calendar } from 'lucide-react';
+import EcomWealthFAQ from '@/components/EcomWealthFAQ';
+import { precallFaqItems } from '@/lib/ecomwealthContent';
 
-const ThankYouPage: React.FC = () => {
-  const [showPopup, setShowPopup] = useState(false);
-  
+export default function ThanksPage() {
+  const [userName, setUserName] = useState('');
+  const [icsLink, setIcsLink] = useState<string | null>(null);
+
+  const heroControls = useAnimation();
+  const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+
   useEffect(() => {
-    // Load Calendly widget script if not already loaded
-    if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
+    const params = new URLSearchParams(window.location.search);
+    setUserName(params.get('Name') || params.get('name') || '');
+    setIcsLink(params.get('ics_link') || params.get('icslink') || null);
   }, []);
 
-  const handleThankYouClick = () => {
-    setShowPopup(true);
+  const handleAddToCalendar = () => {
+    if (icsLink) {
+      window.open(decodeURIComponent(icsLink), '_blank');
+    } else {
+      window.open('https://calendar.google.com', '_blank');
+    }
   };
 
-  // Floating animation for the background icons
-  const floatAnimation = (delay: number) => ({
-    y: [0, -15, 0],
-    rotate: [0, 2, -2, 0],
-    transition: {
-      y: {
-        duration: 4,
-        delay: delay,
-        repeat: Infinity,
-        ease: "easeInOut" as const,
-        repeatType: "loop" as const
-      },
-      rotate: {
-        duration: 4,
-        delay: delay,
-        repeat: Infinity,
-        ease: "easeInOut" as const,
-        repeatType: "loop" as const
-      }
-    }
-  });
+  useEffect(() => { if (heroInView) heroControls.start('visible'); }, [heroControls, heroInView]);
+
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
+  };
+
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
+  };
+
+  const prepareChecklist = [
+    { text: 'Double-Check Your Phone Number: Make sure the number you provided is correct and can receive calls.' },
+    { text: 'Be Ready to Answer: At your scheduled time, expect a call from our team. If you miss it, No-Shows will NOT be rescheduled.' },
+    { text: 'Come Prepared: Be in a quiet environment and prepare any questions you may have.' },
+  ];
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      
-      {/* --- Hero Section --- */}
-      <section className="relative w-full min-h-screen bg-black overflow-hidden flex items-center">
-        {/* Background Gradient - Black with Greenish theme */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a1a0f] to-[#001a0a] z-0"></div>
-        
-        {/* Greenish accent overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-900/20 via-transparent to-teal-800/10 z-0"></div>
-        
-        {/* Overlay Texture/Plexus */}
-        <div className="absolute inset-0 opacity-30 z-0 pointer-events-none">
-          <PlexusBackground /> 
-        </div>
+    <div className="w-full bg-white overflow-x-hidden">
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 py-12 lg:py-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-            
-            {/* LEFT COLUMN: Text Content */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-left space-y-6 order-1"
+      {/* ============ HERO ============ */}
+      <div ref={heroRef} className="relative bg-[#052126] pt-6 lg:pt-8 pb-20 lg:pb-24 overflow-hidden">
+        <div className="absolute top-[-200px] right-[-100px] w-[500px] h-[500px] bg-[#35c4dd]/8 rounded-full blur-3xl" />
+        <div className="absolute bottom-[-150px] left-[-80px] w-[400px] h-[400px] bg-[#063f4a]/50 rounded-full blur-3xl" />
+
+        <div className="container mx-auto px-5 lg:px-20 relative z-10">
+          <motion.div initial="hidden" animate={heroControls} variants={containerVariants} className="max-w-4xl mx-auto text-center">
+            <motion.div variants={fadeInUp} className="mb-2 flex justify-center">
+              <Link href="/" className="inline-block">
+                <div className="relative w-[140px] h-[95px] lg:w-[200px] lg:h-[130px]">
+                  <Image src="/images/Aain-Ali1.png" alt="Aain ali" fill className="object-contain" priority />
+                </div>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="inline-block bg-[#35c4dd] text-[#063f4a] font-bold py-3 px-5 lg:py-4 lg:px-6 rounded-full border-2 border-[#35c4dd]/80 mb-8"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
             >
-              <div className="text-teal-400 font-bold tracking-widest uppercase text-sm mb-2">
-                Retail Automation
-              </div>
+              <span className="text-lg md:text-2xl lg:text-3xl">
+                CONGRATS{userName ? `, ${userName}` : ''}! Your Call Has Been Booked!
+              </span>
+            </motion.div>
 
-              {/* Main Headline */}
-              <h1 
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight"
-                style={{ fontFamily: 'Poppins, sans-serif' }}
+            <motion.p
+              variants={fadeInUp}
+              className="text-base lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10"
+              style={{ fontFamily: "'Barlow', sans-serif" }}
+            >
+              Follow the steps below to confirm your call.
+            </motion.p>
+
+            <motion.h2
+              variants={fadeInUp}
+              className="text-xl lg:text-3xl font-bold text-white text-center mb-6"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+            >
+              Step 1: Add the call to your calendar
+            </motion.h2>
+            <motion.div variants={fadeInUp} className="flex justify-center mb-12">
+              <button
+                type="button"
+                onClick={handleAddToCalendar}
+                className="w-full max-w-md mx-auto flex items-center justify-center gap-3 bg-white/10 hover:bg-white/15 border-2 border-[#35c4dd]/60 rounded-2xl py-5 px-6 text-white font-bold transition-all shadow-xl hover:shadow-[#35c4dd]/20 text-lg lg:text-xl"
+                style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
               >
-                Call Locked In — <br className="hidden lg:block"/>
-                We&apos;re Prepping Your Dossier
-              </h1>
-
-              {/* Body Text */}
-              <p className="text-base sm:text-lg text-gray-200 leading-relaxed max-w-2xl font-medium">
-                Congratulations! Your call is booked. We&apos;ll be in touch shortly to confirm the details and prepare for our conversation.
-              </p>
+                <Calendar className="w-7 h-7 text-[#35c4dd]" />
+                Add The Event To Your Calendar
+              </button>
             </motion.div>
 
-            {/* RIGHT COLUMN: Floating 3D Images */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-              className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] order-2 flex items-center justify-center perspective-1000"
+            <motion.h2
+              variants={fadeInUp}
+              className="text-xl lg:text-3xl font-bold text-white text-center mb-6"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
             >
-              {/* Container for images to keep them grouped in square shape */}
-              <div className="relative w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] h-full flex items-center justify-center">
-                
-                {/* Amazon Logo (Top Left) */}
-                <motion.div 
-                  animate={floatAnimation(0)}
-                  className="absolute top-[15%] sm:top-[10%] left-[15%] sm:left-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-20 drop-shadow-2xl"
-                >
-                  <img 
-                    src="/images/hero-amazon-logo.png" 
-                    alt="Amazon" 
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                    width="256"
-                    height="256"
-                  />
-                </motion.div>
-
-                {/* Walmart Logo (Top Right) */}
-                <motion.div 
-                  animate={floatAnimation(1.5)}
-                  className="absolute top-[15%] sm:top-[10%] right-[15%] sm:right-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-10 drop-shadow-2xl"
-                >
-                  <img 
-                    src="/images/hero-walmart-logo.png" 
-                    alt="Walmart" 
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                    width="256"
-                    height="256"
-                  />
-                </motion.div>
-
-                {/* Shopify Logo (Bottom Left) */}
-                <motion.div 
-                  animate={floatAnimation(0.5)}
-                  className="absolute bottom-[15%] sm:bottom-[10%] left-[15%] sm:left-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-30 drop-shadow-2xl"
-                >
-                  <img 
-                    src="/images/hero-shopify-logo.png" 
-                    alt="Shopify" 
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                    width="256"
-                    height="256"
-                  />
-                </motion.div>
-
-                {/* TikTok Logo (Bottom Right) */}
-                <motion.div 
-                  animate={floatAnimation(2)}
-                  className="absolute bottom-[15%] sm:bottom-[10%] right-[15%] sm:right-[10%] w-28 sm:w-40 md:w-48 lg:w-56 xl:w-64 z-20 drop-shadow-2xl"
-                >
-                  <img 
-                    src="/images/hero-tiktok-logo.png" 
-                    alt="TikTok" 
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                    width="256"
-                    height="256"
-                  />
-                </motion.div>
-
-              </div>
+              Step 2: Watch the 3-minute prep video
+            </motion.h2>
+            <motion.div variants={fadeInUp} className="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-xl ring-2 ring-white/10" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/PkzqxZQwK_E"
+                title="How to Get the Most Out of Our Call"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </motion.div>
+            <motion.h2
+              variants={fadeInUp}
+              className="text-xl lg:text-3xl font-bold text-white text-center mb-6 mt-12"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+            >
+              Step 3: Then watch the results walkthrough
+            </motion.h2>
+            <motion.div variants={fadeInUp} className="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-xl ring-2 ring-white/10" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/ZPY3hkj7xSE"
+                title="Client results - How our clients hit $4,000+ per month"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
 
+      {/* ============ STEP 2: FAQ ============ */}
+      <div className="py-16 lg:py-24 bg-white">
+        <div className="container mx-auto px-5 lg:px-20">
+          <div className="max-w-3xl mx-auto">
+            <h2
+              className="text-2xl lg:text-4xl font-bold text-[#063f4a] text-center mb-12"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+            >
+              Step 4: Read the FAQs—so there are no surprises
+            </h2>
+            <EcomWealthFAQ items={precallFaqItems} />
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* --- Final CTA Section --- */}
-      <section className="relative bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <PlexusBackground />
-        
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-400/10 to-transparent z-0"></div>
-        
-        <div className="container mx-auto text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+      {/* ============ PARTNER STORE RESULTS (above reviews) ============ */}
+      <div className="py-16 lg:py-24 bg-[#bef4fe]/15">
+        <div className="container mx-auto px-5 lg:px-20">
+          <h2
+            className="text-2xl lg:text-4xl font-bold text-[#063f4a] text-center mb-4"
+            style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: '700' }}>
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              We&apos;re excited to speak with you and help you build your hands-off e-commerce business. See you on the call!
-            </p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <button
-                onClick={handleThankYouClick}
-                className="inline-flex items-center justify-center bg-teal-400 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-black transition-colors hover:bg-white hover:text-black rounded-full cursor-pointer"
-                style={{ fontFamily: 'Poppins, sans-serif' }}
-              >
-                Thank You
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Thank You Popup Modal */}
-      <AnimatePresence>
-        {showPopup && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
-            onClick={() => setShowPopup(false)}
+            Partner store snapshots
+          </h2>
+          <p
+            className="text-center text-[#2c2420]/70 mb-10 max-w-3xl mx-auto"
+            style={{ fontFamily: "'Barlow', sans-serif" }}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.3 }}
-              className="relative bg-black border border-teal-400/30 rounded-2xl p-8 sm:p-12 max-w-md w-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setShowPopup(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200 w-8 h-8 flex items-center justify-center"
-              >
-                <X className="w-6 h-6" />
-              </button>
-
-              {/* Popup Content */}
-              <div className="text-center space-y-6">
-                <motion.h3
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  className="text-2xl sm:text-3xl font-bold text-white"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}
-                >
-                  Thanks for Booking!
-                </motion.h3>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="w-24 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent mx-auto"
-                ></motion.div>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-base sm:text-lg text-gray-300 leading-relaxed"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}
-                >
-                  Thank you for booking your meeting with us! We&apos;re excited to connect with you and help you build your hands-off e-commerce business. Our team will reach out to you shortly to confirm the details and prepare for our conversation.
-                </motion.p>
+            A glimpse into the sales activity clients have experienced using our fully managed, zero-inventory, Profit-First automation system. Individual results vary.
+          </p>
+          <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
+            {[1, 3, 4, 5, 6, 7].map((i) => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-xl border border-[#35c4dd]/20 aspect-[4/3] flex items-center justify-center">
+                <Image
+                  src={`/images/thank-you-results/result-${i}.png`}
+                  alt={`Partner store result ${i}`}
+                  width={800}
+                  height={600}
+                  sizes="100vw"
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                />
               </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+          </div>
+        </div>
+      </div>
 
+      {/* ============ STEP 4: SEE WHAT OTHERS HAVE TO SAY ============ */}
+      <div className="py-16 lg:py-24 bg-gray-50">
+        <div className="container mx-auto px-5 lg:px-20">
+          <div className="max-w-4xl mx-auto">
+            <h2
+              className="text-2xl lg:text-4xl font-bold text-[#063f4a] text-center mb-6"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+            >
+              Step 5: See what other partners experienced
+            </h2>
+            <p
+              className="text-center text-[#2c2420]/70 mb-10"
+              style={{ fontFamily: "'Barlow', sans-serif" }}
+            >
+              First-hand experiences from clients, sharing what it&apos;s actually been like partnering with our team.
+            </p>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-[#35c4dd]/10 flex items-center justify-center min-h-[200px]">
+                  <Image
+                    src={`/images/reviews/review-${i}.png`}
+                    alt={`Trustpilot review ${i}`}
+                    width={480}
+                    height={320}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <a
+                href="https://www.trustpilot.com/review/ecomsharkss.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[#35c4dd] hover:text-[#2bb3cb] font-semibold transition-colors"
+                style={{ fontFamily: "'Barlow', sans-serif" }}
+              >
+                See all reviews on Trustpilot →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ============ STEP 4: PREPARE FOR YOUR CALL ============ */}
+      <div className="py-16 lg:py-24 bg-white">
+        <div className="container mx-auto px-5 lg:px-20">
+          <div className="max-w-3xl mx-auto">
+            <h2
+              className="text-2xl lg:text-4xl font-bold text-[#063f4a] text-center mb-10"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+            >
+              Step 6: Show up ready (quick checklist)
+            </h2>
+            <div className="space-y-4">
+              {prepareChecklist.map((item, i) => (
+                <div key={i} className="flex gap-3 items-start">
+                  <CheckCircle className="w-6 h-6 text-[#35c4dd] shrink-0 mt-0.5" />
+                  <p className="text-[#2c2420]/80 text-base lg:text-lg" style={{ fontFamily: "'Barlow', sans-serif" }}>
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ============ FINAL CTA ============ */}
+      <div className="py-16 lg:py-24 bg-gradient-to-b from-[#063f4a] to-[#052126]">
+        <div className="container mx-auto px-5 lg:px-20 text-center">
+          <h2
+            className="text-2xl lg:text-4xl font-bold text-white mb-6"
+            style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+          >
+            We’re ready when you are—see you on the call
+          </h2>
+          <Link
+            href="/"
+            className="inline-block text-[#35c4dd] hover:text-[#bef4fe] font-medium transition-colors"
+            style={{ fontFamily: "'Barlow', sans-serif" }}
+          >
+            Back to Homepage
+          </Link>
+        </div>
+      </div>
+
+      {/* ============ FOOTER ============ */}
+      <div className="bg-[#052126] border-t border-white/10 py-10 lg:py-14">
+        <div className="container mx-auto px-5 lg:px-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <Link href="/privacy-policy" className="text-gray-400 hover:text-[#35c4dd] text-sm transition-colors" style={{ fontFamily: "'Barlow', sans-serif" }}>
+                Privacy Policy
+              </Link>
+              <span className="text-gray-600">|</span>
+              <Link href="/contact" className="text-gray-400 hover:text-[#35c4dd] text-sm transition-colors" style={{ fontFamily: "'Barlow', sans-serif" }}>
+                Contact Us
+              </Link>
+            </div>
+            <p className="text-gray-500 text-sm mb-6" style={{ fontFamily: "'Barlow', sans-serif" }}>
+              Aain ali &copy; {new Date().getFullYear()}. All Rights Reserved.
+            </p>
+            <p className="text-gray-600 text-xs leading-relaxed" style={{ fontFamily: "'Barlow', sans-serif" }}>
+              Aain ali provides e-commerce management services. We do not guarantee income or specific results. Individual results vary. Testimonials reflect real experiences but are not guarantees. By using this site, you acknowledge that you are responsible for your decisions and outcomes.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
-
-export default ThankYouPage;
