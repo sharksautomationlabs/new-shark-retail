@@ -53,18 +53,12 @@ const LOGO_ROW = [
 
 export default function PlatformReviewsSection() {
   return (
-    <div className="py-12 lg:py-16 bg-gray-50">
+    <div className="py-12 lg:py-16 bg-[#08080c] border-y border-white/5">
       <div className="container mx-auto px-5 lg:px-20">
-        <h2
-          className="text-2xl lg:text-4xl font-bold text-[#063f4a] text-center mb-4"
-          style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
-        >
+        <h2 className="text-2xl lg:text-4xl font-bold text-white text-center mb-4 tracking-tight">
           {`Proof from people who work with ${FUNNEL_BRAND_NAME}`}
         </h2>
-        <p
-          className="text-center text-[#2c2420]/70 mb-10 max-w-2xl mx-auto"
-          style={{ fontFamily: "'Barlow', sans-serif" }}
-        >
+        <p className="text-center text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
           {`Trusted by investors who chose ${FUNNEL_BRAND_NAME}—see reviews on Clutch, Bark, Reviews.io, and Facebook.`}
         </p>
 
@@ -72,7 +66,7 @@ export default function PlatformReviewsSection() {
           {REVIEW_CARDS.map((card) => (
             <div
               key={card.name}
-              className="bg-white rounded-2xl shadow-lg border border-[#35c4dd]/10 flex items-center justify-center min-h-[160px] sm:min-h-[200px] p-2 sm:p-3"
+              className="bg-white/[0.04] rounded-2xl shadow-lg border border-white/10 flex items-center justify-center min-h-[160px] sm:min-h-[200px] p-2 sm:p-3"
             >
               <Image
                 src={card.imageSrc}
@@ -87,7 +81,7 @@ export default function PlatformReviewsSection() {
         </div>
 
         <div className="mt-8 sm:mt-10 max-w-5xl mx-auto w-full px-1">
-          <div className="bg-white rounded-2xl border border-[#35c4dd]/15 shadow-md px-3 py-4 sm:px-5 sm:py-5 md:px-8 md:py-6">
+          <div className="bg-white/[0.03] rounded-2xl border border-white/10 shadow-md px-3 py-4 sm:px-5 sm:py-5 md:px-8 md:py-6">
             <div className="overflow-x-auto pb-1 [scrollbar-width:thin] -mx-1 px-1">
               <div className="grid min-w-[min(100%,480px)] grid-cols-4 sm:min-w-0 gap-2 sm:gap-3 md:gap-4 items-start justify-items-center">
                 {LOGO_ROW.map((item) => {
@@ -97,7 +91,7 @@ export default function PlatformReviewsSection() {
                       key={item.name}
                       className="flex w-full min-w-0 flex-col items-center justify-center gap-1.5 sm:gap-2"
                     >
-                      <div className="flex h-10 w-full items-center justify-center bg-white px-0.5 sm:h-12 md:h-[52px]">
+                      <div className="flex h-10 w-full items-center justify-center bg-white/[0.06] px-0.5 sm:h-12 md:h-[52px] rounded-lg">
                         <Image
                           src={item.logoSrc}
                           alt={`${item.name} logo`}
@@ -111,8 +105,7 @@ export default function PlatformReviewsSection() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[8px] sm:text-[10px] md:text-xs font-semibold text-[#35c4dd] hover:text-[#2bb3cb] transition-colors text-center leading-tight line-clamp-2 px-0.5"
-                        style={{ fontFamily: "'Barlow', sans-serif" }}
+                        className="text-[8px] sm:text-[10px] md:text-xs font-semibold text-teal-400 hover:text-teal-300 transition-colors text-center leading-tight line-clamp-2 px-0.5"
                       >
                         {item.linkLabel} →
                       </a>
