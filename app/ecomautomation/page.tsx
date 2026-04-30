@@ -15,6 +15,14 @@ import {
   footerContent,
 } from '@/lib/ecomwealthContent';
 import CalendlyInlineEmbed from '@/components/CalendlyInlineEmbed';
+import {
+  FUNNEL_BRAND_NAME,
+  FUNNEL_CONTACT_EMAIL,
+  FUNNEL_CONTACT_MAILTO,
+  FUNNEL_CONTACT_PHONE_DISPLAY,
+  FUNNEL_CONTACT_PHONE_TEL,
+  FUNNEL_LOGO_SRC,
+} from '@/lib/funnelBrand';
 
 const faqItems = [
   { id: 'faq-1', question: 'Can you really guarantee $4,000 in sales in 30 days?', answer: 'Yes, it is 110% true. We provide this guarantee because of our tested, high profit products and our proven system. We don\'t guess, we execute with data. That is why we are more than confident in hitting that target for your store.' },
@@ -23,7 +31,7 @@ const faqItems = [
   { id: 'faq-4', question: 'Is my business the right fit?', answer: 'We work with founders and investors ready to stop playing small. Whether you are scaling an existing brand or starting today, this is for owners who prioritize aggressive growth on platforms like TikTok and Shopify.' },
   { id: 'faq-5', question: 'How do I prepare?', answer: 'Find a quiet space and bring a notepad. If you have an existing brand, have your store data ready. We want to give you the best advice possible so please show up focused and ready to work.' },
   { id: 'faq-6', question: 'Can I reschedule my time?', answer: 'Our calendar fills up fast. If something comes up, use the link in your email to reschedule at least 24 hours in advance. This lets another hungry entrepreneur take your spot.' },
-  { id: 'faq-7', question: 'Who am I speaking with?', answer: 'You are talking to a senior strategist from the Aain ali team. These are real experts who scale stores every day. No fluff and no beginners, just pros who know how to win.' },
+  { id: 'faq-7', question: 'Who am I speaking with?', answer: 'You are talking to a senior strategist from the Retail Automation team. These are real experts who scale stores every day. No fluff and no beginners, just pros who know how to win.' },
 ];
 
 const CALENDLY_URL = 'https://calendly.com/ecomsharkss-info/30min';
@@ -99,8 +107,8 @@ export default function EcomAutomationPage() {
           <motion.div initial="hidden" animate={heroControls} variants={containerVariants} className="max-w-6xl mx-auto text-center">
             <motion.div variants={fadeInUp} className="mb-4 flex justify-center">
               <Link href="/" className="inline-block">
-                <div className="relative w-[130px] h-[90px] lg:w-[180px] lg:h-[120px]">
-                  <Image src="/images/Aain-Ali1.png" alt="Aain ali" fill className="object-contain" priority />
+                <div className="relative w-[160px] h-[52px] lg:w-[220px] lg:h-[72px]">
+                  <Image src={FUNNEL_LOGO_SRC} alt={FUNNEL_BRAND_NAME} fill className="object-contain object-center" priority sizes="(max-width: 1024px) 160px, 220px" />
                 </div>
               </Link>
             </motion.div>
@@ -118,7 +126,7 @@ export default function EcomAutomationPage() {
               {heroContent.doneForYouText.split('. ')[0]}. <span className="text-white">{heroContent.doneForYouText.split('. ')[1]}</span>. {heroContent.videoPrompt}
             </motion.div>
             <motion.div variants={fadeInUp} className="max-w-4xl mx-auto rounded-b-2xl overflow-hidden shadow-2xl ring-2 ring-white/10 -mt-px">
-              <LazyYouTube youtubeId="ZPY3hkj7xSE" title="Aain ali - Fully Managed E-Commerce Business" />
+              <LazyYouTube youtubeId="ZPY3hkj7xSE" title={heroContent.videoTitle} />
             </motion.div>
             <motion.p variants={fadeInUp} className="mt-6 text-2xl lg:text-3xl text-gray-300 font-medium leading-snug" style={{ fontFamily: "'Barlow', sans-serif" }}>
               {heroContent.applyBelowLine1}
@@ -144,7 +152,7 @@ export default function EcomAutomationPage() {
           <div className="max-w-4xl mx-auto">
             <CalendlyInlineEmbed
               schedulingPageUrl={CALENDLY_URL}
-              title="Book a call with Aain ali"
+              title={`Book a call with ${FUNNEL_BRAND_NAME}`}
               minHeight={650}
             />
           </div>
@@ -178,14 +186,14 @@ export default function EcomAutomationPage() {
           <div className="mt-16 max-w-4xl mx-auto">
             <CalendlyInlineEmbed
               schedulingPageUrl={CALENDLY_URL}
-              title="Book a call with Aain ali"
+              title={`Book a call with ${FUNNEL_BRAND_NAME}`}
               minHeight={650}
             />
           </div>
         </div>
       </div>
 
-      {/* Market Graph Section - Aain ali theme */}
+      {/* Market Graph Section */}
       <div className="py-16 lg:py-24 bg-[#052126] relative overflow-hidden">
         <div className="absolute top-[-100px] right-[-50px] w-[300px] h-[300px] bg-[#35c4dd]/10 rounded-full blur-3xl" />
         <div className="container mx-auto px-5 lg:px-20 relative z-10">
@@ -277,6 +285,14 @@ export default function EcomAutomationPage() {
                 {l.label}
               </Link>
             ))}
+          </div>
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-8 mb-6 text-center">
+            <a href={FUNNEL_CONTACT_MAILTO} className="text-[#35c4dd] hover:text-[#bef4fe] font-semibold text-sm sm:text-base transition-colors" style={{ fontFamily: "'Barlow', sans-serif" }}>
+              {FUNNEL_CONTACT_EMAIL}
+            </a>
+            <a href={FUNNEL_CONTACT_PHONE_TEL} className="text-white font-semibold text-sm sm:text-base hover:text-[#35c4dd] transition-colors" style={{ fontFamily: "'Barlow', sans-serif" }}>
+              {FUNNEL_CONTACT_PHONE_DISPLAY}
+            </a>
           </div>
           <p className="text-gray-500 text-sm text-center mb-6" style={{ fontFamily: "'Barlow', sans-serif" }}>
             {footerContent.copyright}

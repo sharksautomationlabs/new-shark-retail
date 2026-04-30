@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { FUNNEL_BRAND_NAME } from '@/lib/funnelBrand';
 
 /** Review screenshots (2×2) — order: Clutch, Bark, Reviews.io, Trustpilot. */
 const REVIEW_CARDS = [
@@ -58,13 +59,13 @@ export default function PlatformReviewsSection() {
           className="text-2xl lg:text-4xl font-bold text-[#063f4a] text-center mb-4"
           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
-          Proof from people who work with Aain Ali
+          {`Proof from people who work with ${FUNNEL_BRAND_NAME}`}
         </h2>
         <p
           className="text-center text-[#2c2420]/70 mb-10 max-w-2xl mx-auto"
           style={{ fontFamily: "'Barlow', sans-serif" }}
         >
-          Trusted by investors who chose Aain ali—see reviews on Clutch, Bark, Reviews.io, and Facebook.
+          {`Trusted by investors who chose ${FUNNEL_BRAND_NAME}—see reviews on Clutch, Bark, Reviews.io, and Facebook.`}
         </p>
 
         <div className="grid grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">

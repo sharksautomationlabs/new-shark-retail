@@ -1,5 +1,5 @@
-// Content for Ecom Wealth Replica page
-// Adapted for Aain ali brand; structure matches ecomwealthautomation.com
+// Content for funnel pages (/ecomautomation, /thank-you)
+// Brand: Retail Automation — see lib/funnelBrand.ts for logo & contact constants.
 
 export interface SuccessStory {
   name: string;
@@ -60,7 +60,7 @@ export const heroContent = {
   applyBelowLine2: 'management team 👇',
   ctaText: 'See If You Qualify',
   videoEmbedUrl: 'https://www.youtube.com/embed/bigJBm1x1qE',
-  videoTitle: 'Aain ali - Fully Managed E-Commerce Business',
+  videoTitle: 'Retail Automation - Fully Managed E-Commerce Business',
 };
 
 export const trustStripContent = {
@@ -76,7 +76,7 @@ export const fakeReviews: Review[] = [
   { name: 'Jennifer L.', stars: 5, quote: 'Professional, transparent, and delivers on their promises. Highly recommend!' },
   { name: 'Michael R.', stars: 5, quote: 'From zero to $8K in the first month. The support team is amazing.' },
   { name: 'Emily T.', stars: 5, quote: 'No inventory, no stress. Exactly what I needed as a busy parent.' },
-  { name: 'James P.', stars: 5, quote: 'Aain ali built and runs my store completely. I just check the dashboard weekly. Game changer.' },
+  { name: 'James P.', stars: 5, quote: 'Retail Automation built and runs my store completely. I just check the dashboard weekly. Game changer.' },
 ];
 
 export const videoTestimonials: VideoTestimonial[] = [
@@ -88,28 +88,28 @@ export const successStories: SuccessStory[] = [
   {
     name: 'Jackson H.',
     headline: '$140,000 in Sales His First 9 Months',
-    quote: 'When I started with Aain ali, I didn\'t know what to expect. I just wanted something that could grow quietly in the background while I kept my full-time job. The team handled everything, the store build, suppliers, order fulfilment and within a week, I saw my first sale. Nine months later my store had passed $140,000 in total sales. Watching that happen without managing the store myself was surreal.',
+    quote: 'When I started with Retail Automation, I didn\'t know what to expect. I just wanted something that could grow quietly in the background while I kept my full-time job. The team handled everything, the store build, suppliers, order fulfilment and within a week, I saw my first sale. Nine months later my store had passed $140,000 in total sales. Watching that happen without managing the store myself was surreal.',
     timeframe: '9 months',
     figure: '$140,000',
   },
   {
     name: 'Sienna B.',
     headline: '$0 To Over $75,000 In Sales In 7 Months',
-    quote: 'I\'m a mom of two, and I\'d tried every side hustle that promised flexibility. When I partnered with Aain ali, their team built my store from scratch and kept me updated each week. By month seven my store had cleared $75,000 in sales. Now the profits pay for family vacations and give me breathing room every month.',
+    quote: 'I\'m a mom of two, and I\'d tried every side hustle that promised flexibility. When I partnered with Retail Automation, their team built my store from scratch and kept me updated each week. By month seven my store had cleared $75,000 in sales. Now the profits pay for family vacations and give me breathing room every month.',
     timeframe: '7 months',
     figure: '$75,000',
   },
   {
     name: 'Mike N.',
     headline: 'From Debt To Buying His Mom Her Dream Car',
-    quote: 'I joined Aain ali after seeing a friend\'s results. In just six months, my store produced around $45,000 in sales. Enough for me to clear my remaining debt and surprise my mom with the car she\'d always wanted. The best part is how hands-off it\'s been. The team handles every moving part.',
+    quote: 'I joined Retail Automation after seeing a friend\'s results. In just six months, my store produced around $45,000 in sales. Enough for me to clear my remaining debt and surprise my mom with the car she\'d always wanted. The best part is how hands-off it\'s been. The team handles every moving part.',
     timeframe: '6 months',
     figure: '$45,000',
   },
   {
     name: 'Ethan T.',
     headline: '$45,000 in Sales in His First 6 Months',
-    quote: 'I wanted something I could invest in that didn\'t rely on guessing the stock market. Partnering with Aain ali was exactly what I was looking for. Within the first few weeks, I started seeing sales roll in. Over six months, my store reached around $45,000 in total sales.',
+    quote: 'I wanted something I could invest in that didn\'t rely on guessing the stock market. Partnering with Retail Automation was exactly what I was looking for. Within the first few weeks, I started seeing sales roll in. Over six months, my store reached around $45,000 in total sales.',
     timeframe: '6 months',
     figure: '$45,000',
   },
@@ -128,7 +128,7 @@ export const caseStudies: CaseStudy[] = [
     name: 'Marcus J.',
     figure: '$47,000',
     timeframe: '6 months',
-    quote: 'I invested with Aain ali while keeping my day job. Within 6 months my store had generated $47,000 in revenue. Zero inventory, zero hassle.',
+    quote: 'I invested with Retail Automation while keeping my day job. Within 6 months my store had generated $47,000 in revenue. Zero inventory, zero hassle.',
     storeName: 'HomeStyle Essentials',
     landingPageUrl: 'homestyle-essentials.store',
     heroImage: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=280&fit=crop',
@@ -156,7 +156,7 @@ export const caseStudies: CaseStudy[] = [
     name: 'Robert K.',
     figure: '$10,000',
     timeframe: '30 days',
-    quote: 'As a complete beginner, I had no idea what to expect. Aain ali built my store and within 30 days I had over $10K in sales.',
+    quote: 'As a complete beginner, I had no idea what to expect. Retail Automation built my store and within 30 days I had over $10K in sales.',
     storeName: 'Outdoor Living Co',
     landingPageUrl: 'outdoorlivingco.store',
     heroImage: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&h=280&fit=crop',
@@ -211,7 +211,7 @@ export const applyCtaContent = {
 };
 
 export const precallFaqItems: FAQItem[] = [
-  { id: 'precall-1', question: 'Is This Legit or Just Another Scam?', answer: 'Aain ali is a real e-commerce management company. We build and operate stores for qualified partners. We are transparent about our process, fees, and what you can expect. You own your store; we manage operations.' },
+  { id: 'precall-1', question: 'Is This Legit or Just Another Scam?', answer: 'Retail Automation is a real e-commerce management company. We build and operate stores for qualified partners. We are transparent about our process, fees, and what you can expect. You own your store; we manage operations.' },
   { id: 'precall-2', question: 'How Do I Know This Is a Real Service, Not Just a Course?', answer: 'We provide a fully done-for-you service. Our team builds your store, sources products, handles listings, fulfillment, and customer service. You receive a live, operating store—not just training or course materials.' },
   { id: 'precall-3', question: 'Why Should I Trust You?', answer: 'We operate with full transparency. Our team has years of experience in e-commerce. We share real client results, offer clear contracts, and our incentives are aligned—we only succeed when your store succeeds.' },
   { id: 'precall-4', question: 'What Does the Upfront Capital Actually Cover?', answer: 'Your investment covers store setup, product research, supplier relationships, listing creation, and initial operational costs. We outline all costs clearly before you commit.' },
@@ -234,8 +234,8 @@ export const precallFaqItems: FAQItem[] = [
 export const faqItems: FAQItem[] = [
   {
     id: 'faq-1',
-    question: 'What Is Aain ali?',
-    answer: 'Aain ali builds, launches, and manages fully done-for-you eCommerce stores. We handle everything—from store setup and supplier sourcing to daily operations, order fulfillment, customer service, and ongoing scaling—so you can earn hands-off without buying inventory upfront or needing eCommerce experience.',
+    question: 'What Is Retail Automation?',
+    answer: 'Retail Automation builds, launches, and manages fully done-for-you eCommerce stores. We handle everything—from store setup and supplier sourcing to daily operations, order fulfillment, customer service, and ongoing scaling—so you can earn hands-off without buying inventory upfront or needing eCommerce experience.',
   },
   {
     id: 'faq-2',
@@ -275,14 +275,14 @@ export const faqItems: FAQItem[] = [
 ];
 
 export const footerContent = {
-  copyright: `Aain ali © ${new Date().getFullYear()}. All Rights Reserved.`,
+  copyright: `Retail Automation © ${new Date().getFullYear()}. All Rights Reserved.`,
   links: [
     { href: '/privacy-policy', label: 'Privacy Policy' },
     { href: '/contact', label: 'Contact Us' },
   ],
   disclaimers: [
-    'Aain ali provides e-commerce management services and business opportunities. We do not offer a "get rich quick" program or guaranteed money-making system. Success depends on economic uncertainties, market conditions, and platform-specific policies. Testimonials on this page are from real clients. The results you see are not typical. Individual results may vary. Past performance does not guarantee future outcomes.',
-    'All materials are the intellectual property of Aain ali and are protected by copyright. Aain ali may refer to or link to third-party content or services and is not responsible for such content.',
+    'Retail Automation provides e-commerce management services and business opportunities. We do not offer a "get rich quick" program or guaranteed money-making system. Success depends on economic uncertainties, market conditions, and platform-specific policies. Testimonials on this page are from real clients. The results you see are not typical. Individual results may vary. Past performance does not guarantee future outcomes.',
+    'All materials are the intellectual property of Retail Automation and are protected by copyright. Retail Automation may refer to or link to third-party content or services and is not responsible for such content.',
     'This site is not part of or endorsed by Facebook™, Meta Platforms Inc., Google™, YouTube™, Amazon™, TikTok™, Shopify™, or Walmart™. All trademarks belong to their respective owners.',
   ],
 };

@@ -7,8 +7,11 @@ export default function PageWithLoader({ children }: { children: React.ReactNode
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setShowContent(true), 2000);
-    return () => clearTimeout(t);
+    let id = 0;
+    id = requestAnimationFrame(() => {
+      requestAnimationFrame(() => setShowContent(true));
+    });
+    return () => cancelAnimationFrame(id);
   }, []);
 
   return (

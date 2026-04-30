@@ -6,7 +6,7 @@ export default function SiteLoader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(false), 2800);
+    const t = setTimeout(() => setVisible(false), 700);
     return () => clearTimeout(t);
   }, []);
 
@@ -15,7 +15,7 @@ export default function SiteLoader() {
   return (
     <div
       className="fixed inset-0 z-100 flex flex-col items-center justify-center bg-[#020205] overflow-hidden"
-      style={{ animation: 'loaderFadeOut 0.6s ease-out 2.2s forwards' }}
+      style={{ animation: 'loaderFadeOut 0.35s ease-out 0.45s forwards' }}
       aria-hidden="true"
     >
       <div className="loader-ring" />

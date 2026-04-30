@@ -91,8 +91,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preload" href="/videos/shark-hero.mov" as="video" type="video/quicktime" />
-        <link rel="preload" href="/images/sharks-retail-header-logo.png" as="image" />
+        <link rel="preload" href="/images/sharks-retail-header-logo.png" as="image" fetchPriority="high" />
       </head>
       <body
         suppressHydrationWarning

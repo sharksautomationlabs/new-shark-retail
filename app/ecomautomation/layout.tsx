@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import EcomwealthCalendlyRoot from '@/components/EcomwealthCalendlyRoot';
 
 export const metadata: Metadata = {
-  title: 'Aain ali | E-Commerce Partnership',
+  title: 'Retail Automation | Partnership Call',
   robots: { index: false, follow: false },
 };
 

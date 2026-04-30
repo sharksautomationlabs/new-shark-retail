@@ -8,6 +8,14 @@ import Link from 'next/link';
 import { CheckCircle, Calendar } from 'lucide-react';
 import EcomWealthFAQ from '@/components/EcomWealthFAQ';
 import { precallFaqItems } from '@/lib/ecomwealthContent';
+import {
+  FUNNEL_BRAND_NAME,
+  FUNNEL_CONTACT_EMAIL,
+  FUNNEL_CONTACT_MAILTO,
+  FUNNEL_CONTACT_PHONE_DISPLAY,
+  FUNNEL_CONTACT_PHONE_TEL,
+  FUNNEL_LOGO_SRC,
+} from '@/lib/funnelBrand';
 
 export default function ThanksPage() {
   const [userName, setUserName] = useState('');
@@ -60,8 +68,8 @@ export default function ThanksPage() {
           <motion.div initial="hidden" animate={heroControls} variants={containerVariants} className="max-w-4xl mx-auto text-center">
             <motion.div variants={fadeInUp} className="mb-2 flex justify-center">
               <Link href="/" className="inline-block">
-                <div className="relative w-[140px] h-[95px] lg:w-[200px] lg:h-[130px]">
-                  <Image src="/images/Aain-Ali1.png" alt="Aain ali" fill className="object-contain" priority />
+                <div className="relative w-[160px] h-[52px] lg:w-[220px] lg:h-[72px]">
+                  <Image src={FUNNEL_LOGO_SRC} alt={FUNNEL_BRAND_NAME} fill className="object-contain object-center" priority sizes="(max-width: 1024px) 160px, 220px" />
                 </div>
               </Link>
             </motion.div>
@@ -290,11 +298,19 @@ export default function ThanksPage() {
                 Contact Us
               </Link>
             </div>
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-8 mb-6">
+              <a href={FUNNEL_CONTACT_MAILTO} className="text-[#35c4dd] hover:text-[#bef4fe] font-semibold text-sm transition-colors" style={{ fontFamily: "'Barlow', sans-serif" }}>
+                {FUNNEL_CONTACT_EMAIL}
+              </a>
+              <a href={FUNNEL_CONTACT_PHONE_TEL} className="text-white font-semibold text-sm hover:text-[#35c4dd] transition-colors" style={{ fontFamily: "'Barlow', sans-serif" }}>
+                {FUNNEL_CONTACT_PHONE_DISPLAY}
+              </a>
+            </div>
             <p className="text-gray-500 text-sm mb-6" style={{ fontFamily: "'Barlow', sans-serif" }}>
-              Aain ali &copy; {new Date().getFullYear()}. All Rights Reserved.
+              {FUNNEL_BRAND_NAME} &copy; {new Date().getFullYear()}. All Rights Reserved.
             </p>
             <p className="text-gray-600 text-xs leading-relaxed" style={{ fontFamily: "'Barlow', sans-serif" }}>
-              Aain ali provides e-commerce management services. We do not guarantee income or specific results. Individual results vary. Testimonials reflect real experiences but are not guarantees. By using this site, you acknowledge that you are responsible for your decisions and outcomes.
+              {FUNNEL_BRAND_NAME} provides e-commerce management services. We do not guarantee income or specific results. Individual results vary. Testimonials reflect real experiences but are not guarantees. By using this site, you acknowledge that you are responsible for your decisions and outcomes.
             </p>
           </div>
         </div>
