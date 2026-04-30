@@ -27,7 +27,7 @@ const REVIEW_CARDS = [
 const LOGO_ROW = [
   {
     name: 'Clutch',
-    logoSrc: '/images/review-platforms/clutch.svg',
+    logoSrc: '/images/review-platforms/logo-clutch.png',
     href: 'https://clutch.co/profile/ecom-sharkss',
     linkLabel: 'View on Clutch',
   },
@@ -45,7 +45,7 @@ const LOGO_ROW = [
   },
   {
     name: 'Facebook',
-    logoSrc: '/images/review-platforms/facebook.svg',
+    logoSrc: '/images/review-platforms/logo-facebook.png',
     href: 'https://www.facebook.com/people/Ecommerce-Sharks/61584113035162/?sk=reviews',
     linkLabel: 'See on Facebook',
   },
@@ -53,12 +53,12 @@ const LOGO_ROW = [
 
 export default function PlatformReviewsSection() {
   return (
-    <div className="py-12 lg:py-16 bg-[#08080c] border-y border-white/5">
+    <div className="py-10 lg:py-14 bg-[#08080c] border-y border-white/5">
       <div className="container mx-auto px-5 lg:px-20">
-        <h2 className="text-2xl lg:text-4xl font-bold text-white text-center mb-4 tracking-tight">
+        <h2 className="text-xl lg:text-3xl font-bold text-white text-center mb-3 tracking-tight">
           {`Proof from people who work with ${FUNNEL_BRAND_NAME}`}
         </h2>
-        <p className="text-center text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-center text-slate-400 text-sm lg:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
           {`Trusted by investors who chose ${FUNNEL_BRAND_NAME}—see reviews on Clutch, Bark, Reviews.io, and Facebook.`}
         </p>
 
@@ -74,46 +74,42 @@ export default function PlatformReviewsSection() {
                 width={480}
                 height={320}
                 sizes="(max-width: 768px) 50vw, 480px"
-                className="w-full h-auto object-contain"
+                className="w-full h-auto object-contain rounded-lg"
               />
             </div>
           ))}
         </div>
 
-        <div className="mt-8 sm:mt-10 max-w-5xl mx-auto w-full px-1">
-          <div className="bg-white/[0.03] rounded-2xl border border-white/10 shadow-md px-3 py-4 sm:px-5 sm:py-5 md:px-8 md:py-6">
-            <div className="overflow-x-auto pb-1 [scrollbar-width:thin] -mx-1 px-1">
-              <div className="grid min-w-[min(100%,480px)] grid-cols-4 sm:min-w-0 gap-2 sm:gap-3 md:gap-4 items-start justify-items-center">
+        <div className="mt-8 max-w-5xl mx-auto w-full px-1">
+          <div className="bg-white/[0.03] rounded-2xl border border-white/10 shadow-md px-3 py-4 sm:px-5 sm:py-5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 items-stretch">
                 {LOGO_ROW.map((item) => {
                   const isSvg = item.logoSrc.endsWith('.svg');
                   return (
-                    <div
+                    <a
                       key={item.name}
-                      className="flex w-full min-w-0 flex-col items-center justify-center gap-1.5 sm:gap-2"
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex min-w-0 flex-col items-center justify-between gap-2 rounded-xl border border-white/10 bg-white/[0.02] p-3 hover:border-teal-400/40 hover:bg-white/[0.04] transition-colors"
                     >
-                      <div className="flex h-10 w-full items-center justify-center bg-white/[0.06] px-0.5 sm:h-12 md:h-[52px] rounded-lg">
+                      <div className="flex h-11 sm:h-12 w-full items-center justify-center px-1">
                         <Image
                           src={item.logoSrc}
                           alt={`${item.name} logo`}
-                          width={isSvg ? 150 : 160}
-                          height={isSvg ? 36 : 48}
-                          className="max-h-10 w-auto max-w-[min(100%,120px)] object-contain object-center sm:max-h-12 sm:max-w-[140px] md:max-h-[52px]"
+                          width={isSvg ? 140 : 150}
+                          height={isSvg ? 34 : 44}
+                          className="max-h-8 sm:max-h-9 w-auto max-w-[130px] object-contain object-center rounded-md"
                           unoptimized
                         />
                       </div>
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[8px] sm:text-[10px] md:text-xs font-semibold text-teal-400 hover:text-teal-300 transition-colors text-center leading-tight line-clamp-2 px-0.5"
-                      >
+                      <span className="text-[10px] sm:text-xs font-semibold text-teal-400 group-hover:text-teal-300 transition-colors text-center leading-tight">
                         {item.linkLabel} →
-                      </a>
-                    </div>
+                      </span>
+                    </a>
                   );
                 })}
               </div>
-            </div>
           </div>
         </div>
       </div>
