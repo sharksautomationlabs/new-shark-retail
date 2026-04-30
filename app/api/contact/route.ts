@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: 'syedthesharkretail@gmail.com',
+      to: 'info@theretailautomation.com',
       subject: `New Contact Form Submission from ${firstName} ${lastName}`,
       html: htmlContent,
     });

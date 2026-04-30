@@ -48,8 +48,8 @@ const EcommerceAutomationContact: React.FC = () => {
                 <Mail className="w-6 h-6 text-teal-400 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-1">General Inquiries</h3>
-                  <a href="mailto:info@thesharkretail.com" className="text-teal-400 hover:text-teal-300 transition-colors">
-                    info@thesharkretail.com
+                  <a href="mailto:info@theretailautomation.com" className="text-teal-400 hover:text-teal-300 transition-colors">
+                    info@theretailautomation.com
                   </a>
                 </div>
               </div>
@@ -58,8 +58,8 @@ const EcommerceAutomationContact: React.FC = () => {
                 <Phone className="w-6 h-6 text-teal-400 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-1">Phone</h3>
-                  <a href="tel:+14694807938" className="text-teal-400 hover:text-teal-300 transition-colors">
-                    (469) 480-7938
+                  <a href="tel:+14692949964" className="text-teal-400 hover:text-teal-300 transition-colors">
+                    (469) 294-9964
                   </a>
                 </div>
               </div>
@@ -124,7 +124,7 @@ const EcommerceAutomationContact: React.FC = () => {
                   id="phone"
                   name="phone"
                   className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-teal-400 focus:border-teal-400 transition-colors"
-                  placeholder="(469) 480-7938"
+                  placeholder="(469) 294-9964"
                 />
               </div>
               

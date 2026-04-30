@@ -427,11 +427,11 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-center md:items-end gap-6 sm:gap-8 mt-12 sm:mt-16 pt-8 border-t border-white/10 text-center md:text-left">
           <div className="space-y-6">
             <div className="space-y-3">
-              <a href="mailto:info@thesharkretail.com" className="text-lg sm:text-xl font-bold text-white hover:text-teal-400 transition-colors block">
-                info@thesharkretail.com
+              <a href="mailto:info@theretailautomation.com" className="text-lg sm:text-xl font-bold text-white hover:text-teal-400 transition-colors block">
+                info@theretailautomation.com
               </a>
-              <a href="tel:+14694807938" className="text-base sm:text-lg font-semibold text-white hover:text-teal-400 transition-colors block">
-                (469) 480-7938
+              <a href="tel:+14692949964" className="text-base sm:text-lg font-semibold text-white hover:text-teal-400 transition-colors block">
+                (469) 294-9964
               </a>
             </div>
             <div className="flex flex-wrap justify-center md:justify-start gap-4 sm:gap-6 text-gray-400 text-xs sm:text-sm">

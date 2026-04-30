@@ -530,7 +530,7 @@ const KeywordResearchCTA: React.FC = () => {
         <div className="space-y-6">
           {[
             { icon: Search, title: "Scale Your Organic Traffic", desc: "Keyword discovery, competitor analysis, content strategy, and organic growth—solutions that help you rank smarter and sell faster." },
-            { icon: Mail, title: "Email", desc: "info@thesharkretail.com" },
+            { icon: Mail, title: "Email", desc: "info@theretailautomation.com" },
           ].map((item, i) => (
             <div key={i} className="relative group p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-teal-500/30 hover:bg-white/[0.04] transition-all duration-500">
               <div className="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -545,9 +545,9 @@ const KeywordResearchCTA: React.FC = () => {
               </div>
             </div>
           ))}
-          <a href="tel:+14694807938" className="flex items-center justify-center gap-3 w-full py-4 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 font-bold hover:bg-teal-500/20 transition-colors">
+          <a href="tel:+14692949964" className="flex items-center justify-center gap-3 w-full py-4 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 font-bold hover:bg-teal-500/20 transition-colors">
             <Phone className="w-5 h-5" />
-            (469) 480-7938
+            (469) 294-9964
           </a>
         </div>
         </div>

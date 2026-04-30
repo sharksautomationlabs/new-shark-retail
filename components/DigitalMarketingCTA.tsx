@@ -714,7 +714,7 @@ const DigitalMarketingCTA: React.FC = () => {
               {
                 icon: Mail,
                 title: "Email",
-                desc: "info@thesharkretail.com",
+                desc: "info@theretailautomation.com",
               },
             ].map((item, i) => (
               <div
@@ -736,11 +736,11 @@ const DigitalMarketingCTA: React.FC = () => {
               </div>
             ))}
             <a
-              href="tel:+14694807938"
+              href="tel:+14692949964"
               className="flex items-center justify-center gap-3 w-full py-4 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 font-bold hover:bg-teal-500/20 transition-colors"
             >
               <Phone className="w-5 h-5" />
-              (469) 480-7938
+              (469) 294-9964
             </a>
           </motion.div>
         </div>
