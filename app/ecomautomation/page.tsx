@@ -112,23 +112,23 @@ export default function EcomAutomationPage() {
                 </div>
               </Link>
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 leading-[1.0] tracking-tight">
+            <motion.h1 variants={fadeInUp} className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 leading-[1.0] tracking-tight" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
               A fully managed e-commerce business—
               <br />
               with at least $4,000 in trackable sales
               <br />
               <span className="text-teal-400">in your first 30 days.</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} className="text-lg lg:text-xl text-slate-400 mb-6 max-w-3xl mx-auto leading-relaxed">
+            <motion.p variants={fadeInUp} className="text-lg lg:text-xl text-slate-400 mb-6 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "'Barlow', sans-serif" }}>
               {heroContent.subhead}
             </motion.p>
-            <motion.div variants={fadeInUp} className="max-w-4xl mx-auto bg-teal-400 text-black font-bold py-3 px-6 rounded-t-2xl mb-0 text-xl lg:text-2xl text-center">
+            <motion.div variants={fadeInUp} className="max-w-4xl mx-auto bg-teal-400 text-black font-bold py-3 px-6 rounded-t-2xl mb-0 text-xl lg:text-2xl text-center" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
               {heroContent.doneForYouText.split('. ')[0]}. <span className="text-white/95">{heroContent.doneForYouText.split('. ')[1]}</span>. {heroContent.videoPrompt}
             </motion.div>
             <motion.div variants={fadeInUp} className="max-w-4xl mx-auto rounded-b-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 -mt-px">
               <LazyYouTube youtubeId="ZPY3hkj7xSE" title={heroContent.videoTitle} />
             </motion.div>
-            <motion.p variants={fadeInUp} className="mt-6 text-2xl lg:text-3xl text-slate-300 font-medium leading-snug">
+            <motion.p variants={fadeInUp} className="mt-6 text-2xl lg:text-3xl text-slate-300 font-medium leading-snug" style={{ fontFamily: "'Barlow', sans-serif" }}>
               {heroContent.applyBelowLine1}
               <br />
               {heroContent.applyBelowLine2}
@@ -140,7 +140,7 @@ export default function EcomAutomationPage() {
       {/* TrustStrip */}
       <div className="py-4 lg:py-6 bg-teal-950/20 border-y border-white/5">
         <div className="container mx-auto px-5 lg:px-20 text-center">
-          <p className="text-xl lg:text-2xl text-white font-semibold max-w-3xl mx-auto">
+          <p className="text-xl lg:text-2xl text-white font-semibold max-w-3xl mx-auto" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
             {trustStripContent.partnershipsText}
           </p>
         </div>
@@ -164,7 +164,7 @@ export default function EcomAutomationPage() {
       {/* PartnerStoreResults - Dashboard Screenshots */}
       <div className="py-16 lg:py-24 bg-[#050508] border-t border-white/5">
         <div className="container mx-auto px-5 lg:px-20">
-          <h2 className="text-2xl lg:text-4xl font-bold text-white text-center mb-10 tracking-tight">
+          <h2 className="text-2xl lg:text-4xl font-bold text-white text-center mb-10" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
             Real partner results—on the record
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -197,12 +197,12 @@ export default function EcomAutomationPage() {
       <div className="py-16 lg:py-24 bg-[#020205] relative overflow-hidden border-y border-white/5">
         <div className="absolute top-[-100px] right-[-50px] w-[300px] h-[300px] bg-teal-500/10 rounded-full blur-3xl" />
         <div className="container mx-auto px-5 lg:px-20 relative z-10">
-          <h2 className="text-3xl lg:text-5xl font-bold text-white text-center mb-2 max-w-5xl mx-auto leading-tight">
+          <h2 className="text-3xl lg:text-5xl font-bold text-white text-center mb-2 max-w-5xl mx-auto leading-tight" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
             Global e-commerce is on pace to pass
             <br />
             <span className="text-teal-400">$8.15 trillion by 2026</span>
           </h2>
-          <p className="text-center text-slate-400 text-base lg:text-lg mb-10">
+          <p className="text-center text-slate-400 text-base lg:text-lg mb-10" style={{ fontFamily: "'Barlow', sans-serif" }}>
             Trillions in online revenue—are you positioned to capture your slice?
           </p>
           <div className="max-w-5xl mx-auto">
@@ -231,8 +231,8 @@ export default function EcomAutomationPage() {
                 ].map((d, i) => (
                   <g key={d.year}>
                     <rect x={d.x - 28} y={240 - d.barH} width="44" height={d.barH} rx="4" fill="url(#barGradient)" />
-                    <text x={d.x} y={240 - d.barH - 8} textAnchor="middle" fill="#99f6e4" fontSize="12" fontFamily="system-ui, sans-serif">{d.value}</text>
-                    <text x={d.x} y="268" textAnchor="middle" fill="#99f6e4" fontSize="11" fontFamily="system-ui, sans-serif">{d.year}</text>
+                    <text x={d.x} y={240 - d.barH - 8} textAnchor="middle" fill="#99f6e4" fontSize="12" fontFamily="Barlow, sans-serif">{d.value}</text>
+                    <text x={d.x} y="268" textAnchor="middle" fill="#99f6e4" fontSize="11" fontFamily="Barlow Condensed, sans-serif">{d.year}</text>
                   </g>
                 ))}
                 {/* White line through data points */}
@@ -246,12 +246,12 @@ export default function EcomAutomationPage() {
                 ))}
               </svg>
             </div>
-            <div className="flex justify-between items-center mt-2 px-2 text-xs text-slate-500">
+            <div className="flex justify-between items-center mt-2 px-2 text-xs text-slate-500" style={{ fontFamily: "'Barlow', sans-serif" }}>
               <span>Source: eMarketer Insider Intelligence</span>
               <span>*Projected</span>
             </div>
             <div className="text-center mt-10">
-              <button type="button" onClick={openCalendly} className="inline-flex items-center justify-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-4 px-8 rounded-full transition-all shadow-lg shadow-teal-500/25">
+              <button type="button" onClick={openCalendly} className="inline-flex items-center justify-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-4 px-8 rounded-full transition-all shadow-lg shadow-teal-500/25" style={{ fontFamily: "'Barlow', sans-serif" }}>
                 {applyCtaContent.ctaText}
               </button>
             </div>
@@ -262,14 +262,14 @@ export default function EcomAutomationPage() {
       {/* FAQ */}
       <div className="py-16 lg:py-24 bg-[#08080c] border-t border-white/5">
         <div className="container mx-auto px-5 lg:px-20">
-          <h2 className="text-2xl lg:text-4xl font-bold text-white text-center mb-12 tracking-tight">
+          <h2 className="text-2xl lg:text-4xl font-bold text-white text-center mb-12" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
             Questions we hear most often
           </h2>
           <div className="max-w-3xl mx-auto">
             <EcomWealthFAQ items={faqItems} />
           </div>
           <div className="text-center mt-12">
-            <button type="button" onClick={openCalendly} className="inline-flex items-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-3 px-6 rounded-full transition-all shadow-lg shadow-teal-500/20">
+            <button type="button" onClick={openCalendly} className="inline-flex items-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-3 px-6 rounded-full transition-all shadow-lg shadow-teal-500/20" style={{ fontFamily: "'Barlow', sans-serif" }}>
               {applyCtaContent.ctaText}
             </button>
           </div>
