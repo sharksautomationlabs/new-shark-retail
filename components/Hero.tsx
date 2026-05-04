@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { Canvas } from "@react-three/fiber";
 import dynamic from "next/dynamic";
@@ -19,26 +19,48 @@ const HERO_SUBTEXT =
   "Curious how? Book a meeting with one of our senior consultants today.";
 
 export default function Hero() {
+  const [showParticles, setShowParticles] = useState(false);
+
+  useEffect(() => {
+    const startParticles = () => setShowParticles(true);
+
+    // Defer heavy WebGL work until after initial render.
+    if ("requestIdleCallback" in window) {
+      const id = (window as Window & { requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number })
+        .requestIdleCallback(startParticles, { timeout: 1200 });
+      return () => {
+        if ("cancelIdleCallback" in window) {
+          (window as Window & { cancelIdleCallback: (idleId: number) => void }).cancelIdleCallback(id);
+        }
+      };
+    }
+
+    const timeoutId = window.setTimeout(startParticles, 900);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   return (
     <div className="hero-root relative w-full max-w-full overflow-hidden bg-[#020205]">
       {/* DESKTOP / TABLET HERO (with 3D + shark video) */}
       <div className="hidden md:block w-full max-w-full h-dvh relative overflow-hidden">
         {/* Particles + shark share one layer so mix-blend can read WebGL backdrop; transparent GL clear = same #020205 base */}
         <div className="absolute inset-0 z-0">
-          <Canvas
-            className="pointer-events-none absolute inset-0 h-full w-full touch-none"
-            camera={{ position: [0, 0, 5], fov: 50 }}
-            dpr={[1, 1.75]}
-            gl={{ alpha: true }}
-            onCreated={({ gl, scene }) => {
-              scene.background = null;
-              gl.setClearColor("#020205", 0);
-            }}
-          >
-            <Suspense fallback={null}>
-              <HeroParticles />
-            </Suspense>
-          </Canvas>
+          {showParticles && (
+            <Canvas
+              className="pointer-events-none absolute inset-0 h-full w-full touch-none"
+              camera={{ position: [0, 0, 5], fov: 50 }}
+              dpr={[1, 1.5]}
+              gl={{ alpha: true }}
+              onCreated={({ gl, scene }) => {
+                scene.background = null;
+                gl.setClearColor("#020205", 0);
+              }}
+            >
+              <Suspense fallback={null}>
+                <HeroParticles />
+              </Suspense>
+            </Canvas>
+          )}
           <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
             <video
               className="hero-shark-blend max-h-[110vh] w-auto max-w-full object-contain object-center select-none"

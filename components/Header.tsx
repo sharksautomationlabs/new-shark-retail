@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { gsap } from 'gsap';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import Ticker from './Ticker';
 
@@ -54,36 +53,49 @@ const Header = () => {
   // --- Cinematic GSAP Menu Animation ---
   useEffect(() => {
     if (!menuRef.current) return;
+    let isMounted = true;
 
-    if (isMenuOpen) {
-      // Body scroll lock
-      document.body.style.overflow = 'hidden';
-      
-      const tl = gsap.timeline();
-      
-      // 1. Reveal Background using clipPath (Cinematic wipe down)
-      tl.to(menuRef.current, { 
-        clipPath: 'inset(0% 0% 0% 0%)', 
-        duration: 0.8, 
-        ease: 'expo.inOut' 
-      })
-      // 2. Stagger in the links
-      .fromTo(linksRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' },
-        "-=0.4" // Overlap animation
-      );
-    } else {
-      // Body scroll unlock
-      document.body.style.overflow = '';
-      
-      // Wipe up to hide
-      gsap.to(menuRef.current, { 
-        clipPath: 'inset(0% 0% 100% 0%)', 
-        duration: 0.6, 
-        ease: 'expo.inOut' 
-      });
-    }
+    const runAnimation = async () => {
+      const { gsap } = await import('gsap');
+      if (!isMounted || !menuRef.current) return;
+
+      if (isMenuOpen) {
+        // Body scroll lock
+        document.body.style.overflow = 'hidden';
+
+        const tl = gsap.timeline();
+
+        // 1. Reveal Background using clipPath (Cinematic wipe down)
+        tl.to(menuRef.current, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 0.8,
+          ease: 'expo.inOut'
+        })
+        // 2. Stagger in the links
+        .fromTo(
+          linksRef.current,
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' },
+          '-=0.4'
+        );
+      } else {
+        // Body scroll unlock
+        document.body.style.overflow = '';
+
+        // Wipe up to hide
+        gsap.to(menuRef.current, {
+          clipPath: 'inset(0% 0% 100% 0%)',
+          duration: 0.6,
+          ease: 'expo.inOut'
+        });
+      }
+    };
+
+    runAnimation();
+
+    return () => {
+      isMounted = false;
+    };
   }, [isMenuOpen]);
 
   return (

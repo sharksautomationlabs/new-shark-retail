@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import FeaturedInSection from '../components/FeaturedInSection';
-import PageWithLoader from '../components/PageWithLoader';
 
 const WhileYouSleep = dynamic(() => import('../components/WhileYouSleep'), { ssr: true });
 const PainPoints = dynamic(() => import('../components/PainPoints'), { ssr: true });
@@ -25,20 +24,18 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <PageWithLoader>
-      <div>
-        <Header />
-        <Hero />
-        <FeaturedInSection />
-        <WhileYouSleep />
-        <PainPoints />
-        <CallToAction />
-        <Safety />
-        <CompaniesTrustUs />
-        <Experts />
-        <ContactSection />
-        <Footer />
-      </div>
-    </PageWithLoader>
+    <div>
+      <Header />
+      <Hero />
+      <FeaturedInSection />
+      <WhileYouSleep />
+      <PainPoints />
+      <CallToAction />
+      <Safety />
+      <CompaniesTrustUs />
+      <Experts />
+      <ContactSection />
+      <Footer />
+    </div>
   );
 }

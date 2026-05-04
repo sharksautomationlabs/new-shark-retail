@@ -5,6 +5,7 @@ import { motion, useAnimation, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Play } from 'lucide-react';
 import EcomWealthFAQ from '@/components/EcomWealthFAQ';
 import PlatformReviewsSection from '@/components/PlatformReviewsSection';
@@ -34,21 +35,12 @@ const faqItems = [
   { id: 'faq-7', question: 'Who am I speaking with?', answer: 'You are talking to a senior strategist from The Retail Automation team. These are real experts who scale stores every day. No fluff and no beginners, just pros who know how to win.' },
 ];
 
-const CALENDLY_URL = 'https://calendly.com/ecomsharkss-info/30min';
+const CALENDLY_URL_DEFAULT = 'https://calendly.com/ecomsharkss-info/30min';
+const CALENDLY_URL_ECOMMERCE_AUTOMATION = 'https://calendly.com/theretailautomation-info/30min';
 
-function openCalendly() {
-  if (typeof window === 'undefined') return;
-  const w = window as unknown as {
-    Calendly?: {
-      initPopupWidget: (opts: { url: string; onEventScheduled?: () => void }) => void;
-    };
-  };
-  w.Calendly?.initPopupWidget({
-    url: CALENDLY_URL,
-    onEventScheduled: () => {
-      window.location.assign('/thank-you');
-    },
-  });
+function isEcommerceAutomationPath(pathname: string | null) {
+  if (!pathname) return false;
+  return pathname === '/ecommerce-automation' || pathname.startsWith('/ecommerce-automation/');
 }
 
 const containerVariants: Variants = {
@@ -93,6 +85,24 @@ function LazyYouTube({ youtubeId, title }: { youtubeId: string; title: string })
 }
 
 export default function EcomAutomationPage() {
+  const pathname = usePathname();
+  const calendlyUrl = isEcommerceAutomationPath(pathname) ? CALENDLY_URL_ECOMMERCE_AUTOMATION : CALENDLY_URL_DEFAULT;
+
+  const openCalendly = () => {
+    if (typeof window === 'undefined') return;
+    const w = window as unknown as {
+      Calendly?: {
+        initPopupWidget: (opts: { url: string; onEventScheduled?: () => void }) => void;
+      };
+    };
+    w.Calendly?.initPopupWidget({
+      url: calendlyUrl,
+      onEventScheduled: () => {
+        window.location.assign('/thank-you');
+      },
+    });
+  };
+
   const heroControls = useAnimation();
   const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.2 });
   useEffect(() => { if (heroInView) heroControls.start('visible'); }, [heroControls, heroInView]);
@@ -151,7 +161,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <div className="max-w-4xl mx-auto">
             <CalendlyInlineEmbed
-              schedulingPageUrl={CALENDLY_URL}
+              schedulingPageUrl={calendlyUrl}
               title={`Book a call with ${FUNNEL_BRAND_NAME}`}
               minHeight={650}
             />
@@ -185,7 +195,7 @@ export default function EcomAutomationPage() {
           {/* Calendly Embed - Second */}
           <div className="mt-16 max-w-4xl mx-auto">
             <CalendlyInlineEmbed
-              schedulingPageUrl={CALENDLY_URL}
+              schedulingPageUrl={calendlyUrl}
               title={`Book a call with ${FUNNEL_BRAND_NAME}`}
               minHeight={650}
             />
@@ -228,7 +238,7 @@ export default function EcomAutomationPage() {
                   { year: '2025*', value: '$7.53', x: 690, barH: 169, y: 71 },
                   { year: '2026*', value: '$8.15', x: 770, barH: 183, y: 57 },
                   { year: '2027*', value: '$8.91', x: 830, barH: 200, y: 40 },
-                ].map((d, i) => (
+                ].map((d) => (
                   <g key={d.year}>
                     <rect x={d.x - 28} y={240 - d.barH} width="44" height={d.barH} rx="4" fill="url(#barGradient)" />
                     <text x={d.x} y={240 - d.barH - 8} textAnchor="middle" fill="#99f6e4" fontSize="12" fontFamily="Barlow, sans-serif">{d.value}</text>
