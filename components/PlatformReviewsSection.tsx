@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { FUNNEL_BRAND_NAME } from '@/lib/funnelBrand';
 
-const REVIEW_CARDS = [
+export const FUNNEL_REVIEW_CARDS = [
   {
     name: 'Duke Morrison',
     imageSrc: '/images/reviews/review-duke-morrison.png',
@@ -22,6 +22,29 @@ const REVIEW_CARDS = [
   },
 ] as const;
 
+export function FunnelReviewCardsGrid() {
+  return (
+    <div className="grid grid-cols-2 gap-3 sm:gap-6 max-w-3xl mx-auto">
+      {FUNNEL_REVIEW_CARDS.map((card) => (
+        <div
+          key={card.name}
+          className="bg-white/[0.04] rounded-2xl shadow-lg border border-white/10 p-2 sm:p-3 flex flex-col"
+        >
+          <div className="relative w-full h-[200px] sm:h-[280px] overflow-hidden rounded-lg bg-white">
+            <Image
+              src={card.imageSrc}
+              alt={`${card.name} review`}
+              fill
+              sizes="(max-width: 640px) 45vw, 380px"
+              className="object-contain p-1.5 sm:p-2"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function PlatformReviewsSection() {
   return (
     <div className="py-10 lg:py-14 bg-[#08080c] border-y border-white/5">
@@ -33,24 +56,7 @@ export default function PlatformReviewsSection() {
           {`Trusted by investors who chose ${FUNNEL_BRAND_NAME}—recent feedback from partners on the experience.`}
         </p>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-6 max-w-3xl mx-auto">
-          {REVIEW_CARDS.map((card) => (
-            <div
-              key={card.name}
-              className="bg-white/[0.04] rounded-2xl shadow-lg border border-white/10 p-2 sm:p-3 flex flex-col"
-            >
-              <div className="relative w-full h-[200px] sm:h-[280px] overflow-hidden rounded-lg bg-white">
-                <Image
-                  src={card.imageSrc}
-                  alt={`${card.name} review`}
-                  fill
-                  sizes="(max-width: 640px) 45vw, 380px"
-                  className="object-contain p-1.5 sm:p-2"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
+        <FunnelReviewCardsGrid />
       </div>
     </div>
   );

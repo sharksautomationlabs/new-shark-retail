@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircle, Calendar } from 'lucide-react';
 import EcomWealthFAQ from '@/components/EcomWealthFAQ';
+import { FunnelReviewCardsGrid } from '@/components/PlatformReviewsSection';
 import { precallFaqItems } from '@/lib/ecomwealthContent';
 import {
   FUNNEL_BRAND_NAME,
@@ -49,15 +50,6 @@ export default function ThanksPage() {
     hidden: { opacity: 0, y: 16 },
     visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 200, damping: 26 } },
   };
-
-  const thankYouReviewImages = [
-    '/images/reviews/partner-review-1.png',
-    '/images/reviews/partner-review-2.png',
-    '/images/reviews/partner-review-3.png',
-    '/images/reviews/review-duke-morrison.png',
-    '/images/reviews/review-jackson-ward.png',
-    '/images/reviews/review-bridger-cole.png',
-  ] as const;
 
   const prepareChecklist = [
     { text: 'Double-Check Your Phone Number: Make sure the number you provided is correct and can receive calls.' },
@@ -191,7 +183,7 @@ export default function ThanksPage() {
         </div>
       </div>
 
-      {/* ============ STEP 4: SEE WHAT OTHERS HAVE TO SAY ============ */}
+      {/* ============ STEP 5: SEE WHAT OTHERS HAVE TO SAY ============ */}
       <div className="py-16 lg:py-24 bg-[#08080c] border-y border-white/5">
         <div className="container mx-auto px-5 lg:px-20">
           <div className="max-w-4xl mx-auto">
@@ -201,20 +193,7 @@ export default function ThanksPage() {
             <p className="text-center text-slate-400 mb-10 leading-relaxed">
               First-hand experiences from clients, sharing what it&apos;s actually been like partnering with our team.
             </p>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {thankYouReviewImages.map((src, i) => (
-                <div key={src} className="bg-white/[0.03] rounded-2xl overflow-hidden shadow-lg border border-white/10 flex items-center justify-center min-h-[200px]">
-                  <Image
-                    src={src}
-                    alt={`Partner review ${i + 1}`}
-                    width={480}
-                    height={320}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-              ))}
-            </div>
+            <FunnelReviewCardsGrid />
           </div>
         </div>
       </div>
