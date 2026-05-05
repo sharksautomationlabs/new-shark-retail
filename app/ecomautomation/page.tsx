@@ -45,12 +45,12 @@ function isEcommerceAutomationPath(pathname: string | null) {
 
 const containerVariants: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.02 } },
 };
 
 const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 180, damping: 24 } },
 };
 
 function LazyYouTube({ youtubeId, title }: { youtubeId: string; title: string }) {

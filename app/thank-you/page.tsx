@@ -42,13 +42,22 @@ export default function ThanksPage() {
 
   const containerVariants: Variants = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
+    visible: { transition: { staggerChildren: 0.035, delayChildren: 0 } },
   };
 
   const fadeInUp: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 200, damping: 26 } },
   };
+
+  const thankYouReviewImages = [
+    '/images/reviews/partner-review-1.png',
+    '/images/reviews/partner-review-2.png',
+    '/images/reviews/partner-review-3.png',
+    '/images/reviews/review-duke-morrison.png',
+    '/images/reviews/review-jackson-ward.png',
+    '/images/reviews/review-bridger-cole.png',
+  ] as const;
 
   const prepareChecklist = [
     { text: 'Double-Check Your Phone Number: Make sure the number you provided is correct and can receive calls.' },
@@ -193,11 +202,11 @@ export default function ThanksPage() {
               First-hand experiences from clients, sharing what it&apos;s actually been like partnering with our team.
             </p>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="bg-white/[0.03] rounded-2xl overflow-hidden shadow-lg border border-white/10 flex items-center justify-center min-h-[200px]">
+              {thankYouReviewImages.map((src, i) => (
+                <div key={src} className="bg-white/[0.03] rounded-2xl overflow-hidden shadow-lg border border-white/10 flex items-center justify-center min-h-[200px]">
                   <Image
-                    src={`/images/reviews/review-${i}.png`}
-                    alt={`Trustpilot review ${i}`}
+                    src={src}
+                    alt={`Partner review ${i + 1}`}
                     width={480}
                     height={320}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -205,16 +214,6 @@ export default function ThanksPage() {
                   />
                 </div>
               ))}
-            </div>
-            <div className="text-center mt-8">
-              <a
-                href="https://www.trustpilot.com/review/ecomsharkss.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 font-semibold transition-colors"
-              >
-                See all reviews on Trustpilot →
-              </a>
             </div>
           </div>
         </div>

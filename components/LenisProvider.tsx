@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
@@ -10,6 +11,7 @@ export default function LenisProvider({
   children: React.ReactNode;
 }) {
   const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -18,13 +20,12 @@ export default function LenisProvider({
     if (prefersReducedMotion) return;
 
     const lenis = new Lenis({
-      // Keep smoothing subtle to reduce perceived lag.
-      lerp: isMobile ? 0.2 : 0.14,
-      duration: isMobile ? 0.7 : 0.85,
+      lerp: isMobile ? 0.22 : 0.16,
+      duration: isMobile ? 0.65 : 0.75,
       smoothWheel: true,
       smoothTouch: false,
       syncTouch: false,
-      wheelMultiplier: isMobile ? 0.9 : 1,
+      wheelMultiplier: isMobile ? 0.95 : 1,
       touchMultiplier: 1,
       autoRaf: false,
       gestureOrientation: "vertical",
@@ -50,7 +51,7 @@ export default function LenisProvider({
       lenis.destroy();
       lenisRef.current = null;
     };
-  }, []);
+  }, [pathname]);
 
   return <>{children}</>;
 }
