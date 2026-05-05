@@ -88,8 +88,21 @@ export default async function RootLayout({
 }>) {
   const headerList = await headers();
   const pathname = headerList.get('x-pathname') ?? '';
-  const thankYouGtmNoscript =
+  const isThankYou =
     pathname === '/thank-you' || pathname.startsWith('/thank-you/');
+  const isEcommerceAutomation =
+    pathname === '/ecommerce-automation' ||
+    pathname.startsWith('/ecommerce-automation/');
+  const funnelFacebookPixelHead = isThankYou || isEcommerceAutomation;
+
+  const funnelFacebookPixelScript = `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1334596645435728');
+fbq('set','agent','tmgoogletagmanager', '1334596645435728');
+fbq('track', "PageView");`;
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -98,7 +111,7 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preload" href="/images/sharks-retail-header-logo.png" as="image" fetchPriority="high" />
-        {thankYouGtmNoscript ? (
+        {isThankYou ? (
           <noscript>
             <iframe
               src="https://www.googletagmanager.com/ns.html?id=GTM-N5XDRH49"
@@ -108,6 +121,25 @@ export default async function RootLayout({
               style={{ display: 'none', visibility: 'hidden' }}
             />
           </noscript>
+        ) : null}
+        {funnelFacebookPixelHead ? (
+          <>
+            <script
+              nonce="Mjx8qJ5s"
+              suppressHydrationWarning
+              dangerouslySetInnerHTML={{ __html: funnelFacebookPixelScript }}
+            />
+            <noscript>
+              {/* eslint-disable-next-line @next/next/no-img-element -- FB Pixel fallback */}
+              <img
+                height={1}
+                width={1}
+                style={{ display: 'none' }}
+                src="https://www.facebook.com/tr?id=1334596645435728&ev=PageView&noscript=1"
+                alt=""
+              />
+            </noscript>
+          </>
         ) : null}
       </head>
       <body

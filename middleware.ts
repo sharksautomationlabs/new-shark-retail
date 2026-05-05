@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-/** Lets root layout read pathname for route-specific <head> content (e.g. thank-you GTM noscript). */
+/** Lets root layout read pathname for route-specific <head> content (GTM, funnel Meta Pixel). */
 export function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-pathname', request.nextUrl.pathname);
@@ -11,5 +11,10 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/thank-you', '/thank-you/:path*'],
+  matcher: [
+    '/thank-you',
+    '/thank-you/:path*',
+    '/ecommerce-automation',
+    '/ecommerce-automation/:path*',
+  ],
 };
