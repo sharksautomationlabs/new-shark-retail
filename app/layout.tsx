@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 import MetaPixel from "@/components/MetaPixel";
 import LenisProvider from "@/components/LenisProvider";
@@ -80,11 +81,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerList = await headers();
+  const pathname = headerList.get('x-pathname') ?? '';
+  const thankYouGtmNoscript =
+    pathname === '/thank-you' || pathname.startsWith('/thank-you/');
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -92,6 +98,17 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preload" href="/images/sharks-retail-header-logo.png" as="image" fetchPriority="high" />
+        {thankYouGtmNoscript ? (
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-N5XDRH49"
+              height={0}
+              width={0}
+              title="Google Tag Manager"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        ) : null}
       </head>
       <body
         suppressHydrationWarning
