@@ -36,8 +36,8 @@ const faqItems = [
 ];
 
 const CALENDLY_URL_DEFAULT = 'https://calendly.com/ecomsharkss-info/30min';
-/** `/ecommerce-automation` funnel — replace with your Calendly event URL if different. */
-const CALENDLY_URL_ECOMMERCE_AUTOMATION = 'https://calendly.com/theretailautomation-info/30min';
+/** `/ecommerce-automation` booking link (matches other site CTAs). */
+const CALENDLY_URL_ECOMMERCE_AUTOMATION = 'https://calendly.com/sharksretailofficial/30min';
 
 function isEcommerceAutomationPath(pathname: string | null) {
   if (!pathname) return false;
