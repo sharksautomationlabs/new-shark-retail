@@ -36,6 +36,7 @@ const faqItems = [
 ];
 
 const CALENDLY_URL_DEFAULT = 'https://calendly.com/ecomsharkss-info/30min';
+/** `/ecommerce-automation` funnel — replace with your Calendly event URL if different. */
 const CALENDLY_URL_ECOMMERCE_AUTOMATION = 'https://calendly.com/theretailautomation-info/30min';
 
 function isEcommerceAutomationPath(pathname: string | null) {
@@ -86,7 +87,8 @@ function LazyYouTube({ youtubeId, title }: { youtubeId: string; title: string })
 
 export default function EcomAutomationPage() {
   const pathname = usePathname();
-  const calendlyUrl = isEcommerceAutomationPath(pathname) ? CALENDLY_URL_ECOMMERCE_AUTOMATION : CALENDLY_URL_DEFAULT;
+  const isEcomAutomationFunnel = isEcommerceAutomationPath(pathname);
+  const calendlyUrl = isEcomAutomationFunnel ? CALENDLY_URL_ECOMMERCE_AUTOMATION : CALENDLY_URL_DEFAULT;
 
   const openCalendly = () => {
     if (typeof window === 'undefined') return;
@@ -164,6 +166,7 @@ export default function EcomAutomationPage() {
               schedulingPageUrl={calendlyUrl}
               title={`Book a call with ${FUNNEL_BRAND_NAME}`}
               minHeight={650}
+              preload={isEcomAutomationFunnel}
             />
           </div>
         </div>
@@ -192,13 +195,22 @@ export default function EcomAutomationPage() {
               </div>
             ))}
           </div>
-          {/* Calendly Embed - Second */}
-          <div className="mt-16 max-w-4xl mx-auto">
-            <CalendlyInlineEmbed
-              schedulingPageUrl={calendlyUrl}
-              title={`Book a call with ${FUNNEL_BRAND_NAME}`}
-              minHeight={650}
-            />
+          {/* One inline Calendly only (second full embed doubled load). Same calendar via CTA. */}
+          <div className="mt-16 max-w-2xl mx-auto rounded-2xl border border-white/10 bg-white/[0.03] px-8 py-10 text-center">
+            <p className="text-lg text-white font-semibold mb-2" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
+              Ready to pick your time?
+            </p>
+            <p className="text-slate-400 text-sm mb-6" style={{ fontFamily: "'Barlow', sans-serif" }}>
+              Opens the same booking window—faster than loading the calendar twice on this page.
+            </p>
+            <button
+              type="button"
+              onClick={openCalendly}
+              className="inline-flex items-center justify-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-4 px-8 rounded-full transition-all shadow-lg shadow-teal-500/25"
+              style={{ fontFamily: "'Barlow', sans-serif" }}
+            >
+              {applyCtaContent.ctaText}
+            </button>
           </div>
         </div>
       </div>

@@ -54,7 +54,7 @@ export default function CalendlyInlineEmbed({
           height={minHeight}
           title={title}
           className="rounded-2xl overflow-hidden w-full border-0 ring-1 ring-white/10"
-          loading="lazy"
+          loading={preload ? 'eager' : 'lazy'}
         />
       ) : (
         <div
