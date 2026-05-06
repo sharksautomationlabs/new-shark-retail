@@ -19,18 +19,18 @@ export default function CalendlyInlineEmbed({
   minHeight = 650,
   preload = false,
 }: Props) {
-  const [src, setSrc] = useState<string | null>(() =>
-    preload && typeof window !== 'undefined' ? buildCalendlyEmbedUrl(schedulingPageUrl) : null
-  );
+  // Always null on first render so server HTML matches client (avoid window in useState initializer).
+  const [src, setSrc] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (preload) {
-      setSrc((s) => s ?? buildCalendlyEmbedUrl(schedulingPageUrl));
+      setSrc(buildCalendlyEmbedUrl(schedulingPageUrl));
       return;
     }
+
     const el = containerRef.current;
-    if (!el || src) return;
+    if (!el || src !== null) return;
 
     const obs = new IntersectionObserver(
       (entries) => {
@@ -43,7 +43,7 @@ export default function CalendlyInlineEmbed({
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [schedulingPageUrl, src, preload]);
+  }, [schedulingPageUrl, preload, src]);
 
   return (
     <div ref={containerRef} className={className} style={{ minHeight }}>
