@@ -51,8 +51,10 @@ const stepsData = [
   },
 ];
 
+type Step = { number: string; stage: string; title: string; description: string; icon: React.ReactNode };
+
 // --- Magnetic Spotlight Card Component ---
-const SpotlightCard = ({ step, index }: { step: any, index: number }) => {
+const SpotlightCard = ({ step, index }: { step: Step, index: number }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const isEven = index % 2 === 0;
 

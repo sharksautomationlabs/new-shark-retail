@@ -204,7 +204,7 @@ const PPCManagementEdge: React.FC = () => {
                 Ready to Choose the Right Path?
               </h3>
               <p className="text-sm sm:text-lg text-gray-300 mb-5 sm:mb-6 max-w-2xl mx-auto">
-                Don't let inexperience and guesswork hold you back. Partner with Retail Automation and unlock your true potential.
+                Don&apos;t let inexperience and guesswork hold you back. Partner with Retail Automation and unlock your true potential.
               </p>
               <a
                 href="/contact"

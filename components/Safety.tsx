@@ -131,7 +131,7 @@ export default function Safety() {
               What We Put in Writing
             </h3>
             <p className="text-[14px] sm:text-[15px] text-zinc-400 leading-relaxed mb-6">
-              We've helped 500+ investors—retirees, homemakers, busy professionals—earn consistent income. We run their Amazon, Shopify, TikTok Shop and Walmart stores so they don't have to. Capital protected, reports clear, no daily grind.
+              We&apos;ve helped 500+ investors—retirees, homemakers, busy professionals—earn consistent income. We run their Amazon, Shopify, TikTok Shop and Walmart stores so they don&apos;t have to. Capital protected, reports clear, no daily grind.
             </p>
             <div className="flex flex-col gap-3">
               {promises.map((item, i) => (

@@ -62,8 +62,9 @@ const EcommerceAutomationVideoSection: React.FC = () => {
       {/* Floating Side Button (hide on small) */}
       <button 
         onClick={() => {
-          if ((window as any).Calendly) {
-            (window as any).Calendly.initPopupWidget({
+          type CalendlyWindow = Window & { Calendly?: { initPopupWidget: (opts: { url: string }) => void } };
+          if ((window as CalendlyWindow).Calendly) {
+            (window as CalendlyWindow).Calendly!.initPopupWidget({
               url: 'https://calendly.com/sharksretailofficial/30min'
             });
           } else {
@@ -87,7 +88,7 @@ const EcommerceAutomationVideoSection: React.FC = () => {
               Ready to Launch Your Passive Income Asset?
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-8">
-              Book your free strategy call, and let's see how we can help you.
+              Book your free strategy call, and let&apos;s see how we can help you.
             </p>
           </motion.div>
           

@@ -100,7 +100,7 @@ export default function Experts() {
             ref={descRef}
             className="text-[15px] sm:text-[16px] text-zinc-400 leading-relaxed max-w-[440px]"
           >
-            Every investor gets a dedicated account manager backed by specialists in Amazon PPC, Shopify growth, TikTok commerce, and Walmart logistics. You're not getting a junior freelancer—you're getting a proven team.
+            Every investor gets a dedicated account manager backed by specialists in Amazon PPC, Shopify growth, TikTok commerce, and Walmart logistics. You&apos;re not getting a junior freelancer—you&apos;re getting a proven team.
           </p>
         </div>
 

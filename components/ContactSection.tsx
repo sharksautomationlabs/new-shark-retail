@@ -122,7 +122,8 @@ const InfoBlock: React.FC<{ icon: React.ReactNode; title: string; description: s
 );
 
 // --- Sci-Fi Form Field Component ---
-const FormField = ({ label, required = true, as = "input", ...props }: any) => {
+type FormFieldProps = { label: string; required?: boolean; as?: 'input' | 'textarea'; value?: string; onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>; name?: string; type?: string; placeholder?: string };
+const FormField = ({ label, required = true, as = "input", ...props }: FormFieldProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -178,7 +179,7 @@ const ContactSection: React.FC = () => {
     "Product Hunting"
   ];
 
-  const handleInputChange = (e: any) => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

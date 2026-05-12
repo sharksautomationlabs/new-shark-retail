@@ -162,7 +162,7 @@ const PerformanceStats: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-lg text-gray-400 max-w-2xl font-medium"
           >
-            We don't just engineer promises; we deploy measurable algorithmic success. Our decade-long dominion in e-commerce is built on raw, tangible data.
+            We don&apos;t just engineer promises; we deploy measurable algorithmic success. Our decade-long dominion in e-commerce is built on raw, tangible data.
           </motion.p>
         </div>
 

@@ -16,13 +16,13 @@ const EcommerceAutomationFinalCTA: React.FC = () => {
     }
   }, []);
 
+  type CalendlyWindow = Window & { Calendly?: { initPopupWidget: (opts: { url: string }) => void } };
   const openCalendly = () => {
-    if ((window as any).Calendly) {
-      (window as any).Calendly.initPopupWidget({
+    if ((window as CalendlyWindow).Calendly) {
+      (window as CalendlyWindow).Calendly!.initPopupWidget({
         url: 'https://calendly.com/sharksretailofficial/30min'
       });
     } else {
-      // Fallback: open in new window if Calendly script not loaded
       window.open('https://calendly.com/sharksretailofficial/30min', '_blank');
     }
   };
@@ -50,7 +50,7 @@ const EcommerceAutomationFinalCTA: React.FC = () => {
             <span className="text-teal-400">Guaranteed Return?</span>
           </h2>
           <p className="text-sm sm:text-base md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Don't miss out on this opportunity to secure your financial future.
+            Don&apos;t miss out on this opportunity to secure your financial future.
           </p>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}

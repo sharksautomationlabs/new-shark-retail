@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 export default function EcomAutomationLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
       <EcomwealthCalendlyRoot />
       {children}
     </>

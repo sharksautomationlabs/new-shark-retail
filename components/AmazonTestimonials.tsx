@@ -106,7 +106,7 @@ const TestimonialCard: React.FC<{
         <div className="relative z-10 space-y-6">
           {/* Content */}
           <p className="text-gray-300 leading-relaxed text-lg italic">
-            "{content}"
+            &ldquo;{content}&rdquo;
           </p>
           
           {/* Metrics */}
@@ -186,9 +186,11 @@ const FloatingElements: React.FC = () => {
   );
 };
 
+type Testimonial = { name: string; role: string; company: string; date: string; content: string; metrics: { label: string; value: string }[]; delay?: number };
+
 // --- Auto-Sliding Carousel Component ---
 const TestimonialCarousel: React.FC<{
-  testimonials: any[];
+  testimonials: Testimonial[];
 }> = ({ testimonials }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);

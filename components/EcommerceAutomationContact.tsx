@@ -40,7 +40,7 @@ const EcommerceAutomationContact: React.FC = () => {
             viewport={{ once: true }}
           >
             <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
-              Ready to elevate your E-commerce success? Retail Automation is here to support you every step. Whether you have questions, need guidance, or want to achieve amazing returns, we're ready to build something amazing together!
+              Ready to elevate your E-commerce success? Retail Automation is here to support you every step. Whether you have questions, need guidance, or want to achieve amazing returns, we&apos;re ready to build something amazing together!
             </p>
             
             <div className="space-y-6">
@@ -85,7 +85,7 @@ const EcommerceAutomationContact: React.FC = () => {
             className="bg-white/5 border border-teal-400/30 backdrop-blur-md rounded-2xl p-8 hover:shadow-xl hover:shadow-teal-400/20 transition-all duration-300"
           >
             <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6" style={{ fontFamily: 'Poppins', fontWeight: '700' }}>
-              Let's Talk About Your E-commerce Business
+              Let&apos;s Talk About Your E-commerce Business
             </h3>
             
             <form className="space-y-5">

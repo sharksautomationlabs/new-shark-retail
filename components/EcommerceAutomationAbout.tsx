@@ -243,7 +243,7 @@ const EcommerceAutomationAbout: React.FC = () => {
               About Us
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto lg:mx-0">
-              We've helped investors and entrepreneurs just like you launch profitable hands-off e-commerce stores. Our proven system handles everything from product sourcing to fulfillment, so you can earn truly passive income without the guesswork.
+              We&apos;ve helped investors and entrepreneurs just like you launch profitable hands-off e-commerce stores. Our proven system handles everything from product sourcing to fulfillment, so you can earn truly passive income without the guesswork.
             </p>
             <div className="flex justify-center lg:justify-start">
               <a
@@ -366,7 +366,7 @@ const EcommerceAutomationAbout: React.FC = () => {
                   onChange={handleInputChange}
                 />
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Services you're looking for <span className="text-red-500">*</span></label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Services you&apos;re looking for <span className="text-red-500">*</span></label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {servicesOptions.map((service) => (
                       <Checkbox 

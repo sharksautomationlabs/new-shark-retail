@@ -3,12 +3,13 @@
 import React, { useEffect } from 'react';
 import Script from 'next/script';
 
+type FbqWindow = Window & { fbq?: (...args: unknown[]) => void };
+
 const MetaPixel: React.FC = () => {
   useEffect(() => {
-    // Initialize Facebook Pixel
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('init', '899653199400504');
-      (window as any).fbq('track', 'PageView');
+    if (typeof window !== 'undefined' && (window as FbqWindow).fbq) {
+      (window as FbqWindow).fbq!('init', '899653199400504');
+      (window as FbqWindow).fbq!('track', 'PageView');
     }
   }, []);
 

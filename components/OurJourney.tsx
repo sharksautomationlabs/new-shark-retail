@@ -50,9 +50,10 @@ const OurJourney: React.FC<OurJourneyProps> = ({
     }
   }, []);
 
+  type CalendlyWindow = Window & { Calendly?: { initPopupWidget: (opts: { url: string }) => void } };
   const openCalendly = () => {
-    if ((window as any).Calendly) {
-      (window as any).Calendly.initPopupWidget({
+    if ((window as CalendlyWindow).Calendly) {
+      (window as CalendlyWindow).Calendly!.initPopupWidget({
         url: 'https://calendly.com/sharksretailofficial/30min'
       });
     } else {

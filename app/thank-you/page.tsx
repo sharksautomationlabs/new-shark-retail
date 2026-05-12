@@ -18,6 +18,8 @@ import {
   FUNNEL_LOGO_SRC,
 } from '@/lib/funnelBrand';
 
+type FbqWindow = Window & { fbq?: (...args: unknown[]) => void };
+
 export default function ThanksPage() {
   const [userName, setUserName] = useState('');
   const [icsLink, setIcsLink] = useState<string | null>(null);
@@ -29,6 +31,8 @@ export default function ThanksPage() {
     const params = new URLSearchParams(window.location.search);
     setUserName(params.get('Name') || params.get('name') || '');
     setIcsLink(params.get('ics_link') || params.get('icslink') || null);
+    // Fire Lead conversion event for Meta Pixel
+    (window as FbqWindow).fbq?.('track', 'Lead');
   }, []);
 
   const handleAddToCalendar = () => {

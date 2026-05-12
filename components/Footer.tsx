@@ -123,7 +123,7 @@ export default function Footer() {
           >
             <div className="absolute inset-0 bg-teal-500/10 scale-0 group-hover:scale-100 rounded-full transition-transform duration-500 ease-out origin-center" />
             <span className="relative z-10 text-white text-sm font-bold tracking-widest uppercase flex flex-col items-center gap-1 group-hover:text-teal-300 transition-colors duration-300">
-              Let's Talk <ArrowUpRight className="w-4 h-4" />
+              Let&apos;s Talk <ArrowUpRight className="w-4 h-4" />
             </span>
           </a>
         </div>

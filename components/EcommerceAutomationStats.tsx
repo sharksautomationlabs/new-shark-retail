@@ -17,9 +17,10 @@ const EcommerceAutomationStats: React.FC = () => {
     }
   }, []);
 
+  type CalendlyWindow = Window & { Calendly?: { initPopupWidget: (opts: { url: string }) => void } };
   const openCalendly = () => {
-    if ((window as any).Calendly) {
-      (window as any).Calendly.initPopupWidget({
+    if ((window as CalendlyWindow).Calendly) {
+      (window as CalendlyWindow).Calendly!.initPopupWidget({
         url: 'https://calendly.com/sharksretailofficial/30min'
       });
     } else {
@@ -82,7 +83,7 @@ const EcommerceAutomationStats: React.FC = () => {
         {/* Header Section */}
         <div className="text-center mb-16 max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 text-gray-900" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            What you'll get in the{' '}
+            What you&apos;ll get in the{' '}
             <span className="relative inline-block text-teal-600">
               free strategy call?
               {/* Teal Underline */}

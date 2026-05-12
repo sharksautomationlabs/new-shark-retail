@@ -201,13 +201,13 @@ const Footer: React.FC = () => {
     }
   }, []);
 
+  type CalendlyWindow = Window & { Calendly?: { initPopupWidget: (opts: { url: string }) => void } };
   const openCalendly = () => {
-    if ((window as any).Calendly) {
-      (window as any).Calendly.initPopupWidget({
+    if ((window as CalendlyWindow).Calendly) {
+      (window as CalendlyWindow).Calendly!.initPopupWidget({
         url: 'https://calendly.com/sharksretailofficial/30min'
       });
     } else {
-      // Fallback: open in new window if Calendly script not loaded
       window.open('https://calendly.com/sharksretailofficial/30min', '_blank');
     }
   };
