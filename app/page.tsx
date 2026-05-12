@@ -4,14 +4,14 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import FeaturedInSection from '../components/FeaturedInSection';
 
-const WhileYouSleep = dynamic(() => import('../components/WhileYouSleep'), { ssr: false });
-const PainPoints = dynamic(() => import('../components/PainPoints'), { ssr: false });
-const CallToAction = dynamic(() => import('../components/CallToAction'), { ssr: false });
-const Safety = dynamic(() => import('../components/Safety'), { ssr: false });
-const CompaniesTrustUs = dynamic(() => import('../components/CompaniesTrustUs'), { ssr: false });
-const Experts = dynamic(() => import('../components/Experts'), { ssr: false });
-const ContactSection = dynamic(() => import('../components/ContactSection'), { ssr: false });
-const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
+const WhileYouSleep = dynamic(() => import('../components/WhileYouSleep'), { ssr: true });
+const PainPoints = dynamic(() => import('../components/PainPoints'), { ssr: true });
+const CallToAction = dynamic(() => import('../components/CallToAction'), { ssr: true });
+const Safety = dynamic(() => import('../components/Safety'), { ssr: true });
+const CompaniesTrustUs = dynamic(() => import('../components/CompaniesTrustUs'), { ssr: true });
+const Experts = dynamic(() => import('../components/Experts'), { ssr: true });
+const ContactSection = dynamic(() => import('../components/ContactSection'), { ssr: true });
+const Footer = dynamic(() => import('../components/Footer'), { ssr: true });
 
 export const metadata: Metadata = {
   title: "Earn $4,000 in 30 days | Retail Automation",
