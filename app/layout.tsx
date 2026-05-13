@@ -107,6 +107,9 @@ fbq('track', 'PageView');`;
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://calendly.com" />
+        <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://calendly.com" />
         <link rel="preload" href="/images/sharks-retail-header-logo.png" as="image" fetchPriority="high" />
         <script
           suppressHydrationWarning

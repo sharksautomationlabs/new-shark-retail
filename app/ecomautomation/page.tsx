@@ -38,7 +38,7 @@ const faqItems = [
 const CALENDLY_URL_DEFAULT = 'https://calendly.com/ecomsharkss-info/30min';
 /** `/ecommerce-automation` funnel — The Retail Automation calendar (not sharksretail). */
 const CALENDLY_URL_ECOMMERCE_AUTOMATION =
-  'https://calendly.com/theretailautomation/30min?month=2026-05';
+  `https://calendly.com/theretailautomation/30min?month=${new Date().toISOString().slice(0, 7)}`;
 
 function isEcommerceAutomationPath(pathname: string | null) {
   if (!pathname) return false;

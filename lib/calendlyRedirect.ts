@@ -9,6 +9,11 @@ export function buildCalendlyEmbedUrl(schedulingPageUrl: string): string {
     const u = new URL(schedulingPageUrl);
     u.searchParams.set('embed_domain', window.location.hostname);
     u.searchParams.set('embed_type', 'Inline');
+    u.searchParams.set('hide_landing_page_details', '1');
+    u.searchParams.set('hide_gdpr_banner', '1');
+    u.searchParams.set('background_color', '020205');
+    u.searchParams.set('text_color', 'e2e8f0');
+    u.searchParams.set('primary_color', '2dd4bf');
     return u.toString();
   } catch {
     return schedulingPageUrl;
