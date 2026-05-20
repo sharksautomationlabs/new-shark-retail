@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
@@ -16,6 +16,7 @@ import {
   footerContent,
 } from '@/lib/ecomwealthContent';
 import CalendlyInlineEmbed from '@/components/CalendlyInlineEmbed';
+import EcomQuestionnaire from '@/components/EcomQuestionnaire';
 import {
   FUNNEL_BRAND_NAME,
   FUNNEL_CONTACT_EMAIL,
@@ -97,6 +98,7 @@ export default function EcomAutomationPage() {
   const pathname = usePathname();
   const isEcomAutomationFunnel = isEcommerceAutomationPath(pathname);
   const calendlyUrl = isEcomAutomationFunnel ? CALENDLY_URL_ECOMMERCE_AUTOMATION : CALENDLY_URL_DEFAULT;
+  const calendlyRef = useRef<HTMLDivElement>(null);
 
   const openCalendly = () => {
     if (typeof window === 'undefined') return;
@@ -166,10 +168,29 @@ export default function EcomAutomationPage() {
         </div>
       </div>
 
+      {/* Questionnaire Section */}
+      <div className="py-12 lg:py-16 bg-[#020205] border-b border-white/5">
+        <div className="container mx-auto px-5 lg:px-20">
+          <div className="max-w-2xl mx-auto bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-8 lg:px-10 lg:py-10 shadow-2xl">
+            <EcomQuestionnaire
+              onComplete={() => {
+                calendlyRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
       {/* Calendly Embed */}
-      <div className="py-8 lg:py-12 bg-[#050508]">
+      <div ref={calendlyRef} className="py-8 lg:py-12 bg-[#050508]">
         <div className="container mx-auto px-5 lg:px-20">
           <div className="max-w-4xl mx-auto">
+            <p className="text-center text-teal-400 font-semibold text-sm uppercase tracking-widest mb-2" style={{ fontFamily: 'var(--font-barlow)' }}>
+              Step 2
+            </p>
+            <h2 className="text-center text-2xl lg:text-3xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+              Pick a Time That Works for You
+            </h2>
             <CalendlyInlineEmbed
               schedulingPageUrl={calendlyUrl}
               title={`Book a call with ${FUNNEL_BRAND_NAME}`}
