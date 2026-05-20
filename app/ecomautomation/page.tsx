@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
@@ -56,31 +56,38 @@ const fadeInUp: Variants = {
 };
 
 function LazyYouTube({ youtubeId, title }: { youtubeId: string; title: string }) {
-  const [isInView, setIsInView] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(([e]) => e.isIntersecting && setIsInView(true), { threshold: 0.1 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+  const [playing, setPlaying] = useState(false);
 
   return (
-    <div ref={ref} className="relative w-full bg-black rounded-xl overflow-hidden" style={{ paddingBottom: '56.25%' }}>
-      {isInView ? (
+    <div className="relative w-full bg-black rounded-xl overflow-hidden" style={{ paddingBottom: '56.25%' }}>
+      {playing ? (
         <iframe
           className="absolute inset-0 w-full h-full"
-          src={`https://www.youtube.com/embed/${youtubeId}`}
+          src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
       ) : (
-        <div className="absolute inset-0 flex items-center justify-center bg-[#020205]">
-          <Play className="w-12 h-12 text-teal-400/60" />
-        </div>
+        <button
+          type="button"
+          onClick={() => setPlaying(true)}
+          className="absolute inset-0 w-full h-full cursor-pointer group"
+          aria-label={`Play: ${title}`}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`}
+            alt={title}
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/25 transition-colors">
+            <div className="w-16 h-16 bg-red-600 hover:bg-red-500 rounded-full flex items-center justify-center shadow-2xl transition-colors">
+              <Play className="w-7 h-7 text-white ml-1" />
+            </div>
+          </div>
+        </button>
       )}
     </div>
   );
@@ -125,23 +132,23 @@ export default function EcomAutomationPage() {
                 </div>
               </Link>
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-white mb-5 leading-[1.05] tracking-tight" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
+            <motion.h1 variants={fadeInUp} className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-white mb-5 leading-[1.05] tracking-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
               A fully managed e-commerce business—
               <br />
               with at least $4,000 in trackable sales
               <br />
               <span className="text-teal-400">in your first 30 days.</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} className="text-base lg:text-lg text-slate-400 mb-5 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "'Barlow', sans-serif" }}>
+            <motion.p variants={fadeInUp} className="text-base lg:text-lg text-slate-400 mb-5 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
               {heroContent.subhead}
             </motion.p>
-            <motion.div variants={fadeInUp} className="max-w-4xl mx-auto bg-teal-400 text-black font-bold py-3 px-6 rounded-t-2xl mb-0 text-lg lg:text-xl text-center" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
+            <motion.div variants={fadeInUp} className="max-w-4xl mx-auto bg-teal-400 text-black font-bold py-3 px-6 rounded-t-2xl mb-0 text-lg lg:text-xl text-center" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
               {heroContent.doneForYouText.split('. ')[0]}. <span className="text-white/95">{heroContent.doneForYouText.split('. ')[1]}</span>. {heroContent.videoPrompt}
             </motion.div>
             <motion.div variants={fadeInUp} className="max-w-4xl mx-auto rounded-b-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 -mt-px">
               <LazyYouTube youtubeId="ZPY3hkj7xSE" title={heroContent.videoTitle} />
             </motion.div>
-            <motion.p variants={fadeInUp} className="mt-5 text-xl lg:text-2xl text-slate-300 font-medium leading-snug" style={{ fontFamily: "'Barlow', sans-serif" }}>
+            <motion.p variants={fadeInUp} className="mt-5 text-xl lg:text-2xl text-slate-300 font-medium leading-snug" style={{ fontFamily: "var(--font-barlow)" }}>
               {heroContent.applyBelowLine1}
               <br />
               {heroContent.applyBelowLine2}
@@ -153,7 +160,7 @@ export default function EcomAutomationPage() {
       {/* TrustStrip */}
       <div className="py-4 lg:py-6 bg-teal-950/20 border-y border-white/5">
         <div className="container mx-auto px-5 lg:px-20 text-center">
-          <p className="text-lg lg:text-xl text-white font-semibold max-w-3xl mx-auto" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
+          <p className="text-lg lg:text-xl text-white font-semibold max-w-3xl mx-auto" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
             {trustStripContent.partnershipsText}
           </p>
         </div>
@@ -178,7 +185,7 @@ export default function EcomAutomationPage() {
       {/* PartnerStoreResults - Dashboard Screenshots */}
       <div className="py-16 lg:py-24 bg-[#050508] border-t border-white/5">
         <div className="container mx-auto px-5 lg:px-20">
-          <h2 className="text-xl lg:text-3xl font-bold text-white text-center mb-9" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
+          <h2 className="text-xl lg:text-3xl font-bold text-white text-center mb-9" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
             Real partner results—on the record
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -198,17 +205,17 @@ export default function EcomAutomationPage() {
           </div>
           {/* One inline Calendly only (second full embed doubled load). Same calendar via CTA. */}
           <div className="mt-16 max-w-2xl mx-auto rounded-2xl border border-white/10 bg-white/[0.03] px-8 py-10 text-center">
-            <p className="text-lg text-white font-semibold mb-2" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
+            <p className="text-lg text-white font-semibold mb-2" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
               Ready to pick your time?
             </p>
-            <p className="text-slate-400 text-sm mb-6" style={{ fontFamily: "'Barlow', sans-serif" }}>
+            <p className="text-slate-400 text-sm mb-6" style={{ fontFamily: "var(--font-barlow)" }}>
               Opens the same booking window—faster than loading the calendar twice on this page.
             </p>
             <button
               type="button"
               onClick={openCalendly}
               className="inline-flex items-center justify-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-4 px-8 rounded-full transition-all shadow-lg shadow-teal-500/25"
-              style={{ fontFamily: "'Barlow', sans-serif" }}
+              style={{ fontFamily: "var(--font-barlow)" }}
             >
               {applyCtaContent.ctaText}
             </button>
@@ -220,12 +227,12 @@ export default function EcomAutomationPage() {
       <div className="py-16 lg:py-24 bg-[#020205] relative overflow-hidden border-y border-white/5">
         <div className="absolute top-[-100px] right-[-50px] w-[300px] h-[300px] bg-teal-500/10 rounded-full blur-3xl" />
         <div className="container mx-auto px-5 lg:px-20 relative z-10">
-          <h2 className="text-2xl lg:text-4xl font-bold text-white text-center mb-2 max-w-5xl mx-auto leading-tight" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
+          <h2 className="text-2xl lg:text-4xl font-bold text-white text-center mb-2 max-w-5xl mx-auto leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
             Global e-commerce is on pace to pass
             <br />
             <span className="text-teal-400">$8.15 trillion by 2026</span>
           </h2>
-          <p className="text-center text-slate-400 text-sm lg:text-base mb-9" style={{ fontFamily: "'Barlow', sans-serif" }}>
+          <p className="text-center text-slate-400 text-sm lg:text-base mb-9" style={{ fontFamily: "var(--font-barlow)" }}>
             Trillions in online revenue—are you positioned to capture your slice?
           </p>
           <div className="max-w-5xl mx-auto">
@@ -269,12 +276,12 @@ export default function EcomAutomationPage() {
                 ))}
               </svg>
             </div>
-            <div className="flex justify-between items-center mt-2 px-2 text-xs text-slate-500" style={{ fontFamily: "'Barlow', sans-serif" }}>
+            <div className="flex justify-between items-center mt-2 px-2 text-xs text-slate-500" style={{ fontFamily: "var(--font-barlow)" }}>
               <span>Source: eMarketer Insider Intelligence</span>
               <span>*Projected</span>
             </div>
             <div className="text-center mt-10">
-              <button type="button" onClick={openCalendly} className="inline-flex items-center justify-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-4 px-8 rounded-full transition-all shadow-lg shadow-teal-500/25" style={{ fontFamily: "'Barlow', sans-serif" }}>
+              <button type="button" onClick={openCalendly} className="inline-flex items-center justify-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-4 px-8 rounded-full transition-all shadow-lg shadow-teal-500/25" style={{ fontFamily: "var(--font-barlow)" }}>
                 {applyCtaContent.ctaText}
               </button>
             </div>
@@ -285,14 +292,14 @@ export default function EcomAutomationPage() {
       {/* FAQ */}
       <div className="py-16 lg:py-24 bg-[#08080c] border-t border-white/5">
         <div className="container mx-auto px-5 lg:px-20">
-          <h2 className="text-xl lg:text-3xl font-bold text-white text-center mb-10" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
+          <h2 className="text-xl lg:text-3xl font-bold text-white text-center mb-10" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
             Questions we hear most often
           </h2>
           <div className="max-w-3xl mx-auto">
             <EcomWealthFAQ items={faqItems} />
           </div>
           <div className="text-center mt-12">
-            <button type="button" onClick={openCalendly} className="inline-flex items-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-3 px-6 rounded-full transition-all shadow-lg shadow-teal-500/20" style={{ fontFamily: "'Barlow', sans-serif" }}>
+            <button type="button" onClick={openCalendly} className="inline-flex items-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-3 px-6 rounded-full transition-all shadow-lg shadow-teal-500/20" style={{ fontFamily: "var(--font-barlow)" }}>
               {applyCtaContent.ctaText}
             </button>
           </div>

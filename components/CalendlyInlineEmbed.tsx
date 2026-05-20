@@ -12,6 +12,26 @@ type Props = {
   preload?: boolean;
 };
 
+// NEXT_PUBLIC_ vars are available on both server and client — safe in useState initializer.
+const EMBED_DOMAIN =
+  process.env.NEXT_PUBLIC_SITE_HOSTNAME ?? 'thesharkretail.com';
+
+function buildEmbedSrc(schedulingPageUrl: string): string {
+  try {
+    const u = new URL(schedulingPageUrl);
+    u.searchParams.set('embed_domain', EMBED_DOMAIN);
+    u.searchParams.set('embed_type', 'Inline');
+    u.searchParams.set('hide_landing_page_details', '1');
+    u.searchParams.set('hide_gdpr_banner', '1');
+    u.searchParams.set('background_color', '020205');
+    u.searchParams.set('text_color', 'e2e8f0');
+    u.searchParams.set('primary_color', '2dd4bf');
+    return u.toString();
+  } catch {
+    return schedulingPageUrl;
+  }
+}
+
 export default function CalendlyInlineEmbed({
   schedulingPageUrl,
   title = 'Book a call',
@@ -19,13 +39,19 @@ export default function CalendlyInlineEmbed({
   minHeight = 650,
   preload = false,
 }: Props) {
-  // Always null on first render so server HTML matches client (avoid window in useState initializer).
-  const [src, setSrc] = useState<string | null>(null);
+  // When preload=true, compute src immediately (works in SSR too — no window needed).
+  // This renders the iframe in the initial HTML without waiting for useEffect.
+  const [src, setSrc] = useState<string | null>(
+    preload ? buildEmbedSrc(schedulingPageUrl) : null
+  );
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (preload) {
-      setSrc(buildCalendlyEmbedUrl(schedulingPageUrl));
+      // Correct embed_domain to actual hostname (may differ in dev).
+      // Only update if different to avoid iframe reload.
+      const clientSrc = buildCalendlyEmbedUrl(schedulingPageUrl);
+      setSrc((prev) => (prev === clientSrc ? prev : clientSrc));
       return;
     }
 
@@ -55,6 +81,9 @@ export default function CalendlyInlineEmbed({
           title={title}
           className="rounded-2xl overflow-hidden w-full border-0 ring-1 ring-white/10"
           loading={preload ? 'eager' : 'lazy'}
+          fetchPriority={preload ? 'high' : 'auto'}
+          // SSR and client compute the same src (EMBED_DOMAIN is a build-time constant).
+          suppressHydrationWarning
         />
       ) : (
         <div

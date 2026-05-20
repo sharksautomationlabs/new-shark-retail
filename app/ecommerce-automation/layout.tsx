@@ -1,6 +1,21 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { Barlow_Condensed, Barlow } from 'next/font/google';
 import EcomwealthCalendlyRoot from '@/components/EcomwealthCalendlyRoot';
+
+const barlowCondensed = Barlow_Condensed({
+  weight: ['400', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-barlow-condensed',
+  display: 'swap',
+});
+
+const barlow = Barlow({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-barlow',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'The Retail Automation | Partnership Call',
@@ -21,16 +36,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-N5XDRH49');`,
         }}
       />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600;700&display=swap" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600;700&display=swap" />
+      {/* YouTube thumbnail: preconnect so img loads without DNS delay */}
+      <link rel="preconnect" href="https://img.youtube.com" crossOrigin="" />
+      <link rel="dns-prefetch" href="https://www.youtube.com" />
+      {/* Calendly: preconnect + CSS preload so widget is ready before JS hydrates */}
       <link rel="preconnect" href="https://calendly.com" crossOrigin="" />
       <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="" />
       <link rel="dns-prefetch" href="https://calendly.com" />
       <link rel="dns-prefetch" href="https://assets.calendly.com" />
+      <link
+        rel="preload"
+        href="https://assets.calendly.com/assets/external/widget.css"
+        as="style"
+        fetchPriority="high"
+      />
       <EcomwealthCalendlyRoot />
-      {children}
+      <div className={`${barlowCondensed.variable} ${barlow.variable}`}>
+        {children}
+      </div>
     </>
   );
 }
