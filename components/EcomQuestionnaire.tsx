@@ -220,7 +220,7 @@ function ContactStep({
 export default function EcomQuestionnaire({
   onComplete,
 }: {
-  onComplete: (info: { name: string; email: string }) => void;
+  onComplete: () => void;
 }) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
@@ -228,7 +228,6 @@ export default function EcomQuestionnaire({
   const [direction, setDirection] = useState(1);
   const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [pendingInfo, setPendingInfo] = useState<ContactInfo | null>(null);
 
   const isContactStep = step === QUESTIONS.length;
   const current = QUESTIONS[step];
@@ -269,8 +268,6 @@ export default function EcomQuestionnaire({
     } finally {
       setSubmitting(false);
       setDone(true);
-      // store for parent to pass to Calendly prefill
-      setPendingInfo(info);
     }
   }
 
@@ -309,7 +306,7 @@ export default function EcomQuestionnaire({
         </p>
         <button
           type="button"
-          onClick={() => onComplete({ name: pendingInfo?.name ?? '', email: pendingInfo?.email ?? '' })}
+          onClick={onComplete}
           className="inline-flex items-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-4 px-10 rounded-full text-lg transition-all shadow-lg shadow-teal-500/30"
           style={{ fontFamily: 'var(--font-barlow)' }}
         >

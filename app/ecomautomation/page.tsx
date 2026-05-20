@@ -97,25 +97,8 @@ function LazyYouTube({ youtubeId, title }: { youtubeId: string; title: string })
 export default function EcomAutomationPage() {
   const pathname = usePathname();
   const isEcomAutomationFunnel = isEcommerceAutomationPath(pathname);
-  const baseCalendlyUrl = isEcomAutomationFunnel ? CALENDLY_URL_ECOMMERCE_AUTOMATION : CALENDLY_URL_DEFAULT;
+  const calendlyUrl = isEcomAutomationFunnel ? CALENDLY_URL_ECOMMERCE_AUTOMATION : CALENDLY_URL_DEFAULT;
   const calendlyRef = useRef<HTMLDivElement>(null);
-
-  // Set after quiz completion — pre-fills Calendly's name/email fields
-  const [quizDone, setQuizDone] = useState(false);
-  const [prefill, setPrefill] = useState<{ name: string; email: string } | null>(null);
-
-  // Append prefill params so Calendly auto-fills the booking form
-  const calendlyUrl = (() => {
-    if (!prefill) return baseCalendlyUrl;
-    try {
-      const u = new URL(baseCalendlyUrl);
-      u.searchParams.set('name', prefill.name);
-      u.searchParams.set('email', prefill.email);
-      return u.toString();
-    } catch {
-      return baseCalendlyUrl;
-    }
-  })();
 
   const openCalendly = () => {
     if (typeof window === 'undefined') return;
@@ -190,12 +173,8 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <div className="max-w-2xl mx-auto bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-8 lg:px-10 lg:py-10 shadow-2xl">
             <EcomQuestionnaire
-              onComplete={({ name, email }) => {
-                setPrefill({ name, email });
-                setQuizDone(true);
-                setTimeout(() => {
-                  calendlyRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 80);
+              onComplete={() => {
+                calendlyRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }}
             />
           </div>
@@ -216,7 +195,7 @@ export default function EcomAutomationPage() {
               schedulingPageUrl={calendlyUrl}
               title={`Book a call with ${FUNNEL_BRAND_NAME}`}
               minHeight={650}
-              preload={quizDone}
+              preload={isEcomAutomationFunnel}
             />
           </div>
         </div>
