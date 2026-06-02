@@ -47,24 +47,6 @@ body {
   font-family: 'Itcavantgardestd Bk', Arial, sans-serif;
 }
 
-/* Hero animated background shapes */
-@keyframes hero-orb-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.15); opacity: 0.85; }
-}
-@keyframes hero-orb-float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(8%, -5%) scale(1.05); }
-  66% { transform: translate(-5%, 8%) scale(0.98); }
-}
-@keyframes hero-shape-morph {
-  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-}
-@keyframes hero-shape-rotate {
-  to { transform: rotate(360deg); }
-}
-
 /* Hero description portal glow behind text (static) */
 .hero-desc-portal {
   position: absolute;
@@ -342,6 +324,20 @@ body {
     max-width: 100%;
     margin-left: 0;
     margin-right: 0;
+  }
+
+  /* Disable expensive blur+blend on mobile — GPU compositing cost not worth it */
+  .hero-desc-portal {
+    display: none;
+  }
+
+  /* Stop footer bounce animations on mobile to save battery & reduce jank */
+  .footer-bounce-1,
+  .footer-bounce-2,
+  .footer-bounce-3,
+  .footer-bounce-4,
+  .footer-bounce-5 {
+    animation: none;
   }
 }
 

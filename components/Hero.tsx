@@ -1,13 +1,12 @@
 "use client";
 
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Canvas } from "@react-three/fiber";
 import dynamic from "next/dynamic";
 
-const HeroParticles = dynamic(() => import("./Hero3D/HeroParticles"), { ssr: false });
+// three.js + Canvas lazy-loaded in a single separate chunk (keeps main bundle ~150 KB lighter)
+const Hero3DCanvas = dynamic(() => import("./Hero3D/Hero3DCanvas"), { ssr: false });
 const HeroPortfolioCard = dynamic(() => import("./HeroPortfolioCard"), { ssr: false });
-// Alias so cached builds don’t break if they still reference HeroRoiCard
 const HeroRoiCard = HeroPortfolioCard;
 
 const SHARK_HERO_VIDEO_SRC = "/videos/shark-hero.mov";
@@ -45,22 +44,7 @@ export default function Hero() {
       <div className="hidden md:block w-full max-w-full h-dvh relative overflow-hidden">
         {/* Particles + shark share one layer so mix-blend can read WebGL backdrop; transparent GL clear = same #020205 base */}
         <div className="absolute inset-0 z-0">
-          {showParticles && (
-            <Canvas
-              className="pointer-events-none absolute inset-0 h-full w-full touch-none"
-              camera={{ position: [0, 0, 5], fov: 50 }}
-              dpr={[1, 1.5]}
-              gl={{ alpha: true }}
-              onCreated={({ gl, scene }) => {
-                scene.background = null;
-                gl.setClearColor("#020205", 0);
-              }}
-            >
-              <Suspense fallback={null}>
-                <HeroParticles />
-              </Suspense>
-            </Canvas>
-          )}
+          {showParticles && <Hero3DCanvas />}
           <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
             <video
               className="hero-shark-blend max-h-[110vh] w-auto max-w-full object-contain object-center select-none"

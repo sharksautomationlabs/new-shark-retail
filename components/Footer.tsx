@@ -79,7 +79,11 @@ export default function Footer() {
       );
     }
 
-    return () => ScrollTrigger.getAll().forEach(t => t.kill());
+    return () => {
+      ScrollTrigger.getAll()
+        .filter(t => t.vars.trigger === footerRef.current || t.vars.trigger === watermarkRef.current)
+        .forEach(t => t.kill());
+    };
   }, []);
 
   // Elite Hover Link Component

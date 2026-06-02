@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { headers } from "next/headers";
+import Script from "next/script";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 
@@ -110,21 +111,9 @@ fbq('track', 'PageView');`;
         <link rel="preconnect" href="https://calendly.com" />
         <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://calendly.com" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
         <link rel="preload" href="/images/sharks-retail-header-logo.png" as="image" fetchPriority="high" />
-        <script
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: metaPixelScript }}
-        />
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element -- Meta Pixel noscript fallback */}
-          <img
-            height={1}
-            width={1}
-            style={{ display: 'none' }}
-            src="https://www.facebook.com/tr?id=1334596645435728&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
+        <link rel="preload" href="/fonts/ITCAvantGardeStd-Bk.otf" as="font" type="font/otf" crossOrigin="anonymous" />
         {isThankYou ? (
           <noscript>
             <iframe
@@ -158,6 +147,22 @@ fbq('track', 'PageView');`;
         <LenisProvider>
           {children}
         </LenisProvider>
+        {/* Meta Pixel — afterInteractive so it never blocks first paint */}
+        <Script
+          id="meta-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: metaPixelScript }}
+        />
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element -- Meta Pixel noscript fallback */}
+          <img
+            height={1}
+            width={1}
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=1334596645435728&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
       </body>
     </html>
   );
