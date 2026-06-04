@@ -9,8 +9,6 @@ const Hero3DCanvas = dynamic(() => import("./Hero3D/Hero3DCanvas"), { ssr: false
 const HeroPortfolioCard = dynamic(() => import("./HeroPortfolioCard"), { ssr: false });
 const HeroRoiCard = HeroPortfolioCard;
 
-const SHARK_HERO_VIDEO_SRC = "/videos/shark-hero.mov";
-
 const HERO_DESCRIPTION =
   "Keep scrolling-your path to financial freedom is just ahead. By the time you've explored 25% of this page, you'll discover the hidden gem that could change your life.";
 
@@ -45,20 +43,6 @@ export default function Hero() {
         {/* Particles + shark share one layer so mix-blend can read WebGL backdrop; transparent GL clear = same #020205 base */}
         <div className="absolute inset-0 z-0">
           {showParticles && <Hero3DCanvas />}
-          <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
-            <video
-              className="hero-shark-blend max-h-[110vh] w-auto max-w-full object-contain object-center select-none"
-              style={{ transform: "translateZ(0)" }}
-              src={SHARK_HERO_VIDEO_SRC}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-hidden
-              role="presentation"
-            />
-          </div>
         </div>
 
         {/* 3. Bottom gradient for text readability */}
@@ -121,22 +105,6 @@ export default function Hero() {
       <div className="hero-mobile-wrapper block md:hidden relative w-full max-w-full overflow-hidden h-dvh pt-20 pb-10 px-4 sm:px-5">
         {/* Simple dark gradient background */}
         <div className="absolute inset-0 bg-linear-to-b from-[#020205] via-[#020617] to-[#020205] pointer-events-none" />
-
-        {/* Shark video – centered, smaller for mobile */}
-        <div className="relative z-0 flex items-center justify-center w-full mb-6 mt-2">
-          <video
-            className="hero-shark-blend max-h-[260px] sm:max-h-[340px] w-full object-contain object-center select-none"
-            style={{ transform: "translateZ(0)" }}
-            src={SHARK_HERO_VIDEO_SRC}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-hidden
-            role="presentation"
-          />
-        </div>
 
         {/* Text + CTAs */}
         <div
