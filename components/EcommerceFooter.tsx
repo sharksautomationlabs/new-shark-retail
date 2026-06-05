@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from 'react';
 import { Facebook, Instagram } from 'lucide-react';
@@ -430,9 +430,10 @@ const Footer: React.FC = () => {
               <a href="mailto:info@theretailautomation.com" className="text-lg sm:text-xl font-bold text-white hover:text-teal-400 transition-colors block">
                 info@theretailautomation.com
               </a>
-              <a href="tel:+14692949964" className="text-base sm:text-lg font-semibold text-white hover:text-teal-400 transition-colors block">
-                (469) 294-9964
+              <a href="tel:+17133377701" className="text-base sm:text-lg font-semibold text-white hover:text-teal-400 transition-colors block">
+                (713) 337-7701
               </a>
+              <p className="text-slate-400 text-sm">8930 Gross Point Rd, Ste LL200B<br />Skokie, IL 60077</p>
             </div>
             <div className="flex flex-wrap justify-center md:justify-start gap-4 sm:gap-6 text-gray-400 text-xs sm:text-sm">
               <a href="#" className="hover:text-white">Terms and Conditions</a>

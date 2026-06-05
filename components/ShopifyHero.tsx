@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -94,11 +94,11 @@ const ShopifyHero: React.FC = () => {
               </div>
             </a>
             <a
-              href="tel:+14692949964"
+              href="tel:+17133377701"
               className="relative group w-full sm:w-auto p-px rounded-full overflow-hidden bg-gradient-to-b from-teal-500/50 to-white/10"
             >
               <div className="relative bg-[#0a0a0c] hover:bg-white/5 transition-colors duration-300 rounded-full px-8 py-4 flex items-center justify-center gap-3 border border-white/10">
-                <span className="font-bold text-white uppercase tracking-wider text-sm md:text-base">(469) 294-9964</span>
+                <span className="font-bold text-white uppercase tracking-wider text-sm md:text-base">(713) 337-7701</span>
               </div>
             </a>
           </motion.div>

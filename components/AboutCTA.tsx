@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -104,7 +104,7 @@ const AboutCTA: React.FC = () => {
 
             {/* Secondary Action Button (Holographic Border) */}
             <a
-              href="tel:+14692949964"
+              href="tel:+17133377701"
               className="relative group w-full sm:w-auto p-px rounded-full overflow-hidden bg-gradient-to-b from-teal-500/50 to-white/10"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-teal-400/0 via-teal-400/50 to-teal-400/0 opacity-0 group-hover:opacity-100 animate-[spin_3s_linear_infinite] transition-opacity duration-500"></div>
@@ -112,7 +112,7 @@ const AboutCTA: React.FC = () => {
               <div className="relative bg-[#050505] hover:bg-white/5 transition-colors duration-300 rounded-full px-8 py-4 flex items-center justify-center gap-3">
                 <Phone className="w-5 h-5 text-teal-400 group-hover:animate-pulse" />
                 <span className="font-bold text-white uppercase tracking-wider text-sm md:text-base">
-                  (469) 294-9964
+                  (713) 337-7701
                 </span>
               </div>
             </a>

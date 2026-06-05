@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Phone, Shield, Mail } from 'lucide-react';
@@ -546,9 +546,9 @@ const AccountReinstatementCTA: React.FC = () => {
               </div>
             </div>
           ))}
-          <a href="tel:+14692949964" className="flex items-center justify-center gap-3 w-full py-4 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 font-bold hover:bg-teal-500/20 transition-colors">
+          <a href="tel:+17133377701" className="flex items-center justify-center gap-3 w-full py-4 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 font-bold hover:bg-teal-500/20 transition-colors">
             <Phone className="w-5 h-5" />
-            (469) 294-9964
+            (713) 337-7701
           </a>
         </div>
         </div>

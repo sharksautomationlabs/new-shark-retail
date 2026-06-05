@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useRef, useEffect } from 'react';
 import { Facebook, Instagram, ArrowUpRight } from 'lucide-react';
@@ -145,7 +145,8 @@ export default function Footer() {
             </p>
             <div className="space-y-2 mt-auto">
               <a href="mailto:info@theretailautomation.com" className="block text-lg font-medium text-white hover:text-teal-400 transition-colors">info@theretailautomation.com</a>
-              <a href="tel:+14692949964" className="block text-slate-400 hover:text-white transition-colors">(469) 294-9964</a>
+              <a href="tel:+17133377701" className="block text-slate-400 hover:text-white transition-colors">(713) 337-7701</a>
+              <p className="text-slate-400 text-sm">8930 Gross Point Rd, Ste LL200B<br />Skokie, IL 60077</p>
               <div className="flex items-center gap-3 pt-2">
                 <a href="https://www.facebook.com/profile.php?id=61582189354952" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/[0.02] border border-white/10 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-400/50 hover:bg-teal-400/10 transition-all duration-300">
                   <Facebook size={18} />
