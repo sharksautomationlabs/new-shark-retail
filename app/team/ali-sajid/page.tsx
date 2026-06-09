@@ -4,9 +4,9 @@ import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
 export const metadata: Metadata = {
-  title: "Ali Sajid | Finance Payment Receiver — The Retail Automation",
+  title: "Ali Sajid | Finance Manager — The Retail Automation",
   description:
-    "Ali Sajid is a Finance Payment Receiver employed at The Retail Automation, a leading e-commerce automation company based in Karachi, Pakistan.",
+    "Ali Sajid is a Finance Manager employed at The Retail Automation, a leading e-commerce automation company based in Karachi, Pakistan.",
   alternates: {
     canonical: "https://thesharkretail.com/team/ali-sajid",
   },
@@ -38,7 +38,7 @@ export default function AliSajidProfile() {
               <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-teal-500/30 shadow-2xl mb-5 flex-shrink-0">
                 <Image
                   src="/images/team/ali-sajid.png"
-                  alt="Ali Sajid — Finance Payment Receiver at The Retail Automation"
+                  alt="Ali Sajid — Finance Manager at The Retail Automation"
                   width={144}
                   height={144}
                   className="w-full h-full object-cover"
@@ -65,7 +65,7 @@ export default function AliSajidProfile() {
               </h1>
               <div className="flex flex-wrap justify-center items-center gap-3 mb-8">
                 <span className="px-3 py-1 rounded-md bg-teal-500/15 border border-teal-500/25 text-teal-300 text-sm font-bold uppercase tracking-widest">
-                  Finance Payment Receiver
+                  Finance Manager
                 </span>
                 <span className="px-3 py-1 rounded-md bg-white/[0.05] border border-white/10 text-gray-400 text-sm font-semibold uppercase tracking-widest">
                   Employee
@@ -155,7 +155,7 @@ export default function AliSajidProfile() {
               <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
                 <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-3">About</p>
                 <p className="text-gray-300 text-base leading-relaxed">
-                  Ali Sajid is a Finance Payment Receiver employed at <span className="text-teal-400 font-semibold">The Retail Automation</span>, an
+                  Ali Sajid is a Finance Manager employed at <span className="text-teal-400 font-semibold">The Retail Automation</span>, an
                   e-commerce automation company that builds and manages Amazon, Shopify, TikTok Shop, and Walmart stores for investors and operators worldwide.
                   In his role, Ali handles payment processing and financial coordination on behalf of the company.
                 </p>
