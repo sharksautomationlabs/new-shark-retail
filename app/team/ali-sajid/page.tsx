@@ -93,7 +93,7 @@ export default function AliSajidProfile() {
                   <div>
                     <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-1">Company</p>
                     <p className="text-white font-semibold text-base">The Retail Automation</p>
-                    <p className="text-gray-400 text-sm">thesharkretail.com</p>
+                    <p className="text-gray-400 text-sm">theretailautomation.com</p>
                   </div>
                 </div>
 
@@ -121,8 +121,8 @@ export default function AliSajidProfile() {
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-1">Email</p>
-                    <a href="mailto:ali.sajid.0023@gmail.com" className="text-white font-semibold text-base hover:text-teal-400 transition-colors break-all">
-                      ali.sajid.0023@gmail.com
+                    <a href="mailto:ali.sajid@theretailautomation.com" className="text-white font-semibold text-base hover:text-teal-400 transition-colors break-all">
+                      ali.sajid@theretailautomation.com
                     </a>
                   </div>
                 </div>
