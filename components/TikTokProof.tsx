@@ -9,7 +9,7 @@ const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transi
 
 const proofData = [
   { image: '/images/tiktok-proof/tiktok-sale1.jpg', alt: 'TikTok Performance 1' },
-  { image: '/images/tiktok-proof/tiktok-sale2.jpg', alt: 'TikTok Performance 2' },
+  { image: '/images/tiktok-proof/tiktok-sale2-v2.jpg', alt: 'TikTok Performance 2' },
   { image: '/images/tiktok-proof/tiktok-sale3.jpg', alt: 'TikTok Performance 3' },
 ];
 
