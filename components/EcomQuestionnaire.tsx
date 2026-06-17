@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle, ChevronRight, ArrowLeft, Loader2 } from 'lucide-react';
+import { ChevronRight, ArrowLeft, Loader2 } from 'lucide-react';
 import { FUNNEL_BRAND_NAME } from '@/lib/funnelBrand';
 
 type QuizAnswers = Record<string, string>;
@@ -205,7 +205,7 @@ function ContactStep({
             </>
           ) : (
             <>
-              See My Results
+              Submit
               <ChevronRight className="w-4 h-4" />
             </>
           )}
@@ -226,7 +226,6 @@ export default function EcomQuestionnaire({
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [selected, setSelected] = useState<string | null>(null);
   const [direction, setDirection] = useState(1);
-  const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const isContactStep = step === QUESTIONS.length;
@@ -267,60 +266,9 @@ export default function EcomQuestionnaire({
       // proceed regardless — don't block the user
     } finally {
       setSubmitting(false);
-      setDone(true);
+      // Reveal the Calendly booking step (handled by the parent).
+      onComplete();
     }
-  }
-
-  // ── Done screen ──
-  if (done) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4 }}
-        className="text-center py-6"
-      >
-        <div className="flex justify-center mb-5">
-          <div className="w-20 h-20 rounded-full bg-teal-400/15 flex items-center justify-center ring-2 ring-teal-400/40">
-            <CheckCircle className="w-10 h-10 text-teal-400" />
-          </div>
-        </div>
-        <h3
-          className="text-3xl lg:text-4xl font-bold text-white mb-3"
-          style={{ fontFamily: 'var(--font-barlow-condensed)' }}
-        >
-          Congratulations — You Qualify!
-        </h3>
-        <p
-          className="text-slate-400 text-base lg:text-lg mb-2 max-w-xl mx-auto"
-          style={{ fontFamily: 'var(--font-barlow)' }}
-        >
-          Based on your answers, {FUNNEL_BRAND_NAME} can build and scale a
-          profitable e-commerce store for you.
-        </p>
-        <p
-          className="text-teal-400 font-semibold text-base mb-8"
-          style={{ fontFamily: 'var(--font-barlow)' }}
-        >
-          Pick a time below for your free 30-minute strategy call.
-        </p>
-        <button
-          type="button"
-          onClick={onComplete}
-          className="inline-flex items-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold py-4 px-10 rounded-full text-lg transition-all shadow-lg shadow-teal-500/30"
-          style={{ fontFamily: 'var(--font-barlow)' }}
-        >
-          Book My Free Strategy Call
-          <ChevronRight className="w-5 h-5" />
-        </button>
-        <p
-          className="mt-4 text-slate-500 text-sm"
-          style={{ fontFamily: 'var(--font-barlow)' }}
-        >
-          No obligation. 100% free. Our team will also contact you within 24 hours.
-        </p>
-      </motion.div>
-    );
   }
 
   return (
