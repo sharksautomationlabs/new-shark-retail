@@ -3,10 +3,12 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+// SSR'd so it lands in the initial HTML — on mobile this card is the LCP element,
+// and shipping it client-only (ssr:false) pushed LCP past 7s on throttled phones.
+import HeroPortfolioCard from "./HeroPortfolioCard";
 
 // three.js + Canvas lazy-loaded in a single separate chunk (keeps main bundle ~150 KB lighter)
 const Hero3DCanvas = dynamic(() => import("./Hero3D/Hero3DCanvas"), { ssr: false });
-const HeroPortfolioCard = dynamic(() => import("./HeroPortfolioCard"), { ssr: false });
 const HeroRoiCard = HeroPortfolioCard;
 
 const HERO_DESCRIPTION =

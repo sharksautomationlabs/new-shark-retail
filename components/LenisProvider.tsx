@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
 export default function LenisProvider({
@@ -10,46 +9,51 @@ export default function LenisProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const lenisRef = useRef<Lenis | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
     const isMobile = isCoarsePointer || window.innerWidth < 768;
-    if (prefersReducedMotion) return;
 
-    const lenis = new Lenis({
-      lerp: isMobile ? 0.22 : 0.16,
-      duration: isMobile ? 0.65 : 0.75,
-      smoothWheel: true,
-      smoothTouch: false,
-      syncTouch: false,
-      wheelMultiplier: isMobile ? 0.95 : 1,
-      touchMultiplier: 1,
-      autoRaf: false,
-      gestureOrientation: "vertical",
-    });
-
-    lenisRef.current = lenis;
-    document.documentElement.classList.add("lenis");
+    // On touch / mobile, native scroll is fine. Lenis here only ran a RAF loop
+    // (smoothTouch was already off) — pure main-thread cost for no UX gain.
+    // Skipping it keeps the lenis chunk off mobile and lowers TBT.
+    if (prefersReducedMotion || isMobile) return;
 
     let isActive = true;
     let rafId: number | null = null;
+    let lenisInstance: import("lenis").default | null = null;
 
-    const raf = (time: number) => {
+    import("lenis").then(({ default: Lenis }) => {
       if (!isActive) return;
-      lenis.raf(time);
+
+      const lenis = new Lenis({
+        lerp: 0.16,
+        duration: 0.75,
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 1,
+        autoRaf: false,
+        gestureOrientation: "vertical",
+      });
+
+      lenisInstance = lenis;
+      document.documentElement.classList.add("lenis");
+
+      const raf = (time: number) => {
+        if (!isActive) return;
+        lenis.raf(time);
+        rafId = window.requestAnimationFrame(raf);
+      };
       rafId = window.requestAnimationFrame(raf);
-    };
-    rafId = window.requestAnimationFrame(raf);
+    });
 
     return () => {
       isActive = false;
       if (rafId != null) window.cancelAnimationFrame(rafId);
       document.documentElement.classList.remove("lenis");
-      lenis.destroy();
-      lenisRef.current = null;
+      lenisInstance?.destroy();
     };
   }, [pathname]);
 

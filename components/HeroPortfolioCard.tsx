@@ -1,8 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { ChevronRight } from "lucide-react";
-import InvestmentReportPopup from "./InvestmentReportPopup";
+
+// Popup pulls in framer-motion — keep it out of the critical path and only fetch
+// the chunk when the user actually opens the report.
+const InvestmentReportPopup = dynamic(() => import("./InvestmentReportPopup"), {
+  ssr: false,
+});
 
 const PLATFORMS = [
   { name: "AMAZON", pct: 72, amount: "$720" },
@@ -112,7 +118,9 @@ export default function HeroPortfolioCard() {
         </div>
       </div>
 
-      <InvestmentReportPopup open={reportOpen} onClose={() => setReportOpen(false)} />
+      {reportOpen && (
+        <InvestmentReportPopup open={reportOpen} onClose={() => setReportOpen(false)} />
+      )}
     </>
   );
 }

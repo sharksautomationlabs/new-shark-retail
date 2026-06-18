@@ -124,6 +124,10 @@ const Header = () => {
             <img
               src="/images/sharks-retail-header-logo.png"
               alt="Retail Automation"
+              width={426}
+              height={111}
+              fetchPriority="high"
+              decoding="async"
               className="h-full w-auto max-w-full object-contain object-left"
             />
           </Link>
