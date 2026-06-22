@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = new Resend('re_LuvqDMzb_A5tqAagG3tMT6gJnsvHstRDp');
+const resend = new Resend('re_7BVctEoQ_JqorE1jzYNN1rfgoVMHqvNNS');
 
 type QuizAnswers = {
   capital?: string;
@@ -103,8 +103,9 @@ export async function POST(request: NextRequest) {
     `;
 
     const { error } = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'The Retail Automation <onboarding@resend.dev>',
       to: 'info@theretailautomation.com',
+      replyTo: email,
       subject: `🎯 New Lead: ${name} — Quiz Completed`,
       html: htmlContent,
     });

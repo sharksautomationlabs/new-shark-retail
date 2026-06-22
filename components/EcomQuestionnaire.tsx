@@ -257,13 +257,18 @@ export default function EcomQuestionnaire({
   async function handleContactSubmit(info: ContactInfo) {
     setSubmitting(true);
     try {
-      await fetch('/api/quiz-lead', {
+      const res = await fetch('/api/quiz-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...info, answers }),
       });
-    } catch {
+      if (!res.ok) {
+        // Don't block the user, but surface it so failed lead emails aren't invisible.
+        console.error('Quiz lead submission failed:', res.status, await res.text());
+      }
+    } catch (err) {
       // proceed regardless — don't block the user
+      console.error('Quiz lead submission error:', err);
     } finally {
       setSubmitting(false);
       // Reveal the Calendly booking step (handled by the parent).
