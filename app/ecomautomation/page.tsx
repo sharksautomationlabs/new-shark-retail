@@ -238,15 +238,15 @@ export default function EcomAutomationPage() {
           <h2 className="text-xl lg:text-3xl font-bold text-white text-center mb-9" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
             Real partner results—on the record
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div key={i} className="bg-white/[0.03] rounded-2xl overflow-hidden shadow-xl border border-white/10 aspect-[4/3] flex items-center justify-center">
                 <Image
                   src={`/images/partner-results/result-${i === 2 ? '2-tiktok' : i}.png`}
                   alt={`Partner store result ${i}`}
-                  width={480}
-                  height={360}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  width={800}
+                  height={600}
+                  sizes="100vw"
                   className="w-full h-full object-contain"
                   loading="lazy"
                 />
