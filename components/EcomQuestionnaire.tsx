@@ -59,9 +59,9 @@ const QUESTIONS: Question[] = [
     question: 'How soon are you ready to get started?',
     options: [
       "Immediately — I'm ready right now",
-      'Within the next 30 days',
-      'Within 1–3 months',
-      'Just exploring my options',
+      'Within 7 days',
+      'Within 2 weeks',
+      'It will take time for some reason',
     ],
   },
   {
