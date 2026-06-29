@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
-import { Play } from 'lucide-react';
+import { Play, Check, X } from 'lucide-react';
 import {
   heroContent,
   trustStripContent,
@@ -30,13 +30,13 @@ const PlatformReviewsSection = dynamic(() => import('@/components/PlatformReview
 const EcomWealthFAQ = dynamic(() => import('@/components/EcomWealthFAQ'), { ssr: false });
 
 const faqItems = [
-  { id: 'faq-1', question: 'Can you really guarantee $4,000 in sales in 30 days?', answer: 'Yes, it is 110% true. We provide this guarantee because of our tested, high profit products and our proven system. We don\'t guess, we execute with data. That is why we are more than confident in hitting that target for your store.' },
-  { id: 'faq-2', question: 'What happens on this call?', answer: 'We build a high level blueprint for your brand if you have an existing one or a launch plan if you are starting fresh. We find where you are losing money and create a roadmap to dominate your niche. You leave with total clarity.' },
-  { id: 'faq-3', question: 'Is there a catch or a fee?', answer: 'Not at all. This session is free because we believe in showing value first. If we see a big opportunity to grow your store together, we can discuss a partnership, but there is zero pressure.' },
-  { id: 'faq-4', question: 'Is my business the right fit?', answer: 'We work with founders and investors ready to stop playing small. Whether you are scaling an existing brand or starting today, this is for owners who prioritize aggressive growth on platforms like TikTok and Shopify.' },
-  { id: 'faq-5', question: 'How do I prepare?', answer: 'Find a quiet space and bring a notepad. If you have an existing brand, have your store data ready. We want to give you the best advice possible so please show up focused and ready to work.' },
-  { id: 'faq-6', question: 'Can I reschedule my time?', answer: 'Our calendar fills up fast. If something comes up, use the link in your email to reschedule at least 24 hours in advance. This lets another hungry entrepreneur take your spot.' },
-  { id: 'faq-7', question: 'Who am I speaking with?', answer: 'You are talking to a senior strategist from The Retail Automation team. These are real experts who scale stores every day. No fluff and no beginners, just pros who know how to win.' },
+  { id: 'faq-1', question: 'Is this truly hands-off?', answer: 'Yes. Our team runs the day-to-day operations — product sourcing, fulfillment, customer support, and ongoing optimization. You stay an owner, not an operator. Most partners spend roughly 30–60 minutes a week reviewing performance and approving the occasional decision.' },
+  { id: 'faq-2', question: 'How much time do I actually need to put in?', answer: 'Very little. The business is built to operate without your daily involvement. You review transparent reporting, sign off on key decisions, and let the systems and experienced operators handle the rest.' },
+  { id: 'faq-3', question: 'Who actually owns the business?', answer: 'You do — 100%. The store, the revenue, and the assets are registered in your name. We build, launch, and manage it on your behalf under a clear agreement. You own the asset; we run the operations.' },
+  { id: 'faq-4', question: 'How transparent is the reporting?', answer: 'Fully transparent. You get dashboard access and regular performance reporting covering sales, orders, and profit — so you can see exactly how your business is doing at any time.' },
+  { id: 'faq-5', question: 'What happens if performance is slower than expected?', answer: `We target $4,000+ in trackable sales in the first 30 days, but every business ramps differently based on capital, product selection, and market conditions. If results are slower than planned, our team keeps optimizing the sourcing, listings, and marketing to move things in the right direction. ${heroContent.performanceDisclaimer}` },
+  { id: 'faq-6', question: 'Why don\'t you just build stores only for yourselves?', answer: 'We do operate our own stores — that\'s how we test products and systems before we deploy them. Partnering lets us scale across more proven niches and suppliers than we could alone, while you get an asset built on systems that are already working.' },
+  { id: 'faq-7', question: 'What experience do I need?', answer: 'None. This is built for investors and business owners who want another income-producing asset, not another skill set to learn. Our team handles the operations; your role is ownership and oversight.' },
 ];
 
 const CALENDLY_URL_DEFAULT = 'https://calendly.com/ecomsharkss-info/30min';
@@ -94,6 +94,64 @@ function LazyYouTube({ youtubeId, title }: { youtubeId: string; title: string })
         </button>
       )}
     </div>
+  );
+}
+
+/** Subtle scroll-reveal wrapper — fades content up the first time it enters view. */
+function Reveal({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/** Small uppercase teal label that sits above a section heading. */
+function SectionEyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <p
+      className="text-teal-400 font-semibold text-xs lg:text-sm uppercase tracking-[0.22em] mb-3"
+      style={{ fontFamily: 'var(--font-barlow)' }}
+    >
+      {children}
+    </p>
+  );
+}
+
+/** Shared primary CTA pill so every call-to-action stays visually identical. */
+function CtaButton({
+  onClick,
+  size = 'md',
+  children,
+}: {
+  onClick: () => void;
+  size?: 'md' | 'lg';
+  children: React.ReactNode;
+}) {
+  const sizing = size === 'lg' ? 'py-4 px-10 text-lg' : 'py-4 px-8';
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`inline-flex items-center justify-center gap-2 bg-teal-400 hover:bg-teal-300 text-black font-bold ${sizing} rounded-full transition-all shadow-lg shadow-teal-500/25`}
+      style={{ fontFamily: 'var(--font-barlow)' }}
+    >
+      {children}
+    </button>
   );
 }
 
@@ -155,17 +213,23 @@ export default function EcomAutomationPage() {
               </Link>
             </motion.div>
             <motion.h1 variants={fadeInUp} className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-5 leading-[1.05] tracking-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
-              A fully managed e-commerce business—
+              Own A Fully Managed
               <br />
-              with at least $4,000 in trackable sales
+              eCommerce Business —
               <br />
-              <span className="text-teal-400">in your first 30 days.</span>
+              <span className="text-teal-400">Without Running One.</span>
             </motion.h1>
+            <motion.div variants={fadeInUp} className="mb-5 flex justify-center">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-teal-400/30 bg-teal-400/10 px-5 py-2 text-sm lg:text-base font-semibold text-teal-300" style={{ fontFamily: "var(--font-barlow)" }}>
+                <span className="h-2 w-2 rounded-full bg-teal-400 shadow-[0_0_8px_2px_rgba(45,212,191,0.6)]" />
+                {heroContent.performanceCallout}
+              </span>
+            </motion.div>
             <motion.p variants={fadeInUp} className="text-base lg:text-lg text-slate-400 mb-5 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
               {heroContent.subhead}
             </motion.p>
             <motion.div variants={fadeInUp} className="max-w-4xl mx-auto bg-teal-400 text-black font-bold py-3 px-6 rounded-t-2xl mb-0 text-lg lg:text-xl text-center" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
-              {heroContent.doneForYouText.split('. ')[0]}. <span className="text-white/95">{heroContent.doneForYouText.split('. ')[1]}</span>. {heroContent.videoPrompt}
+              {heroContent.doneForYouText.split('. ')[0]}. <span className="text-white/95">{heroContent.doneForYouText.split('. ')[1]}</span> {heroContent.videoPrompt}
             </motion.div>
             <motion.div variants={fadeInUp} className="max-w-4xl mx-auto rounded-b-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 -mt-px">
               <LazyYouTube youtubeId="ZPY3hkj7xSE" title={heroContent.videoTitle} />
@@ -230,13 +294,163 @@ export default function EcomAutomationPage() {
         </div>
       </div>
 
+      {/* Mirror — You're not buying another job, you're buying another asset */}
+      <section className="py-16 lg:py-24 bg-[#020205] border-t border-white/5">
+        <div className="container mx-auto px-5 lg:px-20">
+          <Reveal className="max-w-3xl mx-auto text-center">
+            <SectionEyebrow>Ownership, Not Operations</SectionEyebrow>
+            <h2 className="text-2xl lg:text-4xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+              You&apos;re Not Buying Another Job.
+              <br />
+              <span className="text-teal-400">You&apos;re Buying Another Asset.</span>
+            </h2>
+            <p className="text-base lg:text-lg text-slate-400 leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+              You&apos;ve already built a successful business. The last thing you need is another company demanding your time. That&apos;s why we build, operate, and manage your eCommerce business while you focus on what you already do best.
+            </p>
+            <div className="mt-9">
+              <CtaButton onClick={scrollToCalendly}>{applyCtaContent.ctaText}</CtaButton>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Belief Shift — Most people buy stores, investors buy systems */}
+      <section className="py-16 lg:py-24 bg-[#050508] border-t border-white/5">
+        <div className="container mx-auto px-5 lg:px-20">
+          <Reveal className="max-w-3xl mx-auto text-center">
+            <SectionEyebrow>The Investor Mindset</SectionEyebrow>
+            <h2 className="text-2xl lg:text-4xl font-bold text-white mb-10 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+              Most People Buy Stores.
+              <br />
+              <span className="text-teal-400">Investors Buy Systems.</span>
+            </h2>
+            <div className="max-w-xl mx-auto space-y-3 text-left">
+              {[
+                { label: "Owning a store isn't passive.", positive: false },
+                { label: "Managing a store isn't passive.", positive: false },
+                { label: 'Owning a professionally managed business is.', positive: true },
+              ].map((row) => (
+                <div
+                  key={row.label}
+                  className={`flex items-center gap-4 rounded-2xl border px-5 py-4 ${row.positive ? 'border-teal-400/40 bg-teal-400/[0.07]' : 'border-white/10 bg-white/[0.02]'}`}
+                >
+                  <span className={`flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full ${row.positive ? 'bg-teal-400 text-black' : 'bg-white/5 text-slate-500'}`}>
+                    {row.positive ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                  </span>
+                  <span className={`text-base lg:text-lg ${row.positive ? 'text-white font-semibold' : 'text-slate-400'}`} style={{ fontFamily: "var(--font-barlow)" }}>
+                    {row.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-8 text-teal-400 font-semibold text-lg lg:text-xl" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+              That&apos;s the difference.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Why Us — Businesses don't become passive by accident */}
+      <section className="py-16 lg:py-24 bg-[#020205] border-t border-white/5">
+        <div className="container mx-auto px-5 lg:px-20">
+          <Reveal className="max-w-3xl mx-auto text-center">
+            <SectionEyebrow>Why It Works</SectionEyebrow>
+            <h2 className="text-2xl lg:text-4xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+              Businesses Don&apos;t Become Passive By Accident.
+            </h2>
+            <p className="text-base lg:text-lg text-slate-400 leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+              They become passive because every critical function is managed by systems and experienced operators. From product sourcing and fulfillment to customer support and optimization, every part of the business is designed to operate without requiring your daily involvement.
+            </p>
+            <p className="mt-5 text-white font-semibold text-lg lg:text-xl" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+              That&apos;s how ownership becomes scalable.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Process — How we build your business */}
+      <section className="py-16 lg:py-24 bg-[#050508] border-t border-white/5">
+        <div className="container mx-auto px-5 lg:px-20">
+          <Reveal className="text-center">
+            <SectionEyebrow>The Process</SectionEyebrow>
+            <h2 className="text-2xl lg:text-4xl font-bold text-white mb-12 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+              How We Build Your Business
+            </h2>
+          </Reveal>
+          <div className="max-w-2xl mx-auto space-y-4">
+            {[
+              'You qualify.',
+              'We build your business.',
+              'We launch and manage operations.',
+              'You receive transparent reporting.',
+              'We optimize for long-term growth.',
+            ].map((step, i) => (
+              <Reveal key={step} delay={i * 0.05}>
+                <div className="group flex items-center gap-5 bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-5 transition-colors hover:border-teal-400/30 hover:bg-white/[0.05]">
+                  <span className="flex-shrink-0 w-12 h-12 rounded-full bg-teal-400 text-black font-bold flex items-center justify-center text-lg" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+                    {i + 1}
+                  </span>
+                  <span className="text-lg lg:text-xl text-white font-medium" style={{ fontFamily: "var(--font-barlow)" }}>
+                    {step}
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="text-center mt-12">
+            <CtaButton onClick={scrollToCalendly}>{applyCtaContent.ctaText}</CtaButton>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* What's Included */}
+      <section className="py-16 lg:py-24 bg-[#020205] border-t border-white/5">
+        <div className="container mx-auto px-5 lg:px-20">
+          <Reveal className="text-center mb-12">
+            <SectionEyebrow>Full-Service Management</SectionEyebrow>
+            <h2 className="text-2xl lg:text-4xl font-bold text-white mb-3 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+              What&apos;s Included
+            </h2>
+            <p className="text-slate-400 text-sm lg:text-base max-w-2xl mx-auto" style={{ fontFamily: "var(--font-barlow)" }}>
+              Instead of wondering what you&apos;re paying for, here&apos;s exactly what our team handles.
+            </p>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {[
+              'Store Development',
+              'Product Research',
+              'U.S. Supplier Network',
+              'Inventory Management',
+              'Customer Support',
+              'Order Fulfillment',
+              'Marketing Management',
+              'Automation Systems',
+              'Performance Reporting',
+              'Ongoing Optimization',
+            ].map((item) => (
+              <div key={item} className="group flex items-center gap-3 bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 transition-colors hover:border-teal-400/30 hover:bg-white/[0.05]">
+                <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-teal-400/15 text-teal-400">
+                  <Check className="w-4 h-4" />
+                </span>
+                <span className="text-base lg:text-lg text-white font-medium" style={{ fontFamily: "var(--font-barlow)" }}>
+                  {item}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-white font-semibold text-lg lg:text-2xl mt-12" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            You own the business. <span className="text-teal-400">We handle everything else.</span>
+          </p>
+        </div>
+      </section>
+
       <PlatformReviewsSection />
 
       {/* PartnerStoreResults - Dashboard Screenshots */}
       <div className="py-16 lg:py-24 bg-[#050508] border-t border-white/5">
         <div className="container mx-auto px-5 lg:px-20">
           <h2 className="text-xl lg:text-3xl font-bold text-white text-center mb-9" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
-            Real partner results—on the record
+            Here&apos;s what ownership looks like
           </h2>
           <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
             {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -282,7 +496,7 @@ export default function EcomAutomationPage() {
             <span className="text-teal-400">$8.15 trillion by 2026</span>
           </h2>
           <p className="text-center text-slate-400 text-sm lg:text-base mb-9" style={{ fontFamily: "var(--font-barlow)" }}>
-            Trillions in online revenue—are you positioned to capture your slice?
+            Diversify beyond real estate, stocks, and private equity—own an income-producing asset in the fastest-growing market.
           </p>
           <div className="max-w-5xl mx-auto">
             {/* Combined Bar + Line Chart */}
@@ -354,6 +568,60 @@ export default function EcomAutomationPage() {
           </div>
         </div>
       </div>
+
+      {/* Qualify bridge — Let's see if this is the right investment for you */}
+      <section className="py-16 lg:py-24 bg-[#050508] border-t border-white/5">
+        <div className="container mx-auto px-5 lg:px-20">
+          <Reveal className="max-w-3xl mx-auto text-center">
+            <SectionEyebrow>Your Next Step</SectionEyebrow>
+            <h2 className="text-2xl lg:text-4xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+              Let&apos;s See If This Is The
+              <br />
+              <span className="text-teal-400">Right Investment For You.</span>
+            </h2>
+            <p className="text-base lg:text-lg text-slate-400 leading-relaxed mb-8" style={{ fontFamily: "var(--font-barlow)" }}>
+              If you&apos;re looking to diversify your income with a professionally managed eCommerce business, let&apos;s talk. During your strategy call we&apos;ll:
+            </p>
+            <div className="max-w-md mx-auto space-y-4 text-left mb-8 bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-6">
+              {[
+                'Learn about your goals.',
+                'Explain the model.',
+                'Answer your questions.',
+                "Determine if you're a good fit.",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-teal-400/15 text-teal-400 mt-0.5">
+                    <Check className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="text-base lg:text-lg text-slate-200" style={{ fontFamily: "var(--font-barlow)" }}>{item}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-slate-400 text-sm lg:text-base mb-8 italic" style={{ fontFamily: "var(--font-barlow)" }}>
+              If we&apos;re not the right fit, we&apos;ll tell you.
+            </p>
+            <CtaButton onClick={scrollToCalendly}>{applyCtaContent.ctaText}</CtaButton>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Final Offer — Own another asset, not another job */}
+      <section className="py-16 lg:py-24 bg-[#020205] border-t border-white/5 relative overflow-hidden">
+        <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-teal-500/10 rounded-full blur-3xl" />
+        <div className="container mx-auto px-5 lg:px-20 relative z-10">
+          <Reveal className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-5 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+              Own Another Asset.
+              <br />
+              <span className="text-teal-400">Not Another Job.</span>
+            </h2>
+            <p className="text-lg lg:text-xl text-slate-300 mb-9" style={{ fontFamily: "var(--font-barlow)" }}>
+              Build wealth through ownership — not more work.
+            </p>
+            <CtaButton onClick={scrollToCalendly} size="lg">{applyCtaContent.ctaText}</CtaButton>
+          </Reveal>
+        </div>
+      </section>
 
       {/* Footer */}
       <div className="bg-[#020205] border-t border-white/10 py-10 lg:py-14">

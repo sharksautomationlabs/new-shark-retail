@@ -53,18 +53,20 @@ export const heroContent = {
   headlineLine1: 'A Fully Managed eCommerce Business —',
   headlineLine2: 'Live in as',
   headlineTagline: '14 Days (or less)',
-  subhead: 'We partner with qualified investors to build and manage automated eCommerce stores — leveraging USA suppliers and proven systems to launch high-performing online businesses.',
+  subhead: 'Built for qualified investors who want another income-producing asset — not another full-time job. We build, launch, and manage the business while you retain full ownership.',
+  performanceCallout: 'Targeting $4,000+ in trackable sales in your first 30 days after launch.',
+  performanceDisclaimer: 'Performance targets are based on qualified clients who meet our onboarding criteria and follow the recommended implementation process. Individual results vary.',
   doneForYouText: '100% Done-For-You. No Experience Required.',
   videoPrompt: 'Watch this quick video 👇',
-  applyBelowLine1: 'Apply below to explore this exclusive partnership opportunity with our',
-  applyBelowLine2: 'management team 👇',
+  applyBelowLine1: 'See if a fully managed eCommerce business is the right investment for you.',
+  applyBelowLine2: 'Apply below to get started 👇',
   ctaText: 'See If You Qualify',
   videoEmbedUrl: 'https://www.youtube.com/embed/bigJBm1x1qE',
   videoTitle: 'The Retail Automation - Fully Managed E-Commerce Business',
 };
 
 export const trustStripContent = {
-  partnershipsText: 'Limited partners each month—backed by our performance-aligned guarantee',
+  partnershipsText: 'Built for investors who want another income-producing asset — not another full-time job.',
   guaranteeText: 'If your store doesn\'t generate more than your initial investment, we\'ll work until it does — making this a risk-free opportunity.',
 };
 

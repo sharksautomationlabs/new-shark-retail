@@ -10,6 +10,7 @@ const barlowCondensed = Barlow_Condensed({
   display: 'swap',
 });
 
+
 const barlow = Barlow({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
