@@ -49,7 +49,7 @@ export default function PlatformReviewsSection() {
   return (
     <div className="py-10 lg:py-14 bg-slate-50 border-y border-slate-200">
       <div className="container mx-auto px-5 lg:px-20">
-        <h2 className="text-2xl lg:text-4xl font-bold text-slate-900 text-center mb-3 tracking-tight">
+        <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-3 tracking-tight">
           {`Proof from people who work with ${FUNNEL_BRAND_NAME}`}
         </h2>
         <p className="text-center text-slate-600 text-base lg:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">

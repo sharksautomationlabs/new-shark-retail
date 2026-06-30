@@ -212,7 +212,7 @@ export default function EcomAutomationPage() {
                 </div>
               </Link>
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-slate-900 mb-5 leading-[1.05] tracking-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-slate-900 mb-5 leading-[1.05] tracking-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
               Own A Fully Managed
               <br />
               eCommerce Business —
@@ -278,7 +278,7 @@ export default function EcomAutomationPage() {
             <p className="text-center text-teal-600 font-semibold text-base uppercase tracking-widest mb-2" style={{ fontFamily: 'var(--font-barlow)' }}>
               Step 2
             </p>
-            <h2 className="text-center text-3xl lg:text-4xl font-bold text-slate-900 mb-6" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+            <h2 className="text-center text-4xl lg:text-5xl font-bold text-slate-900 mb-6" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
               Pick a Time That Works for You
             </h2>
             <CalendlyInlineEmbed
@@ -299,7 +299,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="max-w-3xl mx-auto text-center">
             <SectionEyebrow>Ownership, Not Operations</SectionEyebrow>
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
               You&apos;re Not Buying Another Job.
               <br />
               <span className="text-teal-600">You&apos;re Buying Another Asset.</span>
@@ -319,7 +319,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="max-w-3xl mx-auto text-center">
             <SectionEyebrow>The Investor Mindset</SectionEyebrow>
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-10 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-10 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
               Most People Buy Stores.
               <br />
               <span className="text-teal-600">Investors Buy Systems.</span>
@@ -355,7 +355,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="max-w-3xl mx-auto text-center">
             <SectionEyebrow>Why It Works</SectionEyebrow>
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
               Businesses Don&apos;t Become Passive By Accident.
             </h2>
             <p className="text-lg lg:text-xl text-slate-600 leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
@@ -373,7 +373,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="text-center">
             <SectionEyebrow>The Process</SectionEyebrow>
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-12 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-12 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
               How We Build Your Business
             </h2>
           </Reveal>
@@ -408,7 +408,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="text-center mb-12">
             <SectionEyebrow>Full-Service Management</SectionEyebrow>
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-3 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-3 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
               What&apos;s Included
             </h2>
             <p className="text-slate-600 text-base lg:text-lg max-w-2xl mx-auto" style={{ fontFamily: "var(--font-barlow)" }}>
@@ -449,7 +449,7 @@ export default function EcomAutomationPage() {
       {/* PartnerStoreResults - Dashboard Screenshots */}
       <div className="py-16 lg:py-24 bg-slate-50 border-t border-slate-200">
         <div className="container mx-auto px-5 lg:px-20">
-          <h2 className="text-2xl lg:text-4xl font-bold text-slate-900 text-center mb-9" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-9" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
             Here&apos;s what ownership looks like
           </h2>
           <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
@@ -483,7 +483,7 @@ export default function EcomAutomationPage() {
       <div className="py-16 lg:py-24 bg-white relative overflow-hidden border-y border-slate-200">
         <div className="absolute top-[-100px] right-[-50px] w-[300px] h-[300px] bg-teal-200/40 rounded-full blur-3xl" />
         <div className="container mx-auto px-5 lg:px-20 relative z-10">
-          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-2 max-w-5xl mx-auto leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+          <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 text-center mb-2 max-w-5xl mx-auto leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
             Global e-commerce is on pace to pass
             <br />
             <span className="text-teal-600">$8.15 trillion by 2026</span>
@@ -546,7 +546,7 @@ export default function EcomAutomationPage() {
       {/* FAQ */}
       <div className="py-16 lg:py-24 bg-slate-50 border-t border-slate-200">
         <div className="container mx-auto px-5 lg:px-20">
-          <h2 className="text-2xl lg:text-4xl font-bold text-slate-900 text-center mb-10" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-10" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
             Questions we hear most often
           </h2>
           <div className="max-w-3xl mx-auto">
@@ -563,7 +563,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="max-w-3xl mx-auto text-center">
             <SectionEyebrow>Your Next Step</SectionEyebrow>
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
               Let&apos;s See If This Is The
               <br />
               <span className="text-teal-600">Right Investment For You.</span>
@@ -599,7 +599,7 @@ export default function EcomAutomationPage() {
         <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-teal-200/40 rounded-full blur-3xl" />
         <div className="container mx-auto px-5 lg:px-20 relative z-10">
           <Reveal className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-5 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-5xl lg:text-7xl font-bold text-slate-900 mb-5 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
               Own Another Asset.
               <br />
               <span className="text-teal-600">Not Another Job.</span>

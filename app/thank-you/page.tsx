@@ -83,7 +83,7 @@ export default function ThanksPage() {
               variants={fadeInUp}
               className="inline-block bg-teal-500 text-white font-bold py-3 px-5 lg:py-4 lg:px-6 rounded-full border-2 border-teal-500 mb-8"
             >
-              <span className="text-xl md:text-3xl lg:text-4xl">
+              <span className="text-2xl md:text-4xl lg:text-5xl">
                 CONGRATS{userName ? `, ${userName}` : ''}! Your Call Has Been Booked!
               </span>
             </motion.div>
@@ -97,7 +97,7 @@ export default function ThanksPage() {
 
             <motion.h2
               variants={fadeInUp}
-              className="text-2xl lg:text-4xl font-bold text-slate-900 text-center mb-6"
+              className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-6"
             >
               Step 1: Add the call to your calendar
             </motion.h2>
@@ -114,7 +114,7 @@ export default function ThanksPage() {
 
             <motion.h2
               variants={fadeInUp}
-              className="text-2xl lg:text-4xl font-bold text-slate-900 text-center mb-6"
+              className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-6"
             >
               Step 2: Watch the 3-minute prep video
             </motion.h2>
@@ -130,7 +130,7 @@ export default function ThanksPage() {
             </motion.div>
             <motion.h2
               variants={fadeInUp}
-              className="text-2xl lg:text-4xl font-bold text-slate-900 text-center mb-6 mt-12"
+              className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-6 mt-12"
             >
               Step 3: Then watch the results walkthrough
             </motion.h2>
@@ -152,7 +152,7 @@ export default function ThanksPage() {
       <div className="py-16 lg:py-24 bg-slate-50 border-y border-slate-200">
         <div className="container mx-auto px-5 lg:px-20">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-12 tracking-tight">
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 text-center mb-12 tracking-tight">
               Step 4: Read the FAQs—so there are no surprises
             </h2>
             <EcomWealthFAQ items={precallFaqItems} />
@@ -163,7 +163,7 @@ export default function ThanksPage() {
       {/* ============ PARTNER STORE RESULTS (above reviews) ============ */}
       <div className="py-16 lg:py-24 bg-white border-y border-slate-200">
         <div className="container mx-auto px-5 lg:px-20">
-          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-4 tracking-tight">
+          <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 text-center mb-4 tracking-tight">
             Partner store snapshots
           </h2>
           <p className="text-center text-slate-600 text-lg lg:text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
@@ -191,7 +191,7 @@ export default function ThanksPage() {
       <div className="py-16 lg:py-24 bg-slate-50 border-y border-slate-200">
         <div className="container mx-auto px-5 lg:px-20">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-6 tracking-tight">
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 text-center mb-6 tracking-tight">
               Step 5: See what other partners experienced
             </h2>
             <p className="text-center text-slate-600 text-lg lg:text-xl mb-10 leading-relaxed">
@@ -206,7 +206,7 @@ export default function ThanksPage() {
       <div className="py-16 lg:py-24 bg-white border-y border-slate-200">
         <div className="container mx-auto px-5 lg:px-20">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-10 tracking-tight">
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 text-center mb-10 tracking-tight">
               Step 6: Show up ready (quick checklist)
             </h2>
             <div className="space-y-4">
@@ -226,7 +226,7 @@ export default function ThanksPage() {
       {/* ============ FINAL CTA ============ */}
       <div className="py-16 lg:py-24 bg-gradient-to-b from-teal-50 to-white border-t border-slate-200">
         <div className="container mx-auto px-5 lg:px-20 text-center">
-          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+          <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
             We’re ready when you are—see you on the call
           </h2>
           <Link
