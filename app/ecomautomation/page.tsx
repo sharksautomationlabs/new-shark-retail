@@ -212,7 +212,7 @@ export default function EcomAutomationPage() {
                 </div>
               </Link>
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-slate-900 mb-5 leading-[1.05] tracking-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
+            <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 mb-5 leading-[1.05] tracking-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
               Own A Fully Managed
               <br />
               eCommerce Business —
