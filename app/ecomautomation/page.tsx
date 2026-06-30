@@ -13,6 +13,8 @@ import {
   trustStripContent,
   applyCtaContent,
   footerContent,
+  successStories,
+  proofDisclaimer,
 } from '@/lib/ecomwealthContent';
 import {
   FUNNEL_BRAND_NAME,
@@ -212,6 +214,11 @@ export default function EcomAutomationPage() {
                 </div>
               </Link>
             </motion.div>
+            <motion.div variants={fadeInUp} className="mb-4 flex justify-center">
+              <span className="inline-flex items-center rounded-full border border-teal-200 bg-white px-4 py-1.5 text-sm lg:text-base font-bold uppercase tracking-[0.22em] text-teal-700" style={{ fontFamily: "var(--font-barlow)" }}>
+                Built For Investors
+              </span>
+            </motion.div>
             <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 mb-5 leading-[1.05] tracking-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
               Own A Fully Managed
               <br />
@@ -219,12 +226,15 @@ export default function EcomAutomationPage() {
               <br />
               <span className="text-teal-600">Without Running One.</span>
             </motion.h1>
-            <motion.div variants={fadeInUp} className="mb-5 flex justify-center">
+            <motion.div variants={fadeInUp} className="mb-2 flex justify-center">
               <span className="inline-flex items-center gap-2.5 rounded-full border border-teal-200 bg-teal-50 px-5 py-2 text-lg lg:text-xl font-semibold text-teal-700" style={{ fontFamily: "var(--font-barlow)" }}>
                 <span className="h-2 w-2 rounded-full bg-teal-500 shadow-[0_0_8px_2px_rgba(45,212,191,0.5)]" />
                 {heroContent.performanceCallout}
               </span>
             </motion.div>
+            <motion.p variants={fadeInUp} className="mb-5 text-xs lg:text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+              {heroContent.performanceDisclaimer}
+            </motion.p>
             <motion.p variants={fadeInUp} className="text-xl lg:text-2xl text-slate-600 mb-5 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
               {heroContent.subhead}
             </motion.p>
@@ -239,6 +249,17 @@ export default function EcomAutomationPage() {
               <br />
               {heroContent.applyBelowLine2}
             </motion.p>
+            <motion.div variants={fadeInUp} className="mt-7 flex justify-center">
+              <CtaButton onClick={scrollToCalendly} size="lg">{applyCtaContent.ctaText}</CtaButton>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2">
+              {['You Own The Business', 'We Manage The Operations', 'Built For Investors & Business Owners'].map((item) => (
+                <span key={item} className="inline-flex items-center gap-2 text-base lg:text-lg text-slate-700 font-medium" style={{ fontFamily: 'var(--font-barlow)' }}>
+                  <Check className="w-4 h-4 text-teal-600" />
+                  {item}
+                </span>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -345,6 +366,29 @@ export default function EcomAutomationPage() {
             </div>
             <p className="mt-8 text-teal-600 font-semibold text-xl lg:text-2xl" style={{ fontFamily: "var(--font-montserrat)" }}>
               That&apos;s the difference.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Opportunity — Diversify beyond traditional investments */}
+      <section className="py-16 lg:py-24 bg-white border-t border-slate-200 relative overflow-hidden">
+        <div className="absolute top-[-120px] left-[-60px] w-[360px] h-[360px] bg-teal-200/40 rounded-full blur-3xl" />
+        <div className="container mx-auto px-5 lg:px-20 relative z-10">
+          <Reveal className="max-w-3xl mx-auto text-center">
+            <SectionEyebrow>Why It Matters</SectionEyebrow>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
+              Diversify Beyond <span className="text-teal-600">Traditional Investments.</span>
+            </h2>
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
+              {['Real estate', 'Stocks', 'Private equity'].map((item) => (
+                <span key={item} className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-5 py-2 text-lg lg:text-xl text-slate-700 font-medium" style={{ fontFamily: "var(--font-barlow)" }}>
+                  {item}
+                </span>
+              ))}
+            </div>
+            <p className="text-lg lg:text-xl text-slate-600 leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+              A professionally managed eCommerce business gives you another income-producing asset — <span className="text-slate-900 font-semibold">without adding another full-time responsibility.</span>
             </p>
           </Reveal>
         </div>
@@ -478,6 +522,36 @@ export default function EcomAutomationPage() {
           </div>
         </div>
       </div>
+
+      {/* Client Stories — real partner journeys, not just testimonials */}
+      <section className="py-16 lg:py-24 bg-slate-50 border-t border-slate-200">
+        <div className="container mx-auto px-5 lg:px-20">
+          <Reveal className="text-center mb-12">
+            <SectionEyebrow>Client Stories</SectionEyebrow>
+            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 leading-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
+              Real owners. Real results.
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {successStories.map((story, i) => (
+              <Reveal key={story.name} delay={i * 0.05}>
+                <div className="h-full flex flex-col bg-white border border-slate-200 shadow-sm rounded-2xl p-7 transition-colors hover:border-teal-300">
+                  <div className="flex items-baseline gap-3 mb-3">
+                    <span className="text-3xl lg:text-4xl font-bold text-teal-600" style={{ fontFamily: "var(--font-montserrat)" }}>{story.figure}</span>
+                    <span className="text-sm text-slate-500" style={{ fontFamily: "var(--font-barlow)" }}>in {story.timeframe}</span>
+                  </div>
+                  <h3 className="text-lg lg:text-xl font-semibold text-slate-900 mb-3" style={{ fontFamily: "var(--font-montserrat)" }}>{story.headline}</h3>
+                  <p className="text-base lg:text-lg text-slate-600 leading-relaxed mb-5 flex-grow" style={{ fontFamily: "var(--font-barlow)" }}>&ldquo;{story.quote}&rdquo;</p>
+                  <p className="text-sm font-semibold text-slate-900" style={{ fontFamily: "var(--font-barlow)" }}>&mdash; {story.name}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <p className="text-center text-slate-500 text-xs leading-relaxed max-w-3xl mx-auto mt-10" style={{ fontFamily: "var(--font-barlow)" }}>
+            {proofDisclaimer}
+          </p>
+        </div>
+      </section>
 
       {/* Market Graph Section */}
       <div className="py-16 lg:py-24 bg-white relative overflow-hidden border-y border-slate-200">
