@@ -164,7 +164,7 @@ function ContactStep({
     >
       <p
         className="text-slate-900 text-2xl lg:text-3xl font-semibold text-center mb-2"
-        style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+        style={{ fontFamily: 'var(--font-montserrat)' }}
       >
         Almost there — where should we send your results?
       </p>
@@ -288,7 +288,7 @@ export default function EcomQuestionnaire({
         </p>
         <h3
           className="text-3xl lg:text-4xl font-bold text-slate-900"
-          style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+          style={{ fontFamily: 'var(--font-montserrat)' }}
         >
           Find Out If You Qualify for {FUNNEL_BRAND_NAME}
         </h3>
@@ -341,7 +341,7 @@ export default function EcomQuestionnaire({
           >
             <p
               className="text-slate-900 text-2xl lg:text-3xl font-semibold text-center mb-5"
-              style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+              style={{ fontFamily: 'var(--font-montserrat)' }}
             >
               {current.question}
             </p>

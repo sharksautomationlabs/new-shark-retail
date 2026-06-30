@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { Barlow_Condensed, Barlow } from 'next/font/google';
+import { Montserrat, Barlow } from 'next/font/google';
 import EcomwealthCalendlyRoot from '@/components/EcomwealthCalendlyRoot';
 
-const barlowCondensed = Barlow_Condensed({
-  weight: ['400', '600', '700'],
+const montserrat = Montserrat({
+  weight: ['300', '400', '500', '600', '700', '800'],
   subsets: ['latin'],
-  variable: '--font-barlow-condensed',
+  variable: '--font-montserrat',
   display: 'swap',
 });
 
@@ -52,7 +52,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         fetchPriority="high"
       />
       <EcomwealthCalendlyRoot />
-      <div className={`${barlowCondensed.variable} ${barlow.variable} min-h-screen bg-white`}>
+      <div className={`${montserrat.variable} ${barlow.variable} min-h-screen bg-white`}>
         {children}
       </div>
     </>

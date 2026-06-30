@@ -212,7 +212,7 @@ export default function EcomAutomationPage() {
                 </div>
               </Link>
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-slate-900 mb-5 leading-[1.05] tracking-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-slate-900 mb-5 leading-[1.05] tracking-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
               Own A Fully Managed
               <br />
               eCommerce Business —
@@ -228,7 +228,7 @@ export default function EcomAutomationPage() {
             <motion.p variants={fadeInUp} className="text-xl lg:text-2xl text-slate-600 mb-5 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
               {heroContent.subhead}
             </motion.p>
-            <motion.div variants={fadeInUp} className="max-w-4xl mx-auto bg-teal-500 text-white font-bold py-3 px-6 rounded-t-2xl mb-0 text-xl lg:text-2xl text-center" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <motion.div variants={fadeInUp} className="max-w-4xl mx-auto bg-teal-500 text-white font-bold py-3 px-6 rounded-t-2xl mb-0 text-xl lg:text-2xl text-center" style={{ fontFamily: "var(--font-montserrat)" }}>
               {heroContent.doneForYouText.split('. ')[0]}. <span className="text-teal-50">{heroContent.doneForYouText.split('. ')[1]}</span> {heroContent.videoPrompt}
             </motion.div>
             <motion.div variants={fadeInUp} className="max-w-4xl mx-auto rounded-b-2xl overflow-hidden shadow-2xl ring-1 ring-slate-200 -mt-px">
@@ -246,7 +246,7 @@ export default function EcomAutomationPage() {
       {/* TrustStrip */}
       <div className="py-4 lg:py-6 bg-teal-50 border-y border-teal-100">
         <div className="container mx-auto px-5 lg:px-20 text-center">
-          <p className="text-xl lg:text-2xl text-slate-900 font-semibold max-w-3xl mx-auto" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+          <p className="text-xl lg:text-2xl text-slate-900 font-semibold max-w-3xl mx-auto" style={{ fontFamily: "var(--font-montserrat)" }}>
             {trustStripContent.partnershipsText}
           </p>
         </div>
@@ -278,7 +278,7 @@ export default function EcomAutomationPage() {
             <p className="text-center text-teal-600 font-semibold text-base uppercase tracking-widest mb-2" style={{ fontFamily: 'var(--font-barlow)' }}>
               Step 2
             </p>
-            <h2 className="text-center text-4xl lg:text-5xl font-bold text-slate-900 mb-6" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+            <h2 className="text-center text-4xl lg:text-5xl font-bold text-slate-900 mb-6" style={{ fontFamily: 'var(--font-montserrat)' }}>
               Pick a Time That Works for You
             </h2>
             <CalendlyInlineEmbed
@@ -299,7 +299,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="max-w-3xl mx-auto text-center">
             <SectionEyebrow>Ownership, Not Operations</SectionEyebrow>
-            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
               You&apos;re Not Buying Another Job.
               <br />
               <span className="text-teal-600">You&apos;re Buying Another Asset.</span>
@@ -319,7 +319,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="max-w-3xl mx-auto text-center">
             <SectionEyebrow>The Investor Mindset</SectionEyebrow>
-            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-10 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-10 leading-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
               Most People Buy Stores.
               <br />
               <span className="text-teal-600">Investors Buy Systems.</span>
@@ -343,7 +343,7 @@ export default function EcomAutomationPage() {
                 </div>
               ))}
             </div>
-            <p className="mt-8 text-teal-600 font-semibold text-xl lg:text-2xl" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <p className="mt-8 text-teal-600 font-semibold text-xl lg:text-2xl" style={{ fontFamily: "var(--font-montserrat)" }}>
               That&apos;s the difference.
             </p>
           </Reveal>
@@ -355,13 +355,13 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="max-w-3xl mx-auto text-center">
             <SectionEyebrow>Why It Works</SectionEyebrow>
-            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
               Businesses Don&apos;t Become Passive By Accident.
             </h2>
             <p className="text-lg lg:text-xl text-slate-600 leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
               They become passive because every critical function is managed by systems and experienced operators. From product sourcing and fulfillment to customer support and optimization, every part of the business is designed to operate without requiring your daily involvement.
             </p>
-            <p className="mt-5 text-slate-900 font-semibold text-xl lg:text-2xl" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <p className="mt-5 text-slate-900 font-semibold text-xl lg:text-2xl" style={{ fontFamily: "var(--font-montserrat)" }}>
               That&apos;s how ownership becomes scalable.
             </p>
           </Reveal>
@@ -373,7 +373,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="text-center">
             <SectionEyebrow>The Process</SectionEyebrow>
-            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-12 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-12 leading-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
               How We Build Your Business
             </h2>
           </Reveal>
@@ -387,7 +387,7 @@ export default function EcomAutomationPage() {
             ].map((step, i) => (
               <Reveal key={step} delay={i * 0.05}>
                 <div className="group flex items-center gap-5 bg-white border border-slate-200 shadow-sm rounded-2xl px-6 py-5 transition-colors hover:border-teal-300 hover:bg-slate-50">
-                  <span className="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500 text-white font-bold flex items-center justify-center text-lg" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+                  <span className="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500 text-white font-bold flex items-center justify-center text-lg" style={{ fontFamily: "var(--font-montserrat)" }}>
                     {i + 1}
                   </span>
                   <span className="text-xl lg:text-2xl text-slate-900 font-medium" style={{ fontFamily: "var(--font-barlow)" }}>
@@ -408,7 +408,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="text-center mb-12">
             <SectionEyebrow>Full-Service Management</SectionEyebrow>
-            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-3 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-3 leading-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
               What&apos;s Included
             </h2>
             <p className="text-slate-600 text-base lg:text-lg max-w-2xl mx-auto" style={{ fontFamily: "var(--font-barlow)" }}>
@@ -438,7 +438,7 @@ export default function EcomAutomationPage() {
               </div>
             ))}
           </div>
-          <p className="text-center text-slate-900 font-semibold text-xl lg:text-3xl mt-12" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+          <p className="text-center text-slate-900 font-semibold text-xl lg:text-3xl mt-12" style={{ fontFamily: "var(--font-montserrat)" }}>
             You own the business. <span className="text-teal-600">We handle everything else.</span>
           </p>
         </div>
@@ -449,7 +449,7 @@ export default function EcomAutomationPage() {
       {/* PartnerStoreResults - Dashboard Screenshots */}
       <div className="py-16 lg:py-24 bg-slate-50 border-t border-slate-200">
         <div className="container mx-auto px-5 lg:px-20">
-          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-9" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-9" style={{ fontFamily: "var(--font-montserrat)" }}>
             Here&apos;s what ownership looks like
           </h2>
           <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
@@ -468,7 +468,7 @@ export default function EcomAutomationPage() {
             ))}
           </div>
           <div className="mt-16 max-w-2xl mx-auto rounded-2xl border border-slate-200 bg-white px-8 py-10 text-center">
-            <p className="text-lg text-slate-900 font-semibold mb-2" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <p className="text-lg text-slate-900 font-semibold mb-2" style={{ fontFamily: "var(--font-montserrat)" }}>
               Ready to book your free strategy call?
             </p>
             <p className="text-slate-600 text-sm mb-6" style={{ fontFamily: "var(--font-barlow)" }}>
@@ -483,7 +483,7 @@ export default function EcomAutomationPage() {
       <div className="py-16 lg:py-24 bg-white relative overflow-hidden border-y border-slate-200">
         <div className="absolute top-[-100px] right-[-50px] w-[300px] h-[300px] bg-teal-200/40 rounded-full blur-3xl" />
         <div className="container mx-auto px-5 lg:px-20 relative z-10">
-          <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 text-center mb-2 max-w-5xl mx-auto leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+          <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 text-center mb-2 max-w-5xl mx-auto leading-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
             Global e-commerce is on pace to pass
             <br />
             <span className="text-teal-600">$8.15 trillion by 2026</span>
@@ -546,7 +546,7 @@ export default function EcomAutomationPage() {
       {/* FAQ */}
       <div className="py-16 lg:py-24 bg-slate-50 border-t border-slate-200">
         <div className="container mx-auto px-5 lg:px-20">
-          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-10" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 text-center mb-10" style={{ fontFamily: "var(--font-montserrat)" }}>
             Questions we hear most often
           </h2>
           <div className="max-w-3xl mx-auto">
@@ -563,7 +563,7 @@ export default function EcomAutomationPage() {
         <div className="container mx-auto px-5 lg:px-20">
           <Reveal className="max-w-3xl mx-auto text-center">
             <SectionEyebrow>Your Next Step</SectionEyebrow>
-            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
               Let&apos;s See If This Is The
               <br />
               <span className="text-teal-600">Right Investment For You.</span>
@@ -599,7 +599,7 @@ export default function EcomAutomationPage() {
         <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-teal-200/40 rounded-full blur-3xl" />
         <div className="container mx-auto px-5 lg:px-20 relative z-10">
           <Reveal className="max-w-3xl mx-auto text-center">
-            <h2 className="text-5xl lg:text-7xl font-bold text-slate-900 mb-5 leading-tight" style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            <h2 className="text-5xl lg:text-7xl font-bold text-slate-900 mb-5 leading-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
               Own Another Asset.
               <br />
               <span className="text-teal-600">Not Another Job.</span>
