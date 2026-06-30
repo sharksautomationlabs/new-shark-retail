@@ -28,7 +28,7 @@ export function FunnelReviewCardsGrid() {
       {FUNNEL_REVIEW_CARDS.map((card) => (
         <div
           key={card.name}
-          className="bg-white/[0.04] rounded-2xl shadow-lg border border-white/10 p-2 sm:p-3 flex flex-col"
+          className="bg-white rounded-2xl shadow-md border border-slate-200 p-2 sm:p-3 flex flex-col"
         >
           <div className="relative w-full h-[200px] sm:h-[280px] overflow-hidden rounded-lg bg-white">
             <Image
@@ -47,12 +47,12 @@ export function FunnelReviewCardsGrid() {
 
 export default function PlatformReviewsSection() {
   return (
-    <div className="py-10 lg:py-14 bg-[#08080c] border-y border-white/5">
+    <div className="py-10 lg:py-14 bg-slate-50 border-y border-slate-200">
       <div className="container mx-auto px-5 lg:px-20">
-        <h2 className="text-xl lg:text-3xl font-bold text-white text-center mb-3 tracking-tight">
+        <h2 className="text-2xl lg:text-4xl font-bold text-slate-900 text-center mb-3 tracking-tight">
           {`Proof from people who work with ${FUNNEL_BRAND_NAME}`}
         </h2>
-        <p className="text-center text-slate-400 text-sm lg:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-center text-slate-600 text-base lg:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
           {`Trusted by investors who chose ${FUNNEL_BRAND_NAME}—recent feedback from partners on the experience.`}
         </p>
 

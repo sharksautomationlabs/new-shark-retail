@@ -11,9 +11,9 @@ export function buildCalendlyEmbedUrl(schedulingPageUrl: string): string {
     u.searchParams.set('embed_type', 'Inline');
     u.searchParams.set('hide_landing_page_details', '1');
     u.searchParams.set('hide_gdpr_banner', '1');
-    u.searchParams.set('background_color', '020205');
-    u.searchParams.set('text_color', 'e2e8f0');
-    u.searchParams.set('primary_color', '2dd4bf');
+    u.searchParams.set('background_color', 'ffffff');
+    u.searchParams.set('text_color', '0f172a');
+    u.searchParams.set('primary_color', '0d9488');
     return u.toString();
   } catch {
     return schedulingPageUrl;

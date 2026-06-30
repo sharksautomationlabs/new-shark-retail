@@ -23,9 +23,9 @@ function buildEmbedSrc(schedulingPageUrl: string): string {
     u.searchParams.set('embed_type', 'Inline');
     u.searchParams.set('hide_landing_page_details', '1');
     u.searchParams.set('hide_gdpr_banner', '1');
-    u.searchParams.set('background_color', '020205');
-    u.searchParams.set('text_color', 'e2e8f0');
-    u.searchParams.set('primary_color', '2dd4bf');
+    u.searchParams.set('background_color', 'ffffff');
+    u.searchParams.set('text_color', '0f172a');
+    u.searchParams.set('primary_color', '0d9488');
     return u.toString();
   } catch {
     return schedulingPageUrl;
@@ -79,7 +79,7 @@ export default function CalendlyInlineEmbed({
           width="100%"
           height={minHeight}
           title={title}
-          className="rounded-2xl overflow-hidden w-full border-0 ring-1 ring-white/10"
+          className="rounded-2xl overflow-hidden w-full border-0 ring-1 ring-slate-200"
           loading={preload ? 'eager' : 'lazy'}
           fetchPriority={preload ? 'high' : 'auto'}
           // SSR and client compute the same src (EMBED_DOMAIN is a build-time constant).
@@ -87,7 +87,7 @@ export default function CalendlyInlineEmbed({
         />
       ) : (
         <div
-          className="flex items-center justify-center rounded-2xl bg-[#0c0c12] text-slate-500 text-sm border border-white/10"
+          className="flex items-center justify-center rounded-2xl bg-slate-50 text-slate-500 text-sm border border-slate-200"
           style={{ minHeight }}
           aria-hidden
         >

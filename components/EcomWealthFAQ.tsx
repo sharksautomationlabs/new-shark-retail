@@ -26,21 +26,21 @@ export default function EcomWealthFAQ({ items, reducedMotion: propReducedMotion 
         return (
           <div
             key={item.id}
-            className="border border-white/10 rounded-xl overflow-hidden bg-white/[0.03]"
+            className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm"
           >
             <button
               type="button"
               onClick={() => toggleItem(item.id)}
-              className="w-full flex items-center justify-between gap-4 py-4 px-6 text-left hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08080c]"
+              className="w-full flex items-center justify-between gap-4 py-4 px-6 text-left hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-expanded={isOpen}
               aria-controls={`faq-answer-${item.id}`}
               id={`faq-question-${item.id}`}
             >
-              <span className="text-base lg:text-lg font-semibold text-white">
+              <span className="text-lg lg:text-xl font-semibold text-slate-900">
                 {item.question}
               </span>
               <ChevronDown
-                className={`w-5 h-5 text-teal-400 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                className={`w-5 h-5 text-teal-600 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
               />
             </button>
             <motion.div
@@ -59,7 +59,7 @@ export default function EcomWealthFAQ({ items, reducedMotion: propReducedMotion 
               }
               className="overflow-hidden"
             >
-              <div className="px-6 pb-4 pt-0 text-slate-300 text-sm lg:text-base leading-relaxed border-t border-white/10">
+              <div className="px-6 pb-4 pt-0 text-slate-600 text-base lg:text-lg leading-relaxed border-t border-slate-200">
                 {item.answer}
               </div>
             </motion.div>

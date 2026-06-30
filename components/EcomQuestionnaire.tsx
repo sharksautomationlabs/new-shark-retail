@@ -125,10 +125,10 @@ function ContactStep({
     return (
       <div className="mb-4">
         <label
-          className="block text-sm font-semibold text-slate-300 mb-1.5"
+          className="block text-base font-semibold text-slate-700 mb-1.5"
           style={{ fontFamily: 'var(--font-barlow)' }}
         >
-          {label} <span className="text-teal-400">*</span>
+          {label} <span className="text-teal-600">*</span>
         </label>
         <input
           type={type}
@@ -138,13 +138,13 @@ function ContactStep({
             setErrors((p) => ({ ...p, [key]: undefined }));
           }}
           placeholder={placeholder}
-          className={`w-full bg-white/[0.05] border rounded-xl px-4 py-3 text-white placeholder-slate-600 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400/60 transition-all ${
-            errors[key] ? 'border-red-500/70' : 'border-white/10 focus:border-teal-400/50'
+          className={`w-full bg-white border rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 text-base focus:outline-none focus:ring-2 focus:ring-teal-500/40 transition-all ${
+            errors[key] ? 'border-red-400' : 'border-slate-300 focus:border-teal-500'
           }`}
           style={{ fontFamily: 'var(--font-barlow)' }}
         />
         {errors[key] && (
-          <p className="mt-1 text-red-400 text-xs" style={{ fontFamily: 'var(--font-barlow)' }}>
+          <p className="mt-1 text-red-500 text-sm" style={{ fontFamily: 'var(--font-barlow)' }}>
             {errors[key]}
           </p>
         )}
@@ -163,13 +163,13 @@ function ContactStep({
       transition={{ duration: 0.28, ease: 'easeInOut' }}
     >
       <p
-        className="text-white text-xl lg:text-2xl font-semibold text-center mb-2"
+        className="text-slate-900 text-2xl lg:text-3xl font-semibold text-center mb-2"
         style={{ fontFamily: 'var(--font-barlow-condensed)' }}
       >
         Almost there — where should we send your results?
       </p>
       <p
-        className="text-slate-500 text-sm text-center mb-6"
+        className="text-slate-500 text-base text-center mb-6"
         style={{ fontFamily: 'var(--font-barlow)' }}
       >
         {FUNNEL_BRAND_NAME} will reach out within 24 hours to confirm your call.
@@ -184,7 +184,7 @@ function ContactStep({
           type="button"
           onClick={onBack}
           disabled={submitting}
-          className="flex items-center gap-1.5 text-slate-500 hover:text-slate-300 text-sm transition-colors disabled:opacity-40"
+          className="flex items-center gap-1.5 text-slate-500 hover:text-slate-700 text-base transition-colors disabled:opacity-40"
           style={{ fontFamily: 'var(--font-barlow)' }}
         >
           <ArrowLeft className="w-4 h-4" />
@@ -195,7 +195,7 @@ function ContactStep({
           type="button"
           onClick={handleSubmit}
           disabled={submitting}
-          className="inline-flex items-center gap-2 bg-teal-400 hover:bg-teal-300 disabled:opacity-60 disabled:cursor-wait text-black font-bold py-3 px-7 rounded-full transition-all"
+          className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 disabled:opacity-60 disabled:cursor-wait text-white font-bold py-3 px-7 rounded-full transition-all text-base"
           style={{ fontFamily: 'var(--font-barlow)' }}
         >
           {submitting ? (
@@ -281,13 +281,13 @@ export default function EcomQuestionnaire({
       {/* Header */}
       <div className="text-center mb-6">
         <p
-          className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-1"
+          className="text-teal-600 font-semibold text-base uppercase tracking-widest mb-1"
           style={{ fontFamily: 'var(--font-barlow)' }}
         >
           60-Second Qualification
         </p>
         <h3
-          className="text-2xl lg:text-3xl font-bold text-white"
+          className="text-3xl lg:text-4xl font-bold text-slate-900"
           style={{ fontFamily: 'var(--font-barlow-condensed)' }}
         >
           Find Out If You Qualify for {FUNNEL_BRAND_NAME}
@@ -298,21 +298,21 @@ export default function EcomQuestionnaire({
       <div className="mb-6">
         <div className="flex justify-between items-center mb-1.5">
           <span
-            className="text-xs text-slate-500"
+            className="text-sm text-slate-500"
             style={{ fontFamily: 'var(--font-barlow)' }}
           >
             {isContactStep ? 'Last step' : `Question ${step + 1} of ${QUESTIONS.length}`}
           </span>
           <span
-            className="text-xs text-teal-400 font-semibold"
+            className="text-sm text-teal-600 font-semibold"
             style={{ fontFamily: 'var(--font-barlow)' }}
           >
             {Math.round(progressPct)}% complete
           </span>
         </div>
-        <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+        <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-teal-400 rounded-full"
+            className="h-full bg-teal-500 rounded-full"
             animate={{ width: `${progressPct}%` }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
           />
@@ -340,7 +340,7 @@ export default function EcomQuestionnaire({
             transition={{ duration: 0.28, ease: 'easeInOut' }}
           >
             <p
-              className="text-white text-xl lg:text-2xl font-semibold text-center mb-5"
+              className="text-slate-900 text-2xl lg:text-3xl font-semibold text-center mb-5"
               style={{ fontFamily: 'var(--font-barlow-condensed)' }}
             >
               {current.question}
@@ -354,17 +354,17 @@ export default function EcomQuestionnaire({
                     key={option}
                     type="button"
                     onClick={() => handleSelect(option)}
-                    className={`w-full text-left px-5 py-4 rounded-xl border text-sm font-medium transition-all duration-200 ${
+                    className={`w-full text-left px-5 py-4 rounded-xl border text-base font-medium transition-all duration-200 ${
                       isSelected
-                        ? 'bg-teal-400/15 border-teal-400 text-teal-300 ring-1 ring-teal-400/60'
-                        : 'bg-white/[0.03] border-white/10 text-slate-300 hover:border-teal-400/50 hover:bg-teal-400/5 hover:text-white'
+                        ? 'bg-teal-50 border-teal-500 text-teal-700 ring-1 ring-teal-500/40'
+                        : 'bg-white border-slate-200 text-slate-700 hover:border-teal-400 hover:bg-teal-50 hover:text-slate-900'
                     }`}
                     style={{ fontFamily: 'var(--font-barlow)' }}
                   >
                     <span className="flex items-center gap-3">
                       <span
                         className={`w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors ${
-                          isSelected ? 'border-teal-400 bg-teal-400' : 'border-white/30'
+                          isSelected ? 'border-teal-500 bg-teal-500' : 'border-slate-300'
                         }`}
                       />
                       {option}
@@ -379,7 +379,7 @@ export default function EcomQuestionnaire({
                 type="button"
                 onClick={handleBack}
                 disabled={step === 0}
-                className="flex items-center gap-1.5 text-slate-500 hover:text-slate-300 text-sm disabled:opacity-0 transition-colors"
+                className="flex items-center gap-1.5 text-slate-500 hover:text-slate-700 text-base disabled:opacity-0 transition-colors"
                 style={{ fontFamily: 'var(--font-barlow)' }}
               >
                 <ArrowLeft className="w-4 h-4" />
@@ -390,7 +390,7 @@ export default function EcomQuestionnaire({
                 type="button"
                 onClick={handleNext}
                 disabled={!selected}
-                className="inline-flex items-center gap-2 bg-teal-400 hover:bg-teal-300 disabled:opacity-40 disabled:cursor-not-allowed text-black font-bold py-3 px-7 rounded-full transition-all"
+                className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-3 px-7 rounded-full transition-all text-base"
                 style={{ fontFamily: 'var(--font-barlow)' }}
               >
                 Next

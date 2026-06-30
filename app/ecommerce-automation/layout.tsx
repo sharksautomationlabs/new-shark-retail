@@ -52,7 +52,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         fetchPriority="high"
       />
       <EcomwealthCalendlyRoot />
-      <div className={`${barlowCondensed.variable} ${barlow.variable}`}>
+      <div className={`${barlowCondensed.variable} ${barlow.variable} min-h-screen bg-white`}>
         {children}
       </div>
     </>
