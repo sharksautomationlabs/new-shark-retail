@@ -325,7 +325,7 @@ export default function EcomAutomationPage() {
               <br />
               <span className="text-teal-600">You&apos;re Buying Another Asset.</span>
             </h2>
-            <p className="text-lg lg:text-xl text-slate-600 leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+            <p className="text-lg lg:text-xl text-slate-700 font-bold leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
               You&apos;ve already built a successful business. The last thing you need is another company demanding your time. That&apos;s why we build, operate, and manage your eCommerce business while you focus on what you already do best.
             </p>
             <div className="mt-9">

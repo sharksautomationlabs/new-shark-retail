@@ -18,10 +18,10 @@ const QUESTIONS: Question[] = [
     id: 'capital',
     question: 'What is your available investment capital?',
     options: [
-      'Under $5,000',
-      '$5,000 – $10,000',
-      '$10,000 – $25,000',
-      '$25,000 or more',
+      'Under $15,000',
+      '$15k – $30k',
+      '$30k – $45k',
+      '$45k – $60k',
     ],
   },
   {
