@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FUNNEL_BRAND_NAME } from '@/lib/funnelBrand';
 
 export const VIDEO_REVIEWS = [
@@ -232,6 +233,15 @@ export default function PlatformReviewsSection() {
         <FunnelReviewCardsGrid />
 
         <ReviewPlatformLinks />
+
+        <div className="mt-8 text-center">
+          <Link
+            href="/reviews"
+            className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-bold text-base lg:text-lg underline underline-offset-4 decoration-teal-300 hover:decoration-teal-500 transition-colors"
+          >
+            See all reviews &amp; verify us independently →
+          </Link>
+        </div>
       </div>
     </div>
   );

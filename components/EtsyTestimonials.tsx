@@ -342,6 +342,11 @@ const EtsyTestimonials: React.FC = () => {
         <div className="max-w-7xl mx-auto mb-20">
           <TestimonialCarousel testimonials={testimonials} />
         </div>
+        <div className="text-center mt-2">
+          <a href="/reviews" className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 font-semibold underline underline-offset-4 decoration-teal-500/50 hover:decoration-teal-300 transition-colors">
+            Read all our reviews &amp; verify us independently →
+          </a>
+        </div>
       </div>
     </section>
   );

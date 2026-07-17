@@ -119,6 +119,11 @@ const TikTokTestimonials: React.FC = () => {
             <svg className="w-6 h-6 text-white group-hover:text-teal-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
           </button>
         </div>
+        <div className="text-center mt-2">
+          <a href="/reviews" className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 font-semibold underline underline-offset-4 decoration-teal-500/50 hover:decoration-teal-300 transition-colors">
+            Read all our reviews &amp; verify us independently →
+          </a>
+        </div>
       </div>
     </section>
   );

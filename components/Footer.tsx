@@ -28,6 +28,7 @@ const footerLinks = {
   company: [
     { name: 'Home Page', href: '/' },
     { name: 'Our Story', href: '/about' },
+    { name: 'Reviews', href: '/reviews' },
     { name: 'Contact Information', href: '/contact' },
     { name: 'Terms & Conditions', href: '#' },
     { name: 'Privacy Policy', href: '#' },
@@ -181,7 +182,7 @@ export default function Footer() {
             <div>
               <h4 className="text-white text-xs font-bold tracking-[0.2em] uppercase mb-6">Company</h4>
               <div className="flex flex-col gap-3">
-                {footerLinks.company.slice(0, 3).map(link => (
+                {footerLinks.company.slice(0, 4).map(link => (
                   <PremiumLink key={link.name} href={link.href}>{link.name}</PremiumLink>
                 ))}
               </div>

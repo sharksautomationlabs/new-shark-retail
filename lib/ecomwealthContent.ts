@@ -279,6 +279,7 @@ export const faqItems: FAQItem[] = [
 export const footerContent = {
   copyright: `The Retail Automation © ${new Date().getFullYear()}. All Rights Reserved.`,
   links: [
+    { href: '/reviews', label: 'Reviews' },
     { href: '/privacy-policy', label: 'Privacy Policy' },
     { href: '/contact', label: 'Contact Us' },
   ],

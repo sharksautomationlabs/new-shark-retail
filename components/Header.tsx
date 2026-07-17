@@ -32,6 +32,7 @@ const navItems = [
       { label: 'Product Hunting', href: '/services/product-hunting' },
     ],
   },
+  { label: 'Reviews', href: '/reviews' },
 ];
 
 const Header = () => {
