@@ -177,7 +177,7 @@ export default function ReviewsPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <a
                 href="#video-reviews"
-                className="inline-flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 px-8 rounded-full transition-all shadow-lg shadow-teal-500/25"
+                className="w-full max-w-xs sm:w-auto sm:max-w-none inline-flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 px-8 rounded-full transition-all shadow-lg shadow-teal-500/25"
                 style={{ fontFamily: 'var(--font-barlow)' }}
               >
                 <Play className="w-4 h-4" fill="currentColor" />
@@ -185,7 +185,7 @@ export default function ReviewsPage() {
               </a>
               <a
                 href="#verify"
-                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-teal-700 font-bold py-4 px-8 rounded-full transition-all border-2 border-teal-500"
+                className="w-full max-w-xs sm:w-auto sm:max-w-none inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-teal-700 font-bold py-4 px-8 rounded-full transition-all border-2 border-teal-500"
                 style={{ fontFamily: 'var(--font-barlow)' }}
               >
                 <ShieldCheck className="w-4 h-4" />
@@ -434,7 +434,7 @@ export default function ReviewsPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-5">
               <a
                 href={FUNNEL_CONTACT_PHONE_TEL}
-                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-teal-700 font-bold py-4 px-8 rounded-full transition-all border-2 border-teal-500"
+                className="w-full max-w-xs sm:w-auto sm:max-w-none inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-teal-700 font-bold py-4 px-8 rounded-full transition-all border-2 border-teal-500"
                 style={{ fontFamily: 'var(--font-barlow)' }}
               >
                 <Phone className="w-4 h-4" />
@@ -443,7 +443,7 @@ export default function ReviewsPage() {
               <button
                 type="button"
                 onClick={openCalendly}
-                className="inline-flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 px-10 text-lg rounded-full transition-all shadow-lg shadow-teal-500/25"
+                className="w-full max-w-xs sm:w-auto sm:max-w-none inline-flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 px-6 sm:px-10 text-base sm:text-lg rounded-full transition-all shadow-lg shadow-teal-500/25"
                 style={{ fontFamily: 'var(--font-barlow)' }}
               >
                 Claim Your Free Consultation
