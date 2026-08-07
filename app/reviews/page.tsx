@@ -52,7 +52,7 @@ const objections = [
   {
     id: 'obj-4',
     question: '“How do I know these reviews are real?”',
-    answer: `Don't take our word for it — every platform below is independent, and we can't edit or remove what clients write there. Read our profiles on Trustpilot, Reviews.io, Clutch, Bark, ProvenExpert, and the BBB, and watch the unscripted client videos on this page. Verify everything yourself.`,
+    answer: `Don't take our word for it — every platform below is independent, and we can't edit or remove what clients write there. Read our profiles on Trustpilot, Reviews.io, Clutch, Bark, and ProvenExpert, and watch the unscripted client videos on this page. Verify everything yourself.`,
   },
 ] as const;
 
@@ -266,16 +266,7 @@ export default function ReviewsPage() {
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {REVIEW_PLATFORM_LINKS.map((platform, i) => (
-              <Reveal
-                key={platform.name}
-                delay={i * 0.04}
-                // Facebook is the lone card in the last row — center it under ProvenExpert
-                className={
-                  platform.name === 'Facebook'
-                    ? 'sm:col-span-2 sm:mx-auto sm:w-[calc(50%-0.5rem)] lg:col-span-1 lg:col-start-2 lg:mx-0 lg:w-auto'
-                    : undefined
-                }
-              >
+              <Reveal key={platform.name} delay={i * 0.04}>
                 <a
                   href={platform.href}
                   target="_blank"

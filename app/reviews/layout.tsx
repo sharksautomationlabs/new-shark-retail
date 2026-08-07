@@ -19,7 +19,7 @@ const barlow = Barlow({
 export const metadata: Metadata = {
   title: 'Client Reviews & Independent Verification | The Retail Automation',
   description:
-    'Real client reviews of The Retail Automation — verified on Trustpilot, Clutch, Bark, Reviews.io, BBB and more. Watch unscripted video testimonials and verify us independently.',
+    'Real client reviews of The Retail Automation — verified on Trustpilot, Clutch, Bark, Reviews.io and more. Watch unscripted video testimonials and verify us independently.',
   robots: { index: false, follow: false },
 };
 

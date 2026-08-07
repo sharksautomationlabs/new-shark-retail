@@ -151,11 +151,6 @@ export const REVIEW_PLATFORM_LINKS = [
     iconSrc: '/images/review-platforms/icon-provenexpert.png',
   },
   {
-    name: 'BBB',
-    href: 'https://www.bbb.org/us/il/skokie/profile/ecommerce/the-retail-automation-0654-1000146039',
-    iconSrc: '/images/review-platforms/icon-bbb.png',
-  },
-  {
     name: 'Facebook',
     href: 'https://www.facebook.com/profile.php?id=61582189354952',
     iconSrc: '/images/review-platforms/icon-facebook.png',
