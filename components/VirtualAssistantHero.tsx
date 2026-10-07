@@ -40,9 +40,9 @@ const VirtualAssistantHero: React.FC = () => {
                 <ArrowRight className="w-5 h-5 text-black" />
               </div>
             </a>
-            <a href="tel:+17133377701" className="relative group w-full sm:w-auto p-px rounded-full overflow-hidden bg-gradient-to-b from-teal-500/50 to-white/10">
+            <a href="tel:+17133376825" className="relative group w-full sm:w-auto p-px rounded-full overflow-hidden bg-gradient-to-b from-teal-500/50 to-white/10">
               <div className="relative bg-[#0a0a0c] hover:bg-white/5 transition-colors duration-300 rounded-full px-8 py-4 flex items-center justify-center gap-3 border border-white/10">
-                <span className="font-bold text-white uppercase tracking-wider text-sm md:text-base">(713) 337-7701</span>
+                <span className="font-bold text-white uppercase tracking-wider text-sm md:text-base">(713) 337-6825</span>
               </div>
             </a>
           </motion.div>

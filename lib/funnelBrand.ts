@@ -11,5 +11,5 @@ export const FUNNEL_CONTACT_EMAIL = 'info@theretailautomation.com';
 export const FUNNEL_CONTACT_MAILTO = 'mailto:info@theretailautomation.com';
 
 /** Replace both when the official line is confirmed */
-export const FUNNEL_CONTACT_PHONE_TEL = 'tel:+17133377701';
-export const FUNNEL_CONTACT_PHONE_DISPLAY = '(713) 337-7701';
+export const FUNNEL_CONTACT_PHONE_TEL = 'tel:+17133376825';
+export const FUNNEL_CONTACT_PHONE_DISPLAY = '(713) 337-6825';

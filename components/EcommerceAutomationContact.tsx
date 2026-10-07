@@ -58,8 +58,8 @@ const EcommerceAutomationContact: React.FC = () => {
                 <Phone className="w-6 h-6 text-teal-400 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-1">Phone</h3>
-                  <a href="tel:+17133377701" className="text-teal-400 hover:text-teal-300 transition-colors">
-                    (713) 337-7701
+                  <a href="tel:+17133376825" className="text-teal-400 hover:text-teal-300 transition-colors">
+                    (713) 337-6825
                   </a>
                 </div>
               </div>
@@ -124,7 +124,7 @@ const EcommerceAutomationContact: React.FC = () => {
                   id="phone"
                   name="phone"
                   className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-teal-400 focus:border-teal-400 transition-colors"
-                  placeholder="(713) 337-7701"
+                  placeholder="(713) 337-6825"
                 />
               </div>
               

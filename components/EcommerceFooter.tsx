@@ -38,7 +38,7 @@ const additionalServices = [
 
 const socialLinks = [
   { href: "https://www.facebook.com/profile.php?id=61582189354952", icon: <Facebook size={20} /> },
-  { href: "https://www.instagram.com/sharks_retail?igsh=MWlxZHFldGsyZW1uMA==", icon: <Instagram size={20} /> }
+  { href: "https://www.instagram.com/theretailautomation/", icon: <Instagram size={20} /> }
 ];
 
 // Chevron down icon for dropdowns (matching Header)
@@ -430,8 +430,8 @@ const Footer: React.FC = () => {
               <a href="mailto:info@theretailautomation.com" className="text-lg sm:text-xl font-bold text-white hover:text-teal-400 transition-colors block">
                 info@theretailautomation.com
               </a>
-              <a href="tel:+17133377701" className="text-base sm:text-lg font-semibold text-white hover:text-teal-400 transition-colors block">
-                (713) 337-7701
+              <a href="tel:+17133376825" className="text-base sm:text-lg font-semibold text-white hover:text-teal-400 transition-colors block">
+                (713) 337-6825
               </a>
               <p className="text-slate-400 text-sm">8930 Gross Point Rd, Ste LL200B<br />Skokie, IL 60077</p>
             </div>
